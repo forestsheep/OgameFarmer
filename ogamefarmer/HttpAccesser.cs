@@ -4,11 +4,16 @@ using System.Net;
 using System.Resources;
 using System.Text;
 using System.Collections;
+using System.Threading;
 
 namespace OgameFarmer
 {
     internal class HttpAccesser
     {
+        #region static
+        internal static Random rtime = new Random();
+        #endregion
+
         #region 构造函数
         internal HttpAccesser()
         {
@@ -76,7 +81,8 @@ namespace OgameFarmer
         private string responseText = string.Empty;
         private bool isUseCookie;
         private WebHeaderCollection webHeader = new WebHeaderCollection();
-        private string reqEncoding = "GB2312";
+        //private string reqEncoding = "GB2312";
+        private string reqEncoding = "utf-8";
         private string resEncoding = "GB2312";
 
         #endregion
@@ -254,6 +260,7 @@ namespace OgameFarmer
         /// </summary>
         internal CookieCollection access()
         {
+            this.responseText = string.Empty;
             if (accessUrl == null || accessUrl.Trim().Equals(string.Empty))
             {
                 throw new UncompleteSettingException("没有设定url");
@@ -317,8 +324,9 @@ namespace OgameFarmer
                     n = sr.Read(readbuffer, 0, 256);
                 }
                 sr.Close();
-                //Txtout.write(((HttpWebResponse)res).StatusCode.ToString());
                 Txtout.write(responseText);
+                int r = rtime.Next(1000);
+                Thread.Sleep(2000 + r);
                 return c;
             }
         }

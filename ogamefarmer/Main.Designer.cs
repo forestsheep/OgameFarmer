@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btnRunLogin = new System.Windows.Forms.Button();
             this.outputArea = new System.Windows.Forms.TextBox();
-            this.btnAppendAccount = new System.Windows.Forms.Button();
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.l_ballname = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.l_metal = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.l_islogin = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.l_metalstroe = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,6 +53,19 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.lb_balllist = new System.Windows.Forms.ListBox();
+            this.l_metal_all = new System.Windows.Forms.Label();
+            this.l_crystal_all = new System.Windows.Forms.Label();
+            this.l_H_all = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.l_hh_all = new System.Windows.Forms.Label();
+            this.l_crystalh_all = new System.Windows.Forms.Label();
+            this.l_metalh_all = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRunLogin
@@ -64,7 +76,6 @@
             this.btnRunLogin.TabIndex = 0;
             this.btnRunLogin.Text = "首页";
             this.btnRunLogin.UseVisualStyleBackColor = true;
-            this.btnRunLogin.Click += new System.EventHandler(this.btnRunLogin_Click);
             // 
             // outputArea
             // 
@@ -75,16 +86,6 @@
             this.outputArea.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.outputArea.Size = new System.Drawing.Size(328, 56);
             this.outputArea.TabIndex = 1;
-            // 
-            // btnAppendAccount
-            // 
-            this.btnAppendAccount.Location = new System.Drawing.Point(113, 12);
-            this.btnAppendAccount.Name = "btnAppendAccount";
-            this.btnAppendAccount.Size = new System.Drawing.Size(80, 42);
-            this.btnAppendAccount.TabIndex = 4;
-            this.btnAppendAccount.Text = "登录";
-            this.btnAppendAccount.UseVisualStyleBackColor = true;
-            this.btnAppendAccount.Click += new System.EventHandler(this.appendAccountBtn_Click);
             // 
             // btnEditAccount
             // 
@@ -141,24 +142,6 @@
             this.l_metal.Size = new System.Drawing.Size(41, 12);
             this.l_metal.TabIndex = 10;
             this.l_metal.Text = "label4";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "登录状态";
-            // 
-            // l_islogin
-            // 
-            this.l_islogin.AutoSize = true;
-            this.l_islogin.Location = new System.Drawing.Point(113, 69);
-            this.l_islogin.Name = "l_islogin";
-            this.l_islogin.Size = new System.Drawing.Size(29, 12);
-            this.l_islogin.TabIndex = 12;
-            this.l_islogin.Text = "未知";
             // 
             // label4
             // 
@@ -295,11 +278,137 @@
             this.lb_balllist.Size = new System.Drawing.Size(224, 364);
             this.lb_balllist.TabIndex = 27;
             // 
+            // l_metal_all
+            // 
+            this.l_metal_all.AutoSize = true;
+            this.l_metal_all.Location = new System.Drawing.Point(304, 317);
+            this.l_metal_all.Name = "l_metal_all";
+            this.l_metal_all.Size = new System.Drawing.Size(41, 12);
+            this.l_metal_all.TabIndex = 28;
+            this.l_metal_all.Text = "label5";
+            // 
+            // l_crystal_all
+            // 
+            this.l_crystal_all.AutoSize = true;
+            this.l_crystal_all.Location = new System.Drawing.Point(419, 317);
+            this.l_crystal_all.Name = "l_crystal_all";
+            this.l_crystal_all.Size = new System.Drawing.Size(41, 12);
+            this.l_crystal_all.TabIndex = 28;
+            this.l_crystal_all.Text = "label5";
+            // 
+            // l_H_all
+            // 
+            this.l_H_all.AutoSize = true;
+            this.l_H_all.Location = new System.Drawing.Point(539, 317);
+            this.l_H_all.Name = "l_H_all";
+            this.l_H_all.Size = new System.Drawing.Size(41, 12);
+            this.l_H_all.TabIndex = 28;
+            this.l_H_all.Text = "label5";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(306, 278);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "金属总量";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(407, 278);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "晶体总量";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(539, 278);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "重氢总量";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(537, 378);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "重氢总产量";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(405, 378);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "晶体总产量";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(304, 378);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "金属总产量";
+            // 
+            // l_hh_all
+            // 
+            this.l_hh_all.AutoSize = true;
+            this.l_hh_all.Location = new System.Drawing.Point(537, 417);
+            this.l_hh_all.Name = "l_hh_all";
+            this.l_hh_all.Size = new System.Drawing.Size(41, 12);
+            this.l_hh_all.TabIndex = 36;
+            this.l_hh_all.Text = "label5";
+            // 
+            // l_crystalh_all
+            // 
+            this.l_crystalh_all.AutoSize = true;
+            this.l_crystalh_all.Location = new System.Drawing.Point(417, 417);
+            this.l_crystalh_all.Name = "l_crystalh_all";
+            this.l_crystalh_all.Size = new System.Drawing.Size(41, 12);
+            this.l_crystalh_all.TabIndex = 35;
+            this.l_crystalh_all.Text = "label5";
+            // 
+            // l_metalh_all
+            // 
+            this.l_metalh_all.AutoSize = true;
+            this.l_metalh_all.Location = new System.Drawing.Point(302, 417);
+            this.l_metalh_all.Name = "l_metalh_all";
+            this.l_metalh_all.Size = new System.Drawing.Size(41, 12);
+            this.l_metalh_all.TabIndex = 37;
+            this.l_metalh_all.Text = "label5";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 762);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.l_hh_all);
+            this.Controls.Add(this.l_crystalh_all);
+            this.Controls.Add(this.l_metalh_all);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.l_H_all);
+            this.Controls.Add(this.l_crystal_all);
+            this.Controls.Add(this.l_metal_all);
             this.Controls.Add(this.lb_balllist);
             this.Controls.Add(this.l_energystore);
             this.Controls.Add(this.l_energy);
@@ -315,23 +424,22 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.l_metalstroe);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.l_islogin);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.l_metal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.l_ballname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteAccount);
             this.Controls.Add(this.btnEditAccount);
-            this.Controls.Add(this.btnAppendAccount);
             this.Controls.Add(this.outputArea);
             this.Controls.Add(this.btnRunLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Main";
             this.Text = "Ogame 快乐的农夫";
             this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
+            this.SizeChanged += new System.EventHandler(this.Main_SizeChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -342,15 +450,12 @@
 
         private System.Windows.Forms.Button btnRunLogin;
         private System.Windows.Forms.TextBox outputArea;
-        private System.Windows.Forms.Button btnAppendAccount;
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label l_ballname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label l_metal;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label l_islogin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label l_metalstroe;
         private System.Windows.Forms.Label label6;
@@ -366,6 +471,19 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ListBox lb_balllist;
+        private System.Windows.Forms.Label l_metal_all;
+        private System.Windows.Forms.Label l_crystal_all;
+        private System.Windows.Forms.Label l_H_all;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label l_hh_all;
+        private System.Windows.Forms.Label l_crystalh_all;
+        private System.Windows.Forms.Label l_metalh_all;
     }
 }
 

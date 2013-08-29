@@ -14,20 +14,23 @@ namespace OgameFarmer
 {
     public partial class Main : Form
     {
-        private string logMessage;
-        private StarScript lt;
+        private StarScript ss;
+        private OverviewInfo info;
+        private ProductivityInfo pi;
+        private ArrayList balls;
+        private ArrayList oballs = new ArrayList();
 
         #region 构造函数
-        public Main()
+        internal Main(StarScript ss)
         {
             InitializeComponent();
-            //this.Icon = Properties.Resources.MainIcon;
+            this.ss = ss;
+            this.ss.Osender += this.OnReciveObject;
         }
         #endregion
 
         #region 事件
         System.Timers.Timer autoLoginTimer = new System.Timers.Timer();
-        //private Boolean autoRunning = false;
         private void Main_Load(object sender, EventArgs e)
         {
             //Panel p2 = new Panel();
@@ -42,47 +45,108 @@ namespace OgameFarmer
             //this.Controls.Add(p2);
             //p2.BackColor = Color.Green;
             //p2.Show();
-
-        }
-
-        private void daka(object source, System.Timers.ElapsedEventArgs e)
-        {
-            this.AccessHomePage();
-        }
-
-        private void btnRunLogin_Click(object sender, EventArgs e)
-        {
-            this.AccessHomePage();
         }
 
         protected void TextShow(object sender, EventArgs e)
         {
-            this.outputArea.AppendText(logMessage);
         }
 
         protected void ShowInfo(object sender, EventArgs e)
         {
-            if(islogin)
-            {
-                l_islogin.Text = "登陆成功";
-            }
             if (info != null)
             {
                 l_ballname.Text = info.CurrentBallName;
-                l_metal.Text = info.Metal;
-                l_metalstroe.Text = info.MetalStore;
-                l_crystal.Text = info.Crystal;
-                l_crystalstore.Text = info.CrystalStore;
-                l_h.Text = info.H;
-                l_hstore.Text = info.HStore;
-                l_energy.Text = info.Energy;
-                l_energystore.Text = info.EnergyStroe;
+                l_metal.Text = string.Format("{0:N0}", info.Metal);
+                
+                l_metalstroe.Text = string.Format("{0:N0}", info.MetalStore);
+                l_crystal.Text = string.Format("{0:N0}", info.Crystal);
+                l_crystalstore.Text = string.Format("{0:N0}", info.CrystalStore);
+                l_h.Text = string.Format("{0:N0}", info.H);
+                l_hstore.Text = string.Format("{0:N0}", info.HStore);
+                l_energy.Text = string.Format("{0:N0}", info.Energy);
+                l_energystore.Text = string.Format("{0:N0}", info.EnergyStroe);
+                lb_balllist.Items.Clear();
+                foreach (OverviewInfo.Ball b in info.Balllist)
+                {
+                    string s = b.Name;
+                    for (int i = 0; i < 12 - b.Name.Length; i++)
+                    {
+                        s += " ";
+                    }
+                    s += "[" + b.Location + "]";
+                    lb_balllist.Items.Add(s);
+                }
+            }
+            if (balls != null)
+            {
+                int allm = 0;
+                int allc = 0;
+                int allh = 0;
+                foreach (CommonInfo ball in balls)
+                {
+                    allm += ball.Metal;
+                    allc += ball.Crystal;
+                    allh += ball.H;
+                }
+                l_metal_all.Text = string.Format("{0:N0}", allm);
+                l_crystal_all.Text = string.Format("{0:N0}", allc);
+                l_H_all.Text = string.Format("{0:N0}", allh);
             }
         }
 
-        private void appendAccountBtn_Click(object sender, EventArgs e)
+        protected void ShowInfo2(object sender, EventArgs e)
         {
-            this.login();
+            if (info != null)
+            {
+                l_ballname.Text = info.CurrentBallName;
+                l_metal.Text = string.Format("{0:N0}", info.Metal);
+
+                l_metalstroe.Text = string.Format("{0:N0}", info.MetalStore);
+                l_crystal.Text = string.Format("{0:N0}", info.Crystal);
+                l_crystalstore.Text = string.Format("{0:N0}", info.CrystalStore);
+                l_h.Text = string.Format("{0:N0}", info.H);
+                l_hstore.Text = string.Format("{0:N0}", info.HStore);
+                l_energy.Text = string.Format("{0:N0}", info.Energy);
+                l_energystore.Text = string.Format("{0:N0}", info.EnergyStroe);
+                lb_balllist.Items.Clear();
+                foreach (CommonInfo.Ball b in info.Balllist)
+                {
+                    string s = b.Name;
+                    for (int i = 0; i < 12 - b.Name.Length; i++)
+                    {
+                        s += " ";
+                    }
+                    s += "[" + b.Location + "]";
+                    lb_balllist.Items.Add(s);
+                }
+            }
+            if (balls != null)
+            {
+                int allm = 0;
+                int allc = 0;
+                int allh = 0;
+
+                int allmh = 0;
+                int allch = 0;
+                int allhh = 0;
+                foreach (ProductivityInfo ball in balls)
+                {
+                    allm += ball.Metal;
+                    allc += ball.Crystal;
+                    allh += ball.H;
+
+                    allmh += ball.MetalHour;
+                    allch += ball.CrystalHour;
+                    allhh += ball.HHour;
+                }
+                l_metal_all.Text = string.Format("{0:N0}", allm);
+                l_crystal_all.Text = string.Format("{0:N0}", allc);
+                l_H_all.Text = string.Format("{0:N0}", allh);
+
+                l_metalh_all.Text = string.Format("{0:N0}", allmh);
+                l_crystalh_all.Text = string.Format("{0:N0}", allch);
+                l_hh_all.Text = string.Format("{0:N0}", allhh);
+            }
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -105,17 +169,17 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// 账号被选中时
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void checkedListBox_accounts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <summary>
-        /// 编辑账号
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -125,7 +189,7 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// 删除账号
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -138,68 +202,18 @@ namespace OgameFarmer
 
         #region 方法
 
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        private void AccessHomePage()
-        {
-            if (this.lt == null)
-            {
-                this.lt = new StarScript();
-                lt.Login += this.OnLogin;
-                lt.Osender += this.OnReciveObject;
-            }
-            try
-            {
-                lt.run(1);
-                
-            }
-            catch (Exception ee)
-            {
-                MessageHandler(ee.ToString() + "\r\n");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void login()
-        {
-            if (this.lt == null)
-            {
-                this.lt = new StarScript();
-                lt.Login += this.OnLogin;
-                lt.Osender += this.OnReciveObject;
-            }
-            try
-            {
-                lt.run(2);
-            }
-            catch (Exception ee)
-            {
-                MessageHandler(ee.ToString() + "\r\n");
-            }
-        }
-
         /// <summary>
         /// 
         /// </summary>
         private void AccessOverview()
         {
-            if (this.lt == null)
-            {
-                this.lt = new StarScript();
-                lt.Login += this.OnLogin;
-                lt.Osender += this.OnReciveObject;
-            }
             try
             {
-                lt.run(3);
+                ss.run(3);
             }
             catch (Exception ee)
             {
-                MessageHandler(ee.ToString() + "\r\n");
+                ee.ToString();
             }
         }
 
@@ -209,40 +223,14 @@ namespace OgameFarmer
         /// </summary>
         private void logout()
         {
-            if (this.lt == null)
-            {
-                this.lt = new StarScript();
-                lt.Login += this.OnLogin;
-                lt.Osender += this.OnReciveObject;
-            }
             try
             {
-                lt.run(4);
+                ss.run(4);
             }
             catch (Exception ee)
             {
-                MessageHandler(ee.ToString() + "\r\n");
+                ee.ToString();
             }
-        }
-
-        private MessageSender MessageHandler;
-        internal event MessageSender Login
-        {
-            add
-            {
-                MessageHandler += new MessageSender(value);
-            }
-            remove
-            {
-                MessageHandler -= new MessageSender(value);
-            }
-        }
-
-        private void OnLogin(string s)
-        {
-            logMessage = s;
-            Object[] list = { this, System.EventArgs.Empty };
-            this.outputArea.BeginInvoke(new EventHandler(TextShow), list);
         }
 
         private ObjectSender OnObjectSend;
@@ -252,21 +240,23 @@ namespace OgameFarmer
             remove { OnObjectSend -= new ObjectSender(value); }
         }
 
-        private OverviewInfo info;
-        private bool islogin = false;
+        
         private void OnReciveObject(object o)
         {
-            if (o.GetType() == typeof(LoginInfo))
-            {
-                islogin = ((LoginInfo)o).LoginSuccess;
-            }
-            else if (o.GetType() == typeof(OverviewInfo))
+            if (o.GetType() == typeof(OverviewInfo))
             {
                 info = (OverviewInfo)o;
             }
-
+            else if (o.GetType() == typeof(ArrayList))
+            {
+                balls = (ArrayList)o;
+            }
+            else if (o.GetType() == typeof(ProductivityInfo))
+            {
+                pi = (ProductivityInfo)o;
+            }
             Object[] list = { this, System.EventArgs.Empty };
-            this.outputArea.BeginInvoke(new EventHandler(ShowInfo), list);
+            this.outputArea.BeginInvoke(new EventHandler(ShowInfo2), list);
         }
         #endregion
 
@@ -277,7 +267,23 @@ namespace OgameFarmer
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal; 
+            this.notifyIcon1.Visible = false;
+        }
+
+        private void Main_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                this.notifyIcon1.Visible = true;
+            }
         }
     }
 }

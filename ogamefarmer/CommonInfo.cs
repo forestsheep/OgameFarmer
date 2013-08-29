@@ -5,21 +5,22 @@ using System.Text;
 
 namespace OgameFarmer
 {
-    class CommonInfo : BaseInfo
+    internal class CommonInfo : BaseInfo
     {
 
         #region static
-        internal static const string XPATH_BALL_NAME = "//*[@id=\"planetNameHeader\"]";
-        internal static const string XPATH_METAL = "//*[@id=\"metalx\"]";
-        internal static const string XPATH_METAL_STORE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td";
-        internal static const string XPATH_CRYSTAL = "//*[@id=\"crystalx\"]";
-        internal static const string XPATH_CRYSTAL_STORE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td[2]";
-        internal static const string XPATH_H = "//*[@id=\"deuteriumx\"]";
-        internal static const string XPATH_H_STROE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td[3]";
-        internal static const string XPATH_ENERGY = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[3]/td[4]";
-        internal static const string XPATH_ENERGY_STROE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td[4]";
+        internal const string XPATH_BALL_NAME = "//*[@id=\"planetNameHeader\"]";
+        internal const string XPATH_METAL = "//*[@id=\"metalx\"]";
+        internal const string XPATH_METAL_STORE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td";
+        internal const string XPATH_CRYSTAL = "//*[@id=\"crystalx\"]";
+        internal const string XPATH_CRYSTAL_STORE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td[2]";
+        internal const string XPATH_H = "//*[@id=\"deuteriumx\"]";
+        internal const string XPATH_H_STROE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td[3]";
+        internal const string XPATH_ENERGY = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[3]/td[4]";
+        internal const string XPATH_ENERGY_STROE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td[4]";
 
-        internal static const string XPATH_BALL_LIST = "/html/body/div[2]/center/table[2]/tbody/tr/td/center/table/tbody/tr/td[2]/select";
+        internal const string XPATH_BALL_LIST = "/html/body/div[2]/center/table[2]/tbody/tr/td/center/table/tbody/tr/td[2]/select";
+        //internal const string XPATH_BALL_LIST = "//option";
 
         #endregion
 
@@ -39,76 +40,109 @@ namespace OgameFarmer
             set { currentBallCursor = value; }
         }
 
-        private string metal;
+        private int metal;
 
-        internal string Metal
+        internal int Metal
         {
             get { return metal; }
             set { metal = value; }
         }
 
-        private string metalStore;
+        private int metalStore;
 
-        internal string MetalStore
+        internal int MetalStore
         {
             get { return metalStore; }
             set { metalStore = value; }
         }
 
-        private string crystal;
+        private int crystal;
 
-        internal string Crystal
+        internal int Crystal
         {
             get { return crystal; }
             set { crystal = value; }
         }
 
-        private string crystalStore;
+        private int crystalStore;
 
-        internal string CrystalStore
+        internal int CrystalStore
         {
             get { return crystalStore; }
             set { crystalStore = value; }
         }
 
-        private string h;
+        private int h;
 
-        internal string H
+        internal int H
         {
             get { return h; }
             set { h = value; }
         }
 
-        private string hStore;
+        private int hStore;
 
-        internal string HStore
+        internal int HStore
         {
             get { return hStore; }
             set { hStore = value; }
         }
 
-        private string energy;
+        private int energy;
 
-        internal string Energy
+        internal int Energy
         {
             get { return energy; }
             set { energy = value; }
         }
 
-        private string energyStroe;
+        private int energyStroe;
 
-        internal string EnergyStroe
+        internal int EnergyStroe1
         {
             get { return energyStroe; }
             set { energyStroe = value; }
         }
 
-        private ArrayList balllist;
+        internal int EnergyStroe
+        {
+            get { return energyStroe; }
+            set { energyStroe = value; }
+        }
+
+        private ArrayList balllist = new ArrayList();
 
         internal ArrayList Balllist
         {
             get { return balllist; }
             set { balllist = value; }
+        }
+
+        internal class Ball
+        {
+            private string name;
+
+            internal string Name
+            {
+                get { return name; }
+                set { name = value; }
+            }
+
+            private string location;
+
+            internal string Location
+            {
+                get { return location; }
+                set { location = value; }
+            }
+            
+            private string accessParm;
+
+            internal string AccessParm
+            {
+                get { return accessParm; }
+                set { accessParm = value; }
+            }
         }
     }
 }

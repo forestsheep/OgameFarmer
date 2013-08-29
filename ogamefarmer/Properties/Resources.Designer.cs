@@ -59,5 +59,12 @@ namespace OgameFarmer.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon Icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Icon1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
