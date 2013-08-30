@@ -66,16 +66,16 @@ namespace OgameFarmer
                 l_energy.Text = string.Format("{0:N0}", info.Energy);
                 l_energystore.Text = string.Format("{0:N0}", info.EnergyStroe);
                 lb_balllist.Items.Clear();
-                foreach (OverviewInfo.Ball b in info.Balllist)
-                {
-                    string s = b.Name;
-                    for (int i = 0; i < 12 - b.Name.Length; i++)
-                    {
-                        s += " ";
-                    }
-                    s += "[" + b.Location + "]";
-                    lb_balllist.Items.Add(s);
-                }
+                //foreach (OverviewInfo.Ball b in info.Balllist)
+                //{
+                    //string s = b.Name;
+                    //for (int i = 0; i < 12 - b.Name.Length; i++)
+                    //{
+                    //    s += " ";
+                    //}
+                    //s += "[" + b.Location + "]";
+                    //lb_balllist.Items.Add(s);
+                //}
             }
             if (balls != null)
             {
@@ -87,6 +87,7 @@ namespace OgameFarmer
                     allm += ball.Metal;
                     allc += ball.Crystal;
                     allh += ball.H;
+                    lb_balllist.Items.Add(ball);
                 }
                 l_metal_all.Text = string.Format("{0:N0}", allm);
                 l_crystal_all.Text = string.Format("{0:N0}", allc);
@@ -96,29 +97,29 @@ namespace OgameFarmer
 
         protected void ShowInfo2(object sender, EventArgs e)
         {
-            if (info != null)
+            if (pi != null)
             {
-                l_ballname.Text = info.CurrentBallName;
-                l_metal.Text = string.Format("{0:N0}", info.Metal);
+                l_ballname.Text = pi.CurrentBallName;
+                l_metal.Text = string.Format("{0:N0}", pi.Metal);
 
-                l_metalstroe.Text = string.Format("{0:N0}", info.MetalStore);
-                l_crystal.Text = string.Format("{0:N0}", info.Crystal);
-                l_crystalstore.Text = string.Format("{0:N0}", info.CrystalStore);
-                l_h.Text = string.Format("{0:N0}", info.H);
-                l_hstore.Text = string.Format("{0:N0}", info.HStore);
-                l_energy.Text = string.Format("{0:N0}", info.Energy);
-                l_energystore.Text = string.Format("{0:N0}", info.EnergyStroe);
+                l_metalstroe.Text = string.Format("{0:N0}", pi.MetalStore);
+                l_crystal.Text = string.Format("{0:N0}", pi.Crystal);
+                l_crystalstore.Text = string.Format("{0:N0}", pi.CrystalStore);
+                l_h.Text = string.Format("{0:N0}", pi.H);
+                l_hstore.Text = string.Format("{0:N0}", pi.HStore);
+                l_energy.Text = string.Format("{0:N0}", pi.Energy);
+                l_energystore.Text = string.Format("{0:N0}", pi.EnergyStroe);
                 lb_balllist.Items.Clear();
-                foreach (CommonInfo.Ball b in info.Balllist)
-                {
-                    string s = b.Name;
-                    for (int i = 0; i < 12 - b.Name.Length; i++)
-                    {
-                        s += " ";
-                    }
-                    s += "[" + b.Location + "]";
-                    lb_balllist.Items.Add(s);
-                }
+                //foreach (CommonInfo.Ball b in pi.Balllist)
+                //{
+                //    string s = b.Name;
+                //    for (int i = 0; i < 12 - b.Name.Length; i++)
+                //    {
+                //        s += " ";
+                //    }
+                //    s += "[" + b.Location + "]";
+                //    lb_balllist.Items.Add(s);
+                //}
             }
             if (balls != null)
             {
@@ -138,6 +139,8 @@ namespace OgameFarmer
                     allmh += ball.MetalHour;
                     allch += ball.CrystalHour;
                     allhh += ball.HHour;
+
+                    lb_balllist.Items.Add(ball);
                 }
                 l_metal_all.Text = string.Format("{0:N0}", allm);
                 l_crystal_all.Text = string.Format("{0:N0}", allc);
@@ -186,16 +189,6 @@ namespace OgameFarmer
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
             this.AccessOverview();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDeleteAccount_Click(object sender, EventArgs e)
-        {
-            this.logout();
         }
 
         #endregion
@@ -284,6 +277,25 @@ namespace OgameFarmer
                 this.Hide();
                 this.notifyIcon1.Visible = true;
             }
+        }
+
+        private void lb_balllist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CommonInfo ci = ((CommonInfo)lb_balllist.SelectedItem);
+            l_metal.Text = string.Format("{0:N0}", ci.Metal);
+
+            l_metalstroe.Text = string.Format("{0:N0}", ci.MetalStore);
+            l_crystal.Text = string.Format("{0:N0}", ci.Crystal);
+            l_crystalstore.Text = string.Format("{0:N0}", ci.CrystalStore);
+            l_h.Text = string.Format("{0:N0}", ci.H);
+            l_hstore.Text = string.Format("{0:N0}", ci.HStore);
+            l_energy.Text = string.Format("{0:N0}", ci.Energy);
+            l_energystore.Text = string.Format("{0:N0}", ci.EnergyStroe);
+        }
+
+        private void btnRunLogin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -67,13 +67,14 @@
             // 
             this.tb_pw.Location = new System.Drawing.Point(180, 75);
             this.tb_pw.Name = "tb_pw";
+            this.tb_pw.PasswordChar = '@';
             this.tb_pw.Size = new System.Drawing.Size(100, 21);
             this.tb_pw.TabIndex = 3;
             // 
             // b_login
             // 
             this.b_login.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.b_login.Location = new System.Drawing.Point(54, 124);
+            this.b_login.Location = new System.Drawing.Point(54, 147);
             this.b_login.Name = "b_login";
             this.b_login.Size = new System.Drawing.Size(200, 57);
             this.b_login.TabIndex = 4;

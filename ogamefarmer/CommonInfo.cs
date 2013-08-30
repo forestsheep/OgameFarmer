@@ -9,7 +9,6 @@ namespace OgameFarmer
     {
 
         #region static
-        internal const string XPATH_BALL_NAME = "//*[@id=\"planetNameHeader\"]";
         internal const string XPATH_METAL = "//*[@id=\"metalx\"]";
         internal const string XPATH_METAL_STORE = "/html/body/div[2]/center/table[2]/tbody/tr/td[2]/table/tbody/tr[4]/td";
         internal const string XPATH_CRYSTAL = "//*[@id=\"crystalx\"]";
@@ -118,6 +117,12 @@ namespace OgameFarmer
             set { balllist = value; }
         }
 
+        public override string ToString()
+        {
+            //return currentBallName + "    " + currentBallCursor;
+            return currentBallName;
+        }
+
         internal class Ball
         {
             private string name;
@@ -135,7 +140,7 @@ namespace OgameFarmer
                 get { return location; }
                 set { location = value; }
             }
-            
+
             private string accessParm;
 
             internal string AccessParm

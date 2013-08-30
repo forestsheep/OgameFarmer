@@ -9,12 +9,12 @@ namespace OgameFarmer
 {
     class ProductivityInfo : CommonInfo
     {
-
-        internal static string XPATH_METAL_HOUR = "/html/body/center/table/tbody/tr/td/form/table/tbody/tr[4]/th[2]/font/font";
-        internal static string XPATH_CRYSTAL_HOUR = "/html/body/center/table/tbody/tr/td/form/table/tbody/tr[5]/th[3]/font/font";
-        internal static string XPATH_H_HOUR = "/html/body/center/table/tbody/tr/td/form/table/tbody/tr[6]/th[4]/font/font";
-        internal static string XPATH_SOLAR_BASE_HOUR = "/html/body/center/table/tbody/tr/td/form/table/tbody/tr[7]/th[5]/font/font";
-        internal static string XPATH_SOLAR_SATELLITE_HOUR = "/html/body/center/table/tbody/tr/td/form/table/tbody/tr[8]/th[5]/font/font";
+        internal static string XPATH_BALL_NAME = "/html/body/center/table/tr/td[1]/table/tbody/tr/td";
+        internal static string XPATH_METAL_HOUR = "/html/body/center/table/tr/td[1]/table/tbody/tr[4]/th[2]/font/font";
+        internal static string XPATH_CRYSTAL_HOUR = "/html/body/center/table/tr/td[1]/table/tbody/tr[5]/th[3]/font/font";
+        internal static string XPATH_H_HOUR = "/html/body/center/table/tr/td[1]/table/tbody/tr[6]/th[4]/font/font";
+        internal static string XPATH_SOLAR_BASE_HOUR = "/html/body/center/table/tr/td[1]/table/tbody/tr[7]/th[5]/font/font";
+        internal static string XPATH_SOLAR_SATELLITE_HOUR = "/html/body/center/table/tr/td[1]/table/tbody/tr[8]/th[5]/font/font";
 
         internal static HttpAccesser PrepareHttpAccesser(string universe)
         {
@@ -85,10 +85,11 @@ namespace OgameFarmer
                 }
             }
 
-
             //当前球的名字
-            //HtmlNode hn_ballname = h.DocumentNode.SelectSingleNode(XPATH_BALL_NAME);
-            //pi.CurrentBallName = hn_ballname.InnerText;
+            HtmlNode hn_ballname = h.DocumentNode.SelectSingleNode(XPATH_BALL_NAME);
+            Regex rr = new Regex("\"(\\w*)\"");
+            Match mm = rr.Match(hn_ballname.InnerText);
+            pi.CurrentBallName = mm.Groups[1].Value;
             //当前金属存量
             HtmlNode hn_metal = h.DocumentNode.SelectSingleNode(XPATH_METAL);
             pi.Metal = ToInt(hn_metal.InnerText);
@@ -114,7 +115,8 @@ namespace OgameFarmer
             HtmlNode hn_energystore = h.DocumentNode.SelectSingleNode(XPATH_ENERGY_STROE);
             pi.EnergyStroe = ToInt(hn_energystore.InnerText);
 
-
+            HtmlNode.ElementsFlags.Remove("tr");
+            HtmlNode.ElementsFlags.Remove("td");
             //金属产量
             HtmlNode hn_metalp = h.DocumentNode.SelectSingleNode(XPATH_METAL_HOUR);
             if (hn_metalp == null)

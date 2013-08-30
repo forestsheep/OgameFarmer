@@ -70,12 +70,13 @@
             // 
             // btnRunLogin
             // 
-            this.btnRunLogin.Location = new System.Drawing.Point(12, 12);
+            this.btnRunLogin.Enabled = false;
+            this.btnRunLogin.Location = new System.Drawing.Point(979, 28);
             this.btnRunLogin.Name = "btnRunLogin";
             this.btnRunLogin.Size = new System.Drawing.Size(85, 42);
             this.btnRunLogin.TabIndex = 0;
-            this.btnRunLogin.Text = "首页";
             this.btnRunLogin.UseVisualStyleBackColor = true;
+            this.btnRunLogin.Click += new System.EventHandler(this.btnRunLogin_Click);
             // 
             // outputArea
             // 
@@ -89,23 +90,22 @@
             // 
             // btnEditAccount
             // 
-            this.btnEditAccount.Location = new System.Drawing.Point(216, 12);
+            this.btnEditAccount.Location = new System.Drawing.Point(21, 24);
             this.btnEditAccount.Name = "btnEditAccount";
             this.btnEditAccount.Size = new System.Drawing.Size(78, 42);
             this.btnEditAccount.TabIndex = 6;
-            this.btnEditAccount.Text = "概况";
+            this.btnEditAccount.Text = "收集情报";
             this.btnEditAccount.UseVisualStyleBackColor = true;
             this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.Location = new System.Drawing.Point(318, 12);
+            this.btnDeleteAccount.Enabled = false;
+            this.btnDeleteAccount.Location = new System.Drawing.Point(893, 28);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(76, 42);
             this.btnDeleteAccount.TabIndex = 6;
-            this.btnDeleteAccount.Text = "登出";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
-            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // label1
             // 
@@ -121,14 +121,13 @@
             this.l_ballname.AutoSize = true;
             this.l_ballname.Location = new System.Drawing.Point(378, 104);
             this.l_ballname.Name = "l_ballname";
-            this.l_ballname.Size = new System.Drawing.Size(41, 12);
+            this.l_ballname.Size = new System.Drawing.Size(0, 12);
             this.l_ballname.TabIndex = 8;
-            this.l_ballname.Text = "label2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(293, 169);
+            this.label3.Location = new System.Drawing.Point(293, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 9;
@@ -137,16 +136,15 @@
             // l_metal
             // 
             this.l_metal.AutoSize = true;
-            this.l_metal.Location = new System.Drawing.Point(378, 169);
+            this.l_metal.Location = new System.Drawing.Point(378, 132);
             this.l_metal.Name = "l_metal";
-            this.l_metal.Size = new System.Drawing.Size(41, 12);
+            this.l_metal.Size = new System.Drawing.Size(0, 12);
             this.l_metal.TabIndex = 10;
-            this.l_metal.Text = "label4";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(293, 197);
+            this.label4.Location = new System.Drawing.Point(293, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 13;
@@ -155,16 +153,15 @@
             // l_metalstroe
             // 
             this.l_metalstroe.AutoSize = true;
-            this.l_metalstroe.Location = new System.Drawing.Point(378, 197);
+            this.l_metalstroe.Location = new System.Drawing.Point(378, 160);
             this.l_metalstroe.Name = "l_metalstroe";
-            this.l_metalstroe.Size = new System.Drawing.Size(41, 12);
+            this.l_metalstroe.Size = new System.Drawing.Size(0, 12);
             this.l_metalstroe.TabIndex = 14;
-            this.l_metalstroe.Text = "label5";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(514, 169);
+            this.label6.Location = new System.Drawing.Point(514, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 15;
@@ -173,7 +170,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(514, 197);
+            this.label7.Location = new System.Drawing.Point(514, 160);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 16;
@@ -182,43 +179,39 @@
             // l_crystal
             // 
             this.l_crystal.AutoSize = true;
-            this.l_crystal.Location = new System.Drawing.Point(582, 169);
+            this.l_crystal.Location = new System.Drawing.Point(582, 132);
             this.l_crystal.Name = "l_crystal";
-            this.l_crystal.Size = new System.Drawing.Size(41, 12);
+            this.l_crystal.Size = new System.Drawing.Size(0, 12);
             this.l_crystal.TabIndex = 17;
-            this.l_crystal.Text = "label8";
             // 
             // l_crystalstore
             // 
             this.l_crystalstore.AutoSize = true;
-            this.l_crystalstore.Location = new System.Drawing.Point(582, 197);
+            this.l_crystalstore.Location = new System.Drawing.Point(582, 160);
             this.l_crystalstore.Name = "l_crystalstore";
-            this.l_crystalstore.Size = new System.Drawing.Size(41, 12);
+            this.l_crystalstore.Size = new System.Drawing.Size(0, 12);
             this.l_crystalstore.TabIndex = 18;
-            this.l_crystalstore.Text = "label9";
             // 
             // l_hstore
             // 
             this.l_hstore.AutoSize = true;
-            this.l_hstore.Location = new System.Drawing.Point(786, 197);
+            this.l_hstore.Location = new System.Drawing.Point(786, 160);
             this.l_hstore.Name = "l_hstore";
-            this.l_hstore.Size = new System.Drawing.Size(47, 12);
+            this.l_hstore.Size = new System.Drawing.Size(0, 12);
             this.l_hstore.TabIndex = 22;
-            this.l_hstore.Text = "label10";
             // 
             // l_h
             // 
             this.l_h.AutoSize = true;
-            this.l_h.Location = new System.Drawing.Point(786, 169);
+            this.l_h.Location = new System.Drawing.Point(786, 132);
             this.l_h.Name = "l_h";
-            this.l_h.Size = new System.Drawing.Size(47, 12);
+            this.l_h.Size = new System.Drawing.Size(0, 12);
             this.l_h.TabIndex = 21;
-            this.l_h.Text = "label11";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(718, 197);
+            this.label12.Location = new System.Drawing.Point(718, 160);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 12);
             this.label12.TabIndex = 20;
@@ -227,7 +220,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(718, 169);
+            this.label13.Location = new System.Drawing.Point(718, 132);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 12);
             this.label13.TabIndex = 19;
@@ -236,25 +229,23 @@
             // l_energystore
             // 
             this.l_energystore.AutoSize = true;
-            this.l_energystore.Location = new System.Drawing.Point(984, 197);
+            this.l_energystore.Location = new System.Drawing.Point(984, 160);
             this.l_energystore.Name = "l_energystore";
-            this.l_energystore.Size = new System.Drawing.Size(47, 12);
+            this.l_energystore.Size = new System.Drawing.Size(0, 12);
             this.l_energystore.TabIndex = 26;
-            this.l_energystore.Text = "label14";
             // 
             // l_energy
             // 
             this.l_energy.AutoSize = true;
-            this.l_energy.Location = new System.Drawing.Point(984, 169);
+            this.l_energy.Location = new System.Drawing.Point(984, 132);
             this.l_energy.Name = "l_energy";
-            this.l_energy.Size = new System.Drawing.Size(47, 12);
+            this.l_energy.Size = new System.Drawing.Size(0, 12);
             this.l_energy.TabIndex = 25;
-            this.l_energy.Text = "label15";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(916, 197);
+            this.label16.Location = new System.Drawing.Point(916, 160);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 12);
             this.label16.TabIndex = 24;
@@ -263,7 +254,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(916, 169);
+            this.label17.Location = new System.Drawing.Point(916, 132);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(53, 12);
             this.label17.TabIndex = 23;
@@ -277,33 +268,31 @@
             this.lb_balllist.Name = "lb_balllist";
             this.lb_balllist.Size = new System.Drawing.Size(224, 364);
             this.lb_balllist.TabIndex = 27;
+            this.lb_balllist.SelectedIndexChanged += new System.EventHandler(this.lb_balllist_SelectedIndexChanged);
             // 
             // l_metal_all
             // 
             this.l_metal_all.AutoSize = true;
             this.l_metal_all.Location = new System.Drawing.Point(304, 317);
             this.l_metal_all.Name = "l_metal_all";
-            this.l_metal_all.Size = new System.Drawing.Size(41, 12);
+            this.l_metal_all.Size = new System.Drawing.Size(0, 12);
             this.l_metal_all.TabIndex = 28;
-            this.l_metal_all.Text = "label5";
             // 
             // l_crystal_all
             // 
             this.l_crystal_all.AutoSize = true;
             this.l_crystal_all.Location = new System.Drawing.Point(419, 317);
             this.l_crystal_all.Name = "l_crystal_all";
-            this.l_crystal_all.Size = new System.Drawing.Size(41, 12);
+            this.l_crystal_all.Size = new System.Drawing.Size(0, 12);
             this.l_crystal_all.TabIndex = 28;
-            this.l_crystal_all.Text = "label5";
             // 
             // l_H_all
             // 
             this.l_H_all.AutoSize = true;
             this.l_H_all.Location = new System.Drawing.Point(539, 317);
             this.l_H_all.Name = "l_H_all";
-            this.l_H_all.Size = new System.Drawing.Size(41, 12);
+            this.l_H_all.Size = new System.Drawing.Size(0, 12);
             this.l_H_all.TabIndex = 28;
-            this.l_H_all.Text = "label5";
             // 
             // label9
             // 
@@ -370,27 +359,24 @@
             this.l_hh_all.AutoSize = true;
             this.l_hh_all.Location = new System.Drawing.Point(537, 417);
             this.l_hh_all.Name = "l_hh_all";
-            this.l_hh_all.Size = new System.Drawing.Size(41, 12);
+            this.l_hh_all.Size = new System.Drawing.Size(0, 12);
             this.l_hh_all.TabIndex = 36;
-            this.l_hh_all.Text = "label5";
             // 
             // l_crystalh_all
             // 
             this.l_crystalh_all.AutoSize = true;
             this.l_crystalh_all.Location = new System.Drawing.Point(417, 417);
             this.l_crystalh_all.Name = "l_crystalh_all";
-            this.l_crystalh_all.Size = new System.Drawing.Size(41, 12);
+            this.l_crystalh_all.Size = new System.Drawing.Size(0, 12);
             this.l_crystalh_all.TabIndex = 35;
-            this.l_crystalh_all.Text = "label5";
             // 
             // l_metalh_all
             // 
             this.l_metalh_all.AutoSize = true;
             this.l_metalh_all.Location = new System.Drawing.Point(302, 417);
             this.l_metalh_all.Name = "l_metalh_all";
-            this.l_metalh_all.Size = new System.Drawing.Size(41, 12);
+            this.l_metalh_all.Size = new System.Drawing.Size(0, 12);
             this.l_metalh_all.TabIndex = 37;
-            this.l_metalh_all.Text = "label5";
             // 
             // Main
             // 
