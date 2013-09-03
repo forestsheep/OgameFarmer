@@ -64,7 +64,8 @@ namespace OgameFarmer
             }
             else if (id == 3)
             {
-                T = new Thread(new ParameterizedThreadStart(Productivity));
+                //T = new Thread(new ParameterizedThreadStart(Productivity));
+                T = new Thread(new ParameterizedThreadStart(Locations));
             }
             else if (id == 4)
             {
@@ -183,6 +184,54 @@ namespace OgameFarmer
             ObjectEventHandler(balls);
             Thread.Sleep(200);
         }
+
+
+        internal static void Locations(object o)
+        {
+            HttpAccesser ha = LocationsInfo.PrepareHttpAccesser(universe);
+            //ha.Referer = referer;
+            ha.Cookies = ccold;
+            IEnumerator i = ccnew.GetEnumerator();
+            while (i.MoveNext())
+            {
+                ha.Cookies.Add((Cookie)i.Current);
+            }
+            ccold = ha.Cookies;
+            ccnew = ha.access();
+            LocationsInfo[] mylis = LocationsInfo.AnalyzHtml();
+
+            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
+            ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
+            ha.Referer = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=0";
+            Txtout.writeA("银河系,太阳系,行星,玩家,星球名\r\n", "balls.csv");
+            for (int yin = 0; yin < 9; yin++)
+            {
+                for (int tai = 1; tai < 500; tai++)
+                {
+                    ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
+
+                    ha.Cookies = ccold;
+                    IEnumerator ii = ccnew.GetEnumerator();
+                    while (ii.MoveNext())
+                    {
+                        ha.Cookies.Add((Cookie)ii.Current);
+                    }
+                    ccold = ha.Cookies;
+                    ccnew = ha.access();
+                    LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
+                    for (int dd = 0; dd < lis.Length; dd++)
+                    {
+                        if (lis[dd] != null)
+                        {
+                            Txtout.writeA((yin + 1) + "," + tai + "," + (dd + 1) + "," + lis[dd].Player + "," + lis[dd].BallName + "\r\n", "balls.csv");
+                        }
+                    }
+                }
+            }
+            //ObjectEventHandler(lis);
+            //Thread.Sleep(200);
+        }
+        
 
         internal static void logout(object o)
         {
