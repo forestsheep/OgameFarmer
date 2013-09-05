@@ -10,7 +10,7 @@ namespace OgameFarmer
     {
         internal static void write(string s, string filename)
         {
-            FileStream fs = new FileStream("C:\\Users\\ForestSheep\\Desktop\\devlog\\" + filename, FileMode.Create);
+            FileStream fs = new FileStream(filename, FileMode.Create);
             
             byte[] data = Encoding.GetEncoding("GB2312").GetBytes(s);
             fs.Write(data, 0, data.Length);
@@ -20,7 +20,7 @@ namespace OgameFarmer
 
         internal static void writeA(string s, string filename)
         {
-            FileStream fs = new FileStream("C:\\Users\\ForestSheep\\Desktop\\devlog\\" + filename, FileMode.Append);
+            FileStream fs = new FileStream(filename, FileMode.Append);
 
             byte[] data = Encoding.GetEncoding("GB2312").GetBytes(s);
             fs.Write(data, 0, data.Length);
