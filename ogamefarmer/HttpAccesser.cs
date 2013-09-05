@@ -326,7 +326,7 @@ namespace OgameFarmer
                 sr.Close();
                 Txtout.write(responseText, "1.txt");
                 int r = rtime.Next(1000);
-                Thread.Sleep(1000 + r);
+                Thread.Sleep(3000 + r);
                 return c;
             }
         }

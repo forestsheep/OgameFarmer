@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 55);
+            this.label1.Location = new System.Drawing.Point(167, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 80);
+            this.label2.Location = new System.Drawing.Point(169, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 1;
@@ -58,18 +58,19 @@
             // 
             // tb_username
             // 
-            this.tb_username.Location = new System.Drawing.Point(180, 48);
+            this.tb_username.Location = new System.Drawing.Point(221, 48);
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(100, 21);
             this.tb_username.TabIndex = 2;
             // 
             // tb_pw
             // 
-            this.tb_pw.Location = new System.Drawing.Point(180, 75);
+            this.tb_pw.Location = new System.Drawing.Point(221, 75);
             this.tb_pw.Name = "tb_pw";
-            this.tb_pw.PasswordChar = '@';
+            this.tb_pw.PasswordChar = '*';
             this.tb_pw.Size = new System.Drawing.Size(100, 21);
             this.tb_pw.TabIndex = 3;
+            this.tb_pw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_pw_KeyPress);
             // 
             // b_login
             // 
@@ -96,6 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(36, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
@@ -105,7 +107,7 @@
             // l_loginMessage
             // 
             this.l_loginMessage.AutoSize = true;
-            this.l_loginMessage.Location = new System.Drawing.Point(33, 202);
+            this.l_loginMessage.Location = new System.Drawing.Point(106, 224);
             this.l_loginMessage.Name = "l_loginMessage";
             this.l_loginMessage.Size = new System.Drawing.Size(0, 12);
             this.l_loginMessage.TabIndex = 31;
@@ -114,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 257);
+            this.ClientSize = new System.Drawing.Size(347, 273);
             this.Controls.Add(this.l_loginMessage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cb_uni);
@@ -123,6 +125,7 @@
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "LoginForm";
             this.Text = "Ogame 快乐的农夫-登录";
             this.Load += new System.EventHandler(this.LoginForm_Load);

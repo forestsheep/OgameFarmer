@@ -25,7 +25,8 @@ namespace OgameFarmer
         {
             InitializeComponent();
             this.ss = ss;
-            this.ss.Osender += this.OnReciveObject;
+            this.ss.Osender += this.OnObjectRecived;
+            this.ss.Msger += this.OnMessageRecived;
         }
         #endregion
 
@@ -33,6 +34,7 @@ namespace OgameFarmer
         System.Timers.Timer autoLoginTimer = new System.Timers.Timer();
         private void Main_Load(object sender, EventArgs e)
         {
+            progressBar1.Visible = false;
             //Panel p2 = new Panel();
             //Label ll2 = new Label();
             //ll2.Text = "123123123";
@@ -149,9 +151,19 @@ namespace OgameFarmer
                 l_metalh_all.Text = string.Format("{0:N0}", allmh);
                 l_crystalh_all.Text = string.Format("{0:N0}", allch);
                 l_hh_all.Text = string.Format("{0:N0}", allhh);
+
+                l_metal_allday.Text = string.Format("{0:N0}", allmh * 24);
+                l_crystal_allday.Text = string.Format("{0:N0}", allch * 24);
+                l_h_allday.Text = string.Format("{0:N0}", allhh * 24);
             }
+            progressBar1.Visible = false;
+            btnOverView.Enabled = true;
         }
 
+        protected void ShowMsg(object sender, EventArgs e)
+        {
+            progressBar1.Increment(progessStep);
+        }
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             Process p = Process.GetCurrentProcess();
@@ -176,16 +188,6 @@ namespace OgameFarmer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void checkedListBox_accounts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
             this.AccessOverview();
@@ -200,6 +202,9 @@ namespace OgameFarmer
         /// </summary>
         private void AccessOverview()
         {
+            progressBar1.Increment(-100);
+            progressBar1.Visible = true;
+            btnOverView.Enabled = false;
             try
             {
                 ss.run(3);
@@ -226,15 +231,15 @@ namespace OgameFarmer
             }
         }
 
-        private ObjectSender OnObjectSend;
-        internal event ObjectSender OnOnbjectRecive
-        {
-            add { OnObjectSend += new ObjectSender(value); }
-            remove { OnObjectSend -= new ObjectSender(value); }
-        }
+        //private ObjectSender OnObjectSend;
+        //internal event ObjectSender OnOnbjectRecive
+        //{
+        //    add { OnObjectSend += new ObjectSender(value); }
+        //    remove { OnObjectSend -= new ObjectSender(value); }
+        //}
 
         
-        private void OnReciveObject(object o)
+        private void OnObjectRecived(object o)
         {
             if (o.GetType() == typeof(OverviewInfo))
             {
@@ -251,16 +256,19 @@ namespace OgameFarmer
             Object[] list = { this, System.EventArgs.Empty };
             this.outputArea.BeginInvoke(new EventHandler(ShowInfo2), list);
         }
+
+        private int progessStep;
+        private void OnMessageRecived(int i)
+        {
+            progessStep = i;
+            Object[] list = { this, System.EventArgs.Empty };
+            this.outputArea.BeginInvoke(new EventHandler(ShowMsg), list);
+        }
         #endregion
 
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
         {
             //this.outputArea.AppendText("窗口被激活。\r\n");
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -282,20 +290,18 @@ namespace OgameFarmer
         private void lb_balllist_SelectedIndexChanged(object sender, EventArgs e)
         {
             CommonInfo ci = ((CommonInfo)lb_balllist.SelectedItem);
-            l_metal.Text = string.Format("{0:N0}", ci.Metal);
+            if (ci != null)
+            {
+                l_metal.Text = string.Format("{0:N0}", ci.Metal);
 
-            l_metalstroe.Text = string.Format("{0:N0}", ci.MetalStore);
-            l_crystal.Text = string.Format("{0:N0}", ci.Crystal);
-            l_crystalstore.Text = string.Format("{0:N0}", ci.CrystalStore);
-            l_h.Text = string.Format("{0:N0}", ci.H);
-            l_hstore.Text = string.Format("{0:N0}", ci.HStore);
-            l_energy.Text = string.Format("{0:N0}", ci.Energy);
-            l_energystore.Text = string.Format("{0:N0}", ci.EnergyStroe);
-        }
-
-        private void btnRunLogin_Click(object sender, EventArgs e)
-        {
-
+                l_metalstroe.Text = string.Format("{0:N0}", ci.MetalStore);
+                l_crystal.Text = string.Format("{0:N0}", ci.Crystal);
+                l_crystalstore.Text = string.Format("{0:N0}", ci.CrystalStore);
+                l_h.Text = string.Format("{0:N0}", ci.H);
+                l_hstore.Text = string.Format("{0:N0}", ci.HStore);
+                l_energy.Text = string.Format("{0:N0}", ci.Energy);
+                l_energystore.Text = string.Format("{0:N0}", ci.EnergyStroe);
+            }
         }
     }
 }

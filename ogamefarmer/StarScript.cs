@@ -9,7 +9,7 @@ using System.IO;
 
 namespace OgameFarmer
 {
-    internal delegate void MessageSender(string sParam);
+    internal delegate void MessageSender(int sParam);
     internal delegate void ObjectSender(object o);
     internal class StarScript
     {
@@ -47,7 +47,7 @@ namespace OgameFarmer
                 }
                 else
                 {
-                    MessageEventHandler("busy now" + "\r\n");
+                    MessageEventHandler(111);
                 }
             }
         }
@@ -64,8 +64,8 @@ namespace OgameFarmer
             }
             else if (id == 3)
             {
-                //T = new Thread(new ParameterizedThreadStart(Productivity));
-                T = new Thread(new ParameterizedThreadStart(Locations));
+                T = new Thread(new ParameterizedThreadStart(Productivity));
+                //T = new Thread(new ParameterizedThreadStart(Locations));
             }
             else if (id == 4)
             {
@@ -163,8 +163,10 @@ namespace OgameFarmer
             //取得第一个星球的总星球列表
             ProductivityInfo pi = ProductivityInfo.AnalyzHtml();
 
+            int ballcount = 0;
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
+                ballcount++;
                 ha.Referer = ha.AccessUrl;
                 ha.AccessUrl = baseurl + ball.AccessParm;
                 ha.Cookies = ccold;
@@ -177,7 +179,9 @@ namespace OgameFarmer
                 //取得每一个星球
                 ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
                 balls.Add(piloop);
+                MessageEventHandler(100 / pi.Balllist.Count);
             }
+            Thread.Sleep(600);
             referer = ha.AccessUrl;
             ObjectEventHandler(pi);
             Thread.Sleep(200);
@@ -203,10 +207,10 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
             ha.Referer = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=0";
-            Txtout.writeA("银河系,太阳系,行星,玩家,星球名\r\n", "balls.csv");
-            for (int yin = 0; yin < 9; yin++)
+            //Txtout.writeA("银河系,太阳系,行星,玩家,星球名\r\n", "balls.csv");
+            for (int yin = 8; yin < 9; yin++)
             {
-                for (int tai = 1; tai < 500; tai++)
+                for (int tai = 39; tai < 500; tai++)
                 {
                     ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
 
@@ -260,7 +264,7 @@ namespace OgameFarmer
             Thread.Sleep(200);
         }
 
-        internal event MessageSender Login
+        internal event MessageSender Msger
         {
             add
             {

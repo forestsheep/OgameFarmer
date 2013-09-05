@@ -30,12 +30,12 @@ namespace OgameFarmer
         private void b_login_Click(object sender, EventArgs e)
         {
             login();
-            this.b_login.Text = "login...";
-            this.b_login.Enabled = false;
         }
 
         private void login()
         {
+            this.b_login.Text = "login...";
+            this.b_login.Enabled = false;
             StarScript.loginname = this.tb_username.Text;
             StarScript.password = this.tb_pw.Text;
             StarScript.universe = cb_uni.SelectedItem.ToString();
@@ -76,6 +76,14 @@ namespace OgameFarmer
                 b_login.Text = "Login";
                 b_login.Enabled = true;
                 l_loginMessage.Text = "登录失败";
+            }
+        }
+
+        private void tb_pw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                login();
             }
         }
     }
