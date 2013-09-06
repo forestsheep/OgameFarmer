@@ -16,6 +16,8 @@ namespace OgameFarmer
 
         public LoginForm()
         {
+            //string XPATH_METALMINE = "/html/body/center/table/tr/td/center/table/tr[{0:d}]/td[2]/a";
+            //string s = string.Format(XPATH_METALMINE, 2);
             InitializeComponent();
             this.ss = new StarScript();
             ss.Osender += this.OnLogin;

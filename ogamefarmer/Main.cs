@@ -67,7 +67,7 @@ namespace OgameFarmer
                 l_hstore.Text = string.Format("{0:N0}", info.HStore);
                 l_energy.Text = string.Format("{0:N0}", info.Energy);
                 l_energystore.Text = string.Format("{0:N0}", info.EnergyStroe);
-                lb_balllist.Items.Clear();
+                lb_ball_list.Items.Clear();
                 //foreach (OverviewInfo.Ball b in info.Balllist)
                 //{
                     //string s = b.Name;
@@ -89,7 +89,7 @@ namespace OgameFarmer
                     allm += ball.Metal;
                     allc += ball.Crystal;
                     allh += ball.H;
-                    lb_balllist.Items.Add(ball);
+                    lb_ball_list.Items.Add(ball);
                 }
                 l_metal_all.Text = string.Format("{0:N0}", allm);
                 l_crystal_all.Text = string.Format("{0:N0}", allc);
@@ -111,7 +111,7 @@ namespace OgameFarmer
                 l_hstore.Text = string.Format("{0:N0}", pi.HStore);
                 l_energy.Text = string.Format("{0:N0}", pi.Energy);
                 l_energystore.Text = string.Format("{0:N0}", pi.EnergyStroe);
-                lb_balllist.Items.Clear();
+                lb_ball_list.Items.Clear();
                 //foreach (CommonInfo.Ball b in pi.Balllist)
                 //{
                 //    string s = b.Name;
@@ -142,7 +142,7 @@ namespace OgameFarmer
                     allch += ball.CrystalHour;
                     allhh += ball.HHour;
 
-                    lb_balllist.Items.Add(ball);
+                    lb_ball_list.Items.Add(ball);
                 }
                 l_metal_all.Text = string.Format("{0:N0}", allm);
                 l_crystal_all.Text = string.Format("{0:N0}", allc);
@@ -289,7 +289,7 @@ namespace OgameFarmer
 
         private void lb_balllist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CommonInfo ci = ((CommonInfo)lb_balllist.SelectedItem);
+            CommonInfo ci = ((CommonInfo)lb_ball_list.SelectedItem);
             if (ci != null)
             {
                 l_metal.Text = string.Format("{0:N0}", ci.Metal);
@@ -302,6 +302,12 @@ namespace OgameFarmer
                 l_energy.Text = string.Format("{0:N0}", ci.Energy);
                 l_energystore.Text = string.Format("{0:N0}", ci.EnergyStroe);
             }
+        }
+
+        private void b_dispatch_Click(object sender, EventArgs e)
+        {
+            DispatchForm df = new DispatchForm(ss);
+            df.Show();
         }
     }
 }

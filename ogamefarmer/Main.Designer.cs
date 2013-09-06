@@ -50,7 +50,7 @@
             this.l_energy = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.lb_balllist = new System.Windows.Forms.ListBox();
+            this.lb_ball_list = new System.Windows.Forms.ListBox();
             this.l_metal_all = new System.Windows.Forms.Label();
             this.l_crystal_all = new System.Windows.Forms.Label();
             this.l_H_all = new System.Windows.Forms.Label();
@@ -71,6 +71,7 @@
             this.l_h_allday = new System.Windows.Forms.Label();
             this.l_crystal_allday = new System.Windows.Forms.Label();
             this.l_metal_allday = new System.Windows.Forms.Label();
+            this.b_dispatch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputArea
@@ -274,15 +275,15 @@
             this.label17.TabIndex = 23;
             this.label17.Text = "当前能量";
             // 
-            // lb_balllist
+            // lb_ball_list
             // 
-            this.lb_balllist.FormattingEnabled = true;
-            this.lb_balllist.ItemHeight = 12;
-            this.lb_balllist.Location = new System.Drawing.Point(21, 84);
-            this.lb_balllist.Name = "lb_balllist";
-            this.lb_balllist.Size = new System.Drawing.Size(224, 340);
-            this.lb_balllist.TabIndex = 27;
-            this.lb_balllist.SelectedIndexChanged += new System.EventHandler(this.lb_balllist_SelectedIndexChanged);
+            this.lb_ball_list.FormattingEnabled = true;
+            this.lb_ball_list.ItemHeight = 12;
+            this.lb_ball_list.Location = new System.Drawing.Point(21, 84);
+            this.lb_ball_list.Name = "lb_ball_list";
+            this.lb_ball_list.Size = new System.Drawing.Size(224, 340);
+            this.lb_ball_list.TabIndex = 27;
+            this.lb_ball_list.SelectedIndexChanged += new System.EventHandler(this.lb_balllist_SelectedIndexChanged);
             // 
             // l_metal_all
             // 
@@ -477,11 +478,22 @@
             this.l_metal_allday.Size = new System.Drawing.Size(0, 16);
             this.l_metal_allday.TabIndex = 44;
             // 
+            // b_dispatch
+            // 
+            this.b_dispatch.Location = new System.Drawing.Point(188, 24);
+            this.b_dispatch.Name = "b_dispatch";
+            this.b_dispatch.Size = new System.Drawing.Size(83, 42);
+            this.b_dispatch.TabIndex = 48;
+            this.b_dispatch.Text = "资源调度";
+            this.b_dispatch.UseVisualStyleBackColor = true;
+            this.b_dispatch.Click += new System.EventHandler(this.b_dispatch_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 661);
+            this.Controls.Add(this.b_dispatch);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label18);
@@ -501,7 +513,7 @@
             this.Controls.Add(this.l_H_all);
             this.Controls.Add(this.l_crystal_all);
             this.Controls.Add(this.l_metal_all);
-            this.Controls.Add(this.lb_balllist);
+            this.Controls.Add(this.lb_ball_list);
             this.Controls.Add(this.l_energystore);
             this.Controls.Add(this.l_energy);
             this.Controls.Add(this.label16);
@@ -558,7 +570,7 @@
         private System.Windows.Forms.Label l_energy;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ListBox lb_balllist;
+        private System.Windows.Forms.ListBox lb_ball_list;
         private System.Windows.Forms.Label l_metal_all;
         private System.Windows.Forms.Label l_crystal_all;
         private System.Windows.Forms.Label l_H_all;
@@ -579,6 +591,7 @@
         private System.Windows.Forms.Label l_h_allday;
         private System.Windows.Forms.Label l_crystal_allday;
         private System.Windows.Forms.Label l_metal_allday;
+        private System.Windows.Forms.Button b_dispatch;
     }
 }
 

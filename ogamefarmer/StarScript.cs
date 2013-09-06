@@ -11,21 +11,27 @@ namespace OgameFarmer
 {
     internal delegate void MessageSender(int sParam);
     internal delegate void ObjectSender(object o);
+    internal delegate void ConstructionSender(ArrayList al);
     internal class StarScript
     {
         private static MessageSender MessageEventHandler;
 
         private static ObjectSender ObjectEventHandler;
 
+        private static ConstructionSender ConstructionEventHandler;
+
         private static Thread T;
 
         private static CookieContainer ccold;
         private static CookieCollection ccnew;
         private static string referer;
+        private static ProductivityInfo pi;
 
         internal static string loginname;
         internal static string password;
         internal static string universe;
+
+
 
         internal StarScript()
         {
@@ -69,7 +75,7 @@ namespace OgameFarmer
             }
             else if (id == 4)
             {
-                T = new Thread(new ParameterizedThreadStart(logout));
+                T = new Thread(new ParameterizedThreadStart(Construction));
             }
         }
 
@@ -161,12 +167,10 @@ namespace OgameFarmer
             ccold = ha.Cookies;
             ccnew = ha.access();
             //取得第一个星球的总星球列表
-            ProductivityInfo pi = ProductivityInfo.AnalyzHtml();
+            pi = ProductivityInfo.AnalyzHtml();
 
-            int ballcount = 0;
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
-                ballcount++;
                 ha.Referer = ha.AccessUrl;
                 ha.AccessUrl = baseurl + ball.AccessParm;
                 ha.Cookies = ccold;
@@ -189,6 +193,40 @@ namespace OgameFarmer
             Thread.Sleep(200);
         }
 
+        internal static void Construction(object o)
+        {
+            ArrayList balls = new ArrayList();
+            HttpAccesser ha = ConstructionInfo.PrepareHttpAccesser(universe);
+            ha.Referer = referer;
+            string baseurl = ha.AccessUrl;
+            //ha.Cookies = ccold;
+            //IEnumerator i = ccnew.GetEnumerator();
+            //while (i.MoveNext())
+            //{
+            //    ha.Cookies.Add((Cookie)i.Current);
+            //}
+            //ccold = ha.Cookies;
+            //ccnew = ha.access();
+
+            foreach (ProductivityInfo.Ball ball in pi.Balllist)
+            {
+                ha.AccessUrl = baseurl + ball.AccessParm;
+                ha.Cookies = ccold;
+                IEnumerator ie = ccnew.GetEnumerator();
+                while (ie.MoveNext())
+                {
+                    ha.Cookies.Add((Cookie)ie.Current);
+                }
+                ccnew = ha.access();
+                ha.Referer = baseurl;
+                //取得每一个星球
+                ConstructionInfo ciloop = ConstructionInfo.AnalyzHtml();
+                ciloop.CurrentBallName = ball.Name;
+                balls.Add(ciloop);
+            }
+            referer = ha.AccessUrl;
+            ConstructionEventHandler(balls);
+        }
 
         internal static void Locations(object o)
         {
@@ -287,5 +325,18 @@ namespace OgameFarmer
                 ObjectEventHandler -= new ObjectSender(value);
             }
         }
+
+        internal event ConstructionSender Csender
+        {
+            add
+            {
+                ConstructionEventHandler += new ConstructionSender(value);
+            }
+            remove
+            {
+                ConstructionEventHandler -= new ConstructionSender(value);
+            }
+        }
+        
     }
 }
