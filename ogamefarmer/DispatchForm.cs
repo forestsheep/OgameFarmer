@@ -57,7 +57,7 @@ namespace OgameFarmer
 
         private void lb_ball_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ConstructionInfo ci = ((ConstructionInfo)lb_ball_list.SelectedItem);
+            ConstructionInfo ci = (ConstructionInfo)lb_ball_list.SelectedItem;
             if (ci != null)
             {
                 lb_cons_list.Items.Clear();
@@ -65,6 +65,18 @@ namespace OgameFarmer
                 {
                     lb_cons_list.Items.Add(c);
                 }
+            }
+        }
+
+        private void lb_cons_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Construction c = (Construction)lb_cons_list.SelectedItem;
+            if (c != null)
+            {
+                l_nextM.Text = string.Format("{0:N0}", c.nextMetal);
+                l_nextC.Text = string.Format("{0:N0}", c.nextCrystal);
+                l_needM.Text = string.Format("{0:N0}", c.needMetal);
+                l_needC.Text = string.Format("{0:N0}", c.needCrystal);
             }
         }
     }

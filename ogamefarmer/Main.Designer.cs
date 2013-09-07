@@ -480,7 +480,7 @@
             // 
             // b_dispatch
             // 
-            this.b_dispatch.Location = new System.Drawing.Point(188, 24);
+            this.b_dispatch.Location = new System.Drawing.Point(162, 24);
             this.b_dispatch.Name = "b_dispatch";
             this.b_dispatch.Size = new System.Drawing.Size(83, 42);
             this.b_dispatch.TabIndex = 48;

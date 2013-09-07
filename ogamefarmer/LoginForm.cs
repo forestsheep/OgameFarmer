@@ -21,12 +21,16 @@ namespace OgameFarmer
             InitializeComponent();
             this.ss = new StarScript();
             ss.Osender += this.OnLogin;
+            
+            
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             cb_uni.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_uni.SelectedIndex = 1;
+            cb_uni.SelectedIndex = 0;
+            tb_username.Text = "boccaro";
+            tb_pw.Text = "911911f911";
         }
 
         private void b_login_Click(object sender, EventArgs e)
