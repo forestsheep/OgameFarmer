@@ -480,11 +480,12 @@
             // 
             // b_dispatch
             // 
-            this.b_dispatch.Location = new System.Drawing.Point(162, 24);
+            this.b_dispatch.Enabled = false;
+            this.b_dispatch.Location = new System.Drawing.Point(118, 24);
             this.b_dispatch.Name = "b_dispatch";
-            this.b_dispatch.Size = new System.Drawing.Size(83, 42);
+            this.b_dispatch.Size = new System.Drawing.Size(127, 42);
             this.b_dispatch.TabIndex = 48;
-            this.b_dispatch.Text = "资源调度";
+            this.b_dispatch.Text = "资源调度(开发中）";
             this.b_dispatch.UseVisualStyleBackColor = true;
             this.b_dispatch.Click += new System.EventHandler(this.b_dispatch_Click);
             // 
@@ -537,7 +538,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Main";
-            this.Text = "Ogame 快乐的农夫";
+            this.Text = "银河农夫 - 概况";
             this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);

@@ -123,7 +123,7 @@
             this.Controls.Add(this.lb_cons_list);
             this.Controls.Add(this.lb_ball_list);
             this.Name = "DispatchForm";
-            this.Text = "快乐的农夫 - 资源调度";
+            this.Text = "银河农夫 - 资源调度";
             this.Load += new System.EventHandler(this.DispatchForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

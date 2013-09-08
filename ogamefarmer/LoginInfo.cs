@@ -44,7 +44,8 @@ namespace OgameFarmer
             }
             else
             {
-                if ("rows".Equals(hn_login.Attributes[0].Name) && "*,100".Equals(hn_login.Attributes[0].Value))
+                //if ("rows".Equals(hn_login.Attributes[0].Name) && "*,100".Equals(hn_login.Attributes[0].Value))
+                if ("rows".Equals(hn_login.Attributes[0].Name))
                 {
                     li.LoginSuccess = true;
                 }
