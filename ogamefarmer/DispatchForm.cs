@@ -75,8 +75,10 @@ namespace OgameFarmer
             {
                 l_nextM.Text = string.Format("{0:N0}", c.nextMetal);
                 l_nextC.Text = string.Format("{0:N0}", c.nextCrystal);
+                l_needH.Text = string.Format("{0:N0}", c.nextH);
                 l_needM.Text = string.Format("{0:N0}", c.needMetal);
                 l_needC.Text = string.Format("{0:N0}", c.needCrystal);
+                l_needH.Text = string.Format("{0:N0}", c.needH);
             }
         }
     }

@@ -72,6 +72,7 @@
             this.l_crystal_allday = new System.Windows.Forms.Label();
             this.l_metal_allday = new System.Windows.Forms.Label();
             this.b_dispatch = new System.Windows.Forms.Button();
+            this.b_sysmap = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputArea
@@ -480,7 +481,6 @@
             // 
             // b_dispatch
             // 
-            this.b_dispatch.Enabled = false;
             this.b_dispatch.Location = new System.Drawing.Point(118, 24);
             this.b_dispatch.Name = "b_dispatch";
             this.b_dispatch.Size = new System.Drawing.Size(127, 42);
@@ -489,11 +489,22 @@
             this.b_dispatch.UseVisualStyleBackColor = true;
             this.b_dispatch.Click += new System.EventHandler(this.b_dispatch_Click);
             // 
+            // b_sysmap
+            // 
+            this.b_sysmap.Location = new System.Drawing.Point(273, 24);
+            this.b_sysmap.Name = "b_sysmap";
+            this.b_sysmap.Size = new System.Drawing.Size(78, 42);
+            this.b_sysmap.TabIndex = 49;
+            this.b_sysmap.Text = "星系图";
+            this.b_sysmap.UseVisualStyleBackColor = true;
+            this.b_sysmap.Click += new System.EventHandler(this.b_sysmap_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 661);
+            this.Controls.Add(this.b_sysmap);
             this.Controls.Add(this.b_dispatch);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
@@ -593,6 +604,7 @@
         private System.Windows.Forms.Label l_crystal_allday;
         private System.Windows.Forms.Label l_metal_allday;
         private System.Windows.Forms.Button b_dispatch;
+        private System.Windows.Forms.Button b_sysmap;
     }
 }
 

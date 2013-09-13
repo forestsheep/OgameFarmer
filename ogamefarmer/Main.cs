@@ -309,5 +309,11 @@ namespace OgameFarmer
             DispatchForm df = new DispatchForm(ss);
             df.Show();
         }
+
+        private void b_sysmap_Click(object sender, EventArgs e)
+        {
+            SysmapForm sf = new SysmapForm(ss);
+            sf.Show();
+        }
     }
 }

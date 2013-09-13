@@ -15,6 +15,12 @@ namespace OgameFarmer
         private const string XPATH_PLAYER1 = "/html/body/center/table/tbody/tr/td[2]/table/tbody/tr[";
         private const string XPATH_PLAYER2 = "]/th[6]/a";
 
+        private const string XPATH_UNION1 = "/html/body/center/table/tbody/tr/td[2]/table/tbody/tr[";
+        private const string XPATH_UNION2 = "]/th[7]/a";
+
+        private const string XPATH_MOON1 = "/html/body/center/table/tbody/tr/td[2]/table/tbody/tr[";
+        private const string XPATH_MOON2 = "]/th[4]/a";
+
         internal static string GALAXY_CODE;
 
         private string ballName;
@@ -124,11 +130,25 @@ namespace OgameFarmer
                 if (hn_player != null)
                 {
                     lis[i] = new LocationsInfo();
-                    lis[i].Player = hn_player.InnerText.Replace("&nbsp;", string.Empty);
+                    lis[i].Player = hn_player.InnerText.Replace("&nbsp;", string.Empty).Trim();
                     HtmlNode hn_ball = h.DocumentNode.SelectSingleNode(XPATH_BALL1 + (i + 3) + XPATH_BALL2);
                     if (hn_ball != null)
                     {
-                        lis[i].ballName = hn_ball.InnerText;
+                        lis[i].ballName = hn_ball.InnerText.Trim();
+                    }
+                    HtmlNode hn_union = h.DocumentNode.SelectSingleNode(XPATH_UNION1 + (i + 3) + XPATH_UNION2);
+                    if (hn_union != null)
+                    {
+                        lis[i].union = hn_union.InnerText.Trim();
+                    }
+                    HtmlNode hn_moon = h.DocumentNode.SelectSingleNode(XPATH_MOON1 + (i + 3) + XPATH_MOON2);
+                    if (hn_moon != null)
+                    {
+                        lis[i].HasMoon = "有";
+                    }
+                    else 
+                    { 
+                        lis[i].HasMoon = "无";
                     }
                 }
             }

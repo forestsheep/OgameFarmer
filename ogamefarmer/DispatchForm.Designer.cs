@@ -37,6 +37,8 @@
             this.l_nextC = new System.Windows.Forms.Label();
             this.l_needM = new System.Windows.Forms.Label();
             this.l_needC = new System.Windows.Forms.Label();
+            this.l_nextH = new System.Windows.Forms.Label();
+            this.l_needH = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lb_ball_list
@@ -86,7 +88,7 @@
             // l_nextC
             // 
             this.l_nextC.AutoSize = true;
-            this.l_nextC.Location = new System.Drawing.Point(764, 77);
+            this.l_nextC.Location = new System.Drawing.Point(750, 77);
             this.l_nextC.Name = "l_nextC";
             this.l_nextC.Size = new System.Drawing.Size(41, 12);
             this.l_nextC.TabIndex = 32;
@@ -104,17 +106,37 @@
             // l_needC
             // 
             this.l_needC.AutoSize = true;
-            this.l_needC.Location = new System.Drawing.Point(766, 142);
+            this.l_needC.Location = new System.Drawing.Point(752, 142);
             this.l_needC.Name = "l_needC";
             this.l_needC.Size = new System.Drawing.Size(41, 12);
             this.l_needC.TabIndex = 34;
             this.l_needC.Text = "label4";
+            // 
+            // l_nextH
+            // 
+            this.l_nextH.AutoSize = true;
+            this.l_nextH.Location = new System.Drawing.Point(892, 77);
+            this.l_nextH.Name = "l_nextH";
+            this.l_nextH.Size = new System.Drawing.Size(41, 12);
+            this.l_nextH.TabIndex = 35;
+            this.l_nextH.Text = "label1";
+            // 
+            // l_needH
+            // 
+            this.l_needH.AutoSize = true;
+            this.l_needH.Location = new System.Drawing.Point(894, 141);
+            this.l_needH.Name = "l_needH";
+            this.l_needH.Size = new System.Drawing.Size(41, 12);
+            this.l_needH.TabIndex = 36;
+            this.l_needH.Text = "label2";
             // 
             // DispatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 621);
+            this.Controls.Add(this.l_needH);
+            this.Controls.Add(this.l_nextH);
             this.Controls.Add(this.l_needC);
             this.Controls.Add(this.l_needM);
             this.Controls.Add(this.l_nextC);
@@ -140,6 +162,8 @@
         private System.Windows.Forms.Label l_nextC;
         private System.Windows.Forms.Label l_needM;
         private System.Windows.Forms.Label l_needC;
+        private System.Windows.Forms.Label l_nextH;
+        private System.Windows.Forms.Label l_needH;
 
     }
 }

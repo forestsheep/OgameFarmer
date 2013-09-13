@@ -31,7 +31,7 @@ namespace OgameFarmer
         internal static string password;
         internal static string universe;
 
-
+        internal static int yinhe;
 
         internal StarScript()
         {
@@ -71,11 +71,14 @@ namespace OgameFarmer
             else if (id == 3)
             {
                 T = new Thread(new ParameterizedThreadStart(Productivity));
-                //T = new Thread(new ParameterizedThreadStart(Locations));
             }
             else if (id == 4)
             {
                 T = new Thread(new ParameterizedThreadStart(Construction));
+            }
+            else if (id == 5)
+            {
+                T = new Thread(new ParameterizedThreadStart(Locations));
             }
         }
 
@@ -245,10 +248,10 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
             ha.Referer = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=0";
-            //Txtout.writeA("银河系,太阳系,行星,玩家,星球名\r\n", "balls.csv");
-            for (int yin = 8; yin < 9; yin++)
+            Txtout.writeA("银河系,太阳系,行星,联盟,玩家,星球名,月球\r\n", "balls.csv");
+            for (int yin = yinhe; yin == yinhe; yin++)
             {
-                for (int tai = 39; tai < 500; tai++)
+                for (int tai = 1; tai < 500; tai++)
                 {
                     ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
 
@@ -265,7 +268,7 @@ namespace OgameFarmer
                     {
                         if (lis[dd] != null)
                         {
-                            Txtout.writeA((yin + 1) + "," + tai + "," + (dd + 1) + "," + lis[dd].Player + "," + lis[dd].BallName + "\r\n", "balls.csv");
+                            Txtout.writeA((yin + 1) + "," + tai + "," + (dd + 1) + "," + lis[dd].Union + "," + lis[dd].Player + "," + lis[dd].BallName + "," + lis[dd].HasMoon + "\r\n", "balls.csv");
                         }
                     }
                 }

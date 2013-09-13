@@ -108,6 +108,10 @@ namespace OgameFarmer
                             {
                                 c.nextCrystal = ProductivityInfo.ToInt(hn_con_next_2nd.InnerText);
                             }
+                            if (hn_con_next_3rd != null)
+                            {
+                                c.nextH = ProductivityInfo.ToInt(hn_con_next_3rd.InnerText);
+                            }
                             if (hn_con_need_1st != null)
                             {
                                 c.needMetal = ProductivityInfo.ToInt(hn_con_need_1st.InnerText);
@@ -115,6 +119,10 @@ namespace OgameFarmer
                             if (hn_con_need_2nd != null)
                             {
                                 c.needCrystal = ProductivityInfo.ToInt(hn_con_need_2nd.InnerText);
+                            }
+                            if (hn_con_need_3rd != null)
+                            {
+                                c.needH = ProductivityInfo.ToInt(hn_con_need_3rd.InnerText);
                             }
                         }
                         ci.allCons.Add(c);
