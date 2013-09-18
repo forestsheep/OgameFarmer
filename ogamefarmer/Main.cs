@@ -215,6 +215,18 @@ namespace OgameFarmer
             }
         }
 
+        private void RankScan()
+        {
+            //btnRank.Enabled = false;
+            try
+            {
+                ss.run(6);
+            }
+            catch (Exception ee)
+            {
+                ee.ToString();
+            }
+        }
 
         /// <summary>
         /// 
@@ -275,7 +287,7 @@ namespace OgameFarmer
         {
             this.Show();
             this.WindowState = FormWindowState.Normal; 
-            this.notifyIcon1.Visible = false;
+            this.noti.Visible = false;
         }
 
         private void Main_SizeChanged(object sender, EventArgs e)
@@ -283,7 +295,7 @@ namespace OgameFarmer
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.Hide();
-                this.notifyIcon1.Visible = true;
+                this.noti.Visible = true;
             }
         }
 
@@ -293,7 +305,6 @@ namespace OgameFarmer
             if (ci != null)
             {
                 l_metal.Text = string.Format("{0:N0}", ci.Metal);
-
                 l_metalstroe.Text = string.Format("{0:N0}", ci.MetalStore);
                 l_crystal.Text = string.Format("{0:N0}", ci.Crystal);
                 l_crystalstore.Text = string.Format("{0:N0}", ci.CrystalStore);
@@ -314,6 +325,13 @@ namespace OgameFarmer
         {
             SysmapForm sf = new SysmapForm(ss);
             sf.Show();
+        }
+
+        private void b_rank_Click(object sender, EventArgs e)
+        {
+            //this.RankScan();
+            DeadSheepForm dsf = new DeadSheepForm(ss);
+            dsf.Show();
         }
     }
 }

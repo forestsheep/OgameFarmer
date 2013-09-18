@@ -57,7 +57,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.noti = new System.Windows.Forms.NotifyIcon(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -73,6 +73,7 @@
             this.l_metal_allday = new System.Windows.Forms.Label();
             this.b_dispatch = new System.Windows.Forms.Button();
             this.b_sysmap = new System.Windows.Forms.Button();
+            this.btnRank = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputArea
@@ -346,11 +347,11 @@
             this.label11.TabIndex = 34;
             this.label11.Text = "重氢总量";
             // 
-            // notifyIcon1
+            // noti
             // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            this.noti.Icon = ((System.Drawing.Icon)(resources.GetObject("noti.Icon")));
+            this.noti.Text = "银河农夫";
+            this.noti.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // label2
             // 
@@ -491,7 +492,7 @@
             // 
             // b_sysmap
             // 
-            this.b_sysmap.Location = new System.Drawing.Point(273, 24);
+            this.b_sysmap.Location = new System.Drawing.Point(268, 24);
             this.b_sysmap.Name = "b_sysmap";
             this.b_sysmap.Size = new System.Drawing.Size(78, 42);
             this.b_sysmap.TabIndex = 49;
@@ -499,11 +500,22 @@
             this.b_sysmap.UseVisualStyleBackColor = true;
             this.b_sysmap.Click += new System.EventHandler(this.b_sysmap_Click);
             // 
+            // btnRank
+            // 
+            this.btnRank.Location = new System.Drawing.Point(375, 24);
+            this.btnRank.Name = "btnRank";
+            this.btnRank.Size = new System.Drawing.Size(78, 42);
+            this.btnRank.TabIndex = 50;
+            this.btnRank.Text = "排名";
+            this.btnRank.UseVisualStyleBackColor = true;
+            this.btnRank.Click += new System.EventHandler(this.b_rank_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 661);
+            this.Controls.Add(this.btnRank);
             this.Controls.Add(this.b_sysmap);
             this.Controls.Add(this.b_dispatch);
             this.Controls.Add(this.label14);
@@ -589,7 +601,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.NotifyIcon noti;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
@@ -605,6 +617,7 @@
         private System.Windows.Forms.Label l_metal_allday;
         private System.Windows.Forms.Button b_dispatch;
         private System.Windows.Forms.Button b_sysmap;
+        private System.Windows.Forms.Button btnRank;
     }
 }
 

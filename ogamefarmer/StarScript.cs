@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Net;
 using System.IO;
+using System.Data.OleDb;
+using System.Data;
 
 namespace OgameFarmer
 {
@@ -22,6 +24,7 @@ namespace OgameFarmer
 
         private static Thread T;
 
+        private static HttpAccesser ha;
         private static CookieContainer ccold;
         private static CookieCollection ccnew;
         private static string referer;
@@ -80,6 +83,10 @@ namespace OgameFarmer
             {
                 T = new Thread(new ParameterizedThreadStart(Locations));
             }
+            else if (id == 6)
+            {
+                T = new Thread(new ParameterizedThreadStart(Rank));
+            }
         }
 
         private void homepage(object o)
@@ -109,7 +116,7 @@ namespace OgameFarmer
         {
             ccold = null;
             ccnew = null;
-            HttpAccesser ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
+            ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
             ccold = ha.Cookies;
             ccnew = ha.access();
             LoginInfo li = LoginInfo.AnalyzHtml();
@@ -276,7 +283,65 @@ namespace OgameFarmer
             //ObjectEventHandler(lis);
             //Thread.Sleep(200);
         }
-        
+
+        internal static void Rank1(object o)
+        {
+            for (int c = 0; c < 15; c++)
+            {
+                ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
+                ha.Cookies = ccold; 
+                IEnumerator i = ccnew.GetEnumerator();
+                while (i.MoveNext())
+                {
+                    ha.Cookies.Add((Cookie)i.Current);
+                }
+                ccold = ha.Cookies;
+                ccnew = ha.access();
+                RankInfo[] ris = RankInfo.AnalyzHtml();
+
+                for (int j = 0; j < ris.Length; j++)
+                {
+                    if (ris[j] != null)
+                    {
+                        Txtout.writeA(c * 100 + j + 1 + "," + ris[j].User + "," + ris[j].Score + "\r\n", "rank.csv");
+                    }
+                }
+            }
+        }
+
+        internal static void Rank(object o)
+        {
+            string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=mydb.accdb";
+            using (OleDbConnection dbc = new OleDbConnection(connStr))
+            {
+                dbc.Open();
+                DataSet ds = new DataSet();
+                OleDbDataAdapter adp = new OleDbDataAdapter();
+                
+                for (int c = 0; c < 15; c++)
+                {
+                    ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
+                    ha.Cookies = ccold;
+                    IEnumerator i = ccnew.GetEnumerator();
+                    while (i.MoveNext())
+                    {
+                        ha.Cookies.Add((Cookie)i.Current);
+                    }
+                    ccold = ha.Cookies;
+                    ccnew = ha.access();
+                    RankInfo[] ris = RankInfo.AnalyzHtml();
+
+                    for (int j = 0; j < ris.Length; j++)
+                    {
+                        if (ris[j] != null)
+                        {
+                            adp.InsertCommand = new OleDbCommand(@"insert into rank (player,score,cdate) values ('" + ris[j].User + "','" + ris[j].Score + "',now())", dbc);
+                            adp.InsertCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
 
         internal static void logout(object o)
         {

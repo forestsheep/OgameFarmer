@@ -66,9 +66,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessDB.cs" />
     <Compile Include="BaseInfo.cs" />
     <Compile Include="CommonInfo.cs" />
     <Compile Include="ConstructionInfo.cs" />
+    <Compile Include="DeadSheepForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeadSheepForm.Designer.cs">
+      <DependentUpon>DeadSheepForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DispatchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +92,7 @@
     </Compile>
     <Compile Include="LoginInfo.cs" />
     <Compile Include="OverviewInfo.cs" />
+    <Compile Include="RankInfo.cs" />
     <Compile Include="Strings.cs" />
     <Compile Include="StarScript.cs" />
     <Compile Include="Main.cs">
@@ -103,6 +111,9 @@
     </Compile>
     <Compile Include="Txtout.cs" />
     <Compile Include="ProductivityInfo.cs" />
+    <EmbeddedResource Include="DeadSheepForm.resx">
+      <DependentUpon>DeadSheepForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DispatchForm.resx">
       <DependentUpon>DispatchForm.cs</DependentUpon>
     </EmbeddedResource>
