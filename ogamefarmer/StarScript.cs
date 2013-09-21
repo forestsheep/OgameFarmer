@@ -311,7 +311,7 @@ namespace OgameFarmer
 
         internal static void Rank(object o)
         {
-            string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=mydb.accdb";
+            string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=rank.accdb";
             using (OleDbConnection dbc = new OleDbConnection(connStr))
             {
                 dbc.Open();

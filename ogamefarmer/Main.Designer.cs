@@ -488,6 +488,7 @@
             this.b_dispatch.TabIndex = 48;
             this.b_dispatch.Text = "资源调度(开发中）";
             this.b_dispatch.UseVisualStyleBackColor = true;
+            this.b_dispatch.Visible = false;
             this.b_dispatch.Click += new System.EventHandler(this.b_dispatch_Click);
             // 
             // b_sysmap
@@ -498,6 +499,7 @@
             this.b_sysmap.TabIndex = 49;
             this.b_sysmap.Text = "星系图";
             this.b_sysmap.UseVisualStyleBackColor = true;
+            this.b_sysmap.Visible = false;
             this.b_sysmap.Click += new System.EventHandler(this.b_sysmap_Click);
             // 
             // btnRank

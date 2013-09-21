@@ -30,53 +30,44 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeadSheepForm));
             this.btnScan = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bAla = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.mtbBefore = new System.Windows.Forms.MaskedTextBox();
+            this.mtbAbsScore = new System.Windows.Forms.MaskedTextBox();
+            this.dgvDeadSheep = new System.Windows.Forms.DataGridView();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lSheepCount = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeadSheep)).BeginInit();
             this.SuspendLayout();
             // 
             // btnScan
             // 
-            this.btnScan.Location = new System.Drawing.Point(282, 12);
+            this.btnScan.Location = new System.Drawing.Point(32, 20);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(112, 49);
+            this.btnScan.Size = new System.Drawing.Size(112, 78);
             this.btnScan.TabIndex = 0;
             this.btnScan.Text = "扫描并录入数据";
             this.btnScan.UseVisualStyleBackColor = true;
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
-            // label1
+            // bAla
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(90, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "前1500名会被记录";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(282, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 48);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "开始分析";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bAla.Location = new System.Drawing.Point(596, 20);
+            this.bAla.Name = "bAla";
+            this.bAla.Size = new System.Drawing.Size(112, 78);
+            this.bAla.TabIndex = 2;
+            this.bAla.Text = "开始分析";
+            this.bAla.UseVisualStyleBackColor = true;
+            this.bAla.Click += new System.EventHandler(this.bAla_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(212, 97);
+            this.label2.Location = new System.Drawing.Point(556, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 3;
@@ -85,93 +76,102 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(212, 124);
+            this.label3.Location = new System.Drawing.Point(395, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 4;
-            this.label3.Text = "分数相差";
+            this.label3.Text = "分数相差±";
             // 
-            // maskedTextBox1
+            // mtbBefore
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(151, 94);
-            this.maskedTextBox1.Mask = "99999";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(48, 21);
-            this.maskedTextBox1.TabIndex = 5;
-            this.maskedTextBox1.ValidatingType = typeof(int);
+            this.mtbBefore.Location = new System.Drawing.Point(495, 50);
+            this.mtbBefore.Mask = "99999";
+            this.mtbBefore.Name = "mtbBefore";
+            this.mtbBefore.Size = new System.Drawing.Size(48, 21);
+            this.mtbBefore.TabIndex = 5;
+            this.mtbBefore.ValidatingType = typeof(int);
             // 
-            // maskedTextBox2
+            // mtbAbsScore
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(120, 121);
-            this.maskedTextBox2.Mask = "999999999";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(79, 21);
-            this.maskedTextBox2.TabIndex = 6;
+            this.mtbAbsScore.Location = new System.Drawing.Point(464, 77);
+            this.mtbAbsScore.Mask = "999999999";
+            this.mtbAbsScore.Name = "mtbAbsScore";
+            this.mtbAbsScore.Size = new System.Drawing.Size(79, 21);
+            this.mtbAbsScore.TabIndex = 6;
             // 
-            // dataGridView1
+            // dgvDeadSheep
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 160);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(675, 402);
-            this.dataGridView1.TabIndex = 7;
+            this.dgvDeadSheep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeadSheep.Location = new System.Drawing.Point(32, 118);
+            this.dgvDeadSheep.Name = "dgvDeadSheep";
+            this.dgvDeadSheep.RowTemplate.Height = 23;
+            this.dgvDeadSheep.Size = new System.Drawing.Size(675, 444);
+            this.dgvDeadSheep.TabIndex = 7;
             // 
-            // groupBox1
+            // dtpFromDate
             // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(482, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 124);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "说明";
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(6, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(190, 90);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "推荐每天扫描一次数据，1天内不必多次扫描。时间间隔跨度太大，对分析准确性有影响。";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(84, 64);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(115, 21);
-            this.dateTimePicker1.TabIndex = 9;
+            this.dtpFromDate.Location = new System.Drawing.Point(428, 20);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(115, 21);
+            this.dtpFromDate.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(115, 97);
+            this.label5.Location = new System.Drawing.Point(459, 53);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 12);
             this.label5.TabIndex = 10;
             this.label5.Text = "的";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(556, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "之内";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(594, 576);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "共找到";
+            // 
+            // lSheepCount
+            // 
+            this.lSheepCount.AutoSize = true;
+            this.lSheepCount.Location = new System.Drawing.Point(657, 575);
+            this.lSheepCount.Name = "lSheepCount";
+            this.lSheepCount.Size = new System.Drawing.Size(0, 12);
+            this.lSheepCount.TabIndex = 13;
+            // 
             // DeadSheepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 574);
+            this.ClientSize = new System.Drawing.Size(757, 616);
+            this.Controls.Add(this.lSheepCount);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.dtpFromDate);
+            this.Controls.Add(this.dgvDeadSheep);
+            this.Controls.Add(this.mtbAbsScore);
+            this.Controls.Add(this.mtbBefore);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bAla);
             this.Controls.Add(this.btnScan);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DeadSheepForm";
             this.Text = "死羊分析";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.DeadSheepForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeadSheep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,16 +180,16 @@
         #endregion
 
         private System.Windows.Forms.Button btnScan;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bAla;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.MaskedTextBox mtbBefore;
+        private System.Windows.Forms.MaskedTextBox mtbAbsScore;
+        private System.Windows.Forms.DataGridView dgvDeadSheep;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lSheepCount;
     }
 }
