@@ -312,34 +312,41 @@ namespace OgameFarmer
         internal static void Rank(object o)
         {
             string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=rank.accdb";
-            using (OleDbConnection dbc = new OleDbConnection(connStr))
+            try
             {
-                dbc.Open();
-                DataSet ds = new DataSet();
-                OleDbDataAdapter adp = new OleDbDataAdapter();
-                
-                for (int c = 0; c < 15; c++)
+                using (OleDbConnection dbc = new OleDbConnection(connStr))
                 {
-                    ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
-                    ha.Cookies = ccold;
-                    IEnumerator i = ccnew.GetEnumerator();
-                    while (i.MoveNext())
-                    {
-                        ha.Cookies.Add((Cookie)i.Current);
-                    }
-                    ccold = ha.Cookies;
-                    ccnew = ha.access();
-                    RankInfo[] ris = RankInfo.AnalyzHtml();
+                    dbc.Open();
+                    DataSet ds = new DataSet();
+                    OleDbDataAdapter adp = new OleDbDataAdapter();
 
-                    for (int j = 0; j < ris.Length; j++)
+                    for (int c = 0; c < 15; c++)
                     {
-                        if (ris[j] != null)
+                        ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
+                        ha.Cookies = ccold;
+                        IEnumerator i = ccnew.GetEnumerator();
+                        while (i.MoveNext())
                         {
-                            adp.InsertCommand = new OleDbCommand(@"insert into rank (player,score,cdate) values ('" + ris[j].User + "','" + ris[j].Score + "',now())", dbc);
-                            adp.InsertCommand.ExecuteNonQuery();
+                            ha.Cookies.Add((Cookie)i.Current);
+                        }
+                        ccold = ha.Cookies;
+                        ccnew = ha.access();
+                        RankInfo[] ris = RankInfo.AnalyzHtml();
+
+                        for (int j = 0; j < ris.Length; j++)
+                        {
+                            if (ris[j] != null)
+                            {
+                                adp.InsertCommand = new OleDbCommand(@"insert into rank (player,score,cdate) values ('" + ris[j].User + "','" + ris[j].Score + "',now())", dbc);
+                                adp.InsertCommand.ExecuteNonQuery();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 

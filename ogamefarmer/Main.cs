@@ -330,8 +330,15 @@ namespace OgameFarmer
         private void b_rank_Click(object sender, EventArgs e)
         {
             //this.RankScan();
-            DeadSheepForm dsf = new DeadSheepForm(ss);
-            dsf.Show();
+            try
+            {
+                DeadSheepForm dsf = new DeadSheepForm(ss);
+                dsf.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("rankbtnclicked   " + ex.ToString());
+            }
         }
     }
 }

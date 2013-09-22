@@ -15,8 +15,15 @@ namespace OgameFarmer
         private StarScript ss;
         internal DeadSheepForm(StarScript ss)
         {
-            InitializeComponent();
-            this.ss = ss;
+            try
+            {
+                InitializeComponent();
+                this.ss = ss;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("deadsheepform constructor   " + ex.ToString());
+            }
         }
 
         private void btnScan_Click(object sender, EventArgs e)
