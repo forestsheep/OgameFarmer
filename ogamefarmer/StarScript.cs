@@ -344,6 +344,13 @@ namespace OgameFarmer
                     }
                 }
             }
+            catch (System.InvalidOperationException ioe)
+            {
+                if (ioe.ToString().Contains("OLEDB"))
+                {
+                    MessageBox.Show("您很有可能未安装数据库连接程序，建议下载并安装：\r\ndownload.microsoft.com/download/7/0/3/703ffbcb-dc0c-4e19-b0da-1463960fdcdb/AccessDatabaseEngine.exe");
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
