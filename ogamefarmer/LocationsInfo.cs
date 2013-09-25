@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
+using System.Text.RegularExpressions;
 
 namespace OgameFarmer
 {
@@ -25,7 +26,7 @@ namespace OgameFarmer
 
         private string ballName;
 
-        public string BallName
+        internal string BallName
         {
             get { return ballName; }
             set { ballName = value; }
@@ -33,7 +34,7 @@ namespace OgameFarmer
 
         private string ballStatus;
 
-        public string BallStatus
+        internal string BallStatus
         {
             get { return ballStatus; }
             set { ballStatus = value; }
@@ -41,7 +42,7 @@ namespace OgameFarmer
 
         private string hasMoon;
 
-        public string HasMoon
+        internal string HasMoon
         {
             get { return hasMoon; }
             set { hasMoon = value; }
@@ -49,7 +50,7 @@ namespace OgameFarmer
 
         private string player;
 
-        public string Player
+        internal string Player
         {
             get { return player; }
             set { player = value; }
@@ -57,7 +58,7 @@ namespace OgameFarmer
 
         private string playerStatus;
 
-        public string PlayerStatus
+        internal string PlayerStatus
         {
             get { return playerStatus; }
             set { playerStatus = value; }
@@ -65,7 +66,7 @@ namespace OgameFarmer
 
         private string location;
 
-        public string Location
+        internal string Location
         {
             get { return location; }
             set { location = value; }
@@ -73,7 +74,7 @@ namespace OgameFarmer
 
         private string fxMetal;
 
-        public string FxMetal
+        internal string FxMetal
         {
             get { return fxMetal; }
             set { fxMetal = value; }
@@ -81,7 +82,7 @@ namespace OgameFarmer
 
         private string fxCrystal;
 
-        public string FxCrystal
+        internal string FxCrystal
         {
             get { return fxCrystal; }
             set { fxCrystal = value; }
@@ -89,12 +90,20 @@ namespace OgameFarmer
 
         private string union;
 
-        public string Union
+        internal string Union
         {
             get { return union; }
             set { union = value; }
         }
 
+        private bool isU;
+
+        internal bool IsU
+        {
+            get { return isU; }
+            set { isU = value; }
+        }
+        
         internal static HttpAccesser PrepareHttpAccesser(string universe)
         {
             HttpAccesser ha = new HttpAccesser();
@@ -149,6 +158,17 @@ namespace OgameFarmer
                     else 
                     { 
                         lis[i].HasMoon = "无";
+                    }
+                    //是否度假中
+                    Regex rx = new Regex("\\(.*\\)");
+                    Match m = rx.Match(hn_player.InnerText);
+                    if (m.Value.Contains("u"))
+                    {
+                        lis[i].IsU = true;
+                    }
+                    else
+                    {
+                        lis[i].IsU = false;
                     }
                 }
             }

@@ -499,7 +499,6 @@
             this.b_sysmap.TabIndex = 49;
             this.b_sysmap.Text = "星系图";
             this.b_sysmap.UseVisualStyleBackColor = true;
-            this.b_sysmap.Visible = false;
             this.b_sysmap.Click += new System.EventHandler(this.b_sysmap_Click);
             // 
             // btnRank
@@ -508,7 +507,7 @@
             this.btnRank.Name = "btnRank";
             this.btnRank.Size = new System.Drawing.Size(78, 42);
             this.btnRank.TabIndex = 50;
-            this.btnRank.Text = "排名";
+            this.btnRank.Text = "死羊分析";
             this.btnRank.UseVisualStyleBackColor = true;
             this.btnRank.Click += new System.EventHandler(this.b_rank_Click);
             // 

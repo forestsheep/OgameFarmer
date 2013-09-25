@@ -7,23 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.IO;
 
 namespace OgameFarmer
 {
     public partial class DeadSheepForm : Form
     {
         private StarScript ss;
+        private DataTable dt = new DataTable();
         internal DeadSheepForm(StarScript ss)
         {
-            try
-            {
                 InitializeComponent();
                 this.ss = ss;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("deadsheepform constructor   " + ex.ToString());
-            }
+                this.ss.Rsosender += OnScanOver; 
+
+        }
+
+        private void ScanOver(object sender, EventArgs e)
+        {
+            btnScan.Enabled = true;
+            btnScan.Text = "扫描最新积分";
+        }
+
+        private void OnScanOver(int overtype)
+        {
+            Object[] list = { this, System.EventArgs.Empty };
+            this.btnScan.BeginInvoke(new EventHandler(ScanOver), list);
         }
 
         private void btnScan_Click(object sender, EventArgs e)
@@ -31,6 +40,7 @@ namespace OgameFarmer
             try
             {
                 btnScan.Enabled = false;
+                btnScan.Text = "正在扫描请耐心等待";
                 ss.run(6);
             }
             catch (Exception ee)
@@ -47,17 +57,26 @@ namespace OgameFarmer
                 using (OleDbConnection dbc = new OleDbConnection(connStr))
                 {
                     dbc.Open();
-                    DataTable dt = new DataTable();
                     OleDbDataAdapter adp = new OleDbDataAdapter();
                     adp.SelectCommand = new OleDbCommand(@"select * from deadsheep", dbc);
-                    adp.SelectCommand.Parameters.AddWithValue("@fd", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(-Int32.Parse(mtbBefore.Text));
-                    adp.SelectCommand.Parameters.AddWithValue("@ffd", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(-Int32.Parse(mtbBefore.Text) + 1);
-                    adp.SelectCommand.Parameters.AddWithValue("@ld", OleDbType.Date).Value = dtpFromDate.Value.Date;
-                    adp.SelectCommand.Parameters.AddWithValue("@lld", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(1);
-                    adp.SelectCommand.Parameters.AddWithValue("diffscore", OleDbType.Integer).Value = Int32.Parse(mtbAbsScore.Text);
-                    adp.Fill(dt);
-                    dgvDeadSheep.DataSource = dt;
-                    lSheepCount.Text = dt.Rows.Count.ToString();
+                    try
+                    {
+                        adp.SelectCommand.Parameters.AddWithValue("@fd", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(-Int32.Parse(tbBeforedays.Text));
+                        adp.SelectCommand.Parameters.AddWithValue("@ffd", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(-Int32.Parse(tbBeforedays.Text) + 1);
+                        adp.SelectCommand.Parameters.AddWithValue("@ld", OleDbType.Date).Value = dtpFromDate.Value.Date;
+                        adp.SelectCommand.Parameters.AddWithValue("@lld", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(1);
+                        adp.SelectCommand.Parameters.AddWithValue("diffscore", OleDbType.Integer).Value = Int32.Parse(tbDiffscore.Text);
+                        dt.Clear();
+                        adp.Fill(dt);
+                        dgvDeadSheep.DataSource = dt;
+                        lSheepCount.Text = dt.Rows.Count.ToString();
+                    }
+                    catch (FormatException fe)
+                    {
+                        fe.ToString();
+                        MessageBox.Show("请输入数字");
+                    }
+                    
                 }
             }
             catch (System.InvalidOperationException ioe)
@@ -73,9 +92,36 @@ namespace OgameFarmer
             }
         }
 
+        private void ToCsv()
+        {
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("没有数据可以输出");
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+
+            IEnumerable<string> columnNames = dt.Columns.Cast<DataColumn>().
+                                              Select(column => column.ColumnName);
+            sb.AppendLine(string.Join(",", columnNames));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                sb.AppendLine(string.Join(",", fields));
+            }
+            File.WriteAllText("deadsheep.csv", sb.ToString());
+            MessageBox.Show("输出完毕");
+        }
+
         private void DeadSheepForm_Load(object sender, EventArgs e)
         {
             dgvDeadSheep.ReadOnly = true;
+        }
+
+        private void bToCsv_Click(object sender, EventArgs e)
+        {
+            ToCsv();
         }
     }
 }

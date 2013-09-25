@@ -13,12 +13,15 @@ namespace OgameFarmer
 {
     internal delegate void MessageSender(int sParam);
     internal delegate void ObjectSender(object o);
+    internal delegate void RankScanOverNoti(int overtype);
     internal delegate void ConstructionSender(ArrayList al);
     internal class StarScript
     {
         private static MessageSender MessageEventHandler;
 
         private static ObjectSender ObjectEventHandler;
+
+        private static RankScanOverNoti RankScanOverHandler;
 
         private static ConstructionSender ConstructionEventHandler;
 
@@ -255,30 +258,55 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
             ha.Referer = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=0";
-            Txtout.writeA("银河系,太阳系,行星,联盟,玩家,星球名,月球\r\n", "balls.csv");
-            for (int yin = yinhe; yin == yinhe; yin++)
+            Txtout.writeA("银河系,太阳系,行星,联盟,玩家,星球名,月球,度假\r\n", "balls.csv");
+            string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=rank.accdb";
+            try
             {
-                for (int tai = 1; tai < 500; tai++)
+                using (OleDbConnection dbc = new OleDbConnection(connStr))
                 {
-                    ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
-
-                    ha.Cookies = ccold;
-                    IEnumerator ii = ccnew.GetEnumerator();
-                    while (ii.MoveNext())
+                    dbc.Open();
+                    OleDbDataAdapter adp = new OleDbDataAdapter();
+                    //adp.InsertCommand = new OleDbCommand(@"insert into scanprocess (complete, cdate) values (false, now())", dbc);
+                    //adp.InsertCommand.ExecuteNonQuery();
+                    //adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess ");
+                    for (int yin = yinhe; yin == yinhe; yin++)
                     {
-                        ha.Cookies.Add((Cookie)ii.Current);
-                    }
-                    ccold = ha.Cookies;
-                    ccnew = ha.access();
-                    LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
-                    for (int dd = 0; dd < lis.Length; dd++)
-                    {
-                        if (lis[dd] != null)
+                        for (int tai = 1; tai < 500; tai++)
                         {
-                            Txtout.writeA((yin + 1) + "," + tai + "," + (dd + 1) + "," + lis[dd].Union + "," + lis[dd].Player + "," + lis[dd].BallName + "," + lis[dd].HasMoon + "\r\n", "balls.csv");
+                            ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
+
+                            ha.Cookies = ccold;
+                            IEnumerator ii = ccnew.GetEnumerator();
+                            while (ii.MoveNext())
+                            {
+                                ha.Cookies.Add((Cookie)ii.Current);
+                            }
+                            ccold = ha.Cookies;
+                            ccnew = ha.access();
+                            LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
+                            for (int dd = 0; dd < lis.Length; dd++)
+                            {
+                                if (lis[dd] != null)
+                                {
+                                    Txtout.writeA((yin + 1) + "," + tai + "," + (dd + 1) + "," + lis[dd].Union + "," + lis[dd].Player + "," + lis[dd].BallName + "," + lis[dd].HasMoon + "," + (lis[dd].IsU ? "是" : "否") + "\r\n", "balls.csv");
+                                    adp.InsertCommand = new OleDbCommand(@"insert into rank (rank,player,score,cdate) values ('" + lis[dd].Union + "','" + lis[dd].Player + "','" + lis[dd].BallName + "',now())", dbc);
+                                    adp.InsertCommand.ExecuteNonQuery();
+                                }
+                            }
                         }
                     }
                 }
+            }
+            catch (System.InvalidOperationException ioe)
+            {
+                if (ioe.ToString().Contains("OLEDB"))
+                {
+                    MessageBox.Show("您很有可能未安装数据库连接程序，建议下载并安装：\r\ndownload.microsoft.com/download/7/0/3/703ffbcb-dc0c-4e19-b0da-1463960fdcdb/AccessDatabaseEngine.exe");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
             //ObjectEventHandler(lis);
             //Thread.Sleep(200);
@@ -337,7 +365,7 @@ namespace OgameFarmer
                         {
                             if (ris[j] != null)
                             {
-                                adp.InsertCommand = new OleDbCommand(@"insert into rank (player,score,cdate) values ('" + ris[j].User + "','" + ris[j].Score + "',now())", dbc);
+                                adp.InsertCommand = new OleDbCommand(@"insert into rank (rank,player,score,cdate) values ('" + ris[j].Rank + "','" + ris[j].User + "','" + ris[j].Score + "',now())", dbc);
                                 adp.InsertCommand.ExecuteNonQuery();
                             }
                         }
@@ -355,6 +383,7 @@ namespace OgameFarmer
             {
                 MessageBox.Show(ex.ToString());
             }
+            RankScanOverHandler(0);
         }
 
         internal static void logout(object o)
@@ -419,6 +448,17 @@ namespace OgameFarmer
                 ConstructionEventHandler -= new ConstructionSender(value);
             }
         }
-        
+
+        internal event RankScanOverNoti Rsosender
+        {
+            add
+            {
+                RankScanOverHandler += new RankScanOverNoti(value);
+            }
+            remove
+            {
+                RankScanOverHandler -= new RankScanOverNoti(value);
+            }
+        }
     }
 }

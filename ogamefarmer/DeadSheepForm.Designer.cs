@@ -33,14 +33,15 @@
             this.bAla = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.mtbBefore = new System.Windows.Forms.MaskedTextBox();
-            this.mtbAbsScore = new System.Windows.Forms.MaskedTextBox();
             this.dgvDeadSheep = new System.Windows.Forms.DataGridView();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lSheepCount = new System.Windows.Forms.Label();
+            this.tbBeforedays = new System.Windows.Forms.TextBox();
+            this.tbDiffscore = new System.Windows.Forms.TextBox();
+            this.bToCsv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeadSheep)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,9 +49,9 @@
             // 
             this.btnScan.Location = new System.Drawing.Point(32, 20);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(112, 78);
+            this.btnScan.Size = new System.Drawing.Size(125, 78);
             this.btnScan.TabIndex = 0;
-            this.btnScan.Text = "扫描并录入数据";
+            this.btnScan.Text = "扫描最新积分";
             this.btnScan.UseVisualStyleBackColor = true;
             this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
@@ -81,23 +82,6 @@
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 4;
             this.label3.Text = "分数相差±";
-            // 
-            // mtbBefore
-            // 
-            this.mtbBefore.Location = new System.Drawing.Point(495, 50);
-            this.mtbBefore.Mask = "99999";
-            this.mtbBefore.Name = "mtbBefore";
-            this.mtbBefore.Size = new System.Drawing.Size(48, 21);
-            this.mtbBefore.TabIndex = 5;
-            this.mtbBefore.ValidatingType = typeof(int);
-            // 
-            // mtbAbsScore
-            // 
-            this.mtbAbsScore.Location = new System.Drawing.Point(464, 77);
-            this.mtbAbsScore.Mask = "999999999";
-            this.mtbAbsScore.Name = "mtbAbsScore";
-            this.mtbAbsScore.Size = new System.Drawing.Size(79, 21);
-            this.mtbAbsScore.TabIndex = 6;
             // 
             // dgvDeadSheep
             // 
@@ -150,19 +134,44 @@
             this.lSheepCount.Size = new System.Drawing.Size(0, 12);
             this.lSheepCount.TabIndex = 13;
             // 
+            // tbBeforedays
+            // 
+            this.tbBeforedays.Location = new System.Drawing.Point(494, 50);
+            this.tbBeforedays.Name = "tbBeforedays";
+            this.tbBeforedays.Size = new System.Drawing.Size(49, 21);
+            this.tbBeforedays.TabIndex = 14;
+            // 
+            // tbDiffscore
+            // 
+            this.tbDiffscore.Location = new System.Drawing.Point(466, 77);
+            this.tbDiffscore.Name = "tbDiffscore";
+            this.tbDiffscore.Size = new System.Drawing.Size(77, 21);
+            this.tbDiffscore.TabIndex = 14;
+            // 
+            // bToCsv
+            // 
+            this.bToCsv.Location = new System.Drawing.Point(32, 568);
+            this.bToCsv.Name = "bToCsv";
+            this.bToCsv.Size = new System.Drawing.Size(78, 36);
+            this.bToCsv.TabIndex = 15;
+            this.bToCsv.Text = "导出到CSV";
+            this.bToCsv.UseVisualStyleBackColor = true;
+            this.bToCsv.Click += new System.EventHandler(this.bToCsv_Click);
+            // 
             // DeadSheepForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 616);
+            this.Controls.Add(this.bToCsv);
+            this.Controls.Add(this.tbDiffscore);
+            this.Controls.Add(this.tbBeforedays);
             this.Controls.Add(this.lSheepCount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtpFromDate);
             this.Controls.Add(this.dgvDeadSheep);
-            this.Controls.Add(this.mtbAbsScore);
-            this.Controls.Add(this.mtbBefore);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bAla);
@@ -183,13 +192,14 @@
         private System.Windows.Forms.Button bAla;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox mtbBefore;
-        private System.Windows.Forms.MaskedTextBox mtbAbsScore;
         private System.Windows.Forms.DataGridView dgvDeadSheep;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lSheepCount;
+        private System.Windows.Forms.TextBox tbBeforedays;
+        private System.Windows.Forms.TextBox tbDiffscore;
+        private System.Windows.Forms.Button bToCsv;
     }
 }
