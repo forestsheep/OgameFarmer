@@ -266,9 +266,36 @@ namespace OgameFarmer
                 {
                     dbc.Open();
                     OleDbDataAdapter adp = new OleDbDataAdapter();
-                    //adp.InsertCommand = new OleDbCommand(@"insert into scanprocess (complete, cdate) values (false, now())", dbc);
-                    //adp.InsertCommand.ExecuteNonQuery();
-                    //adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess ");
+					//beginadd in 2013-09-26
+
+                    //adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess where complete");
+					DataTable dt = new DataTable();
+					string processid;
+					bool usecontinue;
+					adp.fill(dt);
+					if(dt.rows.Count > 0)
+					{
+						usecontinue = true;
+						processid = dt.rows[0][0].ToString();
+					}
+					else
+					{
+						//断点续传功能应该关闭
+						usecontinue = false;
+					}
+					if (usecontinue)
+					{
+						//todo 找到最后一次扫描的最后一个球的坐标
+						//todo 根据坐标继续扫描
+					}
+					else
+					{
+						//todo 重头开始扫描
+	                    //adp.InsertCommand = new OleDbCommand(@"insert into scanprocess (complete, cdate) values (false, now())", dbc);
+                        //adp.InsertCommand.ExecuteNonQuery();
+					}
+
+					//endadd
                     for (int yin = yinhe; yin == yinhe; yin++)
                     {
                         for (int tai = 1; tai < 500; tai++)
