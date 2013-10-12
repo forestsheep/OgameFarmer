@@ -40,9 +40,9 @@ namespace OgameFarmer
             set { ballStatus = value; }
         }
 
-        private string hasMoon;
+        private bool hasMoon;
 
-        internal string HasMoon
+        internal bool HasMoon
         {
             get { return hasMoon; }
             set { hasMoon = value; }
@@ -153,11 +153,11 @@ namespace OgameFarmer
                     HtmlNode hn_moon = h.DocumentNode.SelectSingleNode(XPATH_MOON1 + (i + 3) + XPATH_MOON2);
                     if (hn_moon != null)
                     {
-                        lis[i].HasMoon = "有";
+                        lis[i].HasMoon = true;
                     }
                     else 
                     { 
-                        lis[i].HasMoon = "无";
+                        lis[i].HasMoon = false;
                     }
                     //是否度假中
                     Regex rx = new Regex("\\(.*\\)");
@@ -176,6 +176,5 @@ namespace OgameFarmer
             GALAXY_CODE = hn_code.Attributes[2].Value;
             return lis;
         }
-
     }
 }

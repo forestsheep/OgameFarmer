@@ -29,32 +29,60 @@
         private void InitializeComponent()
         {
             this.b_start = new System.Windows.Forms.Button();
-            this.tb_yinhe = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.l_prograss = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // b_start
             // 
-            this.b_start.Location = new System.Drawing.Point(21, 48);
+            this.b_start.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.b_start.Location = new System.Drawing.Point(26, 52);
             this.b_start.Name = "b_start";
-            this.b_start.Size = new System.Drawing.Size(119, 106);
+            this.b_start.Size = new System.Drawing.Size(390, 106);
             this.b_start.TabIndex = 0;
             this.b_start.Text = "开始";
             this.b_start.UseVisualStyleBackColor = true;
             this.b_start.Click += new System.EventHandler(this.b_start_Click);
             // 
-            // tb_yinhe
+            // label1
             // 
-            this.tb_yinhe.Location = new System.Drawing.Point(21, 21);
-            this.tb_yinhe.Name = "tb_yinhe";
-            this.tb_yinhe.Size = new System.Drawing.Size(119, 21);
-            this.tb_yinhe.TabIndex = 1;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(262, 176);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "进度：";
+            // 
+            // l_prograss
+            // 
+            this.l_prograss.AutoSize = true;
+            this.l_prograss.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.l_prograss.Location = new System.Drawing.Point(339, 176);
+            this.l_prograss.Name = "l_prograss";
+            this.l_prograss.Size = new System.Drawing.Size(16, 16);
+            this.l_prograss.TabIndex = 2;
+            this.l_prograss.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(23, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(416, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "会优先继续上次未完成的扫描，否则将开始新的扫描。";
             // 
             // SysmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(164, 174);
-            this.Controls.Add(this.tb_yinhe);
+            this.ClientSize = new System.Drawing.Size(450, 244);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.l_prograss);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.b_start);
             this.Name = "SysmapForm";
             this.Text = "SysmapForm";
@@ -66,6 +94,8 @@
         #endregion
 
         private System.Windows.Forms.Button b_start;
-        private System.Windows.Forms.TextBox tb_yinhe;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label l_prograss;
+        private System.Windows.Forms.Label label2;
     }
 }

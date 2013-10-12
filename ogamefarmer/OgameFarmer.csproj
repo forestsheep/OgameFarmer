@@ -70,6 +70,7 @@
     <Compile Include="BaseInfo.cs" />
     <Compile Include="CommonInfo.cs" />
     <Compile Include="ConstructionInfo.cs" />
+    <Compile Include="ConstString.cs" />
     <Compile Include="DeadSheepForm.cs">
       <SubType>Form</SubType>
     </Compile>

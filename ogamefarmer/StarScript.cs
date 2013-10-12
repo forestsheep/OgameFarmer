@@ -15,6 +15,7 @@ namespace OgameFarmer
     internal delegate void ObjectSender(object o);
     internal delegate void RankScanOverNoti(int overtype);
     internal delegate void ConstructionSender(ArrayList al);
+    internal delegate void GalaxyScanNoti(int scanstatus);
     internal class StarScript
     {
         private static MessageSender MessageEventHandler;
@@ -24,6 +25,8 @@ namespace OgameFarmer
         private static RankScanOverNoti RankScanOverHandler;
 
         private static ConstructionSender ConstructionEventHandler;
+
+        private static GalaxyScanNoti GalaxyScanEventHandler;
 
         private static Thread T;
 
@@ -130,7 +133,7 @@ namespace OgameFarmer
         internal static void overview(object o)
         {
             ArrayList balls = new ArrayList();
-            HttpAccesser ha = OverviewInfo.PrepareHttpAccesser(universe);
+            ha = OverviewInfo.PrepareHttpAccesser(universe);
             string baseurl = ha.AccessUrl;
             ha.Cookies = ccold;
             IEnumerator i = ccnew.GetEnumerator();
@@ -168,7 +171,7 @@ namespace OgameFarmer
         internal static void Productivity(object o)
         {
             ArrayList balls = new ArrayList();
-            HttpAccesser ha = ProductivityInfo.PrepareHttpAccesser(universe);
+            ha = ProductivityInfo.PrepareHttpAccesser(universe);
             ha.Referer = referer;
             string baseurl = ha.AccessUrl;
             ha.Cookies = ccold;
@@ -209,7 +212,7 @@ namespace OgameFarmer
         internal static void Construction(object o)
         {
             ArrayList balls = new ArrayList();
-            HttpAccesser ha = ConstructionInfo.PrepareHttpAccesser(universe);
+            ha = ConstructionInfo.PrepareHttpAccesser(universe);
             ha.Referer = referer;
             string baseurl = ha.AccessUrl;
             //ha.Cookies = ccold;
@@ -243,7 +246,7 @@ namespace OgameFarmer
 
         internal static void Locations(object o)
         {
-            HttpAccesser ha = LocationsInfo.PrepareHttpAccesser(universe);
+            ha = LocationsInfo.PrepareHttpAccesser(universe);
             //ha.Referer = referer;
             ha.Cookies = ccold;
             IEnumerator i = ccnew.GetEnumerator();
@@ -258,7 +261,7 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
             ha.Referer = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=0";
-            Txtout.writeA("银河系,太阳系,行星,联盟,玩家,星球名,月球,度假\r\n", "balls.csv");
+            //Txtout.writeA("银河系,太阳系,行星,联盟,玩家,星球名,月球,度假\r\n", "balls.csv");
             string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=rank.accdb";
             try
             {
@@ -266,69 +269,56 @@ namespace OgameFarmer
                 {
                     dbc.Open();
                     OleDbDataAdapter adp = new OleDbDataAdapter();
-					//beginadd in 2013-09-26
-
-                    //adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess where complete");
+                    adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess where not complete", dbc);
 					DataTable dt = new DataTable();
-					string processid;
+					string processid = string.Empty;
 					bool usecontinue;
-					adp.fill(dt);
-					if(dt.rows.Count > 0)
+					adp.Fill(dt);
+                    if (dt.Rows.Count > 0 && !dt.Rows[0][0].ToString().Equals(string.Empty))
 					{
 						usecontinue = true;
-						processid = dt.rows[0][0].ToString();
+						processid = dt.Rows[0][0].ToString();
 					}
 					else
 					{
-						//断点续传功能应该关闭
 						usecontinue = false;
 					}
 					if (usecontinue)
 					{
-						//todo 找到最后一次扫描的最后一个球的坐标
-						//todo 根据坐标继续扫描
+						//找到最后一次扫描的最后一个球的坐标 -- galaxy and solar index
+                        adp.SelectCommand = new OleDbCommand(@"select top 1 galaxy, solar from 
+    (select *,galaxy * 1000 + solar as xuhao from galaxymap where process = " + processid + @")t1 order by xuhao desc", dbc);
+                        dt.Columns.Clear();
+                        dt.Clear();
+                        adp.Fill(dt);
+                        int galaxyStart = ProductivityInfo.ToInt(dt.Rows[0][0].ToString());
+                        int solarStart = ProductivityInfo.ToInt(dt.Rows[0][1].ToString());
+						//根据坐标继续扫描
+                        GalaxyLoop(processid, galaxyStart, solarStart, adp, dbc);
 					}
 					else
 					{
-						//todo 重头开始扫描
-	                    //adp.InsertCommand = new OleDbCommand(@"insert into scanprocess (complete, cdate) values (false, now())", dbc);
-                        //adp.InsertCommand.ExecuteNonQuery();
-					}
-
-					//endadd
-                    for (int yin = yinhe; yin == yinhe; yin++)
-                    {
-                        for (int tai = 1; tai < 500; tai++)
+                        //创建一个新的扫描过程
+                        adp.InsertCommand = new OleDbCommand(@"insert into scanprocess (complete, cdate) values (false, now())", dbc);
+                        adp.InsertCommand.ExecuteNonQuery();
+                        adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess where not complete", dbc);
+                        dt.Columns.Clear();
+                        dt.Clear();
+                        adp.Fill(dt);
+                        if (dt.Rows.Count > 0)
                         {
-                            ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
-
-                            ha.Cookies = ccold;
-                            IEnumerator ii = ccnew.GetEnumerator();
-                            while (ii.MoveNext())
-                            {
-                                ha.Cookies.Add((Cookie)ii.Current);
-                            }
-                            ccold = ha.Cookies;
-                            ccnew = ha.access();
-                            LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
-                            for (int dd = 0; dd < lis.Length; dd++)
-                            {
-                                if (lis[dd] != null)
-                                {
-                                    Txtout.writeA((yin + 1) + "," + tai + "," + (dd + 1) + "," + lis[dd].Union + "," + lis[dd].Player + "," + lis[dd].BallName + "," + lis[dd].HasMoon + "," + (lis[dd].IsU ? "是" : "否") + "\r\n", "balls.csv");
-                                    adp.InsertCommand = new OleDbCommand(@"insert into rank (rank,player,score,cdate) values ('" + lis[dd].Union + "','" + lis[dd].Player + "','" + lis[dd].BallName + "',now())", dbc);
-                                    adp.InsertCommand.ExecuteNonQuery();
-                                }
-                            }
+                            processid = dt.Rows[0][0].ToString();
+                            //从头扫描
+                            GalaxyLoop(processid, 1, 1, adp, dbc);
                         }
-                    }
+					}
                 }
             }
             catch (System.InvalidOperationException ioe)
             {
                 if (ioe.ToString().Contains("OLEDB"))
                 {
-                    MessageBox.Show("您很有可能未安装数据库连接程序，建议下载并安装：\r\ndownload.microsoft.com/download/7/0/3/703ffbcb-dc0c-4e19-b0da-1463960fdcdb/AccessDatabaseEngine.exe");
+                    MessageBox.Show(ConstString.suggest_db_conn_program_not_install);
                 }
             }
             catch (Exception ex)
@@ -337,31 +327,6 @@ namespace OgameFarmer
             }
             //ObjectEventHandler(lis);
             //Thread.Sleep(200);
-        }
-
-        internal static void Rank1(object o)
-        {
-            for (int c = 0; c < 15; c++)
-            {
-                ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
-                ha.Cookies = ccold; 
-                IEnumerator i = ccnew.GetEnumerator();
-                while (i.MoveNext())
-                {
-                    ha.Cookies.Add((Cookie)i.Current);
-                }
-                ccold = ha.Cookies;
-                ccnew = ha.access();
-                RankInfo[] ris = RankInfo.AnalyzHtml();
-
-                for (int j = 0; j < ris.Length; j++)
-                {
-                    if (ris[j] != null)
-                    {
-                        Txtout.writeA(c * 100 + j + 1 + "," + ris[j].User + "," + ris[j].Score + "\r\n", "rank.csv");
-                    }
-                }
-            }
         }
 
         internal static void Rank(object o)
@@ -403,7 +368,7 @@ namespace OgameFarmer
             {
                 if (ioe.ToString().Contains("OLEDB"))
                 {
-                    MessageBox.Show("您很有可能未安装数据库连接程序，建议下载并安装：\r\ndownload.microsoft.com/download/7/0/3/703ffbcb-dc0c-4e19-b0da-1463960fdcdb/AccessDatabaseEngine.exe");
+                    MessageBox.Show(ConstString.suggest_db_conn_program_not_install);
                 }
             }
             catch (Exception ex)
@@ -438,6 +403,47 @@ namespace OgameFarmer
             ccold = ha.Cookies;
             ccnew = ha.access();
             Thread.Sleep(200);
+        }
+
+        private static void GalaxyLoop(string processid, int galaxyStart, int solarStart, OleDbDataAdapter adp, OleDbConnection dbc)
+        {
+            bool firstScan = true;
+            for (int yin = galaxyStart - 1; yin < 9; yin++)
+            {
+                //第一次不完整的扫描
+                if (!firstScan)
+                {
+                    solarStart = 1;
+                }
+                for (int tai = solarStart; tai < 500; tai++)
+                {
+                    GalaxyScanEventHandler((yin + 1) * 10000 + tai);
+                    ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
+
+                    ha.Cookies = ccold;
+                    IEnumerator ii = ccnew.GetEnumerator();
+                    while (ii.MoveNext())
+                    {
+                        ha.Cookies.Add((Cookie)ii.Current);
+                    }
+                    ccold = ha.Cookies;
+                    ccnew = ha.access();
+                    LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
+                    for (int pnt = 0; pnt < lis.Length; pnt++)
+                    {
+                        if (lis[pnt] != null)
+                        {
+                            adp.InsertCommand = new OleDbCommand(@"insert into galaxymap (process, galaxy, solar, planet, punion, player, ballname, hasmoon, vacation, cdate) values ('" + processid + "','" + (yin + 1) + "','" + tai + "','" + (pnt + 1) + "','" + lis[pnt].Union + "','" + lis[pnt].Player + "','" + lis[pnt].BallName + "'," + (lis[pnt].HasMoon ? "true" : "false") + "," + (lis[pnt].IsU ? "true" : "false") + ", now())", dbc);
+                            adp.InsertCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                firstScan = false;
+            }
+            //扫描结束process打上结束符
+            adp.InsertCommand = new OleDbCommand(@"update scanprocess set complete = true where [_id] =" + processid, dbc);
+            adp.InsertCommand.ExecuteNonQuery();
+            GalaxyScanEventHandler(0);
         }
 
         internal event MessageSender Msger
@@ -485,6 +491,18 @@ namespace OgameFarmer
             remove
             {
                 RankScanOverHandler -= new RankScanOverNoti(value);
+            }
+        }
+
+        internal event GalaxyScanNoti GalaxyScanSender
+        {
+            add
+            {
+                GalaxyScanEventHandler += new GalaxyScanNoti(value);
+            }
+            remove
+            {
+                GalaxyScanEventHandler -= new GalaxyScanNoti(value);
             }
         }
     }
