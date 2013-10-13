@@ -40,8 +40,6 @@ namespace OgameFarmer
         internal static string password;
         internal static string universe;
 
-        internal static int yinhe;
-
         internal StarScript()
         {
         }
@@ -215,15 +213,6 @@ namespace OgameFarmer
             ha = ConstructionInfo.PrepareHttpAccesser(universe);
             ha.Referer = referer;
             string baseurl = ha.AccessUrl;
-            //ha.Cookies = ccold;
-            //IEnumerator i = ccnew.GetEnumerator();
-            //while (i.MoveNext())
-            //{
-            //    ha.Cookies.Add((Cookie)i.Current);
-            //}
-            //ccold = ha.Cookies;
-            //ccnew = ha.access();
-
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
@@ -291,8 +280,18 @@ namespace OgameFarmer
                         dt.Columns.Clear();
                         dt.Clear();
                         adp.Fill(dt);
-                        int galaxyStart = ProductivityInfo.ToInt(dt.Rows[0][0].ToString());
-                        int solarStart = ProductivityInfo.ToInt(dt.Rows[0][1].ToString());
+                        int galaxyStart;
+                        int solarStart;
+                        if (dt.Rows.Count == 0)
+                        {
+                            galaxyStart = 1;
+                            solarStart = 1;
+                        }
+                        else
+                        {
+                            galaxyStart = ProductivityInfo.ToInt(dt.Rows[0][0].ToString());
+                            solarStart = ProductivityInfo.ToInt(dt.Rows[0][1].ToString());
+                        }
 						//根据坐标继续扫描
                         GalaxyLoop(processid, galaxyStart, solarStart, adp, dbc);
 					}
@@ -325,8 +324,6 @@ namespace OgameFarmer
             {
                 MessageBox.Show(ex.ToString());
             }
-            //ObjectEventHandler(lis);
-            //Thread.Sleep(200);
         }
 
         internal static void Rank(object o)
@@ -394,12 +391,6 @@ namespace OgameFarmer
             ha.Connection = "keep-alive";
             ha.ContentType = "application/x-www-form-urlencoded";
             ha.IsUseCookie = true;
-            //ha.Cookies = ccold;
-            //IEnumerator i = ccnew.GetEnumerator();
-            //while (i.MoveNext())
-            //{
-            //    ha.Cookies.Add((Cookie)i.Current);
-            //}
             ccold = ha.Cookies;
             ccnew = ha.access();
             Thread.Sleep(200);

@@ -58,7 +58,7 @@ namespace OgameFarmer
                 {
                     dbc.Open();
                     OleDbDataAdapter adp = new OleDbDataAdapter();
-                    adp.SelectCommand = new OleDbCommand(@"select * from deadsheep", dbc);
+                    adp.SelectCommand = new OleDbCommand(@"select * from deadsheepu", dbc);
                     try
                     {
                         adp.SelectCommand.Parameters.AddWithValue("@fd", OleDbType.Date).Value = dtpFromDate.Value.Date.AddDays(-Int32.Parse(tbBeforedays.Text));
@@ -83,7 +83,7 @@ namespace OgameFarmer
             {
                 if (ioe.ToString().Contains("OLEDB"))
                 {
-                    MessageBox.Show("您很有可能未安装数据库连接程序，建议下载并安装：\r\ndownload.microsoft.com/download/7/0/3/703ffbcb-dc0c-4e19-b0da-1463960fdcdb/AccessDatabaseEngine.exe");
+                    MessageBox.Show(ConstString.suggest_db_conn_program_not_install);
                 }
             }
             catch (Exception ex)
