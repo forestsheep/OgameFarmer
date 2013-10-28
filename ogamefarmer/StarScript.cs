@@ -259,22 +259,22 @@ namespace OgameFarmer
                     dbc.Open();
                     OleDbDataAdapter adp = new OleDbDataAdapter();
                     adp.SelectCommand = new OleDbCommand(@"select max([_id]) as maxid from scanprocess where not complete", dbc);
-					DataTable dt = new DataTable();
-					string processid = string.Empty;
-					bool usecontinue;
-					adp.Fill(dt);
+                    DataTable dt = new DataTable();
+                    string processid = string.Empty;
+                    bool usecontinue;
+                    adp.Fill(dt);
                     if (dt.Rows.Count > 0 && !dt.Rows[0][0].ToString().Equals(string.Empty))
-					{
-						usecontinue = true;
-						processid = dt.Rows[0][0].ToString();
-					}
-					else
-					{
-						usecontinue = false;
-					}
-					if (usecontinue)
-					{
-						//找到最后一次扫描的最后一个球的坐标 -- galaxy and solar index
+                    {
+                        usecontinue = true;
+                        processid = dt.Rows[0][0].ToString();
+                    }
+                    else
+                    {
+                        usecontinue = false;
+                    }
+                    if (usecontinue)
+                    {
+                        //找到最后一次扫描的最后一个球的坐标 -- galaxy and solar index
                         adp.SelectCommand = new OleDbCommand(@"select top 1 galaxy, solar from 
     (select *,galaxy * 1000 + solar as xuhao from galaxymap where process = " + processid + @")t1 order by xuhao desc", dbc);
                         dt.Columns.Clear();
@@ -292,11 +292,11 @@ namespace OgameFarmer
                             galaxyStart = ProductivityInfo.ToInt(dt.Rows[0][0].ToString());
                             solarStart = ProductivityInfo.ToInt(dt.Rows[0][1].ToString());
                         }
-						//根据坐标继续扫描
+                        //根据坐标继续扫描
                         GalaxyLoop(processid, galaxyStart, solarStart, adp, dbc);
-					}
-					else
-					{
+                    }
+                    else
+                    {
                         //创建一个新的扫描过程
                         adp.InsertCommand = new OleDbCommand(@"insert into scanprocess (complete, cdate) values (false, now())", dbc);
                         adp.InsertCommand.ExecuteNonQuery();
@@ -310,7 +310,7 @@ namespace OgameFarmer
                             //从头扫描
                             GalaxyLoop(processid, 1, 1, adp, dbc);
                         }
-					}
+                    }
                 }
             }
             catch (System.InvalidOperationException ioe)
@@ -375,27 +375,6 @@ namespace OgameFarmer
             RankScanOverHandler(0);
         }
 
-        internal static void logout(object o)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("http://u7.cicihappy.com/ogame/buildings.php");
-            HttpAccesser ha = new HttpAccesser();
-            ha.AccessUrl = sb.ToString();
-            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
-            ha.Host = "u7.cicihappy.com";
-            ha.UserAgent = "Mozilla/5.0 (Windows NT 6.1; rv:22.0) Gecko/20100101 Firefox/22.0";
-            ha.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-            ha.AddHeader("Accept-Language", "en-US,en;q=0.5");
-            ha.Referer = "http://u7.cicihappy.com/ogame/leftmenu.php";
-            ha.Connection = "keep-alive";
-            ha.ContentType = "application/x-www-form-urlencoded";
-            ha.IsUseCookie = true;
-            ccold = ha.Cookies;
-            ccnew = ha.access();
-            Thread.Sleep(200);
-        }
-
         private static void GalaxyLoop(string processid, int galaxyStart, int solarStart, OleDbDataAdapter adp, OleDbConnection dbc)
         {
             bool firstScan = true;
@@ -419,7 +398,15 @@ namespace OgameFarmer
                     }
                     ccold = ha.Cookies;
                     ccnew = ha.access();
-                    LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
+                    // Issue #4 
+                    try{
+                        LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
+                    }
+                    catch (NullReferenceException nre)
+                    {
+                        MessageBox("分析时返回了未期待的页面");
+                        return;
+                    }
                     for (int pnt = 0; pnt < lis.Length; pnt++)
                     {
                         if (lis[pnt] != null)
