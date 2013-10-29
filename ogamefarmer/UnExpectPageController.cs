@@ -14,7 +14,6 @@ namespace OgameFarmer
         //翻越星图重氢不够的关键字
         private const string NOT_ENOUGH_HH_KEYWORD_1 = "需要消耗50单位的重氢";
         private const string NOT_ENOUGH_HH_KEYWORD_2 = "没有足够的重氢";
-
         //翻越星图重氢不够时的错误信息
         private const string NOT_ENOUGH_HH_MESSAGE = "没有足够的重氢，请保证当前星球上有足够的重氢，以保证翻阅星图不被中断。";
         private static UnExpectPageController INSTANCE;
@@ -59,7 +58,7 @@ namespace OgameFarmer
         /// </summary>
         /// <param name="s">页面的html全文</param>
         /// <returns>是否是cookie过期提示页面</returns>
-        private bool CookieCheckCondition(string s)
+        private bool CheckCookieCondition(string s)
         {
             if (s.Contains(COOKIE_EXPIRE_KEYWORD_1) || s.Contains(COOKIE_EXPIRE_KEYWORD_2) || s.Contains(COOKIE_EXPIRE_KEYWORD_3) ||s.Contains(COOKIE_EXPIRE_KEYWORD_4))
             {
@@ -71,7 +70,12 @@ namespace OgameFarmer
             }
         }
 
-        internal string VarifyOutOfHH()
+        /// <summary>
+        /// 重氢不够的验证条件
+        /// </summary>
+        /// <param name="s">页面的html全文</param>
+        /// <returns>是否是重氢不够的提示页面</returns>
+        internal string CheckOutOfHHCondition(string s)
         {
             if (s.Contains(NOT_ENOUGH_HH_KEYWORD_1) || s.Contains(NOT_ENOUGH_HH_KEYWORD_2))
             {
