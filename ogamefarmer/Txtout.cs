@@ -27,5 +27,29 @@ namespace OgameFarmer
             fs.Flush();
             fs.Close();
         }
+
+        internal static string Read()
+        {
+            try 
+            {
+                // Create an instance of StreamReader to read from a file.
+                // The using statement also closes the StreamReader.
+                using (StreamReader sr = new StreamReader("html.txt")) 
+                {
+                    string returnString;
+                    string line;
+                    // Read and display lines from the file until the end of 
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null) 
+                    {
+                        returnString += line;
+                    }
+                }
+                return returnString;
+            }
+            catch (Exception e) 
+            {
+                return null;
+            }
     }
 }
