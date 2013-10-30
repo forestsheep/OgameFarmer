@@ -128,6 +128,10 @@ namespace OgameFarmer
 
         internal static LocationsInfo[] AnalyzHtml()
         {
+            string htmlTxt = Txtout.Read();
+            UnExpectPageController upc = UnExpectPageController.GetInstance();
+            upc.VarifyCookiePeriod(htmlTxt);
+
             LocationsInfo[] lis = new LocationsInfo[15];
             HtmlNode.ElementsFlags.Remove("form");
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();

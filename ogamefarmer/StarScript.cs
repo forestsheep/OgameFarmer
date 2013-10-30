@@ -402,9 +402,9 @@ namespace OgameFarmer
                     try{
                         LocationsInfo[] lis = LocationsInfo.AnalyzHtml();
                     }
-                    catch (NullReferenceException nre)
+                    catch (OgameFarmaerException ofe)
                     {
-                        MessageBox("分析时返回了未期待的页面");
+                        MessageBox(ofe.ToString());
                         return;
                     }
                     for (int pnt = 0; pnt < lis.Length; pnt++)
