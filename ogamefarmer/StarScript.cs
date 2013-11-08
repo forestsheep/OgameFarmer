@@ -404,6 +404,7 @@ namespace OgameFarmer
                     }
                     catch (OgameFarmaerException ofe)
                     {
+                        //其他不是UI线程能不能弹出messagebox是个疑问。
                         MessageBox(ofe.ToString());
                         return;
                     }

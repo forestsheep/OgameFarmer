@@ -8,13 +8,10 @@ namespace OgameFarmer
         private const string COOKIE_EXPIRE_KEYWORD_3 = "重启浏览器";
         private const string COOKIE_EXPIRE_KEYWORD_4 = "重新登录";
 
-        //cookie过期导致返错误回页面时的错误信息
-        private const string COOKIE_EXPIRE_MESSAGE = "登录已经失效，请重新登录！";
-
         //翻越星图重氢不够的关键字
         private const string NOT_ENOUGH_HH_KEYWORD_1 = "需要消耗50单位的重氢";
         private const string NOT_ENOUGH_HH_KEYWORD_2 = "没有足够的重氢";
-        //翻越星图重氢不够时的错误信息
+        
         private static UnExpectPageController INSTANCE;
 
         internal static UnExpectPageController GetInstance()
@@ -37,6 +34,7 @@ namespace OgameFarmer
         /// <summary>
         /// 检验当前页面是否正在返回cookie过期
         /// </summary>
+        /// <param name="s">页面的html全文</param>
         internal void VarifyCookiePeriod(string s)
         {
             if (CookieCheckCondition(s))
@@ -60,6 +58,7 @@ namespace OgameFarmer
         /// <returns>是否是cookie过期提示页面</returns>
         private bool CheckCookieCondition(string s)
         {
+            //验证条件不是很好，万一有人星球取这个名字的话。。。
             if (s.Contains(COOKIE_EXPIRE_KEYWORD_1) || s.Contains(COOKIE_EXPIRE_KEYWORD_2) || s.Contains(COOKIE_EXPIRE_KEYWORD_3) ||s.Contains(COOKIE_EXPIRE_KEYWORD_4))
             {
                 return true;
