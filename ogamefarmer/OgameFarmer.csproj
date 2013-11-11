@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>star.ico</ApplicationIcon>
+    <ApplicationIcon>image\star.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
@@ -66,63 +66,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessDB.cs" />
-    <Compile Include="BaseInfo.cs" />
-    <Compile Include="CommonInfo.cs" />
-    <Compile Include="ConstructionInfo.cs" />
-    <Compile Include="ConstString.cs" />
-    <Compile Include="DeadSheepForm.cs">
+    <Compile Include="module\AccessDB.cs" />
+    <Compile Include="info\BaseInfo.cs" />
+    <Compile Include="info\CommonInfo.cs" />
+    <Compile Include="info\ConstructionInfo.cs" />
+    <Compile Include="const\ConstString.cs" />
+    <Compile Include="exception\CookieExpireException.cs" />
+    <Compile Include="form\DeadSheepForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeadSheepForm.Designer.cs">
+    <Compile Include="form\DeadSheepForm.Designer.cs">
       <DependentUpon>DeadSheepForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DispatchForm.cs">
+    <Compile Include="form\DispatchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DispatchForm.Designer.cs">
+    <Compile Include="form\DispatchForm.Designer.cs">
       <DependentUpon>DispatchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HttpAccesser.cs" />
-    <Compile Include="LocationsInfo.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="module\HttpAccesser.cs" />
+    <Compile Include="info\LocationsInfo.cs" />
+    <Compile Include="form\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="form\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginInfo.cs" />
-    <Compile Include="OverviewInfo.cs" />
-    <Compile Include="RankInfo.cs" />
-    <Compile Include="Strings.cs" />
-    <Compile Include="StarScript.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="info\LoginInfo.cs" />
+    <Compile Include="exception\OgameFarmerException.cs" />
+    <Compile Include="exception\OutOfHHException.cs" />
+    <Compile Include="info\OverviewInfo.cs" />
+    <Compile Include="info\RankInfo.cs" />
+    <Compile Include="core\StarScript.cs" />
+    <Compile Include="form\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.designer.cs">
+    <Compile Include="form\Main.designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SysmapForm.cs">
+    <Compile Include="form\SysmapForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SysmapForm.Designer.cs">
+    <Compile Include="form\SysmapForm.Designer.cs">
       <DependentUpon>SysmapForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Txtout.cs" />
-    <Compile Include="ProductivityInfo.cs" />
-    <Compile Include="UnExpectPageController.cs" />
-    <EmbeddedResource Include="DeadSheepForm.resx">
+    <Compile Include="module\Txtout.cs" />
+    <Compile Include="info\ProductivityInfo.cs" />
+    <Compile Include="controller\UnExpectPageController.cs" />
+    <EmbeddedResource Include="form\DeadSheepForm.resx">
       <DependentUpon>DeadSheepForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DispatchForm.resx">
+    <EmbeddedResource Include="form\DispatchForm.resx">
       <DependentUpon>DispatchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="form\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -135,7 +137,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SysmapForm.resx">
+    <EmbeddedResource Include="form\SysmapForm.resx">
       <DependentUpon>SysmapForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -150,7 +152,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="star.ico" />
+    <Content Include="image\star.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
