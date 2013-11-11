@@ -21,6 +21,7 @@ namespace OgameFarmer
         #endregion
 
         #region 枚举
+        private ACCESS_METHOD accessMethod;
         internal enum ACCESS_METHOD
         {
             GET,
@@ -28,87 +29,12 @@ namespace OgameFarmer
         }
         #endregion
 
-        #region members
-        private ACCESS_METHOD accessMethod;
-        private string accessUrl;
-        private string contentType;
-        private string host;
-
-        internal string Host
-        {
-            get { return host; }
-            set { host = value; }
-        }
-        private string userAgent;
-
-        internal string UserAgent
-        {
-            get { return userAgent; }
-            set { userAgent = value; }
-        }
-        private string accept;
-
-        internal string Accept
-        {
-            get { return accept; }
-            set { accept = value; }
-        }
-        private string referer;
-
-        internal string Referer
-        {
-            get { return referer; }
-            set { referer = value; }
-        }
-        private string connection = "";
-
-        public string Connection
-        {
-            get { return connection; }
-            set { connection = value; }
-        }
-
-        private CookieContainer cookies = new CookieContainer();
-
-        public CookieContainer Cookies
-        {
-            get { return cookies; }
-            set { cookies = value; }
-        }
-        
-        private string urlParam = string.Empty;
-        private string responseDate = string.Empty;
-        private string responseText = string.Empty;
-        private bool isUseCookie;
-        private WebHeaderCollection webHeader = new WebHeaderCollection();
-        //private string reqEncoding = "GB2312";
-        private string reqEncoding = "utf-8";
-        private string resEncoding = "GB2312";
-
-        #endregion
-
         #region Propertis
-
-        /// <summary>
-        /// access method
-        /// get or post
-        /// default is "GET"
-        /// </summary>
-        internal ACCESS_METHOD AccessMethod
-        {
-            get
-            {
-                return accessMethod;
-            }
-            set
-            {
-                accessMethod = value;
-            }
-        }
 
         /// <summary>
         /// accessUrl
         /// </summary>
+        private string accessUrl;
         internal string AccessUrl
         {
             get
@@ -122,39 +48,90 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// urlParmam
-        /// </summary>
-        internal string UrlParam
-        {
-            get
-            {
-                return urlParam;
-            }
-            set
-            {
-                urlParam = value;
-            }
-        }
-
-        /// <summary>
         /// contentType
         /// like:application/x-www-form-urlencoded or text/xml ect.
         /// </summary>
+        private string contentType;
         internal string ContentType
         {
-            get
-            {
-                return contentType;
-            }
-            set
-            {
-                contentType = value;
-            }
+            get { return contentType; }
+            set { contentType = value; }
+        }
+
+        /// <summary>
+        /// host
+        /// </summary>
+        private string host;
+        internal string Host
+        {
+            get { return host; }
+            set { host = value; }
+        }
+
+        /// <summary>
+        /// userAgent
+        /// </summary>
+        private string userAgent;
+        internal string UserAgent
+        {
+            get { return userAgent; }
+            set { userAgent = value; }
+        }
+
+        /// <summary>
+        /// accept
+        /// </summary>
+        private string accept;
+        internal string Accept
+        {
+            get { return accept; }
+            set { accept = value; }
+        }
+
+        /// <summary>
+        /// referer
+        /// </summary>
+        private string referer;
+        internal string Referer
+        {
+            get { return referer; }
+            set { referer = value; }
+        }
+
+        /// <summary>
+        /// connection
+        /// </summary>
+        private string connection = "";
+        public string Connection
+        {
+            get { return connection; }
+            set { connection = value; }
+        }
+
+        /// <summary>
+        /// cookies
+        /// </summary>
+        private CookieContainer cookies = new CookieContainer();
+        public CookieContainer Cookies
+        {
+            get { return cookies; }
+            set { cookies = value; }
+        }
+        
+        /// <summary>
+        /// urlParam
+        /// </summary>
+        private string urlParam = string.Empty;
+        internal string UrlParam
+        {
+            get { return urlParam; }
+            set { urlParam = value; }
         }
         
         /// <summary>
         /// response date
         /// </summary>
+        private string responseDate = string.Empty;
         internal string ResponseDate
         {
             get { return responseDate; }
@@ -164,69 +141,61 @@ namespace OgameFarmer
         /// <summary>
         /// response content
         /// </summary>
+        private string responseText = string.Empty;
         internal string ResponseText
         {
-            get
-            {
-                return responseText;
-            }
+            get { return responseText; }
         }
-
+        
         /// <summary>
         /// set or get is using cookie
         /// </summary>
+        private bool isUseCookie;
         internal bool IsUseCookie
         {
-            get
-            {
-                return isUseCookie;
-            }
-            set
-            {
-                isUseCookie = value;
-            }
+            get { return isUseCookie; }
+            set { isUseCookie = value; }
         }
 
         /// <summary>
-        /// 
+        /// webHeader
         /// </summary>
-        internal string ReqEncoding
-        {
-            get
-            {
-                return reqEncoding;
-            }
-            set
-            {
-                reqEncoding = value;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        internal string ResEncoding
-        {
-            get
-            {
-                return resEncoding;
-            }
-            set
-            {
-                resEncoding = value;
-            }
-        }
-
+        private WebHeaderCollection webHeader = new WebHeaderCollection();
         internal WebHeaderCollection WebHeader
         {
-            get
-            {
-                return webHeader;
-            }
-            set
-            {
-                 webHeader = value;
-            }
+            get { return webHeader; }
+            set { webHeader = value; }
+        }
+
+        /// <summary>
+        /// access method
+        /// get or post
+        /// default is "GET"
+        /// </summary>
+        internal ACCESS_METHOD AccessMethod
+        {
+            get { return accessMethod; }
+            set { accessMethod = value; }
+        }
+
+        /// <summary>
+        /// ReqEncoding
+        /// </summary>
+        private string reqEncoding = "utf-8";
+        internal string ReqEncoding
+        {
+            get { return reqEncoding; }
+            set { reqEncoding = value; }
+        }
+
+        /// <summary>
+        /// ResEncoding
+        /// </summary>
+        private string resEncoding = "GB2312";
+        internal string ResEncoding
+        {
+            get { return resEncoding; }
+            set { resEncoding = value; }
         }
 
         #endregion
