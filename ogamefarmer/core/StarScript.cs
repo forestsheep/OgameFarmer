@@ -91,6 +91,10 @@ namespace OgameFarmer
             {
                 T = new Thread(new ParameterizedThreadStart(Rank));
             }
+            else if (id == 7)
+            {
+                T = new Thread(new ParameterizedThreadStart(SpendAllToDefence));
+            }
         }
 
         private void homepage(object o)
@@ -378,6 +382,11 @@ namespace OgameFarmer
             adp.InsertCommand = new OleDbCommand(@"update scanprocess set complete = true where [_id] =" + processid, dbc);
             adp.InsertCommand.ExecuteNonQuery();
             GalaxyScanEventHandler(0);
+        }
+
+        private static void SpendAllToDefence(object o)
+        {
+            AllDefence.PrepareAccess(ref ha);
         }
 
         internal event MessageSender Msger

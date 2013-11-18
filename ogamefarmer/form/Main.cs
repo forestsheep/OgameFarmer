@@ -343,5 +343,17 @@ namespace OgameFarmer
                 MessageBox.Show("rankbtnclicked   " + ex.ToString());
             }
         }
+
+        private void btnAllDefence_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ss.run(7);
+            }
+            catch (Exception ee)
+            {
+                ee.ToString();
+            }
+        }
     }
 }

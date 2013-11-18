@@ -74,6 +74,7 @@
             this.b_dispatch = new System.Windows.Forms.Button();
             this.b_sysmap = new System.Windows.Forms.Button();
             this.btnRank = new System.Windows.Forms.Button();
+            this.btnAllDefence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputArea
@@ -511,11 +512,22 @@
             this.btnRank.UseVisualStyleBackColor = true;
             this.btnRank.Click += new System.EventHandler(this.b_rank_Click);
             // 
+            // btnAllDefence
+            // 
+            this.btnAllDefence.Location = new System.Drawing.Point(477, 24);
+            this.btnAllDefence.Name = "btnAllDefence";
+            this.btnAllDefence.Size = new System.Drawing.Size(71, 42);
+            this.btnAllDefence.TabIndex = 51;
+            this.btnAllDefence.Text = "全防御";
+            this.btnAllDefence.UseVisualStyleBackColor = true;
+            this.btnAllDefence.Click += new System.EventHandler(this.btnAllDefence_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 661);
+            this.Controls.Add(this.btnAllDefence);
             this.Controls.Add(this.btnRank);
             this.Controls.Add(this.b_sysmap);
             this.Controls.Add(this.b_dispatch);
@@ -619,6 +631,7 @@
         private System.Windows.Forms.Button b_dispatch;
         private System.Windows.Forms.Button b_sysmap;
         private System.Windows.Forms.Button btnRank;
+        private System.Windows.Forms.Button btnAllDefence;
     }
 }
 
