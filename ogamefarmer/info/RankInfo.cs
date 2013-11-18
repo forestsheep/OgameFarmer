@@ -40,32 +40,12 @@ namespace OgameFarmer
 
         internal static HttpAccesser PrepareHttpAccesser(HttpAccesser ha, string universe, int range)
         {
-            if (ha == null)
-            {
-                ha = new HttpAccesser();
-            }
-            //指定有问题?只有第一次可以这样指定。
-            if (ha.AccessUrl == null)
-            {
-                ha.Referer = "http://" + universe + ".cicihappy.com/ogame/leftmenu.php";
-            }
-            else
-            {
-                ha.Referer = ha.AccessUrl;
-            }
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
             sb.Append(universe);
             sb.Append(".cicihappy.com/ogame/stat.php?range=1");
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
-            ha.Host = universe + ".cicihappy.com";
-            ha.UserAgent = "Mozilla/5.0 (iPad; CPU OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3";
-            ha.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-            ha.AddHeader("Accept-Language", "en-US,en;q=0.5");
-            ha.Connection = "keep-alive";
-            ha.IsUseCookie = true;
-            ha.ContentType = "application/x-www-form-urlencoded";
             ha.UrlParam = "whochange=0&typechange=0&rangechange=1&who=1&type=1&range=" + range;
             return ha;
         }

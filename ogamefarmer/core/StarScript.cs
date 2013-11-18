@@ -111,8 +111,7 @@ namespace OgameFarmer
             ha.ContentType = "";
             ha.IsUseCookie = true;
             ha.AddHeader("Cache-Control", "max-age=0");
-            ccold = ha.Cookies;
-            ccnew = ha.access();
+            ha.access();
             Thread.Sleep(200);
         }
 
@@ -121,8 +120,7 @@ namespace OgameFarmer
             ccold = null;
             ccnew = null;
             ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
-            ccold = ha.Cookies;
-            ccnew = ha.access();
+            ha.access();
             LoginInfo li = LoginInfo.AnalyzHtml();
             ObjectEventHandler(li);
             Thread.Sleep(200);
@@ -131,35 +129,24 @@ namespace OgameFarmer
         internal static void overview(object o)
         {
             ArrayList balls = new ArrayList();
-            ha = OverviewInfo.PrepareHttpAccesser(universe);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("http://");
+            sb.Append(universe);
+            sb.Append(".cicihappy.com/ogame/overview.php");
+            ha.AccessUrl = sb.ToString();
+            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             string baseurl = ha.AccessUrl;
-            ha.Cookies = ccold;
-            IEnumerator i = ccnew.GetEnumerator();
-            while (i.MoveNext())
-            {
-                ha.Cookies.Add((Cookie)i.Current);
-            }
-            ccold = ha.Cookies;
-            ccnew = ha.access();
+            ha.access();
             //取得第一个星球的总星球列表
             OverviewInfo ovf = OverviewInfo.AnalyzHtml();
-
             foreach (OverviewInfo.Ball ball in ovf.Balllist)
             {
-                ha.Referer = ha.AccessUrl;
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.Cookies = ccold;
-                IEnumerator ie = ccnew.GetEnumerator();
-                while (ie.MoveNext())
-                {
-                    ha.Cookies.Add((Cookie)ie.Current);
-                }
-                ccnew = ha.access();
+                ha.access();
                 //取得每一个星球
                 OverviewInfo ovfloop = OverviewInfo.AnalyzHtml();
                 balls.Add(ovfloop);
             }
-            referer = ha.AccessUrl;
             ObjectEventHandler(ovf);
             Thread.Sleep(200);
             ObjectEventHandler(balls);
@@ -169,38 +156,27 @@ namespace OgameFarmer
         internal static void Productivity(object o)
         {
             ArrayList balls = new ArrayList();
-            ha = ProductivityInfo.PrepareHttpAccesser(universe);
-            ha.Referer = referer;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("http://");
+            sb.Append(universe);
+            sb.Append(".cicihappy.com/ogame/resources.php");
+            ha.AccessUrl = sb.ToString();
+            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             string baseurl = ha.AccessUrl;
-            ha.Cookies = ccold;
-            IEnumerator i = ccnew.GetEnumerator();
-            while (i.MoveNext())
-            {
-                ha.Cookies.Add((Cookie)i.Current);
-            }
-            ccold = ha.Cookies;
-            ccnew = ha.access();
+            ha.access();
             //取得第一个星球的总星球列表
             pi = ProductivityInfo.AnalyzHtml();
 
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
-                ha.Referer = ha.AccessUrl;
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.Cookies = ccold;
-                IEnumerator ie = ccnew.GetEnumerator();
-                while (ie.MoveNext())
-                {
-                    ha.Cookies.Add((Cookie)ie.Current);
-                }
-                ccnew = ha.access();
+                ha.access();
                 //取得每一个星球
                 ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
                 balls.Add(piloop);
                 MessageEventHandler(100 / pi.Balllist.Count);
             }
             Thread.Sleep(600);
-            referer = ha.AccessUrl;
             ObjectEventHandler(pi);
             Thread.Sleep(200);
             ObjectEventHandler(balls);
@@ -210,43 +186,37 @@ namespace OgameFarmer
         internal static void Construction(object o)
         {
             ArrayList balls = new ArrayList();
-            ha = ConstructionInfo.PrepareHttpAccesser(universe);
-            ha.Referer = referer;
+            //ha = ConstructionInfo.PrepareHttpAccesser(universe);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("http://");
+            sb.Append(universe);
+            sb.Append(".cicihappy.com/ogame/buildings.php");
+            ha.AccessUrl = sb.ToString();
+            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             string baseurl = ha.AccessUrl;
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.Cookies = ccold;
-                IEnumerator ie = ccnew.GetEnumerator();
-                while (ie.MoveNext())
-                {
-                    ha.Cookies.Add((Cookie)ie.Current);
-                }
-                ccnew = ha.access();
+                ha.access();
                 ha.Referer = baseurl;
                 //取得每一个星球
                 ConstructionInfo ciloop = ConstructionInfo.AnalyzHtml();
                 ciloop.CurrentBallName = ball.Name;
                 balls.Add(ciloop);
             }
-            referer = ha.AccessUrl;
             ConstructionEventHandler(balls);
         }
 
         internal static void Locations(object o)
         {
-            ha = LocationsInfo.PrepareHttpAccesser(universe);
-            //ha.Referer = referer;
-            ha.Cookies = ccold;
-            IEnumerator i = ccnew.GetEnumerator();
-            while (i.MoveNext())
-            {
-                ha.Cookies.Add((Cookie)i.Current);
-            }
-            ccold = ha.Cookies;
-            ccnew = ha.access();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("http://");
+            sb.Append(universe);
+            sb.Append(".cicihappy.com/ogame/galaxy.php?mode=0");
+            ha.AccessUrl = sb.ToString();
+            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
+            ha.access();
             LocationsInfo[] mylis = LocationsInfo.AnalyzHtml();
-
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
             ha.Referer = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=0";
@@ -340,14 +310,7 @@ namespace OgameFarmer
                     for (int c = 0; c < 15; c++)
                     {
                         ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
-                        ha.Cookies = ccold;
-                        IEnumerator i = ccnew.GetEnumerator();
-                        while (i.MoveNext())
-                        {
-                            ha.Cookies.Add((Cookie)i.Current);
-                        }
-                        ccold = ha.Cookies;
-                        ccnew = ha.access();
+                        ha.access();
                         RankInfo[] ris = RankInfo.AnalyzHtml();
 
                         for (int j = 0; j < ris.Length; j++)
@@ -389,15 +352,7 @@ namespace OgameFarmer
                 {
                     GalaxyScanEventHandler((yin + 1) * 10000 + tai);
                     ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
-
-                    ha.Cookies = ccold;
-                    IEnumerator ii = ccnew.GetEnumerator();
-                    while (ii.MoveNext())
-                    {
-                        ha.Cookies.Add((Cookie)ii.Current);
-                    }
-                    ccold = ha.Cookies;
-                    ccnew = ha.access();
+                    ha.access();
                     // Issue #4 
                     try
                     {

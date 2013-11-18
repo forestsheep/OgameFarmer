@@ -227,26 +227,25 @@ namespace OgameFarmer
         /// <summary>
         /// 去访问网站
         /// </summary>
-        internal CookieCollection access()
+        internal void access()
         {
             this.responseText = string.Empty;
             if (accessUrl == null || accessUrl.Trim().Equals(string.Empty))
             {
-                throw new UncompleteSettingException("没有设定url");
+                throw new UncompleteSettingException();
             }
-            //WebRequest r = WebRequest.Create("http://www.163.com");
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(accessUrl);
             req.Headers = webHeader;
             //host
-            req.Host = host;
-            req.UserAgent = userAgent;
-            req.Accept = accept;
-            req.Referer = referer;
-            req.ContentType = contentType;
+            req.Host = this.host;
+            req.UserAgent = this.userAgent;
+            req.Accept = this.accept;
+            req.Referer = this.referer;
+            req.ContentType = this.contentType;
             //req.
-            if (!(connection.Equals("keep-alive") || connection.Equals("close")))
+            if (!(this.connection.Equals("keep-alive") || this.connection.Equals("close")))
             {
-                req.Connection = connection;
+                req.Connection = this.connection;
             }
             if (isUseCookie)
             {
@@ -276,11 +275,8 @@ namespace OgameFarmer
             {
                 this.responseDate = res.Headers.GetValues("Date")[0];
                 CookieCollection c = ((HttpWebResponse)res).Cookies;
-                IEnumerator i = c.GetEnumerator();
-                while (i.MoveNext())
-                {
-                    Cookie ccc = (Cookie)i.Current;
-                }
+                this.referer = this.accessUrl;
+                this.cookies.Add(c);
                 Stream receiveStream = res.GetResponseStream();
                 Encoding encode = Encoding.GetEncoding(resEncoding);
                 StreamReader sr = new StreamReader(receiveStream, encode);
@@ -296,21 +292,6 @@ namespace OgameFarmer
                 Txtout.write(responseText, "html.txt");
                 int r = rtime.Next(1000);
                 Thread.Sleep(3000 + r);
-                return c;
-            }
-        }
-        #endregion
-
-        #region inner class
-        internal class UncompleteSettingException : Exception
-        {
-            internal UncompleteSettingException(string message)
-                : base(message)
-            {
-            }
-
-            internal UncompleteSettingException()
-            {
             }
         }
         #endregion
