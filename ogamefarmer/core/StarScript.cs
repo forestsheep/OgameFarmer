@@ -170,7 +170,7 @@ namespace OgameFarmer
             ha.access();
             //取得第一个星球的总星球列表
             pi = ProductivityInfo.AnalyzHtml();
-
+            Thread.Sleep(5000);
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
@@ -384,9 +384,40 @@ namespace OgameFarmer
             GalaxyScanEventHandler(0);
         }
 
-        private static void SpendAllToDefence(object o)
+        private static void SpendAllToDefence111(object o)
         {
             AllDefence.PrepareAccess(ref ha);
+        }
+
+        private static void SpendAllToDefence(object o)
+        {
+            ArrayList balls = new ArrayList();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("http://");
+            sb.Append(universe);
+            sb.Append(".cicihappy.com/ogame/resources.php");
+            ha.AccessUrl = sb.ToString();
+            string baseurl = ha.AccessUrl;
+            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
+            ha.access();
+            //取得第一个星球的总星球列表
+            pi = ProductivityInfo.AnalyzHtml();
+            Thread.Sleep(3000);
+            foreach (ProductivityInfo.Ball ball in pi.Balllist)
+            {
+                ha.AccessUrl = baseurl + ball.AccessParm;
+                ha.access();
+                //取得每一个星球
+                ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
+                AllDefence.Metal = piloop.Metal;
+                AllDefence.Crystal = piloop.Crystal;
+                AllDefence.HH = piloop.H;
+
+                AllDefence.PrepareAccess(ref ha, ball.AccessParm);
+                Thread.Sleep(3000);
+                AllDefence.SpendAllOnCurrentPlanet();
+                Thread.Sleep(3000);
+            }
         }
 
         internal event MessageSender Msger
