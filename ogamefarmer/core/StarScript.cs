@@ -31,9 +31,6 @@ namespace OgameFarmer
         private static Thread T;
 
         private static HttpAccesser ha;
-        private static CookieContainer ccold;
-        private static CookieCollection ccnew;
-        private static string referer;
         private static ProductivityInfo pi;
 
         internal static string loginname;
@@ -99,10 +96,7 @@ namespace OgameFarmer
 
         private void homepage(object o)
         {
-            ccold = null;
-            ccnew = null;
             StringBuilder sb = new StringBuilder();
-            sb.Append("http://www.cicihappy.com/");
             HttpAccesser ha = new HttpAccesser();
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
@@ -121,8 +115,6 @@ namespace OgameFarmer
 
         internal static void login(object o)
         {
-            ccold = null;
-            ccnew = null;
             ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
             ha.access();
             LoginInfo li = LoginInfo.AnalyzHtml();
@@ -384,11 +376,6 @@ namespace OgameFarmer
             GalaxyScanEventHandler(0);
         }
 
-        private static void SpendAllToDefence111(object o)
-        {
-            AllDefence.PrepareAccess(ref ha);
-        }
-
         private static void SpendAllToDefence(object o)
         {
             ArrayList balls = new ArrayList();
@@ -415,7 +402,7 @@ namespace OgameFarmer
 
                 AllDefence.PrepareAccess(ref ha, ball.AccessParm);
                 Thread.Sleep(3000);
-                AllDefence.SpendAllOnCurrentPlanet();
+                AllDefence.SpendAllOnCurrentPlanet(ha);
                 Thread.Sleep(3000);
             }
         }

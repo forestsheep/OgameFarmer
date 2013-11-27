@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Math;
 
 namespace OgameFarmer
 {
@@ -22,7 +21,7 @@ namespace OgameFarmer
         /// <summary>
         /// 最大化地使用资源去建造防御
         /// <summary>
-        internal static void SpendAllOnCurrentPlanet()
+        internal static void SpendAllOnCurrentPlanet(HttpAccesser ha)
         {
             int fmenge401 = 0;
             int fmenge402 = 0;
@@ -60,8 +59,13 @@ namespace OgameFarmer
             }
             ha.AccessUrl = "http://u8.cicihappy.com/ogame/buildings.php?mode=defense";
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
-            UrlParam = "fmenge[401]=" + fmenge401 + "&fmenge[402]=" + fmenge402 + "&fmenge[403]=0&fmenge[404]=0&fmenge[405]=" + fmenge405 + "&fmenge[406]=" + fmenge406 + "&fmenge[502]=0&fmenge[503]=0";
+            ha.UrlParam = "fmenge[401]=" + fmenge401 + "&fmenge[402]=" + fmenge402 + "&fmenge[403]=0&fmenge[404]=0&fmenge[405]=" + fmenge405 + "&fmenge[406]=" + fmenge406 + "&fmenge[502]=0&fmenge[503]=0";
             ha.access();
+        }
+
+        private static void doAccess()
+        {
+
         }
     }
 }
