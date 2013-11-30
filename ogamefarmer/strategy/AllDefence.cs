@@ -57,15 +57,35 @@ namespace OgameFarmer
             {
                 fmenge405 = Math.Min(Metal / 2000, Crystal / 6000);
             }
+            // 如果超过上限5000，则分批处理
+
             ha.AccessUrl = "http://u8.cicihappy.com/ogame/buildings.php?mode=defense";
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.UrlParam = "fmenge[401]=" + fmenge401 + "&fmenge[402]=" + fmenge402 + "&fmenge[403]=0&fmenge[404]=0&fmenge[405]=" + fmenge405 + "&fmenge[406]=" + fmenge406 + "&fmenge[502]=0&fmenge[503]=0";
             ha.access();
         }
 
-        private static void doAccess()
+        private static void doAccess(int f401, int f402, int f405, int f406)
         {
 
+            if (f401 > 5000)
+            {
+                // do access f401 = 5000
+            }
+            if (f402 > 5000)
+            {
+                // do access f402 = 5000
+            }
+            // ha.access();
+            f401 -= 5000;
+            if (f401 == 0 && f402 == 0 && f405 == 0 && f406 == 0)
+            {
+                return;
+            }
+            else
+            {
+                doAccess(f401, f402, f405, f406);
+            }
         }
     }
 }

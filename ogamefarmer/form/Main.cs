@@ -158,6 +158,11 @@ namespace OgameFarmer
             }
             progressBar1.Visible = false;
             btnOverView.Enabled = true;
+
+            if (isEnddefence)
+            {
+                btnAllDefence.Enabled = true;
+            }
         }
 
         protected void ShowMsg(object sender, EventArgs e)
@@ -250,7 +255,7 @@ namespace OgameFarmer
         //    remove { OnObjectSend -= new ObjectSender(value); }
         //}
 
-        
+        bool isEnddefence = false;
         private void OnObjectRecived(object o)
         {
             if (o.GetType() == typeof(OverviewInfo))
@@ -264,6 +269,10 @@ namespace OgameFarmer
             else if (o.GetType() == typeof(ProductivityInfo))
             {
                 pi = (ProductivityInfo)o;
+            }
+            else if (o.GetType() == typeof(AllDefence))
+            {
+                isEnddefence = true;
             }
             Object[] list = { this, System.EventArgs.Empty };
             this.outputArea.BeginInvoke(new EventHandler(ShowInfo2), list);
@@ -346,6 +355,10 @@ namespace OgameFarmer
 
         private void btnAllDefence_Click(object sender, EventArgs e)
         {
+            isEnddefence = false;
+            progressBar1.Increment(-100);
+            progressBar1.Visible = true;
+            btnAllDefence.Enabled = false;
             try
             {
                 ss.run(7);

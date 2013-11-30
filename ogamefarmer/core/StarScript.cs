@@ -404,7 +404,9 @@ namespace OgameFarmer
                 Thread.Sleep(3000);
                 AllDefence.SpendAllOnCurrentPlanet(ha);
                 Thread.Sleep(3000);
+                MessageEventHandler(100 / pi.Balllist.Count);
             }
+            ObjectEventHandler(new AllDefence());
         }
 
         internal event MessageSender Msger
