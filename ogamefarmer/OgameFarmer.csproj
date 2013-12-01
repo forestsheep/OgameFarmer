@@ -66,7 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllDefence.cs" />
+    <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />
     <Compile Include="module\AccessDB.cs" />
     <Compile Include="info\BaseInfo.cs" />
