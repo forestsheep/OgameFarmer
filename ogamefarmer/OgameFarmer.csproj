@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="form\DefenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\DefenceForm.Designer.cs">
+      <DependentUpon>DefenceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />
     <Compile Include="module\AccessDB.cs" />
@@ -119,6 +125,9 @@
     <Compile Include="controller\UnExpectPageController.cs" />
     <EmbeddedResource Include="form\DeadSheepForm.resx">
       <DependentUpon>DeadSheepForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\DefenceForm.resx">
+      <DependentUpon>DefenceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\DispatchForm.resx">
       <DependentUpon>DispatchForm.cs</DependentUpon>

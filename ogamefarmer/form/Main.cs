@@ -9,6 +9,7 @@ using System.Net;
 using System.IO;
 using System.Collections;
 using System.Diagnostics;
+using OgameFarmer.form;
 
 namespace OgameFarmer
 {
@@ -355,18 +356,20 @@ namespace OgameFarmer
 
         private void btnAllDefence_Click(object sender, EventArgs e)
         {
-            isEnddefence = false;
-            progressBar1.Increment(-100);
-            progressBar1.Visible = true;
-            btnAllDefence.Enabled = false;
-            try
-            {
-                ss.run(7);
-            }
-            catch (Exception ee)
-            {
-                ee.ToString();
-            }
+            //isEnddefence = false;
+            //progressBar1.Increment(-100);
+            //progressBar1.Visible = true;
+            //btnAllDefence.Enabled = false;
+            //try
+            //{
+            //    ss.run(7);
+            //}
+            //catch (Exception ee)
+            //{
+            //    ee.ToString();
+            //}
+            DefenceForm dff = new DefenceForm();
+            dff.Show();
         }
     }
 }
