@@ -368,7 +368,7 @@ namespace OgameFarmer
             //{
             //    ee.ToString();
             //}
-            DefenceForm dff = new DefenceForm();
+            DefenceForm dff = new DefenceForm(ss);
             dff.Show();
         }
     }

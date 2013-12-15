@@ -3,7 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgameFarmer", "ogamefarmer\OgameFarmer.csproj", "{D3D28AAE-3AD5-4200-8107-1C97C93BC009}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2CB51777-9357-4062-B54C-87F71A7D0D5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgameFarmerTest", "OgameFarmerTest\OgameFarmerTest.csproj", "{21394CA5-3153-44DA-B2E0-3C2D80DC3892}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3D28AAE-3AD5-4200-8107-1C97C93BC009} = {D3D28AAE-3AD5-4200-8107-1C97C93BC009}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -28,6 +31,16 @@ Global
 		{D3D28AAE-3AD5-4200-8107-1C97C93BC009}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D3D28AAE-3AD5-4200-8107-1C97C93BC009}.Release|x86.ActiveCfg = Release|x86
 		{D3D28AAE-3AD5-4200-8107-1C97C93BC009}.Release|x86.Build.0 = Release|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Debug|x86.ActiveCfg = Debug|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Debug|x86.Build.0 = Debug|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Release|Any CPU.ActiveCfg = Release|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Release|Mixed Platforms.Build.0 = Release|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Release|x86.ActiveCfg = Release|x86
+		{21394CA5-3153-44DA-B2E0-3C2D80DC3892}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

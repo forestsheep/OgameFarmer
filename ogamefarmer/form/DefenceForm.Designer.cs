@@ -30,13 +30,13 @@
         {
             this.btnMakeTower = new System.Windows.Forms.Button();
             this.gbStrategy = new System.Windows.Forms.GroupBox();
+            this.rbMetal = new System.Windows.Forms.RadioButton();
             this.rbPaohui = new System.Windows.Forms.RadioButton();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.pbDefence = new System.Windows.Forms.ProgressBar();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ss = new System.Windows.Forms.StatusStrip();
             this.tsslStrategyDescription = new System.Windows.Forms.ToolStripStatusLabel();
-            this.rbMetal = new System.Windows.Forms.RadioButton();
             this.gbStrategy.SuspendLayout();
             this.ss.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +61,19 @@
             this.gbStrategy.Size = new System.Drawing.Size(144, 134);
             this.gbStrategy.TabIndex = 1;
             this.gbStrategy.TabStop = false;
-            this.gbStrategy.Text = "策略";
+            this.gbStrategy.Text = "建造策略";
+            // 
+            // rbMetal
+            // 
+            this.rbMetal.AutoSize = true;
+            this.rbMetal.Location = new System.Drawing.Point(23, 92);
+            this.rbMetal.Name = "rbMetal";
+            this.rbMetal.Size = new System.Drawing.Size(83, 16);
+            this.rbMetal.TabIndex = 2;
+            this.rbMetal.TabStop = true;
+            this.rbMetal.Text = "只使用金属";
+            this.rbMetal.UseVisualStyleBackColor = true;
+            this.rbMetal.CheckedChanged += new System.EventHandler(this.rbMetal_CheckedChanged);
             // 
             // rbPaohui
             // 
@@ -115,18 +127,6 @@
             // 
             this.tsslStrategyDescription.Name = "tsslStrategyDescription";
             this.tsslStrategyDescription.Size = new System.Drawing.Size(0, 17);
-            // 
-            // rbMetal
-            // 
-            this.rbMetal.AutoSize = true;
-            this.rbMetal.Location = new System.Drawing.Point(23, 92);
-            this.rbMetal.Name = "rbMetal";
-            this.rbMetal.Size = new System.Drawing.Size(83, 16);
-            this.rbMetal.TabIndex = 2;
-            this.rbMetal.TabStop = true;
-            this.rbMetal.Text = "只使用金属";
-            this.rbMetal.UseVisualStyleBackColor = true;
-            this.rbMetal.CheckedChanged += new System.EventHandler(this.rbMetal_CheckedChanged);
             // 
             // DefenceForm
             // 

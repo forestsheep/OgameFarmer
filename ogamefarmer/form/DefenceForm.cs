@@ -11,19 +11,52 @@ namespace OgameFarmer.form
 {
     public partial class DefenceForm : Form
     {
-        public DefenceForm()
-        {
+        private StarScript starScript;
+        private AllDefence defenceStrategy;
+        private DefenceMessager defenceMessager;
+
+        public DefenceForm(StarScript ss)
+        {               
             InitializeComponent();
+            defenceStrategy = new AllDefence();
+            starScript = ss;
+            ss.defenceStrategy = defenceStrategy;
+            ss.DefenceEvent += this.OnMessageRecived;
+        }
+
+        private void OnMessageRecived(DefenceMessager dm)
+        {
+            this.defenceMessager = dm;
+            Object[] list = { this, System.EventArgs.Empty };
+            this.pbDefence.BeginInvoke(new EventHandler(DoAfterRecivedMessage), list);
+        }
+
+        private void DoAfterRecivedMessage(object sender, EventArgs args)
+        {
+            this.pbDefence.Value = this.defenceMessager.progress;
         }
 
         private void DefenceForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnMakeTower_Click(object sender, EventArgs e)
         {
-            int i = gbStrategy.Controls.Count;
+            btnMakeTower.Enabled = false;
+            if (rbAll.Checked)
+            {
+                defenceStrategy.defenceType = AllDefence.DefenceType.ALL;
+            }
+            else if (rbPaohui.Checked)
+            {
+                defenceStrategy.defenceType = AllDefence.DefenceType.PAOHUI;
+            }
+            else if (rbMetal.Checked)
+            {
+                defenceStrategy.defenceType = AllDefence.DefenceType.METAL;
+            }
+            starScript.run(7);
         }
 
         private void rbAll_CheckedChanged(object sender, EventArgs e)

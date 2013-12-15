@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefenceMessager.cs" />
     <Compile Include="form\DefenceForm.cs">
       <SubType>Form</SubType>
     </Compile>

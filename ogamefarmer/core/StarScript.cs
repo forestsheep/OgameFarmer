@@ -16,7 +16,10 @@ namespace OgameFarmer
     internal delegate void RankScanOverNoti(int overtype);
     internal delegate void ConstructionSender(ArrayList al);
     internal delegate void GalaxyScanNoti(int scanstatus);
-    internal class StarScript
+
+    internal delegate void DefenceMessageSender(DefenceMessager defenceMessager);
+
+    public class StarScript
     {
         private static MessageSender MessageEventHandler;
 
@@ -28,10 +31,14 @@ namespace OgameFarmer
 
         private static GalaxyScanNoti GalaxyScanEventHandler;
 
+        private static DefenceMessageSender DefenceEventHandler;
+
         private static Thread T;
 
         private static HttpAccesser ha;
         private static ProductivityInfo pi;
+
+        internal AllDefence defenceStrategy;
 
         internal static string loginname;
         internal static string password;
@@ -113,7 +120,7 @@ namespace OgameFarmer
             Thread.Sleep(200);
         }
 
-        internal static void login(object o)
+        internal void login(object o)
         {
             ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
             ha.access();
@@ -122,7 +129,7 @@ namespace OgameFarmer
             Thread.Sleep(200);
         }
 
-        internal static void overview(object o)
+        internal void overview(object o)
         {
             ArrayList balls = new ArrayList();
             StringBuilder sb = new StringBuilder();
@@ -149,7 +156,7 @@ namespace OgameFarmer
             Thread.Sleep(200);
         }
 
-        internal static void Productivity(object o)
+        internal void Productivity(object o)
         {
             ArrayList balls = new ArrayList();
             StringBuilder sb = new StringBuilder();
@@ -179,7 +186,7 @@ namespace OgameFarmer
             Thread.Sleep(200);
         }
 
-        internal static void Construction(object o)
+        internal void Construction(object o)
         {
             ArrayList balls = new ArrayList();
             //ha = ConstructionInfo.PrepareHttpAccesser(universe);
@@ -203,7 +210,7 @@ namespace OgameFarmer
             ConstructionEventHandler(balls);
         }
 
-        internal static void Locations(object o)
+        internal void Locations(object o)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -292,7 +299,7 @@ namespace OgameFarmer
             }
         }
 
-        internal static void Rank(object o)
+        internal void Rank(object o)
         {
             string connStr = "Provider=Microsoft.ACE.OLEDB.12.0;data source=rank.accdb";
             try
@@ -334,7 +341,7 @@ namespace OgameFarmer
             RankScanOverHandler(0);
         }
 
-        private static void GalaxyLoop(string processid, int galaxyStart, int solarStart, OleDbDataAdapter adp, OleDbConnection dbc)
+        private void GalaxyLoop(string processid, int galaxyStart, int solarStart, OleDbDataAdapter adp, OleDbConnection dbc)
         {
             bool firstScan = true;
             for (int yin = galaxyStart - 1; yin < 9; yin++)
@@ -376,44 +383,51 @@ namespace OgameFarmer
             GalaxyScanEventHandler(0);
         }
 
-        private static void SpendAllToDefence(object o)
+        private void SpendAllToDefence(object o)
         {
-            ArrayList balls = new ArrayList();
-            StringBuilder sb = new StringBuilder();
-            sb.Append("http://");
-            sb.Append(universe);
-            sb.Append(".cicihappy.com/ogame/resources.php");
-            ha.AccessUrl = sb.ToString();
-            string baseurl = ha.AccessUrl;
-            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
-            ha.access();
-            //取得第一个星球的总星球列表
-            pi = ProductivityInfo.AnalyzHtml();
-            Thread.Sleep(3000);
-            foreach (ProductivityInfo.Ball ball in pi.Balllist)
-            {
-                ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.access();
-                //取得每一个星球
-                ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
-                AllDefence.Metal = piloop.Metal;
-                AllDefence.Crystal = piloop.Crystal;
-                AllDefence.HH = piloop.H;
+            //ArrayList balls = new ArrayList();
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append("http://");
+            //sb.Append(universe);
+            //sb.Append(".cicihappy.com/ogame/resources.php");
+            //ha.AccessUrl = sb.ToString();
+            //string baseurl = ha.AccessUrl;
+            //ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
+            //ha.access();
+            ////取得第一个星球的总星球列表
+            //pi = ProductivityInfo.AnalyzHtml();
+            //Thread.Sleep(3000);
+            //foreach (ProductivityInfo.Ball ball in pi.Balllist)
+            //{
+            //    ha.AccessUrl = baseurl + ball.AccessParm;
+            //    ha.access();
+            //    //取得每一个星球
+            //    ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
+            //    defenceStrategy.Metal = piloop.Metal;
+            //    defenceStrategy.Crystal = piloop.Crystal;
+            //    defenceStrategy.HH = piloop.H;
 
-                AllDefence.PrepareAccess(ref ha, ball.AccessParm);
-                Thread.Sleep(3000);
-                AllDefence.SpendAllOnCurrentPlanet(ha);
-                Thread.Sleep(3000);
-                MessageEventHandler(100 / pi.Balllist.Count);
+            //    defenceStrategy.PrepareAccess(ref ha, ball.AccessParm);
+            //    Thread.Sleep(3000);
+            //    defenceStrategy.MakeDefenceTower(ha);
+            //    Thread.Sleep(3000);
+            //    MessageEventHandler(100 / pi.Balllist.Count);
+            //}
+            //ObjectEventHandler(new AllDefence());
+            DefenceMessager dm = new DefenceMessager();
+            for (int i = 0; i < 10; i++)
+            {
+                dm.progress += 10;
+                DefenceEventHandler(dm);
+                Thread.Sleep(500);
             }
-            ObjectEventHandler(new AllDefence());
         }
 
         internal event MessageSender Msger
         {
             add
             {
-                MessageEventHandler += new MessageSender(value);
+                  MessageEventHandler += new MessageSender(value);
             }
             remove
             {
@@ -466,6 +480,18 @@ namespace OgameFarmer
             remove
             {
                 GalaxyScanEventHandler -= new GalaxyScanNoti(value);
+            }
+        }
+
+        internal event DefenceMessageSender DefenceEvent
+        {
+            add
+            {
+                DefenceEventHandler += new DefenceMessageSender(value);
+            }
+            remove
+            {
+                DefenceEventHandler -= new DefenceMessageSender(value);
             }
         }
     }
