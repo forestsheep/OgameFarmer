@@ -38,7 +38,7 @@ namespace OgameFarmer
         /// <summary>
         /// 最大化地使用资源去建造防御
         /// <summary>
-        internal void MakeDefenceTower(HttpAccesser ha)
+        internal void MakeDefenceTower(HttpAccesser ha, DefenceMessager dm)
         {
             int fmenge401 = 0, fmenge402 = 0, fmenge405 = 0, fmenge406 = 0;
             switch (defenceType)
@@ -53,6 +53,10 @@ namespace OgameFarmer
 
                     break;
             }
+            dm.f401 = fmenge401;
+            dm.f402 = fmenge402;
+            dm.f405 = fmenge405;
+            dm.f406 = fmenge406;
             // 如果超过上限5000，则分批处理
             ha.AccessUrl = "http://u8.cicihappy.com/ogame/buildings.php?mode=defense";
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysmapForm));
             this.b_start = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.l_prograss = new System.Windows.Forms.Label();
@@ -97,6 +98,7 @@
             this.Controls.Add(this.l_prograss);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.b_start);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SysmapForm";
             this.Text = "星图";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SysmapForm_FormClosing);

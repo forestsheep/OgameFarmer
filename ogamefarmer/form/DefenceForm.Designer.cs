@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefenceForm));
             this.btnMakeTower = new System.Windows.Forms.Button();
             this.gbStrategy = new System.Windows.Forms.GroupBox();
             this.rbMetal = new System.Windows.Forms.RadioButton();
             this.rbPaohui = new System.Windows.Forms.RadioButton();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.pbDefence = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbLogBox = new System.Windows.Forms.TextBox();
             this.ss = new System.Windows.Forms.StatusStrip();
             this.tsslStrategyDescription = new System.Windows.Forms.ToolStripStatusLabel();
             this.gbStrategy.SuspendLayout();
@@ -106,13 +107,13 @@
             this.pbDefence.Size = new System.Drawing.Size(546, 23);
             this.pbDefence.TabIndex = 2;
             // 
-            // textBox1
+            // tbLogBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(33, 39);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(376, 215);
-            this.textBox1.TabIndex = 3;
+            this.tbLogBox.Location = new System.Drawing.Point(33, 39);
+            this.tbLogBox.Multiline = true;
+            this.tbLogBox.Name = "tbLogBox";
+            this.tbLogBox.Size = new System.Drawing.Size(376, 215);
+            this.tbLogBox.TabIndex = 3;
             // 
             // ss
             // 
@@ -134,12 +135,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 367);
             this.Controls.Add(this.ss);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbLogBox);
             this.Controls.Add(this.pbDefence);
             this.Controls.Add(this.gbStrategy);
             this.Controls.Add(this.btnMakeTower);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DefenceForm";
-            this.Text = "DefenceForm";
+            this.Text = "防御";
             this.Load += new System.EventHandler(this.DefenceForm_Load);
             this.gbStrategy.ResumeLayout(false);
             this.gbStrategy.PerformLayout();
@@ -157,7 +159,7 @@
         private System.Windows.Forms.RadioButton rbPaohui;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.ProgressBar pbDefence;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbLogBox;
         private System.Windows.Forms.StatusStrip ss;
         private System.Windows.Forms.ToolStripStatusLabel tsslStrategyDescription;
         private System.Windows.Forms.RadioButton rbMetal;

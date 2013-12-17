@@ -16,7 +16,7 @@ namespace OgameFarmer.form
         private DefenceMessager defenceMessager;
 
         public DefenceForm(StarScript ss)
-        {               
+        {
             InitializeComponent();
             defenceStrategy = new AllDefence();
             starScript = ss;
@@ -34,6 +34,12 @@ namespace OgameFarmer.form
         private void DoAfterRecivedMessage(object sender, EventArgs args)
         {
             this.pbDefence.Value = this.defenceMessager.progress;
+            this.tbLogBox.AppendText(defenceMessager.PostBuildLog() + "\r\n");
+            if (this.defenceMessager.isBuildOver)
+            {
+                this.pbDefence.Value = 0;
+                this.btnMakeTower.Enabled = true;
+            }
         }
 
         private void DefenceForm_Load(object sender, EventArgs e)

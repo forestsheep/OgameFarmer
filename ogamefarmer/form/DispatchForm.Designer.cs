@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DispatchForm));
             this.lb_ball_list = new System.Windows.Forms.ListBox();
             this.lb_cons_list = new System.Windows.Forms.ListBox();
             this.b_check = new System.Windows.Forms.Button();
@@ -144,6 +145,7 @@
             this.Controls.Add(this.b_check);
             this.Controls.Add(this.lb_cons_list);
             this.Controls.Add(this.lb_ball_list);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DispatchForm";
             this.Text = "银河农夫 - 资源调度";
             this.Load += new System.EventHandler(this.DispatchForm_Load);

@@ -39,23 +39,23 @@ namespace OgameFarmer
 
         private void login()
         {
-            //this.b_login.Text = "login...";
-            //this.b_login.Enabled = false;
-            //StarScript.loginname = this.tb_username.Text;
-            //StarScript.password = this.tb_pw.Text;
-            //StarScript.universe = cb_uni.SelectedItem.ToString();
-            //try
-            //{
-            //    ss.run(2);
-            //}
-            //catch (Exception ee)
-            //{
-            //    ee.ToString();
-            //}
-            Main m = new Main(this.ss);
-            m.Show();
-            ss.Osender -= this.OnLogin;
-            this.Hide();
+            this.b_login.Text = "login...";
+            this.b_login.Enabled = false;
+            StarScript.loginname = this.tb_username.Text;
+            StarScript.password = this.tb_pw.Text;
+            StarScript.universe = cb_uni.SelectedItem.ToString();
+            try
+            {
+                ss.run(2);
+            }
+            catch (Exception ee)
+            {
+                ee.ToString();
+            }
+            //Main m = new Main(this.ss);
+            //m.Show();
+            //ss.Osender -= this.OnLogin;
+            //this.Hide();
         }
 
         private LoginInfo li;
