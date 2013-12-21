@@ -518,7 +518,7 @@
             this.btnAllDefence.Name = "btnAllDefence";
             this.btnAllDefence.Size = new System.Drawing.Size(71, 42);
             this.btnAllDefence.TabIndex = 51;
-            this.btnAllDefence.Text = "全防御";
+            this.btnAllDefence.Text = "防御";
             this.btnAllDefence.UseVisualStyleBackColor = true;
             this.btnAllDefence.Click += new System.EventHandler(this.btnAllDefence_Click);
             // 

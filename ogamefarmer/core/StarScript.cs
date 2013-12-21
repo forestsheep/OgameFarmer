@@ -422,10 +422,10 @@ namespace OgameFarmer
                 }
                 DefenceEventHandler(dm);
                 i++;
-                if (i > 1)
-                {
-                    break;
-                }
+                //if (i > 1)
+                //{
+                //    break;
+                //}
             }
             dm.isBuildOver = true;
             DefenceEventHandler(dm);

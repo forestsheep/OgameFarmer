@@ -44,11 +44,50 @@ namespace OgameFarmer.form
 
         private void DefenceForm_Load(object sender, EventArgs e)
         {
-
+            rb23.Checked = true;
+            rbAll.Checked = true;
+            tbMetalReserve.Text = "0";
+            tbCrystalReserve.Text = "0";
+            tbHHReserve.Text = "0";
         }
 
         private void btnMakeTower_Click(object sender, EventArgs e)
         {
+            defenceStrategy.MetalCapacity = 0;
+            defenceStrategy.CrystalCapacity = 0;
+            defenceStrategy.HHCapacity = 0;
+            try
+            {
+                defenceStrategy.MetalCapacity = Int32.Parse(tbMetalReserve.Text);
+                defenceStrategy.CrystalCapacity = Int32.Parse(tbCrystalReserve.Text);
+                defenceStrategy.HHCapacity = Int32.Parse(tbHHReserve.Text);
+
+                if (rb13.Checked)
+                {
+                    defenceStrategy.RatioNumerator = 1;
+                    defenceStrategy.RatioDenominator = 3;
+                }
+                else if (rb21.Checked)
+                {
+                    defenceStrategy.RatioNumerator = 1;
+                    defenceStrategy.RatioDenominator = 2;
+                }
+                else if (rb23.Checked)
+                {
+                    defenceStrategy.RatioNumerator = 2;
+                    defenceStrategy.RatioDenominator = 3;
+                }
+                else if (rbCustom.Checked)
+                {
+                    defenceStrategy.RatioNumerator = Double.Parse(tbNumerator.Text);
+                    defenceStrategy.RatioDenominator = Double.Parse(tbDenominator.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
             btnMakeTower.Enabled = false;
             if (rbAll.Checked)
             {
@@ -79,5 +118,6 @@ namespace OgameFarmer.form
         {
             this.tsslStrategyDescription.Text = "只使用金属来建造火箭炮。";
         }
+
     }
 }

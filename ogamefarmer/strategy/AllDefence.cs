@@ -12,6 +12,12 @@ namespace OgameFarmer
         public int Metal;
         public int Crystal;
         public int HH;
+        public int MetalCapacity;
+        public int CrystalCapacity;
+        public int HHCapacity;
+
+        public double RatioNumerator;
+        public double RatioDenominator;
 
         internal DefenceType defenceType;
 
@@ -36,10 +42,18 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// 最大化地使用资源去建造防御
+        /// 使用各种策略去建造防御
         /// <summary>
         internal void MakeDefenceTower(HttpAccesser ha, DefenceMessager dm)
         {
+            Metal -= Math.Min(Metal, MetalCapacity);
+            Crystal -= Math.Min(Crystal, CrystalCapacity);
+            HH -= Math.Min(HH, HHCapacity);
+
+            Metal = (Int32)(Metal * RatioNumerator / RatioDenominator);
+            Crystal = (Int32)(Crystal * RatioNumerator / RatioDenominator);
+            HH = (Int32)(HH * RatioNumerator / RatioDenominator);
+
             int fmenge401 = 0, fmenge402 = 0, fmenge405 = 0, fmenge406 = 0;
             switch (defenceType)
             {
@@ -47,10 +61,10 @@ namespace OgameFarmer
                     StrategyAll(ref fmenge401, ref fmenge402, ref fmenge405, ref fmenge406);
                     break;
                 case DefenceType.PAOHUI:
-                    
+                    StrategyPaohui(ref fmenge401, ref fmenge402);
                     break;
                 case DefenceType.METAL:
-
+                    StrategyMetal(ref fmenge401);
                     break;
             }
             dm.f401 = fmenge401;
@@ -178,21 +192,32 @@ namespace OgameFarmer
         /// <param name="fmenge402"></param>
         /// <param name="fmenge405"></param>
         /// <param name="fmenge406"></param>
-        public void StrategyPaohui(ref int fmenge401, ref int fmenge402, ref int fmenge405, ref int fmenge406)
+        public void StrategyPaohui(ref int fmenge401, ref int fmenge402)
         {
-            
+            if (Metal >= 1500 && Crystal >= 500)
+            {
+                fmenge402 = Math.Min(Metal / 1500, Crystal / 500);
+                int metalLeft = Metal - 1500 * fmenge402;
+                if (metalLeft >= 2000)
+                {
+                    fmenge401 = metalLeft / 2000;
+                }
+            }
         }
 
         /// <summary>
-        /// 战术：尽可能建造炮灰，也就是先轻型激光炮，再火箭发射装置
+        /// 战术：只建造火箭发射装置
         /// </summary>
         /// <param name="fmenge401"></param>
         /// <param name="fmenge402"></param>
         /// <param name="fmenge405"></param>
         /// <param name="fmenge406"></param>
-        public void StrategyMetal(ref int fmenge401, ref int fmenge402, ref int fmenge405, ref int fmenge406)
+        public void StrategyMetal(ref int fmenge401)
         {
-
+            if (Metal > 2000)
+            {
+                fmenge401 = Metal / 2000;
+            }
         }
     }
 }

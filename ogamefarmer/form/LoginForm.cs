@@ -28,8 +28,8 @@ namespace OgameFarmer
         {
             cb_uni.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_uni.SelectedIndex = 1;
-            tb_username.Text = "隔江犹唱后庭花";
-            tb_pw.Text = "911911f911";
+            //tb_username.Text = "隔江犹唱后庭花";
+            //tb_pw.Text = "911911f911";
         }
 
         private void b_login_Click(object sender, EventArgs e)
