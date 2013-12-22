@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 namespace OgameFarmer
 {
     internal class UnExpectPageController
@@ -37,17 +38,31 @@ namespace OgameFarmer
         /// <param name="s">页面的html全文</param>
         internal void VarifyCookiePeriod(string s)
         {
-            if (CheckCookieCondition(s))
+            try
             {
-                throw new CookieExpireException();
+                if (CheckCookieCondition(s))
+                {
+                    throw new CookieExpireException();
+                }
+            }
+            catch (CookieExpireException ce)
+            {
+                MessageBox.Show(ce.ToString());
             }
         }
 
         internal void VarifyOutOfHH(string s)
         {
-            if (CheckOutOfHHCondition(s))
+            try
             {
-                throw new OutOfHHException();
+                if (CheckOutOfHHCondition(s))
+                {
+                    throw new OutOfHHException();
+                }
+            }
+            catch (OutOfHHException ohe)
+            {
+                MessageBox.Show(ohe.ToString());
             }
         }
 

@@ -31,11 +31,15 @@ namespace OgameFarmer
 
         private void ScanStepOver(object sender, EventArgs e)
         {
-            l_prograss.Text = this.scanStatus.ToString();
-            if (this.scanStatus == 90499)
+            if (this.scanStatus == 90499 || this.scanStatus == -1)
             {
                 b_start.Enabled = true;
             }
+            if (this.scanStatus == -1)
+            {
+                return;
+            }
+            l_prograss.Text = this.scanStatus.ToString();
         }
 
         private void b_start_Click(object sender, EventArgs e)

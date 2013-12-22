@@ -10,6 +10,7 @@ using System.IO;
 using System.Collections;
 using System.Diagnostics;
 using OgameFarmer.form;
+using OgameFarmer.messager;
 
 namespace OgameFarmer
 {
@@ -20,14 +21,14 @@ namespace OgameFarmer
         private ProductivityInfo pi;
         private ArrayList balls;
         private ArrayList oballs = new ArrayList();
+        private int progessStep;
 
         #region 构造函数
         internal Main(StarScript ss)
         {
             InitializeComponent();
             this.ss = ss;
-            this.ss.Osender += this.OnObjectRecived;
-            this.ss.Msger += this.OnMessageRecived;
+            this.ss.MainEvent += this.OnMessageRecived;
         }
         #endregion
 
@@ -56,50 +57,7 @@ namespace OgameFarmer
 
         protected void ShowInfo(object sender, EventArgs e)
         {
-            if (info != null)
-            {
-                l_ballname.Text = info.CurrentBallName;
-                l_metal.Text = string.Format("{0:N0}", info.Metal);
-                
-                l_metalstroe.Text = string.Format("{0:N0}", info.MetalStore);
-                l_crystal.Text = string.Format("{0:N0}", info.Crystal);
-                l_crystalstore.Text = string.Format("{0:N0}", info.CrystalStore);
-                l_h.Text = string.Format("{0:N0}", info.H);
-                l_hstore.Text = string.Format("{0:N0}", info.HStore);
-                l_energy.Text = string.Format("{0:N0}", info.Energy);
-                l_energystore.Text = string.Format("{0:N0}", info.EnergyStroe);
-                lb_ball_list.Items.Clear();
-                //foreach (OverviewInfo.Ball b in info.Balllist)
-                //{
-                    //string s = b.Name;
-                    //for (int i = 0; i < 12 - b.Name.Length; i++)
-                    //{
-                    //    s += " ";
-                    //}
-                    //s += "[" + b.Location + "]";
-                    //lb_balllist.Items.Add(s);
-                //}
-            }
-            if (balls != null)
-            {
-                int allm = 0;
-                int allc = 0;
-                int allh = 0;
-                foreach (CommonInfo ball in balls)
-                {
-                    allm += ball.Metal;
-                    allc += ball.Crystal;
-                    allh += ball.H;
-                    lb_ball_list.Items.Add(ball);
-                }
-                l_metal_all.Text = string.Format("{0:N0}", allm);
-                l_crystal_all.Text = string.Format("{0:N0}", allc);
-                l_H_all.Text = string.Format("{0:N0}", allh);
-            }
-        }
-
-        protected void ShowInfo2(object sender, EventArgs e)
-        {
+            progressBar1.Increment(progessStep);
             if (pi != null)
             {
                 l_ballname.Text = pi.CurrentBallName;
@@ -156,14 +114,15 @@ namespace OgameFarmer
                 l_metal_allday.Text = string.Format("{0:N0}", allmh * 24);
                 l_crystal_allday.Text = string.Format("{0:N0}", allch * 24);
                 l_h_allday.Text = string.Format("{0:N0}", allhh * 24);
+                progressBar1.Visible = false;
+                btnOverView.Enabled = true;
             }
-            progressBar1.Visible = false;
-            btnOverView.Enabled = true;
+            
         }
 
         protected void ShowMsg(object sender, EventArgs e)
         {
-            progressBar1.Increment(progessStep);
+            
         }
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -251,31 +210,16 @@ namespace OgameFarmer
         //    remove { OnObjectSend -= new ObjectSender(value); }
         //}
 
-        private void OnObjectRecived(object o)
+        private void OnMessageRecived(MainMessager mm)
         {
-            if (o.GetType() == typeof(OverviewInfo))
-            {
-                info = (OverviewInfo)o;
-            }
-            else if (o.GetType() == typeof(ArrayList))
-            {
-                balls = (ArrayList)o;
-            }
-            else if (o.GetType() == typeof(ProductivityInfo))
-            {
-                pi = (ProductivityInfo)o;
-            }
+            info = mm.ovf;
+            balls = mm.balls;
+            pi = mm.productivityInfo;
+            progessStep = mm.progressBarStep;
             Object[] list = { this, System.EventArgs.Empty };
-            this.outputArea.BeginInvoke(new EventHandler(ShowInfo2), list);
+            this.outputArea.BeginInvoke(new EventHandler(ShowInfo), list);
         }
-
-        private int progessStep;
-        private void OnMessageRecived(int i)
-        {
-            progessStep = i;
-            Object[] list = { this, System.EventArgs.Empty };
-            this.outputArea.BeginInvoke(new EventHandler(ShowMsg), list);
-        }
+        
         #endregion
 
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
@@ -360,6 +304,12 @@ namespace OgameFarmer
             //}
             DefenceForm dff = new DefenceForm(ss);
             dff.Show();
+        }
+
+        private void btnFleet_Click(object sender, EventArgs e)
+        {
+            FleetForm ff = new FleetForm(ss);
+            ff.Show();
         }
     }
 }

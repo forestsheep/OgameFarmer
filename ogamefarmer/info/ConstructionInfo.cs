@@ -41,6 +41,11 @@ namespace OgameFarmer
         internal ArrayList allCons = new ArrayList();
         internal static ConstructionInfo AnalyzHtml()
         {
+            // 验证页面是否是未期待页面
+            string htmlTxt = Txtout.Read();
+            UnExpectPageController upc = UnExpectPageController.GetInstance();
+            upc.VarifyCookiePeriod(htmlTxt);
+
             ConstructionInfo ci = new ConstructionInfo();
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
             h.Load(ConstString.HTML_PATH);

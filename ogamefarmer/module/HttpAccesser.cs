@@ -117,7 +117,7 @@ namespace OgameFarmer
             get { return cookies; }
             set { cookies = value; }
         }
-        
+
         /// <summary>
         /// urlParam
         /// </summary>
@@ -127,7 +127,7 @@ namespace OgameFarmer
             get { return urlParam; }
             set { urlParam = value; }
         }
-        
+
         /// <summary>
         /// response date
         /// </summary>
@@ -146,7 +146,7 @@ namespace OgameFarmer
         {
             get { return responseText; }
         }
-        
+
         /// <summary>
         /// set or get is using cookie
         /// </summary>
@@ -216,7 +216,7 @@ namespace OgameFarmer
             {
                 c.Expires = DateTime.Parse(expires);
             }
-            cookies.Add(c); 
+            cookies.Add(c);
         }
 
         private void prepareSomething()

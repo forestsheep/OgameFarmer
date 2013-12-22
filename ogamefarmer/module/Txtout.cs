@@ -34,7 +34,7 @@ namespace OgameFarmer
             {
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
-                using (StreamReader sr = new StreamReader(ConstString.HTML_PATH))
+                using (StreamReader sr = new StreamReader(ConstString.HTML_PATH,Encoding.GetEncoding("GB2312")))
                 {
                     string returnString = string.Empty;
                     string line;

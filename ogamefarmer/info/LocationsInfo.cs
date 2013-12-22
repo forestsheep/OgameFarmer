@@ -128,6 +128,7 @@ namespace OgameFarmer
 
         internal static LocationsInfo[] AnalyzHtml()
         {
+            // 验证页面是否是未期待页面
             string htmlTxt = Txtout.Read();
             UnExpectPageController upc = UnExpectPageController.GetInstance();
             upc.VarifyCookiePeriod(htmlTxt);

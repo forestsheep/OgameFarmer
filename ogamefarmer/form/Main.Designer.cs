@@ -75,6 +75,7 @@
             this.b_sysmap = new System.Windows.Forms.Button();
             this.btnRank = new System.Windows.Forms.Button();
             this.btnAllDefence = new System.Windows.Forms.Button();
+            this.btnFleet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputArea
@@ -522,11 +523,22 @@
             this.btnAllDefence.UseVisualStyleBackColor = true;
             this.btnAllDefence.Click += new System.EventHandler(this.btnAllDefence_Click);
             // 
+            // btnFleet
+            // 
+            this.btnFleet.Location = new System.Drawing.Point(572, 24);
+            this.btnFleet.Name = "btnFleet";
+            this.btnFleet.Size = new System.Drawing.Size(71, 42);
+            this.btnFleet.TabIndex = 52;
+            this.btnFleet.Text = "舰队";
+            this.btnFleet.UseVisualStyleBackColor = true;
+            this.btnFleet.Click += new System.EventHandler(this.btnFleet_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 661);
+            this.Controls.Add(this.btnFleet);
             this.Controls.Add(this.btnAllDefence);
             this.Controls.Add(this.btnRank);
             this.Controls.Add(this.b_sysmap);
@@ -632,6 +644,7 @@
         private System.Windows.Forms.Button b_sysmap;
         private System.Windows.Forms.Button btnRank;
         private System.Windows.Forms.Button btnAllDefence;
+        private System.Windows.Forms.Button btnFleet;
     }
 }
 

@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.Net;
+using System.Management;
+using System.Net.Mail;
+using OgameFarmer.messager;
 
 namespace OgameFarmer
 {
@@ -19,17 +23,19 @@ namespace OgameFarmer
             //string s = string.Format(XPATH_METALMINE, 2);
             InitializeComponent();
             this.ss = new StarScript();
-            ss.Osender += this.OnLogin;
-            
-            
+            ss.LoginEvent += this.OnLogin;
+
+
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             cb_uni.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_uni.SelectedIndex = 1;
+            cb_uni.SelectedIndex = 0;
             //tb_username.Text = "隔江犹唱后庭花";
             //tb_pw.Text = "911911f911";
+            tb_username.Text = "boccaro";
+            tb_pw.Text = "911911f911";
         }
 
         private void b_login_Click(object sender, EventArgs e)
@@ -56,18 +62,47 @@ namespace OgameFarmer
             //m.Show();
             //ss.Osender -= this.OnLogin;
             //this.Hide();
+
+            //string mac = string.Empty;
+            //ManagementObjectSearcher query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration");
+            //ManagementObjectCollection queryCollection = query.Get();
+            //foreach (ManagementObject mo in queryCollection)
+            //{
+            //    if (mo["IPEnabled"].ToString() == "True")
+            //        mac = mo["MacAddress"].ToString();
+            //}
+            //Console.WriteLine(mac);
+
+            //System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+            //message.To.Add("forestsheep_len@163.com");
+            //message.Subject = "This is the Subject line";
+            //message.From = new System.Net.Mail.MailAddress("forestsheep_len@163.com");
+            //message.Body = "mac:" + mac;
+            //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("stmp.163.com");
+            //SmtpClient client = new SmtpClient("smtp.163.com");
+            //client.Credentials = new System.Net.NetworkCredential("forestsheep_len@163.com", "8384f911");
+            //client.UseDefaultCredentials = true;
+            //client.EnableSsl = true;
+            //client.Port = 993;
+            //try
+            //{
+            //    client.Send(message);
+            //}
+            //catch (Exception ee)
+            //{
+            //    ee.ToString();
+            //}
+
         }
 
         private LoginInfo li;
 
-        private void OnLogin(object o)
+        private void OnLogin(LoginMessager lm)
         {
-            if (o.GetType() == typeof(LoginInfo))
-            {
-                li = (LoginInfo)o;
-                Object[] list = { this, System.EventArgs.Empty };
-                this.l_loginMessage.BeginInvoke(new EventHandler(ShowMessage), list);
-            }
+            li = lm.loginInfo;
+            Object[] list = { this, System.EventArgs.Empty };
+            this.l_loginMessage.BeginInvoke(new EventHandler(ShowMessage), list);
+
         }
 
         public void ShowMessage(object sender, EventArgs e)
@@ -77,7 +112,7 @@ namespace OgameFarmer
                 Thread.Sleep(2000);
                 Main m = new Main(this.ss);
                 m.Show();
-                ss.Osender -= this.OnLogin;
+                ss.LoginEvent -= this.OnLogin;
                 this.Hide();
             }
             else

@@ -8,11 +8,12 @@ using System.Net;
 using System.IO;
 using System.Data.OleDb;
 using System.Data;
+using OgameFarmer.messager;
 
 namespace OgameFarmer
 {
-    internal delegate void MessageSender(int sParam);
-    internal delegate void ObjectSender(object o);
+    internal delegate void LoginMessageSender(LoginMessager mm);
+    internal delegate void MainMessageSender(MainMessager mm);
     internal delegate void RankScanOverNoti(int overtype);
     internal delegate void ConstructionSender(ArrayList al);
     internal delegate void GalaxyScanNoti(int scanstatus);
@@ -21,16 +22,11 @@ namespace OgameFarmer
 
     public class StarScript
     {
-        private static MessageSender MessageEventHandler;
-
-        private static ObjectSender ObjectEventHandler;
-
+        private static LoginMessageSender LoginEventHandler;
+        private static MainMessageSender MainEventHandler;
         private static RankScanOverNoti RankScanOverHandler;
-
         private static ConstructionSender ConstructionEventHandler;
-
         private static GalaxyScanNoti GalaxyScanEventHandler;
-
         private static DefenceMessageSender DefenceEventHandler;
 
         private static Thread T;
@@ -64,7 +60,8 @@ namespace OgameFarmer
                 }
                 else
                 {
-                    MessageEventHandler(111);
+                    MessageBox.Show("不能同时干2件事！");
+                    GalaxyScanEventHandler(-1);
                 }
             }
         }
@@ -99,6 +96,11 @@ namespace OgameFarmer
             {
                 T = new Thread(new ParameterizedThreadStart(SpendAllToDefence));
             }
+            else if (id == 8)
+            {
+                T = new Thread(new ParameterizedThreadStart(FleetTest));
+            }
+            
         }
 
         private void homepage(object o)
@@ -122,15 +124,17 @@ namespace OgameFarmer
 
         internal void login(object o)
         {
+            LoginMessager lm = new LoginMessager();
             ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
             ha.access();
-            LoginInfo li = LoginInfo.AnalyzHtml();
-            ObjectEventHandler(li);
+            lm.loginInfo = LoginInfo.AnalyzHtml();
+            LoginEventHandler(lm);
             Thread.Sleep(200);
         }
 
         internal void overview(object o)
         {
+            MainMessager mm = new MainMessager();
             ArrayList balls = new ArrayList();
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -150,14 +154,17 @@ namespace OgameFarmer
                 OverviewInfo ovfloop = OverviewInfo.AnalyzHtml();
                 balls.Add(ovfloop);
             }
-            ObjectEventHandler(ovf);
+            mm.ovf = ovf;
+            mm.balls = balls;
+            MainEventHandler(mm);
             Thread.Sleep(200);
-            ObjectEventHandler(balls);
+            MainEventHandler(mm);
             Thread.Sleep(200);
         }
 
         internal void Productivity(object o)
         {
+            MainMessager mm = new MainMessager();
             ArrayList balls = new ArrayList();
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -177,12 +184,16 @@ namespace OgameFarmer
                 //取得每一个星球
                 ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
                 balls.Add(piloop);
-                MessageEventHandler(100 / pi.Balllist.Count);
+                mm.progressBarStep = 100 / pi.Balllist.Count;
+                MainEventHandler(mm);
             }
+            mm.progressBarStep = 0;
             Thread.Sleep(600);
-            ObjectEventHandler(pi);
+            mm.productivityInfo = pi;
+            MainEventHandler(mm);
             Thread.Sleep(200);
-            ObjectEventHandler(balls);
+            mm.balls = balls;
+            MainEventHandler(mm);
             Thread.Sleep(200);
         }
 
@@ -431,27 +442,46 @@ namespace OgameFarmer
             DefenceEventHandler(dm);
         }
 
-        internal event MessageSender Msger
+        private void FleetTest(object o)
+        {
+            ha = FleetInfo.PerpareHttpAccesserFleet(ha, universe);
+            ha.access();
+            FleetInfo fleetInfo = FleetInfo.AnalyzHtmlFleet();
+            Thread.Sleep(3000);
+            FleetInfo.PerpareHttpAccesserFloten1(ha, universe, fleetInfo);
+            ha.access();
+            fleetInfo = FleetInfo.AnalyzHtmlFloten1(fleetInfo);
+            Thread.Sleep(3000);
+            FleetInfo.PerpareHttpAccesserFloten2(ha, universe, fleetInfo);
+            ha.access();
+            fleetInfo = FleetInfo.AnalyzHtmlFloten2(fleetInfo);
+            Thread.Sleep(3000);
+            FleetInfo.PerpareHttpAccesserFloten3(ha, universe, fleetInfo);
+            ha.access();
+            FleetInfo.AnalyzHtmlFloten3(fleetInfo);
+        }
+
+        internal event LoginMessageSender LoginEvent
         {
             add
             {
-                  MessageEventHandler += new MessageSender(value);
+                LoginEventHandler += new LoginMessageSender(value);
             }
             remove
             {
-                MessageEventHandler -= new MessageSender(value);
+                LoginEventHandler -= new LoginMessageSender(value);
             }
         }
 
-        internal event ObjectSender Osender
+        internal event MainMessageSender MainEvent
         {
             add
             {
-                ObjectEventHandler += new ObjectSender(value);
+                MainEventHandler += new MainMessageSender(value);
             }
             remove
             {
-                ObjectEventHandler -= new ObjectSender(value);
+                MainEventHandler -= new MainMessageSender(value);
             }
         }
 

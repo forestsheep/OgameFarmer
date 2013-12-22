@@ -38,10 +38,13 @@ namespace OgameFarmer
 
         internal static ProductivityInfo AnalyzHtml()
         {
+            // 验证页面是否是未期待页面
+            string htmlTxt = Txtout.Read();
+            UnExpectPageController upc = UnExpectPageController.GetInstance();
+            upc.VarifyCookiePeriod(htmlTxt);
+
             ProductivityInfo pi = new ProductivityInfo();
-            
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
-            
             HtmlNode.ElementsFlags.Remove("option");
             h.Load(ConstString.HTML_PATH);
             

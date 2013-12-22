@@ -52,10 +52,13 @@ namespace OgameFarmer
 
         internal static RankInfo[] AnalyzHtml()
         {
-            RankInfo[] ris = new RankInfo[100];
-            
-            HtmlAgilityPack.HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
+            // 验证页面是否是未期待页面
+            string htmlTxt = Txtout.Read();
+            UnExpectPageController upc = UnExpectPageController.GetInstance();
+            upc.VarifyCookiePeriod(htmlTxt);
 
+            RankInfo[] ris = new RankInfo[100];
+            HtmlAgilityPack.HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
             h.Load(ConstString.HTML_PATH);
             for (int i = 0; i < 100; i++)
             {
