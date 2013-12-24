@@ -83,6 +83,9 @@
     </Compile>
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
+    <Compile Include="concept\Destination.cs" />
+    <Compile Include="concept\Fleet.cs" />
+    <Compile Include="request\FleetMission.cs" />
     <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />
     <Compile Include="module\AccessDB.cs" />
