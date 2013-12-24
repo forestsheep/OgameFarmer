@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace OgameFarmer
 {
@@ -14,22 +15,42 @@ namespace OgameFarmer
         internal static string XPATH_FLOTEN1_PARAM = "/html/body/center/input";
         internal static string XPATH_FLOTEN2_PARAM = "/html/body/center/center/input";
 
-        internal static HttpAccesser PerpareHttpAccesserFleet(HttpAccesser ha, string universe)
+        internal static void SendFleet(HttpAccesser ha)
+        {
+            ha = PerpareHttpAccesserFleet(ha);
+            ha.access();
+            Thread.Sleep(2000);
+            FleetInfo fleetInfo = AnalyzHtmlFleet();
+            ha = PerpareHttpAccesserFloten1(ha, fleetInfo);
+            ha.access();
+            Thread.Sleep(2000);
+            fleetInfo = AnalyzHtmlFloten1(fleetInfo);
+            ha = PerpareHttpAccesserFloten2(ha, fleetInfo);
+            ha.access();
+            Thread.Sleep(2000);
+            fleetInfo = AnalyzHtmlFloten2(fleetInfo);
+            ha = PerpareHttpAccesserFloten3(ha, fleetInfo);
+            ha.access();
+            Thread.Sleep(2000);
+            AnalyzHtmlFloten3(fleetInfo);
+        }
+
+        internal static HttpAccesser PerpareHttpAccesserFleet(HttpAccesser ha)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
-            sb.Append(universe);
+            sb.Append(StarScript.universe);
             sb.Append(".cicihappy.com/ogame/fleet.php");
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             return ha;
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, string universe, FleetInfo fleetInfo )
+        internal static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo )
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
-            sb.Append(universe);
+            sb.Append(StarScript.universe);
             sb.Append(".cicihappy.com/ogame/floten1.php");
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
@@ -48,11 +69,11 @@ namespace OgameFarmer
             return ha;
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFloten2(HttpAccesser ha, string universe, FleetInfo fleetInfo)
+        internal static HttpAccesser PerpareHttpAccesserFloten2(HttpAccesser ha, FleetInfo fleetInfo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
-            sb.Append(universe);
+            sb.Append(StarScript.universe);
             sb.Append(".cicihappy.com/ogame/floten2.php");
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
@@ -71,11 +92,11 @@ namespace OgameFarmer
             return ha;
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFloten3(HttpAccesser ha, string universe, FleetInfo fleetInfo)
+        internal static HttpAccesser PerpareHttpAccesserFloten3(HttpAccesser ha, FleetInfo fleetInfo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
-            sb.Append(universe);
+            sb.Append(StarScript.universe);
             sb.Append(".cicihappy.com/ogame/floten3.php");
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;

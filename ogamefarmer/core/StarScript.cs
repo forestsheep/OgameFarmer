@@ -444,21 +444,7 @@ namespace OgameFarmer
 
         private void FleetTest(object o)
         {
-            ha = FleetInfo.PerpareHttpAccesserFleet(ha, universe);
-            ha.access();
-            FleetInfo fleetInfo = FleetInfo.AnalyzHtmlFleet();
-            Thread.Sleep(3000);
-            FleetInfo.PerpareHttpAccesserFloten1(ha, universe, fleetInfo);
-            ha.access();
-            fleetInfo = FleetInfo.AnalyzHtmlFloten1(fleetInfo);
-            Thread.Sleep(3000);
-            FleetInfo.PerpareHttpAccesserFloten2(ha, universe, fleetInfo);
-            ha.access();
-            fleetInfo = FleetInfo.AnalyzHtmlFloten2(fleetInfo);
-            Thread.Sleep(3000);
-            FleetInfo.PerpareHttpAccesserFloten3(ha, universe, fleetInfo);
-            ha.access();
-            FleetInfo.AnalyzHtmlFloten3(fleetInfo);
+            FleetInfo.SendFleet(ha);
         }
 
         internal event LoginMessageSender LoginEvent
