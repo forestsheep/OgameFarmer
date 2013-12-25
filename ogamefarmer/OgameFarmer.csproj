@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="concept\Coordinate.cs" />
     <Compile Include="form\FleetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,7 +84,6 @@
     </Compile>
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
-    <Compile Include="concept\Destination.cs" />
     <Compile Include="concept\Fleet.cs" />
     <Compile Include="request\FleetMission.cs" />
     <Compile Include="strategy\AllDefence.cs" />

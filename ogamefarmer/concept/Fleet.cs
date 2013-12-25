@@ -8,9 +8,21 @@ namespace OgameFarmer
     class Fleet
     {
 
-        internal Fleet(FleetInfo fleetInfo)
+        internal Fleet()
         {
-
+            ship202 = new Ship202();
+            ship203 = new Ship203();
+            ship204 = new Ship204();
+            ship205 = new Ship205();
+            ship206 = new Ship206();
+            ship207 = new Ship207();
+            ship208 = new Ship208();
+            ship209 = new Ship209();
+            ship210 = new Ship210();
+            ship211 = new Ship211();
+            ship213 = new Ship213();
+            ship214 = new Ship214();
+            ship215 = new Ship215();
         }
 
         internal Ship202 ship202;
@@ -25,8 +37,9 @@ namespace OgameFarmer
         internal Ship211 ship211;
         internal Ship213 ship213;
         internal Ship214 ship214;
+        internal Ship215 ship215;
 
-        class Ship
+        internal class Ship
         {
             internal static string NAME;
             internal static int CAPACITY;
@@ -47,7 +60,7 @@ namespace OgameFarmer
         /// <summary>
         /// 小型运输舰
         /// </summary>
-        class Ship202 : Ship
+        internal class Ship202 : Ship
         {
             static Ship202()
             {
@@ -59,7 +72,7 @@ namespace OgameFarmer
         /// <summary>
         /// 大型运输舰
         /// </summary>
-        class Ship203 : Ship
+        internal class Ship203 : Ship
         {
             static Ship203()
             {
@@ -71,7 +84,7 @@ namespace OgameFarmer
         /// <summary>
         /// 轻型战斗机
         /// </summary>
-        class Ship204 : Ship
+        internal class Ship204 : Ship
         {
             static Ship204()
             {
@@ -83,7 +96,7 @@ namespace OgameFarmer
         /// <summary>
         /// 重型战斗机
         /// </summary>
-        class Ship205 : Ship
+        internal class Ship205 : Ship
         {
             static Ship205()
             {
@@ -95,7 +108,7 @@ namespace OgameFarmer
         /// <summary>
         /// 巡洋舰
         /// </summary>
-        class Ship206 : Ship
+        internal class Ship206 : Ship
         {
             static Ship206()
             {
@@ -107,7 +120,7 @@ namespace OgameFarmer
         /// <summary>
         /// 战列舰
         /// </summary>
-        class Ship207 : Ship
+        internal class Ship207 : Ship
         {
             static Ship207()
             {
@@ -119,7 +132,7 @@ namespace OgameFarmer
         /// <summary>
         /// 殖民舰
         /// </summary>
-        class Ship208 : Ship
+        internal class Ship208 : Ship
         {
             static Ship208()
             {
@@ -131,7 +144,7 @@ namespace OgameFarmer
         /// <summary>
         /// 回收舰
         /// </summary>
-        class Ship209 : Ship
+        internal class Ship209 : Ship
         {
             static Ship209()
             {
@@ -143,7 +156,7 @@ namespace OgameFarmer
         /// <summary>
         /// 间谍卫星
         /// </summary>
-        class Ship210 : Ship
+        internal class Ship210 : Ship
         {
             static Ship210()
             {
@@ -155,7 +168,7 @@ namespace OgameFarmer
         /// <summary>
         /// 轰炸机
         /// </summary>
-        class Ship211 : Ship
+        internal class Ship211 : Ship
         {
             static Ship211()
             {
@@ -167,7 +180,7 @@ namespace OgameFarmer
         /// <summary>
         /// 毁灭者
         /// </summary>
-        class Ship213 : Ship
+        internal class Ship213 : Ship
         {
             static Ship213()
             {
@@ -179,7 +192,7 @@ namespace OgameFarmer
         /// <summary>
         /// 死星
         /// </summary>
-        class Ship214 : Ship
+        internal class Ship214 : Ship
         {
             static Ship214()
             {
@@ -191,9 +204,9 @@ namespace OgameFarmer
         /// <summary>
         /// 战斗巡洋舰
         /// </summary>
-        class Ship214 : Ship
+        internal class Ship215 : Ship
         {
-            static Ship214()
+            static Ship215()
             {
                 NAME = "战斗巡洋舰";
                 CAPACITY = 750;
