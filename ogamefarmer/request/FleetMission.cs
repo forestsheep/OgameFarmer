@@ -7,15 +7,54 @@ namespace OgameFarmer
 {
     class FleetMission
     {
+
         /// <summary>
         /// 舰队 各种舰队的总和
         /// </summary>
         private Fleet fleet;
+        internal Fleet Fleet
+        {
+            get
+            {
+                return fleet;
+            }
+            set
+            {
+                fleet = value;
+            }
+        }
+
+        /// <summary>
+        /// 出发地
+        /// </summary>
+        private Coordinate depart;
+        internal Coordinate Depart
+        {
+            get
+            {
+                return depart;
+            }
+            set
+            {
+                depart = value;
+            }
+        }
 
         /// <summary>
         /// 目标地
         /// </summary>
         private Coordinate destination;
+        internal Coordinate Destination
+        {
+            get
+            {
+                return destination;
+            }
+            set
+            {
+                destination = value;
+            }
+        }
 
         /// <summary>
         /// 速度 一共10档
@@ -32,6 +71,10 @@ namespace OgameFarmer
                 if (value >= 1 && value <= 10)
                 {
                     speed = value;
+                }
+                else
+                {
+                    speed = 10;
                 }
             }
         }

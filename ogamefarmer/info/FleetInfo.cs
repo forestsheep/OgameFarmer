@@ -35,7 +35,7 @@ namespace OgameFarmer
             AnalyzHtmlFloten3(fleetInfo);
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFleet(HttpAccesser ha)
+        private static HttpAccesser PerpareHttpAccesserFleet(HttpAccesser ha)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -46,7 +46,7 @@ namespace OgameFarmer
             return ha;
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo )
+        private static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo )
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -69,7 +69,7 @@ namespace OgameFarmer
             return ha;
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFloten2(HttpAccesser ha, FleetInfo fleetInfo)
+        private static HttpAccesser PerpareHttpAccesserFloten2(HttpAccesser ha, FleetInfo fleetInfo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -92,7 +92,7 @@ namespace OgameFarmer
             return ha;
         }
 
-        internal static HttpAccesser PerpareHttpAccesserFloten3(HttpAccesser ha, FleetInfo fleetInfo)
+        private static HttpAccesser PerpareHttpAccesserFloten3(HttpAccesser ha, FleetInfo fleetInfo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -134,7 +134,7 @@ namespace OgameFarmer
             return ha;
         }
 
-        internal static FleetInfo AnalyzHtmlFleet()
+        private static FleetInfo AnalyzHtmlFleet()
         {
             // 验证页面是否是未期待页面
             string htmlTxt = Txtout.Read();
@@ -153,10 +153,11 @@ namespace OgameFarmer
                 HtmlAttributeCollection hac = hn.Attributes;
                 fleetInfo.fleetParams.Add(hac[1].Value, hac[2].Value);
             }
+            // 取得舰队可用总数等信息
             return fleetInfo;
         }
 
-        internal static FleetInfo AnalyzHtmlFloten1(FleetInfo fleetInfo)
+        private static FleetInfo AnalyzHtmlFloten1(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
             string htmlTxt = Txtout.Read();
@@ -176,7 +177,7 @@ namespace OgameFarmer
             return fleetInfo;
         }
 
-        internal static FleetInfo AnalyzHtmlFloten2(FleetInfo fleetInfo)
+        private static FleetInfo AnalyzHtmlFloten2(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
             string htmlTxt = Txtout.Read();
@@ -203,16 +204,25 @@ namespace OgameFarmer
             return fleetInfo;
         }
 
-        internal static void AnalyzHtmlFloten3(FleetInfo fleetInfo)
+        private static void AnalyzHtmlFloten3(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
             string htmlTxt = Txtout.Read();
             UnExpectPageController upc = UnExpectPageController.GetInstance();
             upc.VarifyCookiePeriod(htmlTxt);
         }
-        internal Hashtable fleetParams;
-        internal Hashtable floten1Params;
-        internal Hashtable floten2Params;
+        private Hashtable fleetParams;
+        private Hashtable floten1Params;
+        private Hashtable floten2Params;
         //internal Hashtable floten3Params;
+
+        private Fleet maxActionableFleet;
+        internal Fleet MaxActionableFleet
+        {
+            get
+            {
+                return maxActionableFleet;
+            }
+        }
     }
 }

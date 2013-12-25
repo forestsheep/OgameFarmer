@@ -60,7 +60,7 @@ namespace OgameFarmer
                 }
                 else
                 {
-                    MessageBox.Show("不能同时干2件事！");
+                    MessageBox.Show(ConstString.CANNOT_DO_MUTLTI_THINGS);
                     GalaxyScanEventHandler(-1);
                 }
             }
