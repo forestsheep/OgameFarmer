@@ -21,11 +21,17 @@ namespace OgameFarmer
             ha.access();
             Thread.Sleep(2000);
             FleetInfo fleetInfo = AnalyzHtmlFleet();
-            ha = PerpareHttpAccesserFloten1(ha, fleetInfo);
+            // 测试 发出所有可能行动的舰队
+            ha = PerpareHttpAccesserFloten1(ha, fleetInfo, fleetInfo.MaxActionableFleet);
             ha.access();
             Thread.Sleep(2000);
             fleetInfo = AnalyzHtmlFloten1(fleetInfo);
-            ha = PerpareHttpAccesserFloten2(ha, fleetInfo);
+			Fleet.Ship202.id = "ship202";
+			System.Windows.Forms.MessageBox.Show (Fleet.Ship203.id);
+            // todo 添加一个舰队任务的内容
+			//FleetMission fleetMission = new FleetMission();
+			//fleetMission.Destination = new Coordinate(1,1,1);
+			//ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetMission);
             ha.access();
             Thread.Sleep(2000);
             fleetInfo = AnalyzHtmlFloten2(fleetInfo);
@@ -46,7 +52,7 @@ namespace OgameFarmer
             return ha;
         }
 
-        private static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo )
+        private static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo, Fleet sendingFleet )
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -65,11 +71,12 @@ namespace OgameFarmer
                 ha.UrlParam += de.Key.ToString() + " = " + de.Value.ToString();
                 i++;
             }
-            ha.UrlParam += "&ship202=1";
+            
+            ha.UrlParam += FleetQuantityUtil.FleetQuantity2PostParam(sendingFleet);
             return ha;
         }
 
-        private static HttpAccesser PerpareHttpAccesserFloten2(HttpAccesser ha, FleetInfo fleetInfo)
+        private static HttpAccesser PerpareHttpAccesserFloten2(HttpAccesser ha, FleetInfo fleetInfo, FleetMission fleetMission)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -215,7 +222,7 @@ namespace OgameFarmer
 
         private static void SetFleetQuantity(ref FleetInfo fleetInfo)
         {
-            fleetInfo.maxActionableFleet = new Fleet();
+            fleetInfo.MaxActionableFleet = new Fleet();
             foreach (DictionaryEntry de in fleetInfo.fleetParams)
             {
                 if (de.Key.Equals("maxship202"))
@@ -290,6 +297,10 @@ namespace OgameFarmer
             {
                 return maxActionableFleet;
             }
+			set
+			{
+				maxActionableFleet = value;
+			}
         }
     }
 }

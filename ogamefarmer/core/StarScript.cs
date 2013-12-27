@@ -444,7 +444,11 @@ namespace OgameFarmer
 
         private void FleetTest(object o)
         {
-            FleetInfo.SendFleet(ha);
+			//FleetInfo.SendFleet(ha);
+			Console.WriteLine (Fleet.Ship202.id);
+			System.Windows.Forms.MessageBox.Show (Fleet.Ship202.id);
+			Console.WriteLine (Fleet.Ship203.id);
+			System.Windows.Forms.MessageBox.Show (Fleet.Ship203.id);
         }
 
         internal event LoginMessageSender LoginEvent

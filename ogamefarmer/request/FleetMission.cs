@@ -78,5 +78,11 @@ namespace OgameFarmer
                 }
             }
         }
+        internal FleetMission(Fleet fleet, Coordinate destination, int speed)
+        {
+            this.fleet = fleet;
+            this.Destination = destination;
+            this.speed = speed;
+        }
     }
 }

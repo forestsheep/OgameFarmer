@@ -22,5 +22,14 @@ namespace OgameFarmer
         {
             return galaxy.ToString() + ":" + system.ToString() + ":" + solarPosition.ToString();
         }
+
+        public string[] ToStringArray()
+        {
+            string[] returnString = new string[3];
+			returnString[0] = "galaxy=" + galaxy.ToString();
+			returnString[1] = "system=" + system.ToString();
+			returnString[2] = "planet=" + solarPosition.ToString();
+            return returnString;
+        }
     }
 }

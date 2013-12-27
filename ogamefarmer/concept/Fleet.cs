@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,14 @@ namespace OgameFarmer
 {
     class Fleet
     {
-
+        private List<Ship> shipList;
+		internal List<Ship> ShipList
+        {
+            get
+            {
+                return shipList;
+            }
+        }
         internal Fleet()
         {
             ship202 = new Ship202();
@@ -23,6 +30,19 @@ namespace OgameFarmer
             ship213 = new Ship213();
             ship214 = new Ship214();
             ship215 = new Ship215();
+			shipList.Add(ship202);
+			shipList.Add(ship203);
+			shipList.Add(ship204);
+			shipList.Add(ship205);
+			shipList.Add(ship206);
+			shipList.Add(ship207);
+			shipList.Add(ship208);
+			shipList.Add(ship209);
+			shipList.Add(ship210);
+			shipList.Add(ship211);
+			shipList.Add(ship213);
+			shipList.Add(ship214);
+			shipList.Add(ship215);
         }
 
         internal Ship202 ship202;
@@ -41,6 +61,7 @@ namespace OgameFarmer
 
         internal class Ship
         {
+            internal static string id;
             internal static string NAME;
             internal static int CAPACITY;
             private int quantity;
@@ -64,6 +85,7 @@ namespace OgameFarmer
         {
             static Ship202()
             {
+                id = "ship202";
                 NAME = "小型运输舰";
                 CAPACITY = 5000;
             }
@@ -76,6 +98,7 @@ namespace OgameFarmer
         {
             static Ship203()
             {
+                id = "ship203";
                 NAME = "大型运输舰";
                 CAPACITY = 25000;
             }
@@ -88,6 +111,7 @@ namespace OgameFarmer
         {
             static Ship204()
             {
+                id = "ship204";
                 NAME = "轻型战斗机";
                 CAPACITY = 50;
             }
@@ -100,6 +124,7 @@ namespace OgameFarmer
         {
             static Ship205()
             {
+                id = "ship205";
                 NAME = "重型战斗机";
                 CAPACITY = 100;
             }
@@ -112,6 +137,7 @@ namespace OgameFarmer
         {
             static Ship206()
             {
+                id = "ship206";
                 NAME = "巡洋舰";
                 CAPACITY = 800;
             }
@@ -124,6 +150,7 @@ namespace OgameFarmer
         {
             static Ship207()
             {
+                id = "ship207";
                 NAME = "战列舰";
                 CAPACITY = 1500;
             }
@@ -136,6 +163,7 @@ namespace OgameFarmer
         {
             static Ship208()
             {
+                id = "ship208";
                 NAME = "殖民舰";
                 CAPACITY = 7500;
             }
@@ -148,6 +176,7 @@ namespace OgameFarmer
         {
             static Ship209()
             {
+                id = "ship209";
                 NAME = "回收舰";
                 CAPACITY = 20000;
             }
@@ -160,6 +189,7 @@ namespace OgameFarmer
         {
             static Ship210()
             {
+                id = "ship210";
                 NAME = "间谍卫星";
                 CAPACITY = 5;
             }
@@ -172,6 +202,7 @@ namespace OgameFarmer
         {
             static Ship211()
             {
+                id = "ship211";
                 NAME = "轰炸机";
                 CAPACITY = 500;
             }
@@ -184,6 +215,7 @@ namespace OgameFarmer
         {
             static Ship213()
             {
+                id = "ship213";
                 NAME = "毁灭者";
                 CAPACITY = 2000;
             }
@@ -196,6 +228,7 @@ namespace OgameFarmer
         {
             static Ship214()
             {
+                id = "ship214";
                 NAME = "死星";
                 CAPACITY = 1000000;
             }
@@ -208,6 +241,7 @@ namespace OgameFarmer
         {
             static Ship215()
             {
+                id = "ship215";
                 NAME = "战斗巡洋舰";
                 CAPACITY = 750;
             }
