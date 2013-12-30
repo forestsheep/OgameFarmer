@@ -7,7 +7,7 @@ namespace OgameFarmer
 {
     class Fleet
     {
-        private List<Ship> shipList;
+        private List<Ship> shipList = new List<Ship>();
 		internal List<Ship> ShipList
         {
             get
