@@ -61,7 +61,7 @@ namespace OgameFarmer
 
         internal class Ship
         {
-            internal static string id;
+            internal static string id = "ship";
             internal static string NAME;
             internal static int CAPACITY;
             private int quantity;

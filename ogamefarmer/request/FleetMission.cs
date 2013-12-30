@@ -57,9 +57,29 @@ namespace OgameFarmer
         }
 
         /// <summary>
+        /// 目标的种类：星球；月球；废墟
+        /// </summary>
+        private CoordinateType destinationType;
+        internal CoordinateType DestinationType
+        {
+            get
+            {
+                return destinationType;
+            }
+            set
+            {
+                destinationType = value;
+            }
+        }
+
+        /// <summary>
         /// 速度 一共10档
         /// </summary>
         private int speed;
+        /// <summary>
+        /// 获取或设定速度（1-10）
+        /// 如超出设定范围，则默认设定为10
+        /// </summary>
         internal int Speed
         {
             get
@@ -78,10 +98,12 @@ namespace OgameFarmer
                 }
             }
         }
-        internal FleetMission(Fleet fleet, Coordinate destination, int speed)
+
+        internal FleetMission(Fleet fleet, Coordinate destination, CoordinateType destType, int speed)
         {
             this.fleet = fleet;
             this.Destination = destination;
+            this.destinationType = destType;
             this.speed = speed;
         }
     }

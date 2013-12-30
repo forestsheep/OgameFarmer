@@ -60,7 +60,6 @@ namespace OgameFarmer
             }
             //Main m = new Main(this.ss);
             //m.Show();
-            //ss.Osender -= this.OnLogin;
             //this.Hide();
 
             //string mac = string.Empty;

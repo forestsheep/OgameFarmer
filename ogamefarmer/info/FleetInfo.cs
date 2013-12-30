@@ -26,12 +26,10 @@ namespace OgameFarmer
             ha.access();
             Thread.Sleep(2000);
             fleetInfo = AnalyzHtmlFloten1(fleetInfo);
-			Fleet.Ship202.id = "ship202";
-			System.Windows.Forms.MessageBox.Show (Fleet.Ship203.id);
             // todo 添加一个舰队任务的内容
-			//FleetMission fleetMission = new FleetMission();
-			//fleetMission.Destination = new Coordinate(1,1,1);
-			//ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetMission);
+            Coordinate dest = new Coordinate(4, 336, 8);
+            FleetMission fleetMission = new FleetMission(fleetInfo.MaxActionableFleet,dest,CoordinateType.PLANET, 10);
+            ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetMission);
             ha.access();
             Thread.Sleep(2000);
             fleetInfo = AnalyzHtmlFloten2(fleetInfo);
@@ -95,7 +93,8 @@ namespace OgameFarmer
                 ha.UrlParam += de.Key.ToString() + " = " + de.Value.ToString();
                 i++;
             }
-            ha.UrlParam += "&galaxy=2&system=401&planet=10&planettype=3&fleet_group=0&acs_target_mr=0:0:0&speed=10";
+            //TODO 需要做一个fleetmission转化为参数的东西
+            ha.UrlParam += "&galaxy=4&system=336&planet=8&planettype=1&fleet_group=0&acs_target_mr=0:0:0&speed=10";
             return ha;
         }
 
@@ -137,6 +136,10 @@ namespace OgameFarmer
                     i++;
                 }
             }
+            //TODO 对于capacity,consumption,speed,须从第一次fleet页面的response content里取得
+            //不发的舰队，则不需要上传三个值（需要对比和传递）
+            //是否应该初始化maxsheep的属性？还是fleetinfo的属性？从逻辑上看好像应该是后者
+            //资源为0可以只传变量名
             ha.UrlParam += "&mission=4&resource1=3&resource2=2&resource3=1&ship202=1&capacity202=5000&consumption202=10&speed202=8000&usedfleet=LGbkBagcBwVjZwgmBwR6VwRvB30=";
             return ha;
         }
@@ -291,6 +294,9 @@ namespace OgameFarmer
         //internal Hashtable floten3Params;
 
         private Fleet maxActionableFleet;
+        /// <summary>
+        /// 可出发最大化舰队，一只虚拟的舰队。出发的舰队数量必须控制在这支虚拟舰队之下。
+        /// </summary>
         internal Fleet MaxActionableFleet
         {
             get
