@@ -28,8 +28,8 @@ namespace OgameFarmer
             fleetInfo = AnalyzHtmlFloten1(fleetInfo);
             // todo 添加一个舰队任务的内容
             Coordinate dest = new Coordinate(4, 336, 8);
-            FleetMission fleetMission = new FleetMission(fleetInfo.MaxActionableFleet,dest,CoordinateType.PLANET, 10);
-            ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetMission);
+            fleetInfo.fleetMission = new FleetMission(fleetInfo.MaxActionableFleet,dest,CoordinateType.PLANET, 10);
+            ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetInfo.fleetMission);
             ha.access();
             Thread.Sleep(2000);
             fleetInfo = AnalyzHtmlFloten2(fleetInfo);
@@ -70,7 +70,7 @@ namespace OgameFarmer
                 i++;
             }
             
-            ha.UrlParam += FleetQuantityUtil.FleetQuantity2PostParam(sendingFleet);
+            ha.UrlParam += FleetUtil.FleetQuantity2PostParam(sendingFleet);
             return ha;
         }
 
@@ -94,7 +94,7 @@ namespace OgameFarmer
                 i++;
             }
             //TODO 需要做一个fleetmission转化为参数的东西
-            ha.UrlParam += "&galaxy=4&system=336&planet=8&planettype=1&fleet_group=0&acs_target_mr=0:0:0&speed=10";
+            ha.UrlParam += FleetUtil.FleetDestination2PostParam(fleetMission);
             return ha;
         }
 
@@ -111,11 +111,13 @@ namespace OgameFarmer
             fleetInfo.floten2Params.Remove("thisgalaxy");
             fleetInfo.floten2Params.Remove("thissystem");
             fleetInfo.floten2Params.Remove("thisplanet");
-            fleetInfo.floten2Params.Remove("thisplanettype");
+            //fleetInfo.floten2Params.Remove("thisplanettype");
             fleetInfo.floten2Params.Remove("usedfleet");
             fleetInfo.floten2Params.Remove("speedfactor");
             fleetInfo.floten2Params.Remove("dist");
             fleetInfo.floten2Params.Remove("speedallsmin");
+            //fleetInfo.floten2Params.Remove("acs_target_mr");	
+
             
             foreach (DictionaryEntry de in fleetInfo.floten2Params)
             {
@@ -129,18 +131,22 @@ namespace OgameFarmer
 
             foreach (DictionaryEntry de in fleetInfo.floten1Params)
             {
-                if (de.Key.Equals("thisgalaxy") || de.Key.Equals("thissystem") || de.Key.Equals("thisplanet") || de.Key.Equals("thisplanettype") || de.Key.Equals("usedfleet") || de.Key.Equals("speedfactor") || de.Key.Equals("speedallsmin"))
+                if (de.Key.Equals("thisgalaxy") || de.Key.Equals("thissystem") || de.Key.Equals("thisplanet") || de.Key.Equals("thisplanettype") || de.Key.Equals("usedfleet") || de.Key.Equals("speedfactor") || de.Key.Equals("speedallsmin") || de.Key.Equals("curepedition") || de.Key.ToString().StartsWith("ship2"))
                 {
-                    ha.UrlParam += "&";
-                    ha.UrlParam += de.Key.ToString() + "=" + de.Value.ToString();
+                    ha.UrlParam += "&" + de.Key.ToString() + "=" + de.Value.ToString();
                     i++;
                 }
             }
-            //TODO 对于capacity,consumption,speed,须从第一次fleet页面的response content里取得
-            //不发的舰队，则不需要上传三个值（需要对比和传递）
-            //是否应该初始化maxsheep的属性？还是fleetinfo的属性？从逻辑上看好像应该是后者
+            foreach (DictionaryEntry de in fleetInfo.fleetParams)
+            {
+                if (de.Key.Equals("maxepedition"))
+                {
+                    ha.UrlParam += "&" + de.Key.ToString() + "=" + de.Value.ToString();
+                    i++;
+                }
+            }
             //资源为0可以只传变量名
-            ha.UrlParam += "&mission=4&resource1=3&resource2=2&resource3=1&ship202=1&capacity202=5000&consumption202=10&speed202=8000&usedfleet=LGbkBagcBwVjZwgmBwR6VwRvB30=";
+            ha.UrlParam += FleetUtil.PullShipFloten1Params2Floten3(fleetInfo);
             return ha;
         }
 
@@ -205,7 +211,10 @@ namespace OgameFarmer
                 HtmlAttributeCollection hac = hn.Attributes;
                 try
                 {
-                    fleetInfo.floten2Params.Add(hac[1].Value, hac[2].Value);
+                    if (!fleetInfo.floten1Params.ContainsKey(hac[1].Value))
+                    {
+                        fleetInfo.floten2Params.Add(hac[1].Value, hac[2].Value);
+                    }
                 }
                 catch (ArgumentException ae)
                 {
@@ -288,9 +297,9 @@ namespace OgameFarmer
 
         }
         
-        private Hashtable fleetParams;
-        private Hashtable floten1Params;
-        private Hashtable floten2Params;
+        internal Hashtable fleetParams;
+        internal Hashtable floten1Params;
+        internal Hashtable floten2Params;
         //internal Hashtable floten3Params;
 
         private Fleet maxActionableFleet;
@@ -307,6 +316,21 @@ namespace OgameFarmer
 			{
 				maxActionableFleet = value;
 			}
+        }
+        /// <summary>
+        /// 出征任务
+        /// </summary>
+        private FleetMission fleetMission;
+        internal FleetMission FleetMission
+        {
+            get
+            {
+                return fleetMission;
+            }
+            set
+            {
+                fleetMission = value;
+            }
         }
     }
 }

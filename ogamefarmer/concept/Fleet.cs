@@ -61,7 +61,7 @@ namespace OgameFarmer
 
         internal class Ship
         {
-            internal static string id = "ship";
+            internal static string ID = "ship";
             internal static string NAME;
             internal static int CAPACITY;
             private int quantity;
@@ -76,6 +76,8 @@ namespace OgameFarmer
                     quantity = value;
                 }
             }
+            internal string id;
+            internal string subid;
         }
 
         /// <summary>
@@ -83,9 +85,14 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship202 : Ship
         {
+            
+            internal Ship202()
+            {
+                subid = "202";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship202()
             {
-                id = "ship202";
                 NAME = "小型运输舰";
                 CAPACITY = 5000;
             }
@@ -96,9 +103,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship203 : Ship
         {
+            internal Ship203()
+            {
+                subid = "203";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship203()
             {
-                id = "ship203";
                 NAME = "大型运输舰";
                 CAPACITY = 25000;
             }
@@ -109,9 +120,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship204 : Ship
         {
+            internal Ship204()
+            {
+                subid = "204";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship204()
             {
-                id = "ship204";
                 NAME = "轻型战斗机";
                 CAPACITY = 50;
             }
@@ -122,9 +137,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship205 : Ship
         {
+            internal Ship205()
+            {
+                subid = "205";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship205()
             {
-                id = "ship205";
                 NAME = "重型战斗机";
                 CAPACITY = 100;
             }
@@ -135,9 +154,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship206 : Ship
         {
+            internal Ship206()
+            {
+                subid = "206";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship206()
             {
-                id = "ship206";
                 NAME = "巡洋舰";
                 CAPACITY = 800;
             }
@@ -148,9 +171,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship207 : Ship
         {
+            internal Ship207()
+            {
+                subid = "207";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship207()
             {
-                id = "ship207";
                 NAME = "战列舰";
                 CAPACITY = 1500;
             }
@@ -161,9 +188,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship208 : Ship
         {
+            internal Ship208()
+            {
+                subid = "208";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship208()
             {
-                id = "ship208";
                 NAME = "殖民舰";
                 CAPACITY = 7500;
             }
@@ -174,9 +205,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship209 : Ship
         {
+            internal Ship209()
+            {
+                subid = "209";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship209()
             {
-                id = "ship209";
                 NAME = "回收舰";
                 CAPACITY = 20000;
             }
@@ -187,9 +222,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship210 : Ship
         {
+            internal Ship210()
+            {
+                subid = "210";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship210()
             {
-                id = "ship210";
                 NAME = "间谍卫星";
                 CAPACITY = 5;
             }
@@ -200,9 +239,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship211 : Ship
         {
+            internal Ship211()
+            {
+                subid = "211";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship211()
             {
-                id = "ship211";
                 NAME = "轰炸机";
                 CAPACITY = 500;
             }
@@ -213,9 +256,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship213 : Ship
         {
+            internal Ship213()
+            {
+                subid = "213";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship213()
             {
-                id = "ship213";
                 NAME = "毁灭者";
                 CAPACITY = 2000;
             }
@@ -226,9 +273,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship214 : Ship
         {
+            internal Ship214()
+            {
+                subid = "214";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship214()
             {
-                id = "ship214";
                 NAME = "死星";
                 CAPACITY = 1000000;
             }
@@ -239,9 +290,13 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship215 : Ship
         {
+            internal Ship215()
+            {
+                subid = "215";
+                id = Fleet.Ship.ID + subid;
+            }
             static Ship215()
             {
-                id = "ship215";
                 NAME = "战斗巡洋舰";
                 CAPACITY = 750;
             }
