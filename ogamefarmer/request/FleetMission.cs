@@ -9,7 +9,7 @@ namespace OgameFarmer
     {
 
         /// <summary>
-        /// 舰队 各种舰队的总和
+        /// 获取或设定舰队
         /// </summary>
         private Fleet fleet;
         internal Fleet Fleet
@@ -25,7 +25,7 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// 出发地
+        /// 获取或设定出发地
         /// </summary>
         private Coordinate depart;
         internal Coordinate Depart
@@ -41,7 +41,23 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// 目标地
+        /// 获取或设定出发地的种类：星球1；月球3
+        /// </summary>
+        private CoordinateType departType;
+        internal CoordinateType DepartType
+        {
+            get
+            {
+                return departType;
+            }
+            set
+            {
+                departType = value;
+            }
+        }
+
+        /// <summary>
+        /// 获取或设定目标地
         /// </summary>
         private Coordinate destination;
         internal Coordinate Destination
@@ -57,7 +73,7 @@ namespace OgameFarmer
         }
 
         /// <summary>
-        /// 目标的种类：星球；月球；废墟
+        /// 获取或设定目标的种类：星球1；废墟2；月球3；
         /// </summary>
         private CoordinateType destinationType;
         internal CoordinateType DestinationType
@@ -99,12 +115,88 @@ namespace OgameFarmer
             }
         }
 
-        internal FleetMission(Fleet fleet, Coordinate destination, CoordinateType destType, int speed)
+        private Mission mission;
+        /// <summary>
+        /// 获取或设定行动的种类
+        /// 攻击1，运输3，派遣4，协防5，回收8，探险15
+        /// </summary>
+        internal Mission Mission
+        {
+            get
+            {
+                return mission;
+            }
+            set
+            {
+                mission = value;
+            }
+        }
+
+        private int holdingtime;
+        /// <summary>
+        /// 获取或设定攻击，协防的停留时间
+        /// </summary>
+        internal int HoldingTime
+        {
+            get
+            {
+                return holdingtime;
+            }
+            set
+            {
+                holdingtime = value;
+            }
+        }
+
+        private int expeditiontime;
+        /// <summary>
+        /// 获取或设定探险的停留时间
+        /// </summary>
+        internal int ExpeditionTime
+        {
+            get
+            {
+                return expeditiontime;
+            }
+            set
+            {
+                expeditiontime = value;
+            }
+        }
+
+        private int tradeid;
+        /// <summary>
+        /// 获取或设定贸易ID
+        /// </summary>
+        internal int TradeId
+        {
+            get
+            {
+                return tradeid;
+            }
+            set
+            {
+                tradeid = value;
+            }
+        }
+
+        internal FleetMission(Fleet fleet, Coordinate depart, CoordinateType departType, Coordinate destination, CoordinateType destinationType, int speed, Mission mission, int holdingtime, int expeditiontime, int tradeid)
         {
             this.fleet = fleet;
-            this.Destination = destination;
-            this.destinationType = destType;
+            this.depart = depart;
+            this.departType = departType;
+            this.destination = destination;
+            this.destinationType = destinationType;
             this.speed = speed;
+            this.mission = mission;
+            this.holdingtime = holdingtime;
+            this.expeditiontime = expeditiontime;
+            this.tradeid = tradeid;
+        }
+
+        internal static FleetMission GetInstance4Transport(Fleet fleet, Coordinate depart, CoordinateType departType, Coordinate destination, CoordinateType destinationType, int speed, int tradeid)
+        {
+            return new FleetMission(fleet, depart, departType, destination, destinationType, speed, Mission.TRANSPORT, 0, 0, tradeid);
         }
     }
 }

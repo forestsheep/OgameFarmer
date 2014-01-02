@@ -15,6 +15,42 @@ namespace OgameFarmer
         internal static string XPATH_FLOTEN1_PARAM = "/html/body/center/input";
         internal static string XPATH_FLOTEN2_PARAM = "/html/body/center/center/input";
 
+        internal Hashtable fleetParams;
+        internal Hashtable floten1Params;
+        internal Hashtable floten2Params;
+        //internal Hashtable floten3Params;
+
+        private Fleet maxActionableFleet;
+        /// <summary>
+        /// 可出发最大化舰队，一只虚拟的舰队。出发的舰队数量必须控制在这支虚拟舰队之下。
+        /// </summary>
+        internal Fleet MaxActionableFleet
+        {
+            get
+            {
+                return maxActionableFleet;
+            }
+            set
+            {
+                maxActionableFleet = value;
+            }
+        }
+        /// <summary>
+        /// 出征任务
+        /// </summary>
+        private FleetMission fleetMission;
+        internal FleetMission FleetMission
+        {
+            get
+            {
+                return fleetMission;
+            }
+            set
+            {
+                fleetMission = value;
+            }
+        }
+
         internal static void SendFleet(HttpAccesser ha)
         {
             ha = PerpareHttpAccesserFleet(ha);
@@ -108,17 +144,6 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             int i = 0;
             ha.UrlParam = string.Empty;
-            fleetInfo.floten2Params.Remove("thisgalaxy");
-            fleetInfo.floten2Params.Remove("thissystem");
-            fleetInfo.floten2Params.Remove("thisplanet");
-            //fleetInfo.floten2Params.Remove("thisplanettype");
-            fleetInfo.floten2Params.Remove("usedfleet");
-            fleetInfo.floten2Params.Remove("speedfactor");
-            fleetInfo.floten2Params.Remove("dist");
-            fleetInfo.floten2Params.Remove("speedallsmin");
-            //fleetInfo.floten2Params.Remove("acs_target_mr");	
-
-            
             foreach (DictionaryEntry de in fleetInfo.floten2Params)
             {
                 if (i != 0)
@@ -297,40 +322,6 @@ namespace OgameFarmer
 
         }
         
-        internal Hashtable fleetParams;
-        internal Hashtable floten1Params;
-        internal Hashtable floten2Params;
-        //internal Hashtable floten3Params;
-
-        private Fleet maxActionableFleet;
-        /// <summary>
-        /// 可出发最大化舰队，一只虚拟的舰队。出发的舰队数量必须控制在这支虚拟舰队之下。
-        /// </summary>
-        internal Fleet MaxActionableFleet
-        {
-            get
-            {
-                return maxActionableFleet;
-            }
-			set
-			{
-				maxActionableFleet = value;
-			}
-        }
-        /// <summary>
-        /// 出征任务
-        /// </summary>
-        private FleetMission fleetMission;
-        internal FleetMission FleetMission
-        {
-            get
-            {
-                return fleetMission;
-            }
-            set
-            {
-                fleetMission = value;
-            }
-        }
+        
     }
 }

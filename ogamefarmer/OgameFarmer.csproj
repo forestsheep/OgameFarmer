@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="concept\Coordinate.cs" />
     <Compile Include="concept\CoordinateType.cs" />
+    <Compile Include="concept\Mission.cs" />
     <Compile Include="form\FleetForm.cs">
       <SubType>Form</SubType>
     </Compile>

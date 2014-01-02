@@ -8,7 +8,7 @@ namespace OgameFarmer
     enum CoordinateType
     {
         PLANET = 1,
-        MOON = 2,
-        RUINS = 3
+        RUINS = 2,
+        MOON = 3
     }
 }
