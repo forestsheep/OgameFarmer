@@ -55,7 +55,7 @@ namespace OgameFarmer
                     string capacityid = capacity + ship.subid;
                     string consumptionid = consumption + ship.subid;
                     string speedid = speed + ship.subid;
-                    foreach (DictionaryEntry de in fleetInfo.fleetParams)
+                    foreach (DictionaryEntry de in fleetInfo.FleetParams)
                     {
                         string key = de.Key.ToString();
                         if (key.StartsWith(shipid) || key.StartsWith(capacityid) || key.StartsWith(consumptionid) || key.StartsWith(speedid))

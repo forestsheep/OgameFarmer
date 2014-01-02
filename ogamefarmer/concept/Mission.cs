@@ -11,7 +11,9 @@ namespace OgameFarmer
         TRANSPORT = 3,
         DISPATCH = 4,
         DEFENCE = 5,
+        DETECT = 6,
         RECYCLE = 8,
+        DESTROY_MOON = 9,
         EXPEDITION = 15
     }
 }

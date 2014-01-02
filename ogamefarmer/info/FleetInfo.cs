@@ -11,45 +11,38 @@ namespace OgameFarmer
 {
     class FleetInfo : CommonInfo
     {
-        internal static string XPATH_FLEET_PARAM = "/html/body/center/table/tr/td/center[2]/input";
-        internal static string XPATH_FLOTEN1_PARAM = "/html/body/center/input";
-        internal static string XPATH_FLOTEN2_PARAM = "/html/body/center/center/input";
+        #region 常量
+        internal const string XPATH_FLEET_PARAM = "/html/body/center/table/tr/td/center[2]/input";
+        internal const string XPATH_FLOTEN1_PARAM = "/html/body/center/input";
+        internal const string XPATH_FLOTEN2_PARAM = "/html/body/center/center/input";
+        #endregion
+        
+        #region 属性
+        /// <summary>
+        /// 舰队页面返回的属性
+        /// </summary>
+        internal Hashtable FleetParams;
+        /// <summary>
+        /// 发舰队第一个页面返回的属性
+        /// </summary>
+        internal Hashtable Floten1Params;
+        /// <summary>
+        /// 发舰队第二个页面返回的属性
+        /// </summary>
+        internal Hashtable Floten2Params;
 
-        internal Hashtable fleetParams;
-        internal Hashtable floten1Params;
-        internal Hashtable floten2Params;
         //internal Hashtable floten3Params;
 
-        private Fleet maxActionableFleet;
         /// <summary>
         /// 可出发最大化舰队，一只虚拟的舰队。出发的舰队数量必须控制在这支虚拟舰队之下。
         /// </summary>
-        internal Fleet MaxActionableFleet
-        {
-            get
-            {
-                return maxActionableFleet;
-            }
-            set
-            {
-                maxActionableFleet = value;
-            }
-        }
+        internal Fleet MaxActionableFleet;
+     
         /// <summary>
         /// 出征任务
         /// </summary>
-        private FleetMission fleetMission;
-        internal FleetMission FleetMission
-        {
-            get
-            {
-                return fleetMission;
-            }
-            set
-            {
-                fleetMission = value;
-            }
-        }
+        internal FleetMission FleetMission;
+        #endregion
 
         internal static void SendFleet(HttpAccesser ha)
         {
@@ -64,8 +57,8 @@ namespace OgameFarmer
             fleetInfo = AnalyzHtmlFloten1(fleetInfo);
             // todo 添加一个舰队任务的内容
             Coordinate dest = new Coordinate(4, 336, 8);
-            fleetInfo.fleetMission = new FleetMission(fleetInfo.MaxActionableFleet,dest,CoordinateType.PLANET, 10);
-            ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetInfo.fleetMission);
+            fleetInfo.FleetMission = new FleetMission(fleetInfo.MaxActionableFleet, dest, CoordinateType.MOON, dest, CoordinateType.PLANET,10,Mission.TRANSPORT,1,1,1,0,0,0);
+            ha = PerpareHttpAccesserFloten2(ha, fleetInfo, fleetInfo.FleetMission);
             ha.access();
             Thread.Sleep(2000);
             fleetInfo = AnalyzHtmlFloten2(fleetInfo);
@@ -86,7 +79,7 @@ namespace OgameFarmer
             return ha;
         }
 
-        private static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo, Fleet sendingFleet )
+        private static HttpAccesser PerpareHttpAccesserFloten1(HttpAccesser ha, FleetInfo fleetInfo, Fleet sendingFleet)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -96,7 +89,7 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.UrlParam = string.Empty;
             int i = 0;
-            foreach (DictionaryEntry de in fleetInfo.fleetParams)
+            foreach (DictionaryEntry de in fleetInfo.FleetParams)
             {
                 if (i != 0)
                 {
@@ -105,7 +98,7 @@ namespace OgameFarmer
                 ha.UrlParam += de.Key.ToString() + " = " + de.Value.ToString();
                 i++;
             }
-            
+
             ha.UrlParam += FleetUtil.FleetQuantity2PostParam(sendingFleet);
             return ha;
         }
@@ -120,7 +113,7 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.UrlParam = string.Empty;
             int i = 0;
-            foreach (DictionaryEntry de in fleetInfo.floten1Params)
+            foreach (DictionaryEntry de in fleetInfo.Floten1Params)
             {
                 if (i != 0)
                 {
@@ -144,7 +137,7 @@ namespace OgameFarmer
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             int i = 0;
             ha.UrlParam = string.Empty;
-            foreach (DictionaryEntry de in fleetInfo.floten2Params)
+            foreach (DictionaryEntry de in fleetInfo.Floten2Params)
             {
                 if (i != 0)
                 {
@@ -154,7 +147,7 @@ namespace OgameFarmer
                 i++;
             }
 
-            foreach (DictionaryEntry de in fleetInfo.floten1Params)
+            foreach (DictionaryEntry de in fleetInfo.Floten1Params)
             {
                 if (de.Key.Equals("thisgalaxy") || de.Key.Equals("thissystem") || de.Key.Equals("thisplanet") || de.Key.Equals("thisplanettype") || de.Key.Equals("usedfleet") || de.Key.Equals("speedfactor") || de.Key.Equals("speedallsmin") || de.Key.Equals("curepedition") || de.Key.ToString().StartsWith("ship2"))
                 {
@@ -162,7 +155,7 @@ namespace OgameFarmer
                     i++;
                 }
             }
-            foreach (DictionaryEntry de in fleetInfo.fleetParams)
+            foreach (DictionaryEntry de in fleetInfo.FleetParams)
             {
                 if (de.Key.Equals("maxepedition"))
                 {
@@ -184,7 +177,7 @@ namespace OgameFarmer
 
             // 取得舰队页面的参数，用来在发舰队页面1中使用
             FleetInfo fleetInfo = new FleetInfo();
-            fleetInfo.fleetParams = new Hashtable();
+            fleetInfo.FleetParams = new Hashtable();
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
             HtmlNode.ElementsFlags.Remove("option");
             h.Load(ConstString.HTML_PATH);
@@ -192,7 +185,7 @@ namespace OgameFarmer
             foreach (HtmlNode hn in fleetParams)
             {
                 HtmlAttributeCollection hac = hn.Attributes;
-                fleetInfo.fleetParams.Add(hac[1].Value, hac[2].Value);
+                fleetInfo.FleetParams.Add(hac[1].Value, hac[2].Value);
             }
             // 取得舰队可用总数等信息
             SetFleetQuantity(ref fleetInfo);
@@ -207,14 +200,14 @@ namespace OgameFarmer
             upc.VarifyCookiePeriod(htmlTxt);
 
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
-            fleetInfo.floten1Params = new Hashtable();
+            fleetInfo.Floten1Params = new Hashtable();
             HtmlNode.ElementsFlags.Remove("option");
             h.Load(ConstString.HTML_PATH);
             HtmlNodeCollection floten1Params = h.DocumentNode.SelectNodes(XPATH_FLOTEN1_PARAM);
             foreach (HtmlNode hn in floten1Params)
             {
                 HtmlAttributeCollection hac = hn.Attributes;
-                fleetInfo.floten1Params.Add(hac[1].Value, hac[2].Value);
+                fleetInfo.Floten1Params.Add(hac[1].Value, hac[2].Value);
             }
             return fleetInfo;
         }
@@ -227,7 +220,7 @@ namespace OgameFarmer
             upc.VarifyCookiePeriod(htmlTxt);
 
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
-            fleetInfo.floten2Params = new Hashtable();
+            fleetInfo.Floten2Params = new Hashtable();
             HtmlNode.ElementsFlags.Remove("option");
             h.Load(ConstString.HTML_PATH);
             HtmlNodeCollection floten2Params = h.DocumentNode.SelectNodes(XPATH_FLOTEN2_PARAM);
@@ -236,9 +229,9 @@ namespace OgameFarmer
                 HtmlAttributeCollection hac = hn.Attributes;
                 try
                 {
-                    if (!fleetInfo.floten1Params.ContainsKey(hac[1].Value))
+                    if (!fleetInfo.Floten1Params.ContainsKey(hac[1].Value))
                     {
-                        fleetInfo.floten2Params.Add(hac[1].Value, hac[2].Value);
+                        fleetInfo.Floten2Params.Add(hac[1].Value, hac[2].Value);
                     }
                 }
                 catch (ArgumentException ae)
@@ -260,7 +253,7 @@ namespace OgameFarmer
         private static void SetFleetQuantity(ref FleetInfo fleetInfo)
         {
             fleetInfo.MaxActionableFleet = new Fleet();
-            foreach (DictionaryEntry de in fleetInfo.fleetParams)
+            foreach (DictionaryEntry de in fleetInfo.FleetParams)
             {
                 if (de.Key.Equals("maxship202"))
                 {
@@ -321,7 +314,7 @@ namespace OgameFarmer
             }
 
         }
-        
-        
+
+
     }
 }
