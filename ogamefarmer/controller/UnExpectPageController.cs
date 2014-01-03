@@ -51,6 +51,10 @@ namespace OgameFarmer
             }
         }
 
+        /// <summary>
+        /// 检验当前页面是否不够重氢来翻阅星系图
+        /// </summary>
+        /// <param name="s">页面的html全文</param>
         internal void VarifyOutOfHH(string s)
         {
             try
@@ -73,7 +77,7 @@ namespace OgameFarmer
         /// <returns>是否是cookie过期提示页面</returns>
         private bool CheckCookieCondition(string s)
         {
-            //验证条件不是很好，万一有人星球取这个名字的话。。。
+            //TODO 验证条件不是很好，万一有人星球取这个名字的话。。。
             if (s.Contains(COOKIE_EXPIRE_KEYWORD_1) || s.Contains(COOKIE_EXPIRE_KEYWORD_2) || s.Contains(COOKIE_EXPIRE_KEYWORD_3) ||s.Contains(COOKIE_EXPIRE_KEYWORD_4))
             {
                 return true;
@@ -93,7 +97,7 @@ namespace OgameFarmer
         {
             if (s.Contains(NOT_ENOUGH_HH_KEYWORD_1) || s.Contains(NOT_ENOUGH_HH_KEYWORD_2))
             {
-                //maydo 切换有重氢的星球
+                //MAYDO 切换有重氢的星球
                 return true;
             }
             else

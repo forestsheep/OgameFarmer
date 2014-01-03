@@ -10,12 +10,9 @@ namespace OgameFarmer
     /// </summary>
     class BaseInfo
     {
-        private bool loginSuccess;
-
-        internal bool LoginSuccess
-        {
-            get { return loginSuccess; }
-            set { loginSuccess = value; }
-        }
+        /// <summary>
+        /// 获取或设定访问是否成功
+        /// </summary>
+        internal bool LoginSuccess;
     }
 }

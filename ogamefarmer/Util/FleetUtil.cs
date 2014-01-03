@@ -13,7 +13,7 @@ namespace OgameFarmer
     		{
     			if(ship.Quantity != 0)
                 {
-					returnParamString += "&" + ship.id + "=" + ship.Quantity;
+					returnParamString += "&" + ship.Id + "=" + ship.Quantity;
                 }
     		}
 			return returnParamString;
@@ -51,10 +51,10 @@ namespace OgameFarmer
                 string speed = "speed";
                 if (ship.Quantity > 0)
                 {
-                    string shipid = ships + ship.subid;
-                    string capacityid = capacity + ship.subid;
-                    string consumptionid = consumption + ship.subid;
-                    string speedid = speed + ship.subid;
+                    string shipid = ships + ship.SubId;
+                    string capacityid = capacity + ship.SubId;
+                    string consumptionid = consumption + ship.SubId;
+                    string speedid = speed + ship.SubId;
                     foreach (DictionaryEntry de in fleetInfo.FleetParams)
                     {
                         string key = de.Key.ToString();

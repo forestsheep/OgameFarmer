@@ -5,9 +5,18 @@ using System.Text;
 
 namespace OgameFarmer
 {
+    /// <summary>
+    /// 舰队
+    /// </summary>
     class Fleet
     {
+        /// <summary>
+        /// 舰队列表
+        /// </summary>
         private List<Ship> shipList = new List<Ship>();
+        /// <summary>
+        /// 取得舰队列表
+        /// </summary>
 		internal List<Ship> ShipList
         {
             get
@@ -15,69 +24,63 @@ namespace OgameFarmer
                 return shipList;
             }
         }
+
+        /// <summary>
+        /// 构造一支舰队，初期所有舰船数量都为0
+        /// </summary>
         internal Fleet()
         {
-            ship202 = new Ship202();
-            ship203 = new Ship203();
-            ship204 = new Ship204();
-            ship205 = new Ship205();
-            ship206 = new Ship206();
-            ship207 = new Ship207();
-            ship208 = new Ship208();
-            ship209 = new Ship209();
-            ship210 = new Ship210();
-            ship211 = new Ship211();
-            ship213 = new Ship213();
-            ship214 = new Ship214();
-            ship215 = new Ship215();
-			shipList.Add(ship202);
-			shipList.Add(ship203);
-			shipList.Add(ship204);
-			shipList.Add(ship205);
-			shipList.Add(ship206);
-			shipList.Add(ship207);
-			shipList.Add(ship208);
-			shipList.Add(ship209);
-			shipList.Add(ship210);
-			shipList.Add(ship211);
-			shipList.Add(ship213);
-			shipList.Add(ship214);
-			shipList.Add(ship215);
+            IShip202 = new Ship202();
+            IShip203 = new Ship203();
+            IShip204 = new Ship204();
+            IShip205 = new Ship205();
+            IShip206 = new Ship206();
+            IShip207 = new Ship207();
+            IShip208 = new Ship208();
+            IShip209 = new Ship209();
+            IShip210 = new Ship210();
+            IShip211 = new Ship211();
+            IShip213 = new Ship213();
+            IShip214 = new Ship214();
+            IShip215 = new Ship215();
+			shipList.Add(IShip202);
+			shipList.Add(IShip203);
+			shipList.Add(IShip204);
+			shipList.Add(IShip205);
+			shipList.Add(IShip206);
+			shipList.Add(IShip207);
+			shipList.Add(IShip208);
+			shipList.Add(IShip209);
+			shipList.Add(IShip210);
+			shipList.Add(IShip211);
+			shipList.Add(IShip213);
+			shipList.Add(IShip214);
+			shipList.Add(IShip215);
         }
 
-        internal Ship202 ship202;
-        internal Ship203 ship203;
-        internal Ship204 ship204;
-        internal Ship205 ship205;
-        internal Ship206 ship206;
-        internal Ship207 ship207;
-        internal Ship208 ship208;
-        internal Ship209 ship209;
-        internal Ship210 ship210;
-        internal Ship211 ship211;
-        internal Ship213 ship213;
-        internal Ship214 ship214;
-        internal Ship215 ship215;
+        internal Ship202 IShip202;
+        internal Ship203 IShip203;
+        internal Ship204 IShip204;
+        internal Ship205 IShip205;
+        internal Ship206 IShip206;
+        internal Ship207 IShip207;
+        internal Ship208 IShip208;
+        internal Ship209 IShip209;
+        internal Ship210 IShip210;
+        internal Ship211 IShip211;
+        internal Ship213 IShip213;
+        internal Ship214 IShip214;
+        internal Ship215 IShip215;
 
         internal class Ship
         {
             internal static string ID = "ship";
             internal static string NAME;
             internal static int CAPACITY;
-            private int quantity;
-            internal int Quantity
-            {
-                get
-                {
-                    return quantity;
-                }
-                set
-                {
-                    quantity = value;
-                }
-            }
-            internal string id;
-            internal string subid;
+
+            internal int Quantity;
+            internal string Id;
+            internal string SubId;
         }
 
         /// <summary>
@@ -88,8 +91,8 @@ namespace OgameFarmer
             
             internal Ship202()
             {
-                subid = "202";
-                id = Fleet.Ship.ID + subid;
+                SubId = "202";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship202()
             {
@@ -105,8 +108,8 @@ namespace OgameFarmer
         {
             internal Ship203()
             {
-                subid = "203";
-                id = Fleet.Ship.ID + subid;
+                SubId = "203";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship203()
             {
@@ -122,8 +125,8 @@ namespace OgameFarmer
         {
             internal Ship204()
             {
-                subid = "204";
-                id = Fleet.Ship.ID + subid;
+                SubId = "204";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship204()
             {
@@ -139,8 +142,8 @@ namespace OgameFarmer
         {
             internal Ship205()
             {
-                subid = "205";
-                id = Fleet.Ship.ID + subid;
+                SubId = "205";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship205()
             {
@@ -156,8 +159,8 @@ namespace OgameFarmer
         {
             internal Ship206()
             {
-                subid = "206";
-                id = Fleet.Ship.ID + subid;
+                SubId = "206";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship206()
             {
@@ -173,8 +176,8 @@ namespace OgameFarmer
         {
             internal Ship207()
             {
-                subid = "207";
-                id = Fleet.Ship.ID + subid;
+                SubId = "207";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship207()
             {
@@ -190,8 +193,8 @@ namespace OgameFarmer
         {
             internal Ship208()
             {
-                subid = "208";
-                id = Fleet.Ship.ID + subid;
+                SubId = "208";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship208()
             {
@@ -207,8 +210,8 @@ namespace OgameFarmer
         {
             internal Ship209()
             {
-                subid = "209";
-                id = Fleet.Ship.ID + subid;
+                SubId = "209";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship209()
             {
@@ -224,8 +227,8 @@ namespace OgameFarmer
         {
             internal Ship210()
             {
-                subid = "210";
-                id = Fleet.Ship.ID + subid;
+                SubId = "210";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship210()
             {
@@ -241,8 +244,8 @@ namespace OgameFarmer
         {
             internal Ship211()
             {
-                subid = "211";
-                id = Fleet.Ship.ID + subid;
+                SubId = "211";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship211()
             {
@@ -258,8 +261,8 @@ namespace OgameFarmer
         {
             internal Ship213()
             {
-                subid = "213";
-                id = Fleet.Ship.ID + subid;
+                SubId = "213";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship213()
             {
@@ -275,8 +278,8 @@ namespace OgameFarmer
         {
             internal Ship214()
             {
-                subid = "214";
-                id = Fleet.Ship.ID + subid;
+                SubId = "214";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship214()
             {
@@ -292,8 +295,8 @@ namespace OgameFarmer
         {
             internal Ship215()
             {
-                subid = "215";
-                id = Fleet.Ship.ID + subid;
+                SubId = "215";
+                Id = Fleet.Ship.ID + SubId;
             }
             static Ship215()
             {

@@ -1,5 +1,8 @@
 namespace OgameFarmer
 {
+    /// <summary>
+    /// 翻阅星图时重氢不够
+    /// </summary>
     class OutOfHHException : OgameFarmerException
     {
         //翻越星图重氢不够时的错误信息
