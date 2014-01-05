@@ -227,7 +227,7 @@ namespace OgameFarmer
         /// <summary>
         /// 去访问网站
         /// </summary>
-        internal void access()
+        internal void Access()
         {
             this.responseText = string.Empty;
             if (accessUrl == null || accessUrl.Trim().Equals(string.Empty))

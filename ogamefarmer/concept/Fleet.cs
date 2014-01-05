@@ -44,19 +44,69 @@ namespace OgameFarmer
 			shipList.Add(ship214);
 			shipList.Add(ship215);
         }
-
+        /// <summary>
+        /// 获取或设定小型运输舰
+        /// </summary>
         internal Ship202 ship202;
+
+        /// <summary>
+        /// 获取或设定大型运输舰
+        /// </summary>
         internal Ship203 ship203;
+
+        /// <summary>
+        /// 获取或设定轻型战斗机
+        /// </summary>
         internal Ship204 ship204;
+
+        /// <summary>
+        /// 获取或设定重型战斗机
+        /// </summary>
         internal Ship205 ship205;
+
+        /// <summary>
+        /// 获取或设定巡洋舰
+        /// </summary>
         internal Ship206 ship206;
+
+        /// <summary>
+        /// 获取或设定战列舰
+        /// </summary>
         internal Ship207 ship207;
+
+        /// <summary>
+        /// 获取或设定殖民舰
+        /// </summary>
         internal Ship208 ship208;
+
+        /// <summary>
+        /// 获取或设定回收舰
+        /// </summary>
         internal Ship209 ship209;
+
+        /// <summary>
+        /// 获取或设定间谍卫星
+        /// </summary>
         internal Ship210 ship210;
+
+        /// <summary>
+        /// 获取或设定轰炸机
+        /// </summary>
         internal Ship211 ship211;
+
+        /// <summary>
+        /// 获取或设定毁灭者
+        /// </summary>
         internal Ship213 ship213;
+
+        /// <summary>
+        /// 获取或设定死星
+        /// </summary>
         internal Ship214 ship214;
+
+        /// <summary>
+        /// 获取或设定战斗巡洋舰
+        /// </summary>
         internal Ship215 ship215;
 
         internal class Ship
@@ -85,7 +135,6 @@ namespace OgameFarmer
         /// </summary>
         internal class Ship202 : Ship
         {
-            
             internal Ship202()
             {
                 subid = "202";

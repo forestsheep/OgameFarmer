@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OgameFarmer
 {
-    class UncompleteSettingException : OgameFarmerException
+    class SendFleetFailedException : OgameFarmerException
     {
-        internal UncompleteSettingException()
-        { 
-            Message = "没有设定url";
+        internal SendFleetFailedException()
+        {
+            Message = "发送舰队失败";
         }
 
         public override string ToString()

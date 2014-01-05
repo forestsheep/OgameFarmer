@@ -38,7 +38,7 @@ namespace OgameFarmer
         {
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             ha.AccessUrl = "http://u8.cicihappy.com/ogame/buildings.php" + param + "&mode=defense&re=0";
-            ha.access();
+            ha.Access();
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace OgameFarmer
             f406 -= fmenge406;
 
             ha.UrlParam = "fmenge[401]=" + fmenge401 + "&fmenge[402]=" + fmenge402 + "&fmenge[403]=0&fmenge[404]=0&fmenge[405]=" + fmenge405 + "&fmenge[406]=" + fmenge406 + "&fmenge[502]=0&fmenge[503]=0";
-            ha.access();
+            ha.Access();
             Thread.Sleep(3000);
 
             if (f401 == 0 && f402 == 0 && f405 == 0 && f406 == 0)

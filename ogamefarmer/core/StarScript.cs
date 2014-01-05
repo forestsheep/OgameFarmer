@@ -61,7 +61,7 @@ namespace OgameFarmer
                 else
                 {
                     MessageBox.Show(ConstString.CANNOT_DO_MUTLTI_THINGS);
-                    GalaxyScanEventHandler(-1);
+                    //GalaxyScanEventHandler(-1);
                 }
             }
         }
@@ -118,7 +118,7 @@ namespace OgameFarmer
             ha.ContentType = "";
             ha.IsUseCookie = true;
             ha.AddHeader("Cache-Control", "max-age=0");
-            ha.access();
+            ha.Access();
             Thread.Sleep(200);
         }
 
@@ -126,7 +126,7 @@ namespace OgameFarmer
         {
             LoginMessager lm = new LoginMessager();
             ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
-            ha.access();
+            ha.Access();
             lm.loginInfo = LoginInfo.AnalyzHtml();
             LoginEventHandler(lm);
             Thread.Sleep(200);
@@ -143,13 +143,13 @@ namespace OgameFarmer
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             string baseurl = ha.AccessUrl;
-            ha.access();
+            ha.Access();
             //取得第一个星球的总星球列表
             OverviewInfo ovf = OverviewInfo.AnalyzHtml();
             foreach (OverviewInfo.Ball ball in ovf.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.access();
+                ha.Access();
                 //取得每一个星球
                 OverviewInfo ovfloop = OverviewInfo.AnalyzHtml();
                 balls.Add(ovfloop);
@@ -173,14 +173,14 @@ namespace OgameFarmer
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             string baseurl = ha.AccessUrl;
-            ha.access();
+            ha.Access();
             //取得第一个星球的总星球列表
             pi = ProductivityInfo.AnalyzHtml();
             Thread.Sleep(5000);
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.access();
+                ha.Access();
                 //取得每一个星球
                 ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
                 balls.Add(piloop);
@@ -211,7 +211,7 @@ namespace OgameFarmer
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.access();
+                ha.Access();
                 ha.Referer = baseurl;
                 //取得每一个星球
                 ConstructionInfo ciloop = ConstructionInfo.AnalyzHtml();
@@ -229,7 +229,7 @@ namespace OgameFarmer
             sb.Append(".cicihappy.com/ogame/galaxy.php?mode=0");
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
-            ha.access();
+            ha.Access();
             LocationsInfo[] mylis = LocationsInfo.AnalyzHtml();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.AccessUrl = "http://" + universe + ".cicihappy.com/ogame/galaxy.php?mode=1";
@@ -324,7 +324,7 @@ namespace OgameFarmer
                     for (int c = 0; c < 15; c++)
                     {
                         ha = RankInfo.PrepareHttpAccesser(StarScript.ha, universe, c * 100 + 1);
-                        ha.access();
+                        ha.Access();
                         RankInfo[] ris = RankInfo.AnalyzHtml();
 
                         for (int j = 0; j < ris.Length; j++)
@@ -366,7 +366,7 @@ namespace OgameFarmer
                 {
                     GalaxyScanEventHandler((yin + 1) * 10000 + tai);
                     ha.UrlParam = "galaxyRight=dr&galaxy=" + yin + "&system=" + tai + "&galaxycode=" + LocationsInfo.GALAXY_CODE;
-                    ha.access();
+                    ha.Access();
                     // Issue #4 
                     try
                     {
@@ -406,7 +406,7 @@ namespace OgameFarmer
             ha.AccessUrl = sb.ToString();
             string baseurl = ha.AccessUrl;
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
-            ha.access();
+            ha.Access();
             //取得第一个星球的总星球列表
             pi = ProductivityInfo.AnalyzHtml();
             Thread.Sleep(3000);
@@ -414,7 +414,7 @@ namespace OgameFarmer
             foreach (ProductivityInfo.Ball ball in pi.Balllist)
             {
                 ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.access();
+                ha.Access();
                 //取得每一个星球
                 ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
                 dm.ballname = piloop.CurrentBallName;
@@ -444,7 +444,14 @@ namespace OgameFarmer
 
         private void FleetTest(object o)
         {
-            FleetInfo.SendFleet(ha);
+            while(true)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    FleetInfo.SendFleet(ha);
+                }
+                Thread.Sleep(3800000);
+            }
         }
 
         internal event LoginMessageSender LoginEvent

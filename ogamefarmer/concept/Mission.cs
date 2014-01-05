@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OgameFarmer
 {
-    enum Mission
+    enum MissionType
     {
         ATTACK = 1,
         TRANSPORT = 3,
