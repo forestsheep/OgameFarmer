@@ -65,59 +65,59 @@ namespace OgameFarmer
             {
                 if (de.Key.Equals("maxship202"))
                 {
-                    fleetInfo.MaxActionableFleet.ship202.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip202.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship203"))
                 {
-                    fleetInfo.MaxActionableFleet.ship203.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip203.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship204"))
                 {
-                    fleetInfo.MaxActionableFleet.ship204.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip204.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship205"))
                 {
-                    fleetInfo.MaxActionableFleet.ship205.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip205.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship206"))
                 {
-                    fleetInfo.MaxActionableFleet.ship206.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip206.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship207"))
                 {
-                    fleetInfo.MaxActionableFleet.ship207.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip207.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship208"))
                 {
-                    fleetInfo.MaxActionableFleet.ship208.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip208.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship209"))
                 {
-                    fleetInfo.MaxActionableFleet.ship209.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip209.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship210"))
                 {
-                    fleetInfo.MaxActionableFleet.ship210.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip210.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship211"))
                 {
-                    fleetInfo.MaxActionableFleet.ship211.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip211.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship213"))
                 {
-                    fleetInfo.MaxActionableFleet.ship213.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip213.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship214"))
                 {
-                    fleetInfo.MaxActionableFleet.ship214.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip214.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship203"))
                 {
-                    fleetInfo.MaxActionableFleet.ship203.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip203.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship215"))
                 {
-                    fleetInfo.MaxActionableFleet.ship215.Quantity = int.Parse((string)de.Value);
+                    fleetInfo.MaxActionableFleet.IShip215.Quantity = int.Parse((string)de.Value);
                 }
             }
 

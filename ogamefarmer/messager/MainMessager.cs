@@ -8,7 +8,7 @@ namespace OgameFarmer.messager
 {
     class MainMessager
     {
-        internal int progressBarStep;
+        internal int progressBarStep;       
         internal OverviewInfo ovf;
         internal ArrayList balls;
         internal ProductivityInfo productivityInfo;
