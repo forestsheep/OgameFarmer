@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OgameFarmer
 {
-    enum Mission
+    enum MissionType
     {
         /// <summary>
         /// 攻击

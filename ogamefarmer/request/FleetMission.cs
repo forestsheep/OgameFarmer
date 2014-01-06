@@ -115,12 +115,12 @@ namespace OgameFarmer
             }
         }
 
-        private Mission mission;
+        private MissionType mission;
         /// <summary>
         /// 获取或设定行动的种类
         /// 攻击1，运输3，派遣4，协防5，探测6，回收8，毁月9，探险15
         /// </summary>
-        internal Mission Mission
+        internal MissionType Mission
         {
             get
             {
@@ -241,7 +241,7 @@ namespace OgameFarmer
         /// <param name="holdingtime">停留时间</param>
         /// <param name="expeditiontime">探险停留时间</param>
         /// <param name="tradeid">贸易番号</param>
-        internal FleetMission(Fleet fleet, Coordinate depart, CoordinateType departType, Coordinate destination, CoordinateType destinationType, int speed, Mission mission, int resource1, int resource2, int resource3, int holdingtime, int expeditiontime, int tradeid)
+        internal FleetMission(Fleet fleet, Coordinate depart, CoordinateType departType, Coordinate destination, CoordinateType destinationType, int speed, MissionType mission, int resource1, int resource2, int resource3, int holdingtime, int expeditiontime, int tradeid)
         {
             this.fleet = fleet;
             this.depart = depart;
@@ -273,7 +273,7 @@ namespace OgameFarmer
         /// <returns></returns>
         internal static FleetMission GetInstance4Transport(Fleet fleet, Coordinate depart, CoordinateType departType, Coordinate destination, CoordinateType destinationType, int speed, int resource1, int resource2, int resource3)
         {
-            return new FleetMission(fleet, depart, departType, destination, destinationType, speed, Mission.TRANSPORT, resource1, resource2, resource3, 0, 0, 0);
+            return new FleetMission(fleet, depart, departType, destination, destinationType, speed, MissionType.TRANSPORT, resource1, resource2, resource3, 0, 0, 0);
         }
     }
 }

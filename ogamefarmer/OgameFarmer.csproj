@@ -67,16 +67,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commander\FleetCommander.cs" />
     <Compile Include="concept\Coordinate.cs" />
     <Compile Include="concept\CoordinateType.cs" />
     <Compile Include="concept\Mission.cs" />
+    <Compile Include="exception\SendFleetFailedException.cs" />
     <Compile Include="form\FleetForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form\FleetForm.Designer.cs">
       <DependentUpon>FleetForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="info\Fleet1Info.cs" />
     <Compile Include="info\FleetInfo.cs" />
+    <Compile Include="info\Floten1Info.cs" />
+    <Compile Include="info\Floten2Info.cs" />
+    <Compile Include="info\Floten3Info.cs" />
+    <Compile Include="interface\PageInfo.cs" />
     <Compile Include="messager\DefenceMessager.cs" />
     <Compile Include="form\DefenceForm.cs">
       <SubType>Form</SubType>
