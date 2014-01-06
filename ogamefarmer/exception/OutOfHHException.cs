@@ -5,6 +5,23 @@ namespace OgameFarmer
     /// </summary>
     class OutOfHHException : OgameFarmerException
     {
+        //翻越星图重氢不够的关键字
+        private const string NOT_ENOUGH_HH_KEYWORD_1 = "需要消耗50单位的重氢";
+        private const string NOT_ENOUGH_HH_KEYWORD_2 = "没有足够的重氢";
+
+        internal static bool Check(string s)
+        {
+            if (s.Contains(NOT_ENOUGH_HH_KEYWORD_1) || s.Contains(NOT_ENOUGH_HH_KEYWORD_2))
+            {
+                //MAYDO 切换有重氢的星球
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         internal OutOfHHException()
         {
             //翻越星图重氢不够时的错误信息

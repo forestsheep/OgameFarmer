@@ -45,7 +45,7 @@ namespace OgameFarmer
                 }
             }
             //资源为0可以只传变量名
-            ha.UrlParam += FleetUtil.PullShipFloten1Params2Floten3(fleetInfo);
+            ha.UrlParam += FleetUtil.PullShipFloten1ParamsToFloten3(fleetInfo);
             return ha;
         }
 

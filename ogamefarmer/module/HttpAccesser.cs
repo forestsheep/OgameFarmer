@@ -291,7 +291,7 @@ namespace OgameFarmer
                 sr.Close();
                 Txtout.write(responseText, "html.txt");
                 int r = rtime.Next(1000);
-                Thread.Sleep(3000 + r);
+                Thread.Sleep(2000 + r);
             }
         }
         #endregion

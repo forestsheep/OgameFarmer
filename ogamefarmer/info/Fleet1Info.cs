@@ -18,6 +18,11 @@ namespace OgameFarmer
         /// 舰队页面返回的属性
         /// </summary>
         internal Hashtable FleetParams;
+
+        /// <summary>
+        /// 最大可动用舰队
+        /// </summary>
+        internal Fleet MaxActionableFleet;
         #endregion
 
         #region 实现接口方法
@@ -39,88 +44,86 @@ namespace OgameFarmer
             UnExpectPageController upc = UnExpectPageController.GetInstance();
             upc.VarifyCookiePeriod(htmlTxt);
 
-            // 取得舰队页面的参数，用来在发舰队页面1中使用
-            FleetInfo fleetInfo = new FleetInfo();
-            fleetInfo.FleetParams = new Hashtable();
-            HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
+            // 解析
+            HtmlAnalyzer htmlAnalyzer = new HtmlAnalyzer();
             HtmlNode.ElementsFlags.Remove("option");
-            h.Load(ConstString.HTML_PATH);
-            HtmlNodeCollection fleetParams = h.DocumentNode.SelectNodes(XPATH_FLEET_PARAM);
-            foreach (HtmlNode hn in fleetParams)
+            HtmlNodeCollection hc = htmlAnalyzer.AnalyzeNodes(XPATH_FLEET_PARAM);
+
+            // 储存
+            foreach (HtmlNode hn in hc)
             {
                 HtmlAttributeCollection hac = hn.Attributes;
-                fleetInfo.FleetParams.Add(hac[1].Value, hac[2].Value);
+                this.FleetParams.Add(hac[1].Value, hac[2].Value);
             }
+
             // 取得舰队可用总数等信息
-            SetFleetQuantity(ref fleetInfo);
-            //return fleetInfo;
+            SetFleetQuantity();
         }
         #endregion
 
         #region 私有方法
-        private static void SetFleetQuantity(ref FleetInfo fleetInfo)
+        private void SetFleetQuantity()
         {
-            fleetInfo.MaxActionableFleet = new Fleet();
-            foreach (DictionaryEntry de in fleetInfo.FleetParams)
+            this.MaxActionableFleet = new Fleet();
+            foreach (DictionaryEntry de in this.FleetParams)
             {
                 if (de.Key.Equals("maxship202"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip202.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip202.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship203"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip203.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip203.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship204"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip204.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip204.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship205"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip205.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip205.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship206"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip206.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip206.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship207"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip207.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip207.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship208"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip208.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip208.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship209"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip209.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip209.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship210"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip210.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip210.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship211"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip211.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip211.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship213"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip213.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip213.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship214"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip214.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip214.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship203"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip203.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip203.Quantity = int.Parse((string)de.Value);
                 }
                 else if (de.Key.Equals("maxship215"))
                 {
-                    fleetInfo.MaxActionableFleet.IShip215.Quantity = int.Parse((string)de.Value);
+                    this.MaxActionableFleet.IShip215.Quantity = int.Parse((string)de.Value);
                 }
             }
-
         }
         #endregion
     }

@@ -14,9 +14,10 @@ namespace OgameFarmer
         /// <summary>
         /// 获取发射舰队前的一些必要的情报
         /// </summary>
-        internal void GetFleetInfo()
+        internal void GetFleetInfo(ref HttpAccesser ha)
         {
-
+            Fleet1Info fleet1Info = new Fleet1Info();
+            fleet1Info.AccessSite(ref ha);
         }
 
         /// <summary>

@@ -40,7 +40,7 @@ namespace OgameFarmer
         /// </summary>
         /// <param name="fleetInfo"></param>
         /// <returns></returns>
-        internal static string PullShipFloten1Params2Floten3(FleetInfo fleetInfo)
+        internal static string PullShipFloten1ParamsToFloten3(FleetInfo fleetInfo)
         {
             string returnParamString = string.Empty;
             foreach(Fleet.Ship ship in fleetInfo.FleetMission.Fleet.ShipList)
