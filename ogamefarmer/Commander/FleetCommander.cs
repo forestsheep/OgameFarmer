@@ -11,13 +11,29 @@ namespace OgameFarmer
     class FleetCommander
     {
         
+        #region 成员变量
+        private Coordinate coordinate;
+        private CoordinateType coordinateType;
+        private Fleet1Info fleet1Info;
+        #endregion
+
+        #region 构造函数
+        internal FleetCommander(CoordinateType coordinateType)
+        {
+
+        }
+        #endregion
+
+
         /// <summary>
         /// 获取发射舰队前的一些必要的情报
         /// </summary>
         internal void GetFleetInfo(ref HttpAccesser ha)
         {
-            Fleet1Info fleet1Info = new Fleet1Info();
-            fleet1Info.AccessSite(ref ha);
+            this.fleet1Info = new Fleet1Info();
+            this.fleet1Info.AccessSite(ref ha);
+            this.fleet1Info.AnalyzResponse();
+            
         }
 
         /// <summary>
