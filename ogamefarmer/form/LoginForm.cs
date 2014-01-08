@@ -15,16 +15,24 @@ namespace OgameFarmer
 {
     public partial class LoginForm : Form
     {
-        private StarScript ss;
+        #region old way
+        //private StarScript ss;
+        #endregion
+
+        #region new way
+        private LoginCommander loginCommander;
+        #endregion
 
         public LoginForm()
         {
-            //string XPATH_METALMINE = "/html/body/center/table/tr/td/center/table/tr[{0:d}]/td[2]/a";
-            //string s = string.Format(XPATH_METALMINE, 2);
             InitializeComponent();
-            this.ss = new StarScript();
-            ss.LoginEvent += this.OnLogin;
-            //mail();
+            #region old way
+            //this.ss = new StarScript();
+            //ss.LoginEvent += this.OnLogin;
+            #endregion
+
+            #region new way
+            #endregion
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -39,9 +47,11 @@ namespace OgameFarmer
 
         private void b_login_Click(object sender, EventArgs e)
         {
-            login();
+            //login();
+            loginX();
         }
 
+        #region old way
         private void login()
         {
             this.b_login.Text = "login...";
@@ -51,7 +61,7 @@ namespace OgameFarmer
             StarScript.universe = cb_uni.SelectedItem.ToString();
             try
             {
-                ss.run(2);
+                //ss.run(2);
             }
             catch (Exception ee)
             {
@@ -61,44 +71,33 @@ namespace OgameFarmer
             //m.Show();
             //this.Hide();
         }
+        #endregion
 
-        private void mail()
+        #region new way
+        private void loginX()
         {
-            string mac = string.Empty;
-            ManagementObjectSearcher query = new ManagementObjectSearcher("SELECT * FROM Win32_NetworkAdapterConfiguration");
-            ManagementObjectCollection queryCollection = query.Get();
-            foreach (ManagementObject mo in queryCollection)
-            {
-                if (mo["IPEnabled"].ToString() == "True")
-                    mac = mo["MacAddress"].ToString();
-            }
-            Console.WriteLine(mac);
-
-            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            message.To.Add("galaxyfarmer@163.com");
-            message.Subject = "galaxyfarmer test";
-            message.From = new MailAddress("galaxyfarmer@163.com");
-            //message.Body = "mac:" + mac;
-            SmtpClient client = new SmtpClient("smtp.163.com");
-            client.UseDefaultCredentials = true;
-            client.Credentials = new System.Net.NetworkCredential("galaxyfarmer@163.com", "911911f911");
-            client.EnableSsl = true;
-            try
-            {
-                client.Send(message);
-            }
-            catch (Exception ee)
-            {
-                Console.WriteLine(ee);
-            }
-
+            this.b_login.Text = "login...";
+            this.b_login.Enabled = false;
+            loginCommander = new LoginCommander(this.tb_username.Text, this.tb_pw.Text, cb_uni.SelectedItem.ToString());
+            loginCommander.LoginEvent += this.OnLogin;
+            CommandCenter.RUN(loginCommander);
         }
+        #endregion
+
+        
 
         private LoginInfo li;
-
+        private bool isLoginSuccess = false;
         private void OnLogin(LoginMessager lm)
         {
+            #region old way
             li = lm.loginInfo;
+            #endregion
+
+            #region new way
+            isLoginSuccess = lm.IsLoginSuccess;
+            #endregion
+
             Object[] list = { this, System.EventArgs.Empty };
             this.l_loginMessage.BeginInvoke(new EventHandler(ShowMessage), list);
 
@@ -106,12 +105,15 @@ namespace OgameFarmer
 
         public void ShowMessage(object sender, EventArgs e)
         {
-            if (li.LoginSuccess)
+            //if (li.LoginSuccess)
+            if (this.isLoginSuccess)
             {
                 Thread.Sleep(2000);
-                Main m = new Main(this.ss);
+                //Main m = new Main(this.ss);
+                Main m = new Main(null);
                 m.Show();
-                ss.LoginEvent -= this.OnLogin;
+                //ss.LoginEvent -= this.OnLogin;
+                loginCommander.LoginEvent -= this.OnLogin;
                 this.Hide();
             }
             else

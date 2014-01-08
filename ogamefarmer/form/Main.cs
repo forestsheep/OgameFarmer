@@ -27,8 +27,8 @@ namespace OgameFarmer
         internal Main(StarScript ss)
         {
             InitializeComponent();
-            this.ss = ss;
-            this.ss.MainEvent += this.OnMessageRecived;
+            //this.ss = ss;
+            //this.ss.MainEvent += this.OnMessageRecived;
         }
         #endregion
 

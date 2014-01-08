@@ -5,13 +5,17 @@ using System.Text;
 
 namespace OgameFarmer
 {
+    internal delegate void LoginMessageSenderX(LoginMessager mm);
     class LoginCommander : Commander
     {
+        #region 成员
+        private LoginMessageSenderX loginEventHandler;
+        #endregion
+
         #region 属性
         internal string Username;
         internal string Password;
         internal string Universe;
-
         #endregion
 
         #region 构造函数
@@ -34,6 +38,21 @@ namespace OgameFarmer
             LoginInfoX loginInfoX = new LoginInfoX(this);
             loginInfoX.AccessSite();
             loginInfoX.AnalyzResponse();
+            LoginMessager loginMessager = new LoginMessager();
+            loginMessager.IsLoginSuccess = loginInfoX.IsLoginSuccess;
+            loginEventHandler(loginMessager);
+        }
+
+        internal event LoginMessageSenderX LoginEvent
+        {
+            add
+            {
+                loginEventHandler += new LoginMessageSenderX(value);
+            }
+            remove
+            {
+                loginEventHandler -= new LoginMessageSenderX(value);
+            }
         }
     }
 }

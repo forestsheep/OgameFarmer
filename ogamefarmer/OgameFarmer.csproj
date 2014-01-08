@@ -99,6 +99,7 @@
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
     <Compile Include="entity\Fleet.cs" />
+    <Compile Include="module\MailSender.cs" />
     <Compile Include="request\FleetMission.cs" />
     <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />

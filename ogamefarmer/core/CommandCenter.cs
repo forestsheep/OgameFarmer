@@ -11,12 +11,12 @@ namespace OgameFarmer
     {
         private static Thread T;
 
-        internal void run(Commander cmd)
+        internal static void RUN(Commander cmd)
         {
             if (T == null || ThreadState.Stopped == T.ThreadState)
             {
                 T = new Thread(new ThreadStart(cmd.Execute));
-                T.Start(cmd);
+                T.Start();
             }
             else
             {
