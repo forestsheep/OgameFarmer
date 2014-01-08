@@ -14,7 +14,7 @@ namespace OgameFarmer
 
         internal static HttpAccesser PrepareHttpAccesser(string universe)
         {
-            HttpAccesser ha = new HttpAccesser();
+            HttpAccesser ha = HttpAccesser.GetInstance();
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
             sb.Append(universe);

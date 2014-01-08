@@ -67,8 +67,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commander\Commander.cs" />
     <Compile Include="Commander\FleetCommander.cs" />
-    <Compile Include="concept\Ball.cs" />
+    <Compile Include="Commander\LoginCommander.cs" />
+    <Compile Include="core\CommandCenter.cs" />
+    <Compile Include="entity\Ball.cs" />
     <Compile Include="concept\Coordinate.cs" />
     <Compile Include="concept\CoordinateType.cs" />
     <Compile Include="concept\Mission.cs" />
@@ -84,7 +87,8 @@
     <Compile Include="info\Floten1Info.cs" />
     <Compile Include="info\Floten2Info.cs" />
     <Compile Include="info\Floten3Info.cs" />
-    <Compile Include="interface\PageInfo.cs" />
+    <Compile Include="info\LoginInfoX.cs" />
+    <Compile Include="info\PageInfo.cs" />
     <Compile Include="messager\DefenceMessager.cs" />
     <Compile Include="form\DefenceForm.cs">
       <SubType>Form</SubType>
@@ -94,7 +98,7 @@
     </Compile>
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
-    <Compile Include="concept\Fleet.cs" />
+    <Compile Include="entity\Fleet.cs" />
     <Compile Include="request\FleetMission.cs" />
     <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />

@@ -185,9 +185,7 @@ namespace OgameFarmer
         private static FleetInfo AnalyzHtmlFleet()
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             // 取得舰队页面的参数，用来在发舰队页面1中使用
             FleetInfo fleetInfo = new FleetInfo();
@@ -209,9 +207,7 @@ namespace OgameFarmer
         private static FleetInfo AnalyzHtmlFloten1(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
             fleetInfo.Floten1Params = new Hashtable();
@@ -229,9 +225,7 @@ namespace OgameFarmer
         private static FleetInfo AnalyzHtmlFloten2(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
             fleetInfo.Floten2Params = new Hashtable();
@@ -259,9 +253,7 @@ namespace OgameFarmer
         private static void AnalyzHtmlFloten3(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
         }
 
         private static void SetFleetQuantity(ref FleetInfo fleetInfo)

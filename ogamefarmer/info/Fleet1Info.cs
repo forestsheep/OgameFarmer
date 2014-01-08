@@ -26,12 +26,13 @@ namespace OgameFarmer
         #endregion
 
         #region 实现接口方法
-        public void AccessSite(ref HttpAccesser httpAccesser)
+        public void AccessSite()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
             sb.Append(StarScript.universe);
             sb.Append(".cicihappy.com/ogame/fleet.php");
+            HttpAccesser httpAccesser = HttpAccesser.GetInstance();
             httpAccesser.AccessUrl = sb.ToString();
             httpAccesser.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             httpAccesser.Access();
@@ -40,9 +41,7 @@ namespace OgameFarmer
         public void AnalyzResponse()
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             // 解析
             HtmlAnalyzer htmlAnalyzer = new HtmlAnalyzer();

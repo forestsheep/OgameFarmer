@@ -27,6 +27,8 @@ namespace OgameFarmer
         /// 获取或设定访问此球所需要在url后面加上的参数
         /// </summary>
         internal string Prama;
+
         #endregion
+        
     }
 }

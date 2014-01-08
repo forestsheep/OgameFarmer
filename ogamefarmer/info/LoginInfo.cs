@@ -14,7 +14,7 @@ namespace OgameFarmer
             sb.Append("http://");
             sb.Append(universe);
             sb.Append(".cicihappy.com/ogame/login.php");
-            HttpAccesser ha = new HttpAccesser();
+            HttpAccesser ha = HttpAccesser.GetInstance();
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.Host = universe + ".cicihappy.com";
@@ -35,9 +35,7 @@ namespace OgameFarmer
         internal static LoginInfo AnalyzHtml()
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             LoginInfo li = new LoginInfo();
             HtmlAgilityPack.HtmlDocument h = new HtmlAgilityPack.HtmlDocument();

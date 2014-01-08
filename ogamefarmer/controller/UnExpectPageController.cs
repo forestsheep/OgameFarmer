@@ -5,7 +5,13 @@ namespace OgameFarmer
     {
         private static UnExpectPageController INSTANCE;
 
-        internal static UnExpectPageController GetInstance()
+        internal static void Varify()
+        {
+            string html = Txtout.Read();
+            UnExpectPageController.GetInstance().VarifyAll(html);
+        }
+
+        private static UnExpectPageController GetInstance()
         {
             if (INSTANCE == null)
             {

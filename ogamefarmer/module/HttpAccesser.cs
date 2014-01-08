@@ -8,14 +8,29 @@ using System.Threading;
 
 namespace OgameFarmer
 {
+    /// <summary>
+    /// 单例模式
+    /// </summary>
     internal class HttpAccesser
     {
         #region static
         internal static Random rtime = new Random();
+        private static HttpAccesser ha;
+        internal static HttpAccesser GetInstance()
+        {
+            if (ha == null)
+            {
+                return ha = new HttpAccesser();
+            }
+            else
+            {
+                return ha;
+            }
+        }
         #endregion
 
         #region 构造函数
-        internal HttpAccesser()
+        private HttpAccesser()
         {
         }
         #endregion

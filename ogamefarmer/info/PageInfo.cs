@@ -7,7 +7,7 @@ namespace OgameFarmer
 {
     interface PageInfo
     {
-        void AccessSite(ref HttpAccesser httpAccesser);
+        void AccessSite();
 
         void AnalyzResponse();
     }

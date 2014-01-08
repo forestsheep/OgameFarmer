@@ -58,9 +58,7 @@ namespace OgameFarmer
         public void AnalyzResponse()
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             // 解析
             HtmlAnalyzer htmlAnalyzer = new HtmlAnalyzer();
@@ -103,9 +101,7 @@ namespace OgameFarmer
         private static FleetInfo AnalyzHtmlFloten1(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             HtmlAnalyzer htmlAnalyzer = new HtmlAnalyzer();
             HtmlNode.ElementsFlags.Remove("option");

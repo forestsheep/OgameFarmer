@@ -106,7 +106,7 @@ namespace OgameFarmer
         private void homepage(object o)
         {
             StringBuilder sb = new StringBuilder();
-            HttpAccesser ha = new HttpAccesser();
+            HttpAccesser ha = HttpAccesser.GetInstance();
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
             ha.Host = "www.cicihappy.com";

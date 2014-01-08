@@ -37,9 +37,7 @@ namespace OgameFarmer
         private static FleetInfo AnalyzHtmlFloten2(FleetInfo fleetInfo)
         {
             // 验证页面是否是未期待页面
-            string htmlTxt = Txtout.Read();
-            UnExpectPageController upc = UnExpectPageController.GetInstance();
-            upc.VarifyCookiePeriod(htmlTxt);
+            UnExpectPageController.Varify();
 
             HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
             fleetInfo.Floten2Params = new Hashtable();
