@@ -16,7 +16,7 @@ namespace OgameFarmer
     public partial class LoginForm : Form
     {
         #region old way
-        //private StarScript ss;
+        private StarScript ss;
         #endregion
 
         #region new way
@@ -27,7 +27,7 @@ namespace OgameFarmer
         {
             InitializeComponent();
             #region old way
-            //this.ss = new StarScript();
+            this.ss = new StarScript();
             //ss.LoginEvent += this.OnLogin;
             #endregion
 
@@ -78,26 +78,15 @@ namespace OgameFarmer
         {
             this.b_login.Text = "login...";
             this.b_login.Enabled = false;
-            loginCommander = new LoginCommander(this.tb_username.Text, this.tb_pw.Text, cb_uni.SelectedItem.ToString());
+            LoginMessager loginMessager = new LoginMessager(this.tb_username.Text, this.tb_pw.Text, cb_uni.SelectedItem.ToString());
+            loginCommander = new LoginCommander(loginMessager);
             loginCommander.LoginEvent += this.OnLogin;
             CommandCenter.RUN(loginCommander);
         }
         #endregion
 
-        
-
-        private LoginInfo li;
-        private bool isLoginSuccess = false;
-        private void OnLogin(LoginMessager lm)
+        private void OnLogin()
         {
-            #region old way
-            li = lm.loginInfo;
-            #endregion
-
-            #region new way
-            isLoginSuccess = lm.IsLoginSuccess;
-            #endregion
-
             Object[] list = { this, System.EventArgs.Empty };
             this.l_loginMessage.BeginInvoke(new EventHandler(ShowMessage), list);
 
@@ -106,11 +95,16 @@ namespace OgameFarmer
         public void ShowMessage(object sender, EventArgs e)
         {
             //if (li.LoginSuccess)
-            if (this.isLoginSuccess)
+            if (this.loginCommander.loginMessager.ResIsLoginSuccess)
             {
-                Thread.Sleep(2000);
-                //Main m = new Main(this.ss);
-                Main m = new Main(null);
+                StarScript.loginname = this.tb_username.Text;
+                StarScript.password = this.tb_pw.Text;
+                StarScript.universe = cb_uni.SelectedItem.ToString();
+                Main m = new Main(this.ss);
+                Profile.LOGIN_NAME = this.loginCommander.loginMessager.ReqLoginName;
+                Profile.PASSWORD = this.loginCommander.loginMessager.ReqPassword;
+                Profile.UNIVERSE = this.loginCommander.loginMessager.ReqUniverse;
+                //Main m = new Main(null);
                 m.Show();
                 //ss.LoginEvent -= this.OnLogin;
                 loginCommander.LoginEvent -= this.OnLogin;

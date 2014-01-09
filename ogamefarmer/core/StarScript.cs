@@ -170,6 +170,7 @@ namespace OgameFarmer
             sb.Append("http://");
             sb.Append(universe);
             sb.Append(".cicihappy.com/ogame/resources.php");
+            HttpAccesser ha = HttpAccesser.GetInstance();
             ha.AccessUrl = sb.ToString();
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             string baseurl = ha.AccessUrl;

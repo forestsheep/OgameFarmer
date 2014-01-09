@@ -23,6 +23,5 @@ namespace OgameFarmer
                 MessageBox.Show(ConstString.CANNOT_DO_MUTLTI_THINGS);
             }
         }
-
     }
 }

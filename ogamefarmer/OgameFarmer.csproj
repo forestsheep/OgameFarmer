@@ -88,6 +88,7 @@
     <Compile Include="info\Floten2Info.cs" />
     <Compile Include="info\Floten3Info.cs" />
     <Compile Include="info\LoginInfoX.cs" />
+    <Compile Include="info\OverviewInfoX.cs" />
     <Compile Include="info\PageInfo.cs" />
     <Compile Include="messager\DefenceMessager.cs" />
     <Compile Include="form\DefenceForm.cs">
@@ -100,6 +101,7 @@
     <Compile Include="messager\MainMessager.cs" />
     <Compile Include="entity\Fleet.cs" />
     <Compile Include="module\MailSender.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="request\FleetMission.cs" />
     <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />
