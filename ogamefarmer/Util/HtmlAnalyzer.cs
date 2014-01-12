@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     class HtmlAnalyzer
     {
+        static HtmlAnalyzer()
+        {
+            HtmlNode.ElementsFlags.Remove("option");
+        }
         /// <summary>
         /// 获取或设定是否忽略html的Option tag
         /// 默认为true

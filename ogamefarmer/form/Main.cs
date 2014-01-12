@@ -9,10 +9,10 @@ using System.Net;
 using System.IO;
 using System.Collections;
 using System.Diagnostics;
-using OgameFarmer.form;
-using OgameFarmer.messager;
+using GalaxyFarmer.form;
+using GalaxyFarmer.messager;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     public partial class Main : Form
     {

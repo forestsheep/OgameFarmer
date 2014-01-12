@@ -1,6 +1,6 @@
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
-    class CookieExpireException : OgameFarmerException
+    class CookieExpireException : CannotContinueException
     {
         //cookie过期导致返错误回页面的关键字
         private const string COOKIE_EXPIRE_KEYWORD_1 = "登录验证";

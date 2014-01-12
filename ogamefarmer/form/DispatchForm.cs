@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     public partial class DispatchForm : Form
     {

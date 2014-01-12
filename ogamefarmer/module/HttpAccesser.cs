@@ -6,7 +6,7 @@ using System.Text;
 using System.Collections;
 using System.Threading;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     /// <summary>
     /// 单例模式

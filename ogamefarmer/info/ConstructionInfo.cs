@@ -5,7 +5,7 @@ using System.Text;
 using HtmlAgilityPack;
 using System.Collections;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     class ConstructionInfo : CommonInfo
     {

@@ -1,4 +1,4 @@
-﻿namespace OgameFarmer.form
+﻿namespace GalaxyFarmer.form
 {
     partial class DefenceForm
     {

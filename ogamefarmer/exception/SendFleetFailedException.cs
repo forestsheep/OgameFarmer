@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
-    class SendFleetFailedException : OgameFarmerException
+    class SendFleetFailedException : GalaxyFarmerException
     {
         internal SendFleetFailedException()
         {

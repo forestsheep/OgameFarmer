@@ -1,9 +1,9 @@
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     /// <summary>
     /// 翻阅星图时重氢不够
     /// </summary>
-    class OutOfHHException : OgameFarmerException
+    class OutOfHHException : GalaxyFarmerException
     {
         //翻越星图重氢不够的关键字
         private const string NOT_ENOUGH_HH_KEYWORD_1 = "需要消耗50单位的重氢";

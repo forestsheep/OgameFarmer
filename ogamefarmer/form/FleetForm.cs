@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OgameFarmer.form
+namespace GalaxyFarmer.form
 {
     public partial class FleetForm : Form
     {

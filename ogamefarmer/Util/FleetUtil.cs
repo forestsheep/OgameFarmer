@@ -1,5 +1,5 @@
 using System.Collections;
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     class FleetUtil
     {

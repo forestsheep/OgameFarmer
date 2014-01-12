@@ -5,10 +5,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    interface PageInfo
+    class CannotContinueException : GalaxyFarmerException
     {
-        void AccessSite();
-
-        void AnalyzResponse();
     }
 }

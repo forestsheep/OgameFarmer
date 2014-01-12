@@ -5,10 +5,8 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    interface PageInfo
+    class BallListMessager
     {
-        void AccessSite();
-
-        void AnalyzResponse();
+        internal List<Ball> BallList;
     }
 }

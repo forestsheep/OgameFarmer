@@ -7,7 +7,7 @@ using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     class FleetInfo : CommonInfo
     {

@@ -8,9 +8,9 @@ using System.Net;
 using System.IO;
 using System.Data.OleDb;
 using System.Data;
-using OgameFarmer.messager;
+using GalaxyFarmer.messager;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     internal delegate void LoginMessageSender(LoginMessager mm);
     internal delegate void MainMessageSender(MainMessager mm);
@@ -381,7 +381,7 @@ namespace OgameFarmer
                             }
                         }
                     }
-                    catch (OgameFarmerException ofe)
+                    catch (GalaxyFarmerException ofe)
                     {
                         MessageBox.Show(ofe.ToString());
                         return;

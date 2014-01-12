@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     internal delegate void LoginMessageSenderX();
     class LoginCommander : Commander
@@ -13,7 +13,7 @@ namespace OgameFarmer
         #endregion
 
         #region 属性
-        internal LoginMessager loginMessager;
+        internal LoginMessager Messager;
         #endregion
 
         #region 构造函数
@@ -23,7 +23,7 @@ namespace OgameFarmer
         /// <param name="loginMessager">login信息</param>
         internal LoginCommander(LoginMessager loginMessager)
         {
-            this.loginMessager = loginMessager;
+            this.Messager = loginMessager;
         }
         #endregion
 

@@ -9,9 +9,10 @@ using System.Threading;
 using System.Net;
 using System.Management;
 using System.Net.Mail;
-using OgameFarmer.messager;
+using GalaxyFarmer.messager;
+using log4net;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     public partial class LoginForm : Form
     {
@@ -21,6 +22,7 @@ namespace OgameFarmer
 
         #region new way
         private LoginCommander loginCommander;
+        private BallListCommander ballListCommander;
         #endregion
 
         public LoginForm()
@@ -43,11 +45,14 @@ namespace OgameFarmer
             tb_pw.Text = "911911f911";
             //tb_username.Text = "boccaro";
             //tb_pw.Text = "911911f911";
+            #region test area
+            #endregion
         }
 
         private void b_login_Click(object sender, EventArgs e)
         {
             //login();
+            LoggerUtil.Logger.Debug("start login...");
             loginX();
         }
 
@@ -88,27 +93,31 @@ namespace OgameFarmer
         private void OnLogin()
         {
             Object[] list = { this, System.EventArgs.Empty };
-            this.l_loginMessage.BeginInvoke(new EventHandler(ShowMessage), list);
-
+            this.l_loginMessage.BeginInvoke(new EventHandler(ResponseLogin), list);
         }
 
-        public void ShowMessage(object sender, EventArgs e)
+        private void OnBallList()
+        {
+            Object[] list = { this, System.EventArgs.Empty };
+            this.l_loginMessage.BeginInvoke(new EventHandler(ResponseBallList), list);
+        }
+
+        public void ResponseLogin(object sender, EventArgs e)
         {
             //if (li.LoginSuccess)
-            if (this.loginCommander.loginMessager.ResIsLoginSuccess)
+            if (this.loginCommander.Messager.ResIsLoginSuccess)
             {
                 StarScript.loginname = this.tb_username.Text;
                 StarScript.password = this.tb_pw.Text;
                 StarScript.universe = cb_uni.SelectedItem.ToString();
-                Main m = new Main(this.ss);
-                Profile.LOGIN_NAME = this.loginCommander.loginMessager.ReqLoginName;
-                Profile.PASSWORD = this.loginCommander.loginMessager.ReqPassword;
-                Profile.UNIVERSE = this.loginCommander.loginMessager.ReqUniverse;
-                //Main m = new Main(null);
-                m.Show();
-                //ss.LoginEvent -= this.OnLogin;
+                Profile.LOGIN_NAME = this.loginCommander.Messager.ReqLoginName;
+                Profile.PASSWORD = this.loginCommander.Messager.ReqPassword;
+                Profile.UNIVERSE = this.loginCommander.Messager.ReqUniverse;
                 loginCommander.LoginEvent -= this.OnLogin;
-                this.Hide();
+                // 获取所有球的列表
+                ballListCommander = new BallListCommander(new BallListMessager());
+                ballListCommander.BallListEvent += this.OnBallList;
+                CommandCenter.RUN(ballListCommander);
             }
             else
             {
@@ -116,6 +125,14 @@ namespace OgameFarmer
                 b_login.Enabled = true;
                 l_loginMessage.Text = "登录失败";
             }
+        }
+
+        internal void ResponseBallList(object sender, EventArgs e)
+        {
+            ballListCommander.BallListEvent -= this.OnBallList;
+            Main m = new Main(this.ss);
+            m.Show();
+            this.Hide();
         }
 
         private void tb_pw_KeyPress(object sender, KeyPressEventArgs e)

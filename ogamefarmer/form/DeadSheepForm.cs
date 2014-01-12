@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.IO;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     public partial class DeadSheepForm : Form
     {

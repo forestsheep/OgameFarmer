@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.Common;
 using System.Windows.Forms;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     class AccessDB
     {

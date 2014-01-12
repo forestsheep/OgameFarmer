@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3D28AAE-3AD5-4200-8107-1C97C93BC009}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GalaxyFarmer</RootNamespace>
+    <AssemblyName>银河农夫</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>image\star.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="com.sporadicism.util.Logger, Version=1.0.1102.40276, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\com.sporadicism.util.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commander\BallListCommander.cs" />
+    <Compile Include="Commander\Commander.cs" />
+    <Compile Include="Commander\FleetCommander.cs" />
+    <Compile Include="Commander\LoginCommander.cs" />
+    <Compile Include="core\CommandCenter.cs" />
+    <Compile Include="entity\Ball.cs" />
+    <Compile Include="concept\Coordinate.cs" />
+    <Compile Include="concept\CoordinateType.cs" />
+    <Compile Include="concept\Mission.cs" />
+    <Compile Include="exception\CanContinueException.cs" />
+    <Compile Include="exception\CannotContinueException.cs" />
+    <Compile Include="exception\GetBallListFailedException.cs" />
+    <Compile Include="exception\SendFleetFailedException.cs" />
+    <Compile Include="form\FleetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\FleetForm.Designer.cs">
+      <DependentUpon>FleetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="info\Fleet1Info.cs" />
+    <Compile Include="info\FleetInfo.cs" />
+    <Compile Include="info\Floten1Info.cs" />
+    <Compile Include="info\Floten2Info.cs" />
+    <Compile Include="info\Floten3Info.cs" />
+    <Compile Include="info\LoginInfoX.cs" />
+    <Compile Include="info\BallListInfo.cs" />
+    <Compile Include="info\PageInfo.cs" />
+    <Compile Include="messager\BallListMessager.cs" />
+    <Compile Include="messager\DefenceMessager.cs" />
+    <Compile Include="form\DefenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\DefenceForm.Designer.cs">
+      <DependentUpon>DefenceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="messager\LoginMessager.cs" />
+    <Compile Include="messager\MainMessager.cs" />
+    <Compile Include="entity\Fleet.cs" />
+    <Compile Include="module\MailSender.cs" />
+    <Compile Include="Profile.cs" />
+    <Compile Include="request\FleetMission.cs" />
+    <Compile Include="strategy\AllDefence.cs" />
+    <Compile Include="exception\UncompleteSettingException.cs" />
+    <Compile Include="module\AccessDB.cs" />
+    <Compile Include="info\BaseInfo.cs" />
+    <Compile Include="info\CommonInfo.cs" />
+    <Compile Include="info\ConstructionInfo.cs" />
+    <Compile Include="const\ConstString.cs" />
+    <Compile Include="exception\CookieExpireException.cs" />
+    <Compile Include="form\DeadSheepForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\DeadSheepForm.Designer.cs">
+      <DependentUpon>DeadSheepForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\DispatchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\DispatchForm.Designer.cs">
+      <DependentUpon>DispatchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="module\HttpAccesser.cs" />
+    <Compile Include="info\LocationsInfo.cs" />
+    <Compile Include="form\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="info\LoginInfo.cs" />
+    <Compile Include="exception\GalaxyFarmerException.cs" />
+    <Compile Include="exception\OutOfHHException.cs" />
+    <Compile Include="info\OverviewInfo.cs" />
+    <Compile Include="info\RankInfo.cs" />
+    <Compile Include="core\StarScript.cs" />
+    <Compile Include="form\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Main.designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="form\SysmapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\SysmapForm.Designer.cs">
+      <DependentUpon>SysmapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="module\Txtout.cs" />
+    <Compile Include="info\ProductivityInfo.cs" />
+    <Compile Include="controller\UnExpectPageController.cs" />
+    <Compile Include="Util\ConvertUtil.cs" />
+    <Compile Include="Util\LoggerUtil.cs" />
+    <Compile Include="Util\UrlUtil.cs" />
+    <EmbeddedResource Include="form\DeadSheepForm.resx">
+      <DependentUpon>DeadSheepForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\DefenceForm.resx">
+      <DependentUpon>DefenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\DispatchForm.resx">
+      <DependentUpon>DispatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\FleetForm.resx">
+      <DependentUpon>FleetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="form\SysmapForm.resx">
+      <DependentUpon>SysmapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Log4Net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Util\HtmlAnalyzer.cs" />
+    <Compile Include="Util\FleetUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\com.sporadicism.util.Logger.dll" />
+    <Content Include="dll\HtmlAgilityPack.dll" />
+    <Content Include="dll\log4net.dll" />
+    <Content Include="image\star.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

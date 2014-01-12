@@ -1,4 +1,4 @@
-﻿namespace OgameFarmer
+﻿namespace GalaxyFarmer
 {
     partial class LoginForm
     {

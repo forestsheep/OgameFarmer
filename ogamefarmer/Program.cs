@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     static class Program
     {

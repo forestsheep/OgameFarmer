@@ -5,7 +5,7 @@ using System.Text;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     class OverviewInfo : CommonInfo
     {

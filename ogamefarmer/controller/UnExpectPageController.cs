@@ -1,5 +1,5 @@
 using System.Windows.Forms;
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     internal class UnExpectPageController
     {

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
 
-namespace OgameFarmer
+namespace GalaxyFarmer
 {
     public partial class SysmapForm : Form
     {

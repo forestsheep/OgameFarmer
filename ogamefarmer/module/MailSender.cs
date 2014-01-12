@@ -5,7 +5,7 @@ using System.Management;
 using System.Net.Mail;
 using System.Text;
 
-namespace OgameFarmer.module
+namespace GalaxyFarmer.module
 {
     class MailSender
     {
