@@ -54,10 +54,6 @@
     <ApplicationIcon>image\star.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="com.sporadicism.util.Logger, Version=1.0.1102.40276, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>dll\com.sporadicism.util.Logger.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\HtmlAgilityPack.dll</HintPath>
@@ -221,7 +217,6 @@
     <Compile Include="Util\FleetUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dll\com.sporadicism.util.Logger.dll" />
     <Content Include="dll\HtmlAgilityPack.dll" />
     <Content Include="dll\log4net.dll" />
     <Content Include="image\star.ico" />

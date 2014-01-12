@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ogamefarmer\OgameFarmer.csproj">
+    <ProjectReference Include="..\ogamefarmer\GalaxyFarmer.csproj">
       <Project>{D3D28AAE-3AD5-4200-8107-1C97C93BC009}</Project>
-      <Name>OgameFarmer</Name>
+      <Name>GalaxyFarmer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
