@@ -72,6 +72,14 @@ namespace GalaxyFarmer
                     ballListCommander.Messager.BallList.Add(ball);
                 }
             }
+            if (ballListCommander.Messager.BallList.Count != 0)
+            {
+                Profile.BallList = ballListCommander.Messager.BallList;
+            }
+            else
+            {
+                throw new GetBallListFailedException();
+            }
         }
     }
 

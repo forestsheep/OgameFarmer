@@ -28,6 +28,9 @@ namespace GalaxyFarmer
         public LoginForm()
         {
             InitializeComponent();
+
+            Profile.LOGIN_FORM = this;
+
             #region old way
             this.ss = new StarScript();
             //ss.LoginEvent += this.OnLogin;
@@ -86,7 +89,7 @@ namespace GalaxyFarmer
             LoginMessager loginMessager = new LoginMessager(this.tb_username.Text, this.tb_pw.Text, cb_uni.SelectedItem.ToString());
             loginCommander = new LoginCommander(loginMessager);
             loginCommander.LoginEvent += this.OnLogin;
-            CommandCenter.RUN(loginCommander);
+            CommandCenter.RUN(loginCommander, this);
         }
         #endregion
 
@@ -117,7 +120,7 @@ namespace GalaxyFarmer
                 // 获取所有球的列表
                 ballListCommander = new BallListCommander(new BallListMessager());
                 ballListCommander.BallListEvent += this.OnBallList;
-                CommandCenter.RUN(ballListCommander);
+                CommandCenter.RUN(ballListCommander, this);
             }
             else
             {

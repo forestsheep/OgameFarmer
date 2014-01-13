@@ -142,9 +142,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.TextBox tb_pw;
-        private System.Windows.Forms.Button b_login;
         private System.Windows.Forms.ComboBox cb_uni;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label l_loginMessage;
+        internal System.Windows.Forms.Button b_login;
     }
 }

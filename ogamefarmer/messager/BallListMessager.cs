@@ -7,6 +7,7 @@ namespace GalaxyFarmer
 {
     class BallListMessager
     {
+        internal GalaxyFarmerException GFE;
         internal List<Ball> BallList;
     }
 }
