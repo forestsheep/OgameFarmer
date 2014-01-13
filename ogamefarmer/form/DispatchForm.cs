@@ -13,7 +13,7 @@ namespace GalaxyFarmer
     public partial class DispatchForm : Form
     {
         private StarScript ss;
-        internal DispatchForm(StarScript ss)
+        internal DispatchForm()
         {
             InitializeComponent();
             this.ss = ss;

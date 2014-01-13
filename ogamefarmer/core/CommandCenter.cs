@@ -15,8 +15,6 @@ namespace GalaxyFarmer
         {
             if (T == null || ThreadState.Stopped == T.ThreadState)
             {
-                T = new Thread(new ThreadStart(cmd.Execute));
-
                 T = new Thread((ThreadStart)delegate
                 {
                     try

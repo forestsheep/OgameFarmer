@@ -55,8 +55,11 @@ namespace GalaxyFarmer
         private void b_login_Click(object sender, EventArgs e)
         {
             //login();
-            LoggerUtil.Logger.Debug("start login...");
-            loginX();
+            //LoggerUtil.Logger.Debug("start login...");
+            //loginX();
+            Main m = new Main();
+            m.Show();
+            this.Hide();
         }
 
         #region old way
@@ -133,7 +136,7 @@ namespace GalaxyFarmer
         internal void ResponseBallList(object sender, EventArgs e)
         {
             ballListCommander.BallListEvent -= this.OnBallList;
-            Main m = new Main(this.ss);
+            Main m = new Main();
             m.Show();
             this.Hide();
         }

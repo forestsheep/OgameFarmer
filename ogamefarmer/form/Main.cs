@@ -16,19 +16,11 @@ namespace GalaxyFarmer
 {
     public partial class Main : Form
     {
-        private StarScript ss;
-        private OverviewInfo info;
-        private ProductivityInfo pi;
-        private ArrayList balls;
-        private ArrayList oballs = new ArrayList();
-        private int progessStep;
 
         #region 构造函数
-        internal Main(StarScript ss)
+        internal Main()
         {
             InitializeComponent();
-            this.ss = ss;
-            this.ss.MainEvent += this.OnMessageRecived;
         }
         #endregion
 
@@ -36,94 +28,8 @@ namespace GalaxyFarmer
         System.Timers.Timer autoLoginTimer = new System.Timers.Timer();
         private void Main_Load(object sender, EventArgs e)
         {
-            progressBar1.Visible = false;
-            //Panel p2 = new Panel();
-            //Label ll2 = new Label();
-            //ll2.Text = "123123123";
-            //p2.Width = 500;
-            //p2.Height = 500;
-            //p2.Left = 10;
-            //p2.Top = 10;
-            //p2.Visible = true;
-            ////p2.AutoSize = true;
-            //this.Controls.Add(p2);
-            //p2.BackColor = Color.Green;
-            //p2.Show();
         }
 
-        protected void TextShow(object sender, EventArgs e)
-        {
-        }
-
-        protected void ShowInfo(object sender, EventArgs e)
-        {
-            progressBar1.Increment(progessStep);
-            if (pi != null)
-            {
-                l_ballname.Text = pi.CurrentBallName;
-                l_metal.Text = string.Format("{0:N0}", pi.Metal);
-
-                l_metalstroe.Text = string.Format("{0:N0}", pi.MetalStore);
-                l_crystal.Text = string.Format("{0:N0}", pi.Crystal);
-                l_crystalstore.Text = string.Format("{0:N0}", pi.CrystalStore);
-                l_h.Text = string.Format("{0:N0}", pi.H);
-                l_hstore.Text = string.Format("{0:N0}", pi.HStore);
-                l_energy.Text = string.Format("{0:N0}", pi.Energy);
-                l_energystore.Text = string.Format("{0:N0}", pi.EnergyStroe);
-                lb_ball_list.Items.Clear();
-                //foreach (CommonInfo.Ball b in pi.Balllist)
-                //{
-                //    string s = b.Name;
-                //    for (int i = 0; i < 12 - b.Name.Length; i++)
-                //    {
-                //        s += " ";
-                //    }
-                //    s += "[" + b.Location + "]";
-                //    lb_balllist.Items.Add(s);
-                //}
-            }
-            if (balls != null)
-            {
-                int allm = 0;
-                int allc = 0;
-                int allh = 0;
-
-                int allmh = 0;
-                int allch = 0;
-                int allhh = 0;
-                foreach (ProductivityInfo ball in balls)
-                {
-                    allm += ball.Metal;
-                    allc += ball.Crystal;
-                    allh += ball.H;
-
-                    allmh += ball.MetalHour;
-                    allch += ball.CrystalHour;
-                    allhh += ball.HHour;
-
-                    lb_ball_list.Items.Add(ball);
-                }
-                l_metal_all.Text = string.Format("{0:N0}", allm);
-                l_crystal_all.Text = string.Format("{0:N0}", allc);
-                l_H_all.Text = string.Format("{0:N0}", allh);
-
-                l_metalh_all.Text = string.Format("{0:N0}", allmh);
-                l_crystalh_all.Text = string.Format("{0:N0}", allch);
-                l_hh_all.Text = string.Format("{0:N0}", allhh);
-
-                l_metal_allday.Text = string.Format("{0:N0}", allmh * 24);
-                l_crystal_allday.Text = string.Format("{0:N0}", allch * 24);
-                l_h_allday.Text = string.Format("{0:N0}", allhh * 24);
-                progressBar1.Visible = false;
-                btnOverView.Enabled = true;
-            }
-            
-        }
-
-        protected void ShowMsg(object sender, EventArgs e)
-        {
-            
-        }
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             Process p = Process.GetCurrentProcess();
@@ -140,7 +46,6 @@ namespace GalaxyFarmer
         /// <param name="e"></param>
         private void Main_Activated(object sender, EventArgs e)
         {
-            this.outputArea.Focus();
         }
 
         /// <summary>
@@ -148,83 +53,19 @@ namespace GalaxyFarmer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnEditAccount_Click(object sender, EventArgs e)
+        private void btnOverview_Click(object sender, EventArgs e)
         {
-            this.AccessOverview();
+            (new SummaryForm()).Show();
         }
 
         #endregion
 
         #region 方法
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void AccessOverview()
-        {
-            progressBar1.Increment(-100);
-            progressBar1.Visible = true;
-            btnOverView.Enabled = false;
-            try
-            {
-                ss.run(3);
-            }
-            catch (Exception ee)
-            {
-                ee.ToString();
-            }
-        }
-
-        private void RankScan()
-        {
-            //btnRank.Enabled = false;
-            try
-            {
-                ss.run(6);
-            }
-            catch (Exception ee)
-            {
-                ee.ToString();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void logout()
-        {
-            try
-            {
-                ss.run(4);
-            }
-            catch (Exception ee)
-            {
-                ee.ToString();
-            }
-        }
-
-        //private ObjectSender OnObjectSend;
-        //internal event ObjectSender OnOnbjectRecive
-        //{
-        //    add { OnObjectSend += new ObjectSender(value); }
-        //    remove { OnObjectSend -= new ObjectSender(value); }
-        //}
-
-        private void OnMessageRecived(MainMessager mm)
-        {
-            info = mm.ovf;
-            balls = mm.balls;
-            pi = mm.productivityInfo;
-            progessStep = mm.progressBarStep;
-            Object[] list = { this, System.EventArgs.Empty };
-            this.outputArea.BeginInvoke(new EventHandler(ShowInfo), list);
-        }
-        
         #endregion
 
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //this.outputArea.AppendText("窗口被激活。\r\n");
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -243,33 +84,18 @@ namespace GalaxyFarmer
             }
         }
 
-        private void lb_balllist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CommonInfo ci = ((CommonInfo)lb_ball_list.SelectedItem);
-            if (ci != null)
-            {
-                l_metal.Text = string.Format("{0:N0}", ci.Metal);
-                l_metalstroe.Text = string.Format("{0:N0}", ci.MetalStore);
-                l_crystal.Text = string.Format("{0:N0}", ci.Crystal);
-                l_crystalstore.Text = string.Format("{0:N0}", ci.CrystalStore);
-                l_h.Text = string.Format("{0:N0}", ci.H);
-                l_hstore.Text = string.Format("{0:N0}", ci.HStore);
-                l_energy.Text = string.Format("{0:N0}", ci.Energy);
-                l_energystore.Text = string.Format("{0:N0}", ci.EnergyStroe);
-            }
-        }
-
         private void b_dispatch_Click(object sender, EventArgs e)
         {
-            DispatchForm df = new DispatchForm(ss);
+            DispatchForm df = new DispatchForm();
             df.Show();
         }
+
         private SysmapForm sf;
         private void b_sysmap_Click(object sender, EventArgs e)
         {
             if (sf == null)
             {
-                sf = new SysmapForm(ss);
+                sf = new SysmapForm();
             }
             sf.Show();
         }
@@ -279,7 +105,7 @@ namespace GalaxyFarmer
             //this.RankScan();
             try
             {
-                DeadSheepForm dsf = new DeadSheepForm(ss);
+                DeadSheepForm dsf = new DeadSheepForm();
                 dsf.Show();
             }
             catch (Exception ex)
@@ -290,25 +116,13 @@ namespace GalaxyFarmer
 
         private void btnAllDefence_Click(object sender, EventArgs e)
         {
-            //isEnddefence = false;
-            //progressBar1.Increment(-100);
-            //progressBar1.Visible = true;
-            //btnAllDefence.Enabled = false;
-            //try
-            //{
-            //    ss.run(7);
-            //}
-            //catch (Exception ee)
-            //{
-            //    ee.ToString();
-            //}
-            DefenceForm dff = new DefenceForm(ss);
+            DefenceForm dff = new DefenceForm();
             dff.Show();
         }
 
         private void btnFleet_Click(object sender, EventArgs e)
         {
-            FleetForm ff = new FleetForm(ss);
+            FleetForm ff = new FleetForm();
             ff.Show();
         }
     }

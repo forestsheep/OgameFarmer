@@ -15,13 +15,12 @@ namespace GalaxyFarmer.form
         private AllDefence defenceStrategy;
         private DefenceMessager defenceMessager;
 
-        public DefenceForm(StarScript ss)
+        public DefenceForm()
         {
             InitializeComponent();
             defenceStrategy = new AllDefence();
-            starScript = ss;
-            ss.defenceStrategy = defenceStrategy;
-            ss.DefenceEvent += this.OnMessageRecived;
+            //ss.defenceStrategy = defenceStrategy;
+            //ss.DefenceEvent += this.OnMessageRecived;
         }
 
         private void OnMessageRecived(DefenceMessager dm)

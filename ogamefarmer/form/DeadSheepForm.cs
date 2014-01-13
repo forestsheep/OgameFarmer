@@ -15,12 +15,10 @@ namespace GalaxyFarmer
     {
         private StarScript ss;
         private DataTable dt = new DataTable();
-        internal DeadSheepForm(StarScript ss)
+        internal DeadSheepForm()
         {
                 InitializeComponent();
-                this.ss = ss;
                 this.ss.Rsosender += OnScanOver; 
-
         }
 
         private void ScanOver(object sender, EventArgs e)

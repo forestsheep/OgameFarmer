@@ -15,10 +15,9 @@ namespace GalaxyFarmer
     {
         private StarScript ss;
         private int scanStatus;
-        internal SysmapForm(StarScript ss)
+        internal SysmapForm()
         {
             InitializeComponent();
-            this.ss = ss;
             this.ss.GalaxyScanSender += this.OnScanStep;
         }
 

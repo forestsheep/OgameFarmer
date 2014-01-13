@@ -19,25 +19,10 @@ namespace GalaxyFarmer
 
         public void Execute()
         {
-            try
-            {
-                throw new GalaxyFarmerException();
-            }
-            catch (Exception ee)
-            {
-                ee.ToString();
-            }
-            //try
-            //{
-                //BallListInfo ballListInfo = new BallListInfo(this);
-                //ballListInfo.AccessSite();
-                //ballListInfo.AnalyzResponse();
-            //}
-            //catch (GalaxyFarmerException cce)
-            //{
-            //    Messager.GFE = cce;
-            //}
-            //ballListEventHandler();
+            BallListInfo ballListInfo = new BallListInfo(this);
+            ballListInfo.AccessSite();
+            ballListInfo.AnalyzResponse();
+            ballListEventHandler();
         }
 
         internal event BallListMessageSender BallListEvent

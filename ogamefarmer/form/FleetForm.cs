@@ -12,10 +12,10 @@ namespace GalaxyFarmer.form
     public partial class FleetForm : Form
     {
         private StarScript ss;
-        public FleetForm(StarScript ss)
+        public FleetForm()
         {
             InitializeComponent();
-            this.ss = ss;
+            //this.ss = ss;
         }
 
         private void btnFleetTest_Click(object sender, EventArgs e)
