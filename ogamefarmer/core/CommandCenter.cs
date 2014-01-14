@@ -23,7 +23,7 @@ namespace GalaxyFarmer
                     }
                     catch (CanContinueException e)
                     {
-                        LoggerUtil.Logger.Warn(e.StackTrace);
+                        LoggerUtil.Logger.Warn(e.ToString() + e.StackTrace);
                     }
                     catch (CannotContinueException e)
                     {

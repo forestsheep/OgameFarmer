@@ -26,7 +26,7 @@ namespace GalaxyFarmer
         /// <returns>HtmlDocument</returns>
         internal HtmlNode Load()
         {
-            if (hdoc.DocumentNode == null)
+            if (hdoc == null)
             {
                 hdoc = new HtmlAgilityPack.HtmlDocument();
                 hdoc.Load(ConstString.HTML_PATH);
@@ -35,7 +35,7 @@ namespace GalaxyFarmer
         }
 
         /// <summary>
-        /// 解析一个xpath，从加载文件开始
+        /// 解析一个xpath
         /// </summary>
         /// <param name="xpath"></param>
         /// <returns>HtmlNodeCollection</returns>
@@ -56,7 +56,7 @@ namespace GalaxyFarmer
         }
 
         /// <summary>
-        /// 解析一个xpath，从加载文件开始
+        /// 解析一个xpath
         /// </summary>
         /// <param name="xpath"></param>
         /// <returns>返回单个的HtmlNode节点</returns>
@@ -67,6 +67,17 @@ namespace GalaxyFarmer
             {
                 throw new KeywordNotFoundInHtmlException(xpath);
             }
+            return hn;
+        }
+
+        /// <summary>
+        /// 解析一个xpath,忽略返回为空
+        /// </summary>
+        /// <param name="xpath"></param>
+        /// <returns>返回单个的HtmlNode节点</returns>
+        internal HtmlNode AnalyzeNodeIgnore(string xpath)
+        {
+            HtmlNode hn = Load().SelectSingleNode(xpath);
             return hn;
         }
 

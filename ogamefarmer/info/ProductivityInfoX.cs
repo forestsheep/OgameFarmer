@@ -97,7 +97,7 @@ namespace GalaxyFarmer
             HtmlNode.ElementsFlags.Remove("td");
             
             // 金属产量
-            HtmlNode hn_metalp = htmlAnalyzer.AnalyzeNode(XPATH_METAL_HOUR);
+            HtmlNode hn_metalp = htmlAnalyzer.AnalyzeNodeIgnore(XPATH_METAL_HOUR);
             if (hn_metalp == null)
             {
                 bp.MetalHour = 0;
@@ -108,7 +108,7 @@ namespace GalaxyFarmer
             }
 
             // 晶体产量
-            HtmlNode hn_crystalp = htmlAnalyzer.AnalyzeNode(XPATH_CRYSTAL_HOUR);
+            HtmlNode hn_crystalp = htmlAnalyzer.AnalyzeNodeIgnore(XPATH_CRYSTAL_HOUR);
             if (hn_crystalp == null)
             {
                 bp.CrystalHour = 0;
@@ -119,7 +119,7 @@ namespace GalaxyFarmer
             }
 
             // 重氢产量
-            HtmlNode hn_hp = htmlAnalyzer.AnalyzeNode(XPATH_H_HOUR);
+            HtmlNode hn_hp = htmlAnalyzer.AnalyzeNodeIgnore(XPATH_H_HOUR);
             if (hn_hp == null)
             {
                 bp.HHHour = 0;

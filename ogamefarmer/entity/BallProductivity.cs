@@ -24,10 +24,10 @@ namespace GalaxyFarmer
 
         internal BallProductivity(Ball ball)
         {
-            ball.Location = this.Location;
-            ball.Name = this.Name;
-            ball.Prama = this.Prama;
-            ball.Type = this.Type;
+            this.Location = ball.Location;
+            this.Name = ball.Name;
+            this.Prama = ball.Prama;
+            this.Type = ball.Type;
         }
     }
 
