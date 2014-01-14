@@ -16,42 +16,33 @@ namespace GalaxyFarmer
 {
     public partial class SummaryForm : Form
     {
-        private StarScript ss;
         private OverviewInfo info;
         private ProductivityInfo pi;
         private ArrayList balls;
         private ArrayList oballs = new ArrayList();
+
+        private ProductivityCommander productivityCommander;
         private int progessStep;
 
-        #region 构造函数
         internal SummaryForm()
         {
             InitializeComponent();
         }
-        #endregion
 
-        #region 事件
-        System.Timers.Timer autoLoginTimer = new System.Timers.Timer();
         private void Main_Load(object sender, EventArgs e)
         {
             progressBar1.Visible = false;
-            
-            //Panel p2 = new Panel();
-            //Label ll2 = new Label();
-            //ll2.Text = "123123123";
-            //p2.Width = 500;
-            //p2.Height = 500;
-            //p2.Left = 10;
-            //p2.Top = 10;
-            //p2.Visible = true;
-            ////p2.AutoSize = true;
-            //this.Controls.Add(p2);
-            //p2.BackColor = Color.Green;
-            //p2.Show();
         }
 
-        protected void TextShow(object sender, EventArgs e)
+        /// <summary>
+        /// 扫描键按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOverview_Click(object sender, EventArgs e)
         {
+            productivityCommander = new ProductivityCommander();
+            CommandCenter.RUN(productivityCommander, this);
         }
 
         protected void ShowInfo(object sender, EventArgs e)
@@ -70,16 +61,6 @@ namespace GalaxyFarmer
                 l_energy.Text = string.Format("{0:N0}", pi.Energy);
                 l_energystore.Text = string.Format("{0:N0}", pi.EnergyStroe);
                 lb_ball_list.Items.Clear();
-                //foreach (CommonInfo.Ball b in pi.Balllist)
-                //{
-                //    string s = b.Name;
-                //    for (int i = 0; i < 12 - b.Name.Length; i++)
-                //    {
-                //        s += " ";
-                //    }
-                //    s += "[" + b.Location + "]";
-                //    lb_balllist.Items.Add(s);
-                //}
             }
             if (balls != null)
             {
@@ -123,29 +104,13 @@ namespace GalaxyFarmer
         {
             
         }
-        private void Main_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Process p = Process.GetCurrentProcess();
-            if (p != null)
-            {
-                p.Kill();
-            }
-        }
-        #endregion
 
-        #region 方法
-
-        private void OnMessageRecived(MainMessager mm)
+        private void OnProductivityScan()
         {
-            info = mm.ovf;
-            balls = mm.balls;
-            pi = mm.productivityInfo;
-            progessStep = mm.progressBarStep;
             Object[] list = { this, System.EventArgs.Empty };
             this.btnOverview.BeginInvoke(new EventHandler(ShowInfo), list);
         }
         
-        #endregion
 
         private void lb_balllist_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -163,9 +128,6 @@ namespace GalaxyFarmer
             }
         }
 
-        private void btnOverview_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

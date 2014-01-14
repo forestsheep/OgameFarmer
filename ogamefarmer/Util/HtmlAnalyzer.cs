@@ -12,6 +12,8 @@ namespace GalaxyFarmer
         {
             HtmlNode.ElementsFlags.Remove("option");
         }
+
+        private HtmlDocument hdoc;
         /// <summary>
         /// 获取或设定是否忽略html的Option tag
         /// 默认为true
@@ -24,9 +26,12 @@ namespace GalaxyFarmer
         /// <returns>HtmlDocument</returns>
         internal HtmlNode Load()
         {
-            HtmlDocument h = new HtmlAgilityPack.HtmlDocument();
-            h.Load(ConstString.HTML_PATH);
-            return h.DocumentNode;
+            if (hdoc.DocumentNode == null)
+            {
+                hdoc = new HtmlAgilityPack.HtmlDocument();
+                hdoc.Load(ConstString.HTML_PATH);
+            }
+            return hdoc.DocumentNode;
         }
 
         /// <summary>
@@ -57,7 +62,12 @@ namespace GalaxyFarmer
         /// <returns>返回单个的HtmlNode节点</returns>
         internal HtmlNode AnalyzeNode(string xpath)
         {
-            return Load().SelectSingleNode(xpath);
+            HtmlNode hn = Load().SelectSingleNode(xpath);
+            if (hn == null)
+            {
+                throw new KeywordNotFoundInHtmlException(xpath);
+            }
+            return hn;
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace GalaxyFarmer
         internal DispatchForm()
         {
             InitializeComponent();
-            this.ss = ss;
+            //this.ss = ss;
             this.ss.Csender += this.OnConRecived;
         }
 

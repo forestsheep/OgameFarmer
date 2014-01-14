@@ -503,7 +503,6 @@
             this.KeyPreview = true;
             this.Name = "SummaryForm";
             this.Text = "银河农夫 - 概况";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

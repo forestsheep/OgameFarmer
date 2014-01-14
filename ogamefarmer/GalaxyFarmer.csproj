@@ -78,14 +78,17 @@
     <Compile Include="Commander\Commander.cs" />
     <Compile Include="Commander\FleetCommander.cs" />
     <Compile Include="Commander\LoginCommander.cs" />
+    <Compile Include="Commander\ProductivityCommander.cs" />
     <Compile Include="core\CommandCenter.cs" />
     <Compile Include="entity\Ball.cs" />
     <Compile Include="concept\Coordinate.cs" />
     <Compile Include="concept\CoordinateType.cs" />
     <Compile Include="concept\Mission.cs" />
+    <Compile Include="entity\BallProductivity.cs" />
     <Compile Include="exception\CanContinueException.cs" />
     <Compile Include="exception\CannotContinueException.cs" />
     <Compile Include="exception\GetBallListFailedException.cs" />
+    <Compile Include="exception\KeywordNotFoundInHtmlException.cs" />
     <Compile Include="exception\SendFleetFailedException.cs" />
     <Compile Include="form\FleetForm.cs">
       <SubType>Form</SubType>
@@ -99,6 +102,7 @@
     <Compile Include="form\SummaryForm.designer.cs">
       <DependentUpon>SummaryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="global\ProgramStatic.cs" />
     <Compile Include="info\Fleet1Info.cs" />
     <Compile Include="info\FleetInfo.cs" />
     <Compile Include="info\Floten1Info.cs" />
@@ -107,6 +111,7 @@
     <Compile Include="info\LoginInfoX.cs" />
     <Compile Include="info\BallListInfo.cs" />
     <Compile Include="info\PageInfo.cs" />
+    <Compile Include="info\ProductivityInfoX.cs" />
     <Compile Include="messager\BallListMessager.cs" />
     <Compile Include="messager\DefenceMessager.cs" />
     <Compile Include="form\DefenceForm.cs">
@@ -118,8 +123,9 @@
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
     <Compile Include="entity\Fleet.cs" />
+    <Compile Include="messager\ProductivityMessager.cs" />
     <Compile Include="module\MailSender.cs" />
-    <Compile Include="Profile.cs" />
+    <Compile Include="global\Profile.cs" />
     <Compile Include="request\FleetMission.cs" />
     <Compile Include="strategy\AllDefence.cs" />
     <Compile Include="exception\UncompleteSettingException.cs" />
@@ -174,6 +180,7 @@
     <Compile Include="controller\UnExpectPageController.cs" />
     <Compile Include="Util\ConvertUtil.cs" />
     <Compile Include="Util\LoggerUtil.cs" />
+    <Compile Include="Util\StringUtil.cs" />
     <Compile Include="Util\UrlUtil.cs" />
     <EmbeddedResource Include="form\DeadSheepForm.resx">
       <DependentUpon>DeadSheepForm.cs</DependentUpon>

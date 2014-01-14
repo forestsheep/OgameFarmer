@@ -55,7 +55,10 @@ namespace GalaxyFarmer
         /// <param name="e"></param>
         private void btnOverview_Click(object sender, EventArgs e)
         {
-            (new SummaryForm()).Show();
+            // 主画面不需要子画面的指针吗？
+            SummaryForm sf = new SummaryForm();
+            //sf.MdiParent = this;
+            sf.Show();
         }
 
         #endregion

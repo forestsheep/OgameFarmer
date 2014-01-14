@@ -37,11 +37,15 @@
             this.btnRank = new System.Windows.Forms.Button();
             this.btnAllDefence = new System.Windows.Forms.Button();
             this.btnFleet = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOverview
             // 
-            this.btnOverview.Location = new System.Drawing.Point(21, 24);
+            this.btnOverview.Location = new System.Drawing.Point(984, 24);
             this.btnOverview.Name = "btnOverview";
             this.btnOverview.Size = new System.Drawing.Size(78, 42);
             this.btnOverview.TabIndex = 6;
@@ -57,7 +61,7 @@
             // 
             // b_dispatch
             // 
-            this.b_dispatch.Location = new System.Drawing.Point(118, 24);
+            this.b_dispatch.Location = new System.Drawing.Point(935, 88);
             this.b_dispatch.Name = "b_dispatch";
             this.b_dispatch.Size = new System.Drawing.Size(127, 42);
             this.b_dispatch.TabIndex = 48;
@@ -68,7 +72,7 @@
             // 
             // b_sysmap
             // 
-            this.b_sysmap.Location = new System.Drawing.Point(268, 24);
+            this.b_sysmap.Location = new System.Drawing.Point(984, 148);
             this.b_sysmap.Name = "b_sysmap";
             this.b_sysmap.Size = new System.Drawing.Size(78, 42);
             this.b_sysmap.TabIndex = 49;
@@ -78,7 +82,7 @@
             // 
             // btnRank
             // 
-            this.btnRank.Location = new System.Drawing.Point(375, 24);
+            this.btnRank.Location = new System.Drawing.Point(984, 212);
             this.btnRank.Name = "btnRank";
             this.btnRank.Size = new System.Drawing.Size(78, 42);
             this.btnRank.TabIndex = 50;
@@ -88,7 +92,7 @@
             // 
             // btnAllDefence
             // 
-            this.btnAllDefence.Location = new System.Drawing.Point(477, 24);
+            this.btnAllDefence.Location = new System.Drawing.Point(991, 274);
             this.btnAllDefence.Name = "btnAllDefence";
             this.btnAllDefence.Size = new System.Drawing.Size(71, 42);
             this.btnAllDefence.TabIndex = 51;
@@ -98,7 +102,7 @@
             // 
             // btnFleet
             // 
-            this.btnFleet.Location = new System.Drawing.Point(572, 24);
+            this.btnFleet.Location = new System.Drawing.Point(991, 339);
             this.btnFleet.Name = "btnFleet";
             this.btnFleet.Size = new System.Drawing.Size(71, 42);
             this.btnFleet.TabIndex = 52;
@@ -106,11 +110,42 @@
             this.btnFleet.UseVisualStyleBackColor = true;
             this.btnFleet.Click += new System.EventHandler(this.btnFleet_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 24);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(905, 566);
+            this.tabControl1.TabIndex = 54;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(897, 540);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 106);
+            this.ClientSize = new System.Drawing.Size(1085, 695);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnFleet);
             this.Controls.Add(this.btnAllDefence);
             this.Controls.Add(this.btnRank);
@@ -118,6 +153,7 @@
             this.Controls.Add(this.b_dispatch);
             this.Controls.Add(this.btnOverview);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.Name = "Main";
             this.Text = "银河农夫 - 概况";
@@ -126,6 +162,7 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.SizeChanged += new System.EventHandler(this.Main_SizeChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -139,6 +176,9 @@
         private System.Windows.Forms.Button btnRank;
         private System.Windows.Forms.Button btnAllDefence;
         private System.Windows.Forms.Button btnFleet;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

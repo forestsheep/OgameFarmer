@@ -19,11 +19,15 @@ namespace GalaxyFarmer
                 {
                     try
                     {
-                        cmd.Execute();  
+                        cmd.Execute();
+                    }
+                    catch (CanContinueException e)
+                    {
+                        LoggerUtil.Logger.Warn(e.StackTrace);
                     }
                     catch (CannotContinueException e)
                     {
-                        LoggerUtil.Logger.Error(e.ToString());
+                        LoggerUtil.Logger.Error(e.StackTrace);
                         f.BeginInvoke((Action)delegate
                         {
                             if (typeof(LoginForm) == f.GetType())
@@ -33,7 +37,7 @@ namespace GalaxyFarmer
                             else
                             {
                                 f.Dispose();
-                                Profile.LOGIN_FORM.Show();
+                                ProgramStatic.LOGIN_FORM.Show();
                             }
                         });
                     }

@@ -29,7 +29,7 @@ namespace GalaxyFarmer
         {
             InitializeComponent();
 
-            Profile.LOGIN_FORM = this;
+            ProgramStatic.LOGIN_FORM = this;
 
             #region old way
             this.ss = new StarScript();
