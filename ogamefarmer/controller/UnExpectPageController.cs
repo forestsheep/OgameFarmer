@@ -40,17 +40,7 @@ namespace GalaxyFarmer
         /// <param name="s">页面的html全文</param>
         internal void VarifyCookiePeriod(string s)
         {
-            try
-            {
-                if (CookieExpireException.Check(s))
-                {
-                    throw new CookieExpireException();
-                }
-            }
-            catch (CookieExpireException ce)
-            {
-                MessageBox.Show(ce.ToString());
-            }
+            CookieExpireException.Check(s);
         }
 
         /// <summary>

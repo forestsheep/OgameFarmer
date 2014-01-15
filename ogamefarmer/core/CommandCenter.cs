@@ -23,11 +23,11 @@ namespace GalaxyFarmer
                     }
                     catch (CanContinueException e)
                     {
-                        LoggerUtil.Logger.Warn(e.ToString() + e.StackTrace);
+                        LoggerUtil.Logger.Warn(e.ToString());
                     }
                     catch (CannotContinueException e)
                     {
-                        LoggerUtil.Logger.Error(e.StackTrace);
+                        LoggerUtil.Logger.Error(e.ToString());
                         f.BeginInvoke((Action)delegate
                         {
                             if (typeof(LoginForm) == f.GetType())
@@ -43,6 +43,7 @@ namespace GalaxyFarmer
                     }
                     catch (Exception e)
                     {
+                        LoggerUtil.Logger.Error(e.ToString());
                         f.BeginInvoke((Action)delegate
                         {
                             MessageBox.Show(e.ToString());

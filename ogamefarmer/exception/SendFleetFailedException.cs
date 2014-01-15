@@ -14,7 +14,7 @@ namespace GalaxyFarmer
 
         public override string ToString()
         {
-            return Message;
+            return Message + base.ToString();
         }
     }
 }

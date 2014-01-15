@@ -8,16 +8,14 @@ namespace GalaxyFarmer
         private const string COOKIE_EXPIRE_KEYWORD_3 = "重启浏览器";
         private const string COOKIE_EXPIRE_KEYWORD_4 = "重新登录";
 
-        internal static bool Check(string s)
+
+        // TODO 不应该写在exception类里
+        internal static void Check(string s)
         {
-            //TODO 验证条件不是很好，万一有人星球取这个名字的话。。。
+            // TODO 验证条件不是很好，万一有人星球取这个名字的话。。。
             if (s.Contains(COOKIE_EXPIRE_KEYWORD_1) || s.Contains(COOKIE_EXPIRE_KEYWORD_2) || s.Contains(COOKIE_EXPIRE_KEYWORD_3) || s.Contains(COOKIE_EXPIRE_KEYWORD_4))
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                throw new CookieExpireException();
             }
         }
 
@@ -29,7 +27,7 @@ namespace GalaxyFarmer
 
         public override string ToString()
         {
-            return Message;
+            return Message + base.ToString();
         }
 
     }

@@ -17,8 +17,7 @@ namespace GalaxyFarmer
             }
             catch(Exception e)
             {
-                LoggerUtil.Logger.Error(e.StackTrace);
-                throw new CanContinueException();
+                throw new CanContinueException(e);
             }
             return i;
         }

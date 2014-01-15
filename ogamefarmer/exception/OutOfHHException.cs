@@ -9,6 +9,7 @@ namespace GalaxyFarmer
         private const string NOT_ENOUGH_HH_KEYWORD_1 = "需要消耗50单位的重氢";
         private const string NOT_ENOUGH_HH_KEYWORD_2 = "没有足够的重氢";
 
+        // TODO 不应该写在exception类里
         internal static bool Check(string s)
         {
             if (s.Contains(NOT_ENOUGH_HH_KEYWORD_1) || s.Contains(NOT_ENOUGH_HH_KEYWORD_2))
@@ -30,7 +31,7 @@ namespace GalaxyFarmer
 
         public override string ToString()
         {
-            return Message;
+            return Message + base.ToString();
         }
     }
 }

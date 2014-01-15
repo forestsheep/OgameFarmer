@@ -14,7 +14,7 @@ namespace GalaxyFarmer
         private const string NO_URL = "没有设定url";
         public override string ToString()
         {
-            return Message;
+            return Message + base.ToString();
         }
     }
 }

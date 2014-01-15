@@ -44,7 +44,7 @@ namespace GalaxyFarmer
 
             HtmlAnalyzer htmlAnalyzer = new HtmlAnalyzer();
             htmlAnalyzer.Load();
-            HtmlNode hn_login = htmlAnalyzer.AnalyzeNode("//*[@id=\"ogameframe\"]");
+            HtmlNode hn_login = htmlAnalyzer.AnalyzeNode("//*[@id=\"ogameframe\"]", false);
             if (hn_login == null)
             {
                 this.loginCommander.Messager.ResIsLoginSuccess = false;

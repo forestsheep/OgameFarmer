@@ -35,61 +35,31 @@ namespace GalaxyFarmer
         }
 
         /// <summary>
-        /// 解析一个xpath
+        /// 解析一个xpath节点
         /// </summary>
         /// <param name="xpath"></param>
-        /// <returns>HtmlNodeCollection</returns>
+        /// <returns>返回单个的HtmlNode节点的集合</returns>
         internal HtmlNodeCollection AnalyzeNodes(string xpath)
         {
             return Load().SelectNodes(xpath);
         }
 
         /// <summary>
-        /// 解析一个xpath，之前已经加载过文件
+        /// 解析一个xpath节点
         /// </summary>
-        /// <param name="htmlNode">加载好的HtmlNOde</param>
-        /// <param name="xpath"></param>
-        /// <returns>HtmlNodeCollection</returns>
-        internal HtmlNodeCollection AnalyzeNodes(HtmlNode htmlNode, string xpath)
-        {
-            return htmlNode.SelectNodes(xpath);
-        }
-
-        /// <summary>
-        /// 解析一个xpath
-        /// </summary>
-        /// <param name="xpath"></param>
+        /// <param name="xpath">xpath路径表达式</param>
+        /// <param name="carenull">
+        /// 是否在意能否解析到信息，如在意则抛出KeywordNotFoundInHtmlException异常。默认在意。
+        /// </param>
         /// <returns>返回单个的HtmlNode节点</returns>
-        internal HtmlNode AnalyzeNode(string xpath)
+        internal HtmlNode AnalyzeNode(string xpath, bool carenull = true)
         {
             HtmlNode hn = Load().SelectSingleNode(xpath);
-            if (hn == null)
+            if (carenull && hn == null)
             {
                 throw new KeywordNotFoundInHtmlException(xpath);
             }
             return hn;
-        }
-
-        /// <summary>
-        /// 解析一个xpath,忽略返回为空
-        /// </summary>
-        /// <param name="xpath"></param>
-        /// <returns>返回单个的HtmlNode节点</returns>
-        internal HtmlNode AnalyzeNodeIgnore(string xpath)
-        {
-            HtmlNode hn = Load().SelectSingleNode(xpath);
-            return hn;
-        }
-
-        /// <summary>
-        /// 解析一个xpath，之前已经加载过文件
-        /// </summary>
-        /// <param name="htmlNode"></param>
-        /// <param name="xpath"></param>
-        /// <returns>返回单个的HtmlNode节点</returns>
-        internal HtmlNode AnalyzeNode(HtmlNode htmlNode, string xpath)
-        {
-            return htmlNode.SelectSingleNode(xpath);
         }
     }
 }

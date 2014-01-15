@@ -29,10 +29,11 @@ namespace GalaxyFarmer
 
         public void Execute()
         {
-            LoginInfoX loginInfoX = new LoginInfoX(this);
-            loginInfoX.AccessSite();
-            loginInfoX.AnalyzResponse();
-            loginEventHandler();
+            StringUtil.CommaNumberToInt("a");
+            //LoginInfoX loginInfoX = new LoginInfoX(this);
+            //loginInfoX.AccessSite();
+            //loginInfoX.AnalyzResponse();
+            //loginEventHandler();
         }
 
         internal event LoginMessageSenderX LoginEvent
