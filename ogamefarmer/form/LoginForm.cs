@@ -50,19 +50,11 @@ namespace GalaxyFarmer
             //tb_pw.Text = "911911f911";
             #region test area
             // mail test
-            //string[] tos = new string[1];
-            //tos[0] = "forestsheep@163.com";
-            //string[] ccs = new string[1];
-            //ccs[0] = "forestsheep911@163.com";
-            //string[] bccs = new string[1];
-            //bccs[0] = "talibans@163.com";
-            //string from = "银河农夫管理员<nimade@163.com>";
-            //string subject ="sub";
-            //string body = "body";
-            //MailSender ms = new MailSender();
-            //ms.From = from;
-            //ms.Mailto(tos, ccs, bccs, subject, body);
-            //var no = (new object()) as string;
+            //string to = "forestsheep@163.com";
+            //string subject ="你妹啊，收到了么？";
+            //string body = "我日啊我日哦";
+            //MailSender ms = new MailSender(Admin.MAIL_NAME, Admin.MAIL_SMTP_SERVER, Admin.MAIL_ADDRESS, Admin.MAIL_PW);
+            //ms.Mailto(to, subject, body);
             #endregion
         }
 

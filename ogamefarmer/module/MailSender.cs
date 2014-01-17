@@ -38,8 +38,16 @@ namespace GalaxyFarmer
             {
                 Console.WriteLine(ee);
             }
-
         }
+        public MailSender(string from, string smtpServer, string mailusername, string pw)
+        {
+            this.From = from;
+            this.setSmtpClient(smtpServer);
+            this.smtpClient.UseDefaultCredentials = true;
+            this.smtpClient.Credentials = new System.Net.NetworkCredential(mailusername, pw);
+            this.smtpClient.EnableSsl = true;
+        }
+
         private MailAddress from;
         public string From
         {
@@ -52,6 +60,13 @@ namespace GalaxyFarmer
                 from = new MailAddress(value);
             }
         }
+
+        private SmtpClient smtpClient;
+        public void setSmtpClient(string smtpServer)
+        {
+            this.smtpClient = new SmtpClient(smtpServer);
+        }
+
         public void Mailto(string[] tos, string[] ccs, string[] bccs, string subject, string body)
         {
             MailMessage message = new MailMessage();
@@ -83,11 +98,8 @@ namespace GalaxyFarmer
                 }
                 message.Subject = subject;
                 message.Body = body;
-                SmtpClient client = new SmtpClient("smtp.163.com");
-                client.UseDefaultCredentials = true;
-                client.Credentials = new System.Net.NetworkCredential("galaxyfarmer@163.com", "911911f911");
-                client.EnableSsl = true;
-                client.Send(message);
+                message.From = from;
+                this.smtpClient.Send(message);
             }
             catch (Exception e)
             {
@@ -95,9 +107,11 @@ namespace GalaxyFarmer
             }
         }
 
-        public static void Mailto(string to)
+        public void Mailto(string to, string subject, string body)
         {
-
+            string[] tos = new string[1];
+            tos[0] = to;
+            Mailto(tos, null, null, subject, body);
         }
     }
 }

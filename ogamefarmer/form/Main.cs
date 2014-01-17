@@ -25,9 +25,9 @@ namespace GalaxyFarmer
         #endregion
 
         #region 事件
-        System.Timers.Timer autoLoginTimer = new System.Timers.Timer();
         private void Main_Load(object sender, EventArgs e)
         {
+            this.pbScanProductivityProgress.Visible = false;
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -55,15 +55,10 @@ namespace GalaxyFarmer
         /// <param name="e"></param>
         private void btnOverview_Click(object sender, EventArgs e)
         {
-            // 主画面不需要子画面的指针吗？
             SummaryForm sf = new SummaryForm();
             //sf.MdiParent = this;
             sf.Show();
         }
-
-        #endregion
-
-        #region 方法
 
         #endregion
 
@@ -128,5 +123,7 @@ namespace GalaxyFarmer
             FleetForm ff = new FleetForm();
             ff.Show();
         }
+
+        
     }
 }
