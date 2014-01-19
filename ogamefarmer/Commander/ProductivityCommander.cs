@@ -6,9 +6,11 @@ using System.Text;
 namespace GalaxyFarmer
 {
     internal delegate void ProductivityMessageSender();
+    internal delegate void ProductivityStepMessageSender();
     class ProductivityCommander : Commander
     {
         private ProductivityMessageSender productivityEventHandler;
+        private ProductivityStepMessageSender productivityStepEventHandler;
         internal ProductivityMessager Messager;
 
         internal ProductivityCommander()
@@ -25,7 +27,16 @@ namespace GalaxyFarmer
         public void Execute()
         {
             ProductivityInfoX productivityInfo = new ProductivityInfoX(this);
-            productivityInfo.AnalyzBalls();
+            List<BallProductivity> bps = new List<BallProductivity>();
+            foreach (BallProductivity bp in this.Messager.BallProductivityList)
+            {
+                productivityInfo.AccessByBall(bp.Prama);
+                BallProductivity bpcopy = bp;
+                productivityInfo.AnalyzByBall(ref bpcopy);
+                bps.Add(bpcopy);
+                productivityStepEventHandler();
+            }
+            this.Messager.BallProductivityList = bps;
             productivityEventHandler();
         }
 
@@ -38,6 +49,18 @@ namespace GalaxyFarmer
             remove
             {
                 productivityEventHandler -= new ProductivityMessageSender(value);
+            }
+        }
+
+        internal event ProductivityStepMessageSender ProductivityStepEvent
+        {
+            add
+            {
+                productivityStepEventHandler += new ProductivityStepMessageSender(value);
+            }
+            remove
+            {
+                productivityStepEventHandler -= new ProductivityStepMessageSender(value);
             }
         }
     }

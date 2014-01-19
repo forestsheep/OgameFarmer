@@ -10,16 +10,12 @@ namespace GalaxyFarmer
         private const string NOT_ENOUGH_HH_KEYWORD_2 = "没有足够的重氢";
 
         // TODO 不应该写在exception类里
-        internal static bool Check(string s)
+        internal static void Check(string s)
         {
             if (s.Contains(NOT_ENOUGH_HH_KEYWORD_1) || s.Contains(NOT_ENOUGH_HH_KEYWORD_2))
             {
                 //MAYDO 切换有重氢的星球
-                return true;
-            }
-            else
-            {
-                return false;
+                throw new OutOfHHException();
             }
         }
 

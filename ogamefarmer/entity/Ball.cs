@@ -29,6 +29,11 @@ namespace GalaxyFarmer
         internal string Prama;
 
         #endregion
+
+        public override string ToString()
+        {
+            return Name;
+        }
         
     }
 }

@@ -27,7 +27,8 @@ namespace GalaxyFarmer
         #region 事件
         private void Main_Load(object sender, EventArgs e)
         {
-            this.pbScanProductivityProgress.Visible = false;
+            Summary_Load();
+            Defenece_Load();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -124,6 +125,19 @@ namespace GalaxyFarmer
             ff.Show();
         }
 
-        
+        private void rbMetal_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbPaohui_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbAll_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

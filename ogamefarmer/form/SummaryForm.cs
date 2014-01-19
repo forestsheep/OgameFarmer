@@ -56,7 +56,6 @@ namespace GalaxyFarmer
 
         protected void ShowInfo(object sender, EventArgs e)
         {
-            int i = 0;
             //progressBar1.Increment(progessStep);
             //if (pi != null)
             //{

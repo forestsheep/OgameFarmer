@@ -2,14 +2,14 @@ namespace GalaxyFarmer
 {
     class CookieExpireException : CannotContinueException
     {
-        //cookie过期导致返错误回页面的关键字
+        //cookie过期导致返错回误页面的关键字
         private const string COOKIE_EXPIRE_KEYWORD_1 = "登录验证";
         private const string COOKIE_EXPIRE_KEYWORD_2 = "登录无效";
         private const string COOKIE_EXPIRE_KEYWORD_3 = "重启浏览器";
         private const string COOKIE_EXPIRE_KEYWORD_4 = "重新登录";
 
 
-        // TODO 不应该写在exception类里
+        // TODO 好像不该写应在exception类里
         internal static void Check(string s)
         {
             // TODO 验证条件不是很好，万一有人星球取这个名字的话。。。

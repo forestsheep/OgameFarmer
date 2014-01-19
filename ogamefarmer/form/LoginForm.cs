@@ -62,10 +62,10 @@ namespace GalaxyFarmer
         {
             //login();
             //LoggerUtil.Logger.Debug("start login...");
-            loginX();
-            //Main m = new Main();
-            //m.Show();
-            //this.Hide();
+            //loginX();
+            Main m = new Main();
+            m.Show();
+            this.Hide();
         }
 
         #region old way

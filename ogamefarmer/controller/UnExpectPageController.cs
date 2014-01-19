@@ -49,17 +49,7 @@ namespace GalaxyFarmer
         /// <param name="s">页面的html全文</param>
         internal void VarifyOutOfHH(string s)
         {
-            try
-            {
-                if (OutOfHHException.Check(s))
-                {
-                    throw new OutOfHHException();
-                }
-            }
-            catch (OutOfHHException ohe)
-            {
-                MessageBox.Show(ohe.ToString());
-            }
+            OutOfHHException.Check(s);
         }
     }
 }

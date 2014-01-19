@@ -86,7 +86,7 @@ namespace GalaxyFarmer
         /// <param name="f402"></param>
         /// <param name="f405"></param>
         /// <param name="f406"></param>
-        private void doAccess(HttpAccesser ha, int f401, int f402, int f405, int f406)
+        internal void doAccess(HttpAccesser ha, int f401, int f402, int f405, int f406)
         {
             int fmenge401 = 0;
             int fmenge402 = 0;
