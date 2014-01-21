@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class LoginInfoX : PageInfo
+    class LoginInfoX
     {
         private LoginCommander loginCommander;
 

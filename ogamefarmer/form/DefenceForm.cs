@@ -52,55 +52,55 @@ namespace GalaxyFarmer.form
 
         private void btnMakeTower_Click(object sender, EventArgs e)
         {
-            defenceStrategy.MetalCapacity = 0;
-            defenceStrategy.CrystalCapacity = 0;
-            defenceStrategy.HHCapacity = 0;
-            try
-            {
-                defenceStrategy.MetalCapacity = Int32.Parse(tbMetalReserve.Text);
-                defenceStrategy.CrystalCapacity = Int32.Parse(tbCrystalReserve.Text);
-                defenceStrategy.HHCapacity = Int32.Parse(tbHHReserve.Text);
+        //    defenceStrategy.MetalCapacity = 0;
+        //    defenceStrategy.CrystalCapacity = 0;
+        //    defenceStrategy.HHCapacity = 0;
+        //    try
+        //    {
+        //        defenceStrategy.MetalCapacity = Int32.Parse(tbMetalReserve.Text);
+        //        defenceStrategy.CrystalCapacity = Int32.Parse(tbCrystalReserve.Text);
+        //        defenceStrategy.HHCapacity = Int32.Parse(tbHHReserve.Text);
 
-                if (rb13.Checked)
-                {
-                    defenceStrategy.RatioNumerator = 1;
-                    defenceStrategy.RatioDenominator = 3;
-                }
-                else if (rb21.Checked)
-                {
-                    defenceStrategy.RatioNumerator = 1;
-                    defenceStrategy.RatioDenominator = 2;
-                }
-                else if (rb23.Checked)
-                {
-                    defenceStrategy.RatioNumerator = 2;
-                    defenceStrategy.RatioDenominator = 3;
-                }
-                else if (rbCustom.Checked)
-                {
-                    defenceStrategy.RatioNumerator = Double.Parse(tbNumerator.Text);
-                    defenceStrategy.RatioDenominator = Double.Parse(tbDenominator.Text);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+        //        if (rb13.Checked)
+        //        {
+        //            defenceStrategy.RatioNumerator = 1;
+        //            defenceStrategy.RatioDenominator = 3;
+        //        }
+        //        else if (rb21.Checked)
+        //        {
+        //            defenceStrategy.RatioNumerator = 1;
+        //            defenceStrategy.RatioDenominator = 2;
+        //        }
+        //        else if (rb23.Checked)
+        //        {
+        //            defenceStrategy.RatioNumerator = 2;
+        //            defenceStrategy.RatioDenominator = 3;
+        //        }
+        //        else if (rbCustom.Checked)
+        //        {
+        //            defenceStrategy.RatioNumerator = Double.Parse(tbNumerator.Text);
+        //            defenceStrategy.RatioDenominator = Double.Parse(tbDenominator.Text);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
 
-            btnMakeTower.Enabled = false;
-            if (rbAll.Checked)
-            {
-                defenceStrategy.defenceType = AllDefence.DefenceType.ALL;
-            }
-            else if (rbPaohui.Checked)
-            {
-                defenceStrategy.defenceType = AllDefence.DefenceType.PAOHUI;
-            }
-            else if (rbMetal.Checked)
-            {
-                defenceStrategy.defenceType = AllDefence.DefenceType.METAL;
-            }
-            starScript.run(7);
+        //    btnMakeTower.Enabled = false;
+        //    if (rbAll.Checked)
+        //    {
+        //        defenceStrategy.defenceType = AllDefence.DefenceType.ALL;
+        //    }
+        //    else if (rbPaohui.Checked)
+        //    {
+        //        defenceStrategy.defenceType = AllDefence.DefenceType.PAOHUI;
+        //    }
+        //    else if (rbMetal.Checked)
+        //    {
+        //        defenceStrategy.defenceType = AllDefence.DefenceType.METAL;
+        //    }
+        //    starScript.run(7);
         }
 
         private void rbAll_CheckedChanged(object sender, EventArgs e)

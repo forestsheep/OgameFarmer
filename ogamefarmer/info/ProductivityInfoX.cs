@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace GalaxyFarmer
 {
-    class ProductivityInfoX : PageInfo
+    class ProductivityInfoX
     {
         #region const
 
@@ -36,34 +36,12 @@ namespace GalaxyFarmer
             this.producitivityCommander = producitivityCommander;
         }
 
-        public void AnalyzBalls()
-        {
-            List<BallProductivity> bps = new List<BallProductivity>();
-            foreach (BallProductivity bp in producitivityCommander.Messager.BallProductivityList)
-            {
-                AccessByBall(bp.Prama);
-                BallProductivity bpcopy = bp;
-                AnalyzByBall(ref bpcopy);
-                bps.Add(bpcopy);
-            }
-            producitivityCommander.Messager.BallProductivityList = bps;
-        }
-
         public void AccessByBall(string ballPram)
         {
             HttpAccesser ha = HttpAccesser.GetInstance();
             ha.AccessUrl = UrlUtil.GetUrl(PAGE_NAME + ballPram);
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             ha.Access();
-        }
-
-        public void AccessSite()
-        {
-            AccessByBall("");
-        }
-
-        public void AnalyzResponse()
-        {
         }
 
         public void AnalyzByBall(ref BallProductivity bp)

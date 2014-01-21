@@ -22,17 +22,29 @@ namespace GalaxyFarmer
         /// 构造一个DefenceCommander
         /// </summary>
         /// <param name="DefenceMessager">Defence信息</param>
-        internal DefenceCommander(DefenceMessager DefenceMessager)
+        internal DefenceCommander(DefenceMessager defenceMessage)
         {
-            this.Messager = DefenceMessager;
+            this.Messager = defenceMessage;
         }
         #endregion
 
         public void Execute()
         {
             DefenceInfo DefenceInfo = new DefenceInfo(this);
-            DefenceInfo.AccessSite();
-            DefenceInfo.AnalyzResponse();
+
+            // 取得每个星球的资源量
+            ProductivityCommander producitivityCommander = new ProductivityCommander();
+            producitivityCommander.Execute();
+
+            DefenceStrategy defenceStrategy = new DefenceStrategy(Messager.defenceType);
+            foreach (BallProductivity bp in producitivityCommander.Messager.BallProductivityList)
+            {
+                Messager.ballname = bp.Name;
+                defenceStrategy.ComputeTowerAmount(bp, ref Messager);
+                DefenceInfo.AccessSite(bp.Prama);
+                DefenceEventHandler();
+            }
+            Messager.isBuildOver = true;
             DefenceEventHandler();
         }
 

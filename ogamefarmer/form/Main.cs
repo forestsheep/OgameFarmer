@@ -49,18 +49,6 @@ namespace GalaxyFarmer
         {
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnOverview_Click(object sender, EventArgs e)
-        {
-            SummaryForm sf = new SummaryForm();
-            //sf.MdiParent = this;
-            sf.Show();
-        }
-
         #endregion
 
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
@@ -123,21 +111,6 @@ namespace GalaxyFarmer
         {
             FleetForm ff = new FleetForm();
             ff.Show();
-        }
-
-        private void rbMetal_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbPaohui_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbAll_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -97,12 +97,6 @@
     <Compile Include="form\FleetForm.Designer.cs">
       <DependentUpon>FleetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\SummaryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\SummaryForm.designer.cs">
-      <DependentUpon>SummaryForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="global\ProgramStatic.cs" />
     <Compile Include="info\DefenceInfo.cs" />
     <Compile Include="info\Fleet1Info.cs" />
@@ -112,7 +106,6 @@
     <Compile Include="info\Floten3Info.cs" />
     <Compile Include="info\LoginInfoX.cs" />
     <Compile Include="info\BallListInfo.cs" />
-    <Compile Include="info\PageInfo.cs" />
     <Compile Include="info\ProductivityInfoX.cs" />
     <Compile Include="manager\Admin.cs" />
     <Compile Include="messager\BallListMessager.cs" />
@@ -181,6 +174,7 @@
     <Compile Include="module\Txtout.cs" />
     <Compile Include="info\ProductivityInfo.cs" />
     <Compile Include="controller\UnExpectPageController.cs" />
+    <Compile Include="strategy\DefenceStrategy.cs" />
     <Compile Include="tabpage\TabPageDefence.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,9 +199,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\SummaryForm.resx">
-      <DependentUpon>SummaryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

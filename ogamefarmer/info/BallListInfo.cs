@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace GalaxyFarmer
 {
-    class BallListInfo : PageInfo
+    class BallListInfo
     {
         #region const
         private const string PAGE_NAME = "overview.php";

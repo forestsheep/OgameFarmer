@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class Fleet1Info : PageInfo
+    class Fleet1Info
     {
         #region const
         internal const string XPATH_FLEET_PARAM = "/html/body/center/table/tr/td/center[2]/input";

@@ -397,50 +397,50 @@ namespace GalaxyFarmer
 
         private void SpendAllToDefence(object o)
         {
-            DefenceMessager dm = new DefenceMessager();
-            dm.isBuildOver = false;
-            ArrayList balls = new ArrayList();
-            StringBuilder sb = new StringBuilder();
-            sb.Append("http://");
-            sb.Append(universe);
-            sb.Append(".cicihappy.com/ogame/resources.php");
-            ha.AccessUrl = sb.ToString();
-            string baseurl = ha.AccessUrl;
-            ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
-            ha.Access();
-            //取得第一个星球的总星球列表
-            pi = ProductivityInfo.AnalyzHtml();
-            Thread.Sleep(3000);
-            int i = 0;
-            foreach (ProductivityInfo.Ball ball in pi.Balllist)
-            {
-                ha.AccessUrl = baseurl + ball.AccessParm;
-                ha.Access();
-                //取得每一个星球
-                ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
-                dm.ballname = piloop.CurrentBallName;
-                defenceStrategy.Metal = piloop.Metal;
-                defenceStrategy.Crystal = piloop.Crystal;
-                defenceStrategy.HH = piloop.H;
+            //DefenceMessager dm = new DefenceMessager();
+            //dm.isBuildOver = false;
+            //ArrayList balls = new ArrayList();
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append("http://");
+            //sb.Append(universe);
+            //sb.Append(".cicihappy.com/ogame/resources.php");
+            //ha.AccessUrl = sb.ToString();
+            //string baseurl = ha.AccessUrl;
+            //ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
+            //ha.Access();
+            ////取得第一个星球的总星球列表
+            //pi = ProductivityInfo.AnalyzHtml();
+            //Thread.Sleep(3000);
+            //int i = 0;
+            //foreach (ProductivityInfo.Ball ball in pi.Balllist)
+            //{
+            //    ha.AccessUrl = baseurl + ball.AccessParm;
+            //    ha.Access();
+            //    //取得每一个星球
+            //    ProductivityInfo piloop = ProductivityInfo.AnalyzHtml();
+            //    dm.ballname = piloop.CurrentBallName;
+            //    defenceStrategy.Metal = piloop.Metal;
+            //    defenceStrategy.Crystal = piloop.Crystal;
+            //    defenceStrategy.HH = piloop.H;
 
-                defenceStrategy.PrepareAccess(ref ha, ball.AccessParm);
-                Thread.Sleep(3000);
-                defenceStrategy.MakeDefenceTower(ha, dm);
-                Thread.Sleep(3000);
-                dm.progress += 100 / pi.Balllist.Count;
-                if (100 - dm.progress < 100 / pi.Balllist.Count)
-                {
-                    dm.progress = 100;
-                }
-                DefenceEventHandler(dm);
-                i++;
-                //if (i > 1)
-                //{
-                //    break;
-                //}
-            }
-            dm.isBuildOver = true;
-            DefenceEventHandler(dm);
+            //    defenceStrategy.PrepareAccess(ref ha, ball.AccessParm);
+            //    Thread.Sleep(3000);
+            //    defenceStrategy.MakeDefenceTower(ha, dm);
+            //    Thread.Sleep(3000);
+            //    dm.progress += 100 / pi.Balllist.Count;
+            //    if (100 - dm.progress < 100 / pi.Balllist.Count)
+            //    {
+            //        dm.progress = 100;
+            //    }
+            //    DefenceEventHandler(dm);
+            //    i++;
+            //    //if (i > 1)
+            //    //{
+            //    //    break;
+            //    //}
+            //}
+            //dm.isBuildOver = true;
+            //DefenceEventHandler(dm);
         }
 
         private void FleetTest(object o)

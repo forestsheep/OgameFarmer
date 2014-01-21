@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.btnOverview = new System.Windows.Forms.Button();
             this.noti = new System.Windows.Forms.NotifyIcon(this.components);
             this.b_dispatch = new System.Windows.Forms.Button();
             this.b_sysmap = new System.Windows.Forms.Button();
@@ -77,13 +76,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnInfoCollect = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gbReserve = new System.Windows.Forms.GroupBox();
             this.tbHHReserve = new System.Windows.Forms.TextBox();
             this.tbCrystalReserve = new System.Windows.Forms.TextBox();
             this.lHHReserve = new System.Windows.Forms.Label();
-            this.lMetalReserve = new System.Windows.Forms.Label();
-            this.gbReserve = new System.Windows.Forms.GroupBox();
             this.lCrystalReserve = new System.Windows.Forms.Label();
             this.tbMetalReserve = new System.Windows.Forms.TextBox();
+            this.lMetalReserve = new System.Windows.Forms.Label();
             this.gbCapacity = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbDenominator = new System.Windows.Forms.TextBox();
@@ -92,14 +91,14 @@
             this.rb13 = new System.Windows.Forms.RadioButton();
             this.rb21 = new System.Windows.Forms.RadioButton();
             this.rb23 = new System.Windows.Forms.RadioButton();
-            this.tsslStrategyDescription = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tbLogBox = new System.Windows.Forms.TextBox();
+            this.tbDefenceLog = new System.Windows.Forms.TextBox();
             this.pbDefence = new System.Windows.Forms.ProgressBar();
-            this.rbAll = new System.Windows.Forms.RadioButton();
+            this.ss = new System.Windows.Forms.StatusStrip();
+            this.tsslStrategyDescription = new System.Windows.Forms.ToolStripStatusLabel();
+            this.gbStrategy = new System.Windows.Forms.GroupBox();
             this.rbMetal = new System.Windows.Forms.RadioButton();
             this.rbPaohui = new System.Windows.Forms.RadioButton();
-            this.ss = new System.Windows.Forms.StatusStrip();
-            this.gbStrategy = new System.Windows.Forms.GroupBox();
+            this.rbAll = new System.Windows.Forms.RadioButton();
             this.btnMakeTower = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage_summary.SuspendLayout();
@@ -109,16 +108,6 @@
             this.ss.SuspendLayout();
             this.gbStrategy.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnOverview
-            // 
-            this.btnOverview.Location = new System.Drawing.Point(1311, 62);
-            this.btnOverview.Name = "btnOverview";
-            this.btnOverview.Size = new System.Drawing.Size(78, 42);
-            this.btnOverview.TabIndex = 6;
-            this.btnOverview.Text = "概况统计";
-            this.btnOverview.UseVisualStyleBackColor = true;
-            this.btnOverview.Click += new System.EventHandler(this.btnOverview_Click);
             // 
             // noti
             // 
@@ -247,7 +236,7 @@
             // 
             this.l_energystore.AutoSize = true;
             this.l_energystore.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_energystore.Location = new System.Drawing.Point(950, 140);
+            this.l_energystore.Location = new System.Drawing.Point(1016, 149);
             this.l_energystore.Name = "l_energystore";
             this.l_energystore.Size = new System.Drawing.Size(0, 16);
             this.l_energystore.TabIndex = 85;
@@ -256,7 +245,7 @@
             // 
             this.l_energy.AutoSize = true;
             this.l_energy.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_energy.Location = new System.Drawing.Point(950, 50);
+            this.l_energy.Location = new System.Drawing.Point(1016, 59);
             this.l_energy.Name = "l_energy";
             this.l_energy.Size = new System.Drawing.Size(0, 16);
             this.l_energy.TabIndex = 84;
@@ -307,7 +296,7 @@
             // 
             this.l_crystal_allday.AutoSize = true;
             this.l_crystal_allday.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_crystal_allday.Location = new System.Drawing.Point(433, 551);
+            this.l_crystal_allday.Location = new System.Drawing.Point(536, 551);
             this.l_crystal_allday.Name = "l_crystal_allday";
             this.l_crystal_allday.Size = new System.Drawing.Size(0, 16);
             this.l_crystal_allday.TabIndex = 78;
@@ -456,7 +445,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label16.ForeColor = System.Drawing.Color.Coral;
-            this.label16.Location = new System.Drawing.Point(836, 140);
+            this.label16.Location = new System.Drawing.Point(902, 149);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 16);
             this.label16.TabIndex = 64;
@@ -467,7 +456,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label17.ForeColor = System.Drawing.Color.Coral;
-            this.label17.Location = new System.Drawing.Point(836, 50);
+            this.label17.Location = new System.Drawing.Point(902, 59);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(72, 16);
             this.label17.TabIndex = 63;
@@ -477,7 +466,7 @@
             // 
             this.l_hstore.AutoSize = true;
             this.l_hstore.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_hstore.Location = new System.Drawing.Point(722, 140);
+            this.l_hstore.Location = new System.Drawing.Point(788, 149);
             this.l_hstore.Name = "l_hstore";
             this.l_hstore.Size = new System.Drawing.Size(0, 16);
             this.l_hstore.TabIndex = 62;
@@ -486,7 +475,7 @@
             // 
             this.l_h.AutoSize = true;
             this.l_h.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_h.Location = new System.Drawing.Point(722, 50);
+            this.l_h.Location = new System.Drawing.Point(788, 59);
             this.l_h.Name = "l_h";
             this.l_h.Size = new System.Drawing.Size(0, 16);
             this.l_h.TabIndex = 61;
@@ -496,7 +485,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label12.Location = new System.Drawing.Point(629, 140);
+            this.label12.Location = new System.Drawing.Point(695, 149);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 16);
             this.label12.TabIndex = 60;
@@ -507,7 +496,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label13.Location = new System.Drawing.Point(629, 50);
+            this.label13.Location = new System.Drawing.Point(695, 59);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 16);
             this.label13.TabIndex = 59;
@@ -517,7 +506,7 @@
             // 
             this.l_crystalstore.AutoSize = true;
             this.l_crystalstore.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_crystalstore.Location = new System.Drawing.Point(523, 142);
+            this.l_crystalstore.Location = new System.Drawing.Point(589, 151);
             this.l_crystalstore.Name = "l_crystalstore";
             this.l_crystalstore.Size = new System.Drawing.Size(0, 16);
             this.l_crystalstore.TabIndex = 58;
@@ -526,7 +515,7 @@
             // 
             this.l_crystal.AutoSize = true;
             this.l_crystal.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_crystal.Location = new System.Drawing.Point(523, 52);
+            this.l_crystal.Location = new System.Drawing.Point(589, 61);
             this.l_crystal.Name = "l_crystal";
             this.l_crystal.Size = new System.Drawing.Size(0, 16);
             this.l_crystal.TabIndex = 57;
@@ -536,7 +525,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(433, 140);
+            this.label7.Location = new System.Drawing.Point(499, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 16);
             this.label7.TabIndex = 56;
@@ -547,7 +536,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(433, 50);
+            this.label6.Location = new System.Drawing.Point(499, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 16);
             this.label6.TabIndex = 55;
@@ -557,7 +546,7 @@
             // 
             this.l_metalstroe.AutoSize = true;
             this.l_metalstroe.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_metalstroe.Location = new System.Drawing.Point(314, 140);
+            this.l_metalstroe.Location = new System.Drawing.Point(380, 149);
             this.l_metalstroe.Name = "l_metalstroe";
             this.l_metalstroe.Size = new System.Drawing.Size(0, 16);
             this.l_metalstroe.TabIndex = 54;
@@ -567,7 +556,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(230, 140);
+            this.label4.Location = new System.Drawing.Point(296, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 16);
             this.label4.TabIndex = 53;
@@ -577,7 +566,7 @@
             // 
             this.l_metal.AutoSize = true;
             this.l_metal.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_metal.Location = new System.Drawing.Point(314, 50);
+            this.l_metal.Location = new System.Drawing.Point(380, 59);
             this.l_metal.Name = "l_metal";
             this.l_metal.Size = new System.Drawing.Size(0, 16);
             this.l_metal.TabIndex = 52;
@@ -587,7 +576,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(230, 50);
+            this.label3.Location = new System.Drawing.Point(296, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 16);
             this.label3.TabIndex = 51;
@@ -607,7 +596,7 @@
             // 
             this.tabPage2.Controls.Add(this.gbReserve);
             this.tabPage2.Controls.Add(this.gbCapacity);
-            this.tabPage2.Controls.Add(this.tbLogBox);
+            this.tabPage2.Controls.Add(this.tbDefenceLog);
             this.tabPage2.Controls.Add(this.pbDefence);
             this.tabPage2.Controls.Add(this.ss);
             this.tabPage2.Controls.Add(this.gbStrategy);
@@ -619,6 +608,21 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "防御";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // gbReserve
+            // 
+            this.gbReserve.Controls.Add(this.tbHHReserve);
+            this.gbReserve.Controls.Add(this.tbCrystalReserve);
+            this.gbReserve.Controls.Add(this.lHHReserve);
+            this.gbReserve.Controls.Add(this.lCrystalReserve);
+            this.gbReserve.Controls.Add(this.tbMetalReserve);
+            this.gbReserve.Controls.Add(this.lMetalReserve);
+            this.gbReserve.Location = new System.Drawing.Point(433, 31);
+            this.gbReserve.Name = "gbReserve";
+            this.gbReserve.Size = new System.Drawing.Size(209, 229);
+            this.gbReserve.TabIndex = 23;
+            this.gbReserve.TabStop = false;
+            this.gbReserve.Text = "资源保留";
             // 
             // tbHHReserve
             // 
@@ -643,30 +647,6 @@
             this.lHHReserve.TabIndex = 2;
             this.lHHReserve.Text = "重氢";
             // 
-            // lMetalReserve
-            // 
-            this.lMetalReserve.AutoSize = true;
-            this.lMetalReserve.Location = new System.Drawing.Point(20, 32);
-            this.lMetalReserve.Name = "lMetalReserve";
-            this.lMetalReserve.Size = new System.Drawing.Size(42, 21);
-            this.lMetalReserve.TabIndex = 0;
-            this.lMetalReserve.Text = "金属";
-            // 
-            // gbReserve
-            // 
-            this.gbReserve.Controls.Add(this.tbHHReserve);
-            this.gbReserve.Controls.Add(this.tbCrystalReserve);
-            this.gbReserve.Controls.Add(this.lHHReserve);
-            this.gbReserve.Controls.Add(this.lCrystalReserve);
-            this.gbReserve.Controls.Add(this.tbMetalReserve);
-            this.gbReserve.Controls.Add(this.lMetalReserve);
-            this.gbReserve.Location = new System.Drawing.Point(433, 31);
-            this.gbReserve.Name = "gbReserve";
-            this.gbReserve.Size = new System.Drawing.Size(209, 229);
-            this.gbReserve.TabIndex = 23;
-            this.gbReserve.TabStop = false;
-            this.gbReserve.Text = "资源保留";
-            // 
             // lCrystalReserve
             // 
             this.lCrystalReserve.AutoSize = true;
@@ -682,6 +662,15 @@
             this.tbMetalReserve.Name = "tbMetalReserve";
             this.tbMetalReserve.Size = new System.Drawing.Size(109, 29);
             this.tbMetalReserve.TabIndex = 5;
+            // 
+            // lMetalReserve
+            // 
+            this.lMetalReserve.AutoSize = true;
+            this.lMetalReserve.Location = new System.Drawing.Point(20, 32);
+            this.lMetalReserve.Name = "lMetalReserve";
+            this.lMetalReserve.Size = new System.Drawing.Size(42, 21);
+            this.lMetalReserve.TabIndex = 0;
+            this.lMetalReserve.Text = "金属";
             // 
             // gbCapacity
             // 
@@ -766,20 +755,15 @@
             this.rb23.Text = "2/3";
             this.rb23.UseVisualStyleBackColor = true;
             // 
-            // tsslStrategyDescription
+            // tbDefenceLog
             // 
-            this.tsslStrategyDescription.Name = "tsslStrategyDescription";
-            this.tsslStrategyDescription.Size = new System.Drawing.Size(0, 17);
-            // 
-            // tbLogBox
-            // 
-            this.tbLogBox.Location = new System.Drawing.Point(33, 21);
-            this.tbLogBox.Multiline = true;
-            this.tbLogBox.Name = "tbLogBox";
-            this.tbLogBox.ReadOnly = true;
-            this.tbLogBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbLogBox.Size = new System.Drawing.Size(357, 582);
-            this.tbLogBox.TabIndex = 27;
+            this.tbDefenceLog.Location = new System.Drawing.Point(33, 21);
+            this.tbDefenceLog.Multiline = true;
+            this.tbDefenceLog.Name = "tbDefenceLog";
+            this.tbDefenceLog.ReadOnly = true;
+            this.tbDefenceLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbDefenceLog.Size = new System.Drawing.Size(357, 582);
+            this.tbDefenceLog.TabIndex = 27;
             // 
             // pbDefence
             // 
@@ -787,39 +771,6 @@
             this.pbDefence.Name = "pbDefence";
             this.pbDefence.Size = new System.Drawing.Size(1108, 23);
             this.pbDefence.TabIndex = 22;
-            // 
-            // rbAll
-            // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Location = new System.Drawing.Point(23, 28);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(108, 25);
-            this.rbAll.TabIndex = 7;
-            this.rbAll.TabStop = true;
-            this.rbAll.Text = "等离子优先";
-            this.rbAll.UseVisualStyleBackColor = true;
-            // 
-            // rbMetal
-            // 
-            this.rbMetal.AutoSize = true;
-            this.rbMetal.Location = new System.Drawing.Point(23, 184);
-            this.rbMetal.Name = "rbMetal";
-            this.rbMetal.Size = new System.Drawing.Size(108, 25);
-            this.rbMetal.TabIndex = 71;
-            this.rbMetal.TabStop = true;
-            this.rbMetal.Text = "只使用金属";
-            this.rbMetal.UseVisualStyleBackColor = true;
-            // 
-            // rbPaohui
-            // 
-            this.rbPaohui.AutoSize = true;
-            this.rbPaohui.Location = new System.Drawing.Point(23, 106);
-            this.rbPaohui.Name = "rbPaohui";
-            this.rbPaohui.Size = new System.Drawing.Size(92, 25);
-            this.rbPaohui.TabIndex = 7;
-            this.rbPaohui.TabStop = true;
-            this.rbPaohui.Text = "炮灰优先";
-            this.rbPaohui.UseVisualStyleBackColor = true;
             // 
             // ss
             // 
@@ -829,6 +780,11 @@
             this.ss.Name = "ss";
             this.ss.Size = new System.Drawing.Size(1156, 22);
             this.ss.TabIndex = 24;
+            // 
+            // tsslStrategyDescription
+            // 
+            this.tsslStrategyDescription.Name = "tsslStrategyDescription";
+            this.tsslStrategyDescription.Size = new System.Drawing.Size(0, 17);
             // 
             // gbStrategy
             // 
@@ -841,6 +797,42 @@
             this.gbStrategy.TabIndex = 25;
             this.gbStrategy.TabStop = false;
             this.gbStrategy.Text = "建造策略";
+            // 
+            // rbMetal
+            // 
+            this.rbMetal.AutoSize = true;
+            this.rbMetal.Location = new System.Drawing.Point(23, 184);
+            this.rbMetal.Name = "rbMetal";
+            this.rbMetal.Size = new System.Drawing.Size(108, 25);
+            this.rbMetal.TabIndex = 71;
+            this.rbMetal.TabStop = true;
+            this.rbMetal.Text = "只使用金属";
+            this.rbMetal.UseVisualStyleBackColor = true;
+            this.rbMetal.CheckedChanged += new System.EventHandler(this.rbMetal_CheckedChanged);
+            // 
+            // rbPaohui
+            // 
+            this.rbPaohui.AutoSize = true;
+            this.rbPaohui.Location = new System.Drawing.Point(23, 106);
+            this.rbPaohui.Name = "rbPaohui";
+            this.rbPaohui.Size = new System.Drawing.Size(92, 25);
+            this.rbPaohui.TabIndex = 7;
+            this.rbPaohui.TabStop = true;
+            this.rbPaohui.Text = "炮灰优先";
+            this.rbPaohui.UseVisualStyleBackColor = true;
+            this.rbPaohui.CheckedChanged += new System.EventHandler(this.rbPaohui_CheckedChanged);
+            // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Location = new System.Drawing.Point(23, 28);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(108, 25);
+            this.rbAll.TabIndex = 7;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "等离子优先";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.rbAll_CheckedChanged);
             // 
             // btnMakeTower
             // 
@@ -863,7 +855,6 @@
             this.Controls.Add(this.btnRank);
             this.Controls.Add(this.b_sysmap);
             this.Controls.Add(this.b_dispatch);
-            this.Controls.Add(this.btnOverview);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Main";
@@ -892,7 +883,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnOverview;
         private System.Windows.Forms.NotifyIcon noti;
         private System.Windows.Forms.Button b_dispatch;
         private System.Windows.Forms.Button b_sysmap;
@@ -954,7 +944,7 @@
         private System.Windows.Forms.RadioButton rb13;
         private System.Windows.Forms.RadioButton rb21;
         private System.Windows.Forms.RadioButton rb23;
-        private System.Windows.Forms.TextBox tbLogBox;
+        private System.Windows.Forms.TextBox tbDefenceLog;
         private System.Windows.Forms.ProgressBar pbDefence;
         private System.Windows.Forms.StatusStrip ss;
         private System.Windows.Forms.ToolStripStatusLabel tsslStrategyDescription;
