@@ -53,7 +53,6 @@ namespace GalaxyFarmer
                 MessageBox.Show(ex.ToString());
                 return;
             }
-            btnMakeTower.Enabled = false;
             if (rbAll.Checked)
             {
                 defenceMessager.defenceType = DefenceStrategy.DefenceType.ALL;

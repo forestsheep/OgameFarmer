@@ -34,6 +34,8 @@ namespace GalaxyFarmer
 
             // 取得每个星球的资源量
             ProductivityCommander producitivityCommander = new ProductivityCommander();
+            producitivityCommander.ProductivityStepEvent += OnScanStepOver;
+            producitivityCommander.ProductivityEvent += OnScanOver;
             producitivityCommander.Execute();
 
             DefenceStrategy defenceStrategy = new DefenceStrategy(Messager.defenceType);
@@ -45,6 +47,16 @@ namespace GalaxyFarmer
                 DefenceEventHandler();
             }
             Messager.isBuildOver = true;
+            DefenceEventHandler();
+        }
+
+        private void OnScanStepOver()
+        {
+            DefenceEventHandler();
+        }
+
+        private void OnScanOver()
+        {
             DefenceEventHandler();
         }
 
