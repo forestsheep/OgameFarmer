@@ -110,6 +110,8 @@ namespace GalaxyFarmer
                 bp.HHHour = StringUtil.CommaNumberToInt(hn_hp.InnerText);
             }
             //太阳能（基地）太阳能（卫星）由于目前没发现用处，暂且不用解析
+
+            this.producitivityCommander.Messager.CurrentScanBallName = bp.Name;
         }
     }
 }

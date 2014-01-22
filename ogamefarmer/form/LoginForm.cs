@@ -72,8 +72,7 @@ namespace GalaxyFarmer
             this.b_login.Text = "login...";
             this.b_login.Enabled = false;
             LoginMessager loginMessager = new LoginMessager(this.tb_username.Text, this.tb_pw.Text, cb_uni.SelectedItem.ToString());
-            loginCommander = new LoginCommander(loginMessager);
-            loginCommander.LoginEvent += this.OnLogin;
+            loginCommander = new LoginCommander(loginMessager, this.OnLogin);
             CommandCenter.RUN(loginCommander, this);
         }
         #endregion
@@ -103,8 +102,7 @@ namespace GalaxyFarmer
                 Profile.UNIVERSE = this.loginCommander.Messager.ReqUniverse;
                 loginCommander.LoginEvent -= this.OnLogin;
                 // 获取所有球的列表
-                ballListCommander = new BallListCommander(new BallListMessager());
-                ballListCommander.BallListEvent += this.OnBallList;
+                ballListCommander = new BallListCommander(this.OnBallList);
                 CommandCenter.RUN(ballListCommander, this);
             }
             else

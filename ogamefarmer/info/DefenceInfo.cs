@@ -22,7 +22,7 @@ namespace GalaxyFarmer
             HttpAccesser ha = HttpAccesser.GetInstance();
             ha.AccessUrl = UrlUtil.GetUrl(String.Format(PAGE_NAME, ballPram));
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.POST;
-            doAccess(defenceCommander.Messager.fmenge401, defenceCommander.Messager.fmenge402, defenceCommander.Messager.fmenge405, defenceCommander.Messager.fmenge406);
+            doAccess(defenceCommander.Messager.Fmenge401, defenceCommander.Messager.Fmenge402, defenceCommander.Messager.Fmenge405, defenceCommander.Messager.Fmenge406);
         }
 
         /// <summary>

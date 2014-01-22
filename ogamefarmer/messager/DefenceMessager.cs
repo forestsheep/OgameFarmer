@@ -31,18 +31,26 @@ namespace GalaxyFarmer
         /// </summary>
         internal double RatioDenominator;
 
-        internal int progress = 0;
-        internal bool isBuildOver = false;
+        internal int Progress = 0;
+        internal bool IsBuildOver = false;
 
-        internal int fmenge401;
-        internal int fmenge402;
-        internal int fmenge405;
-        internal int fmenge406;
-        internal string ballname;
+        internal int Fmenge401;
+        internal int Fmenge402;
+        internal int Fmenge405;
+        internal int Fmenge406;
+        internal bool IsScaning;
+        internal string Ballname;
         
         internal String PostBuildLog()
         {
-            return "在星球《" + ballname + "》上一共建造了 火箭发射装置:" + fmenge401 + "个;轻型激光炮:" + fmenge402 + "个;中子炮:" + fmenge405 + "个;等离子炮:" + fmenge406 + "个";
+            if (IsScaning)
+            {
+                return "正在扫描->" + Ballname;
+            }
+            else
+            {
+                return "在星球《" + Ballname + "》上一共建造了 火箭发射装置:" + Fmenge401 + "个;轻型激光炮:" + Fmenge402 + "个;中子炮:" + Fmenge405 + "个;等离子炮:" + Fmenge406 + "个";
+            }
         }
     }
 }

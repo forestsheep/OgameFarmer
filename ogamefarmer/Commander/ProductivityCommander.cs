@@ -13,8 +13,10 @@ namespace GalaxyFarmer
         private ProductivityStepMessageSender productivityStepEventHandler;
         internal ProductivityMessager Messager;
 
-        internal ProductivityCommander()
+        internal ProductivityCommander(ProductivityMessageSender productivityMessageSender, ProductivityStepMessageSender productivityStepMessageSender)
         {
+            productivityEventHandler += productivityMessageSender;
+            productivityStepEventHandler += productivityStepMessageSender;
             Messager = new ProductivityMessager();
             Messager.BallProductivityList = new List<BallProductivity>();
             foreach (Ball ball in Profile.BallList)

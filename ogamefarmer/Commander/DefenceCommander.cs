@@ -11,6 +11,8 @@ namespace GalaxyFarmer
 
         #region 成员
         private static DefenceMessageSenderX DefenceEventHandler;
+
+        private ProductivityCommander producitivityCommander;
         #endregion
 
         #region 属性
@@ -22,9 +24,10 @@ namespace GalaxyFarmer
         /// 构造一个DefenceCommander
         /// </summary>
         /// <param name="DefenceMessager">Defence信息</param>
-        internal DefenceCommander(DefenceMessager defenceMessage)
+        internal DefenceCommander(DefenceMessager defenceMessage, DefenceMessageSenderX defenceMessageSenderX)
         {
             this.Messager = defenceMessage;
+            this.DefenceEvent += defenceMessageSenderX; 
         }
         #endregion
 
@@ -33,30 +36,31 @@ namespace GalaxyFarmer
             DefenceInfo DefenceInfo = new DefenceInfo(this);
 
             // 取得每个星球的资源量
-            ProductivityCommander producitivityCommander = new ProductivityCommander();
-            producitivityCommander.ProductivityStepEvent += OnScanStepOver;
-            producitivityCommander.ProductivityEvent += OnScanOver;
+            producitivityCommander = new ProductivityCommander(OnScanOver, OnScanStepOver);
             producitivityCommander.Execute();
 
             DefenceStrategy defenceStrategy = new DefenceStrategy(Messager.defenceType);
             foreach (BallProductivity bp in producitivityCommander.Messager.BallProductivityList)
             {
-                Messager.ballname = bp.Name;
+                Messager.Ballname = bp.Name;
                 defenceStrategy.ComputeTowerAmount(bp, ref Messager);
                 DefenceInfo.AccessSite(bp.Prama);
                 DefenceEventHandler();
             }
-            Messager.isBuildOver = true;
+            Messager.IsBuildOver = true;
             DefenceEventHandler();
         }
 
         private void OnScanStepOver()
         {
+            this.Messager.Ballname = producitivityCommander.Messager.CurrentScanBallName;
+            this.Messager.IsScaning = true;
             DefenceEventHandler();
         }
 
         private void OnScanOver()
         {
+            this.Messager.IsScaning = false;
             DefenceEventHandler();
         }
 

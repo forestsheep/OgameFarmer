@@ -32,9 +32,9 @@ namespace GalaxyFarmer.form
 
         private void DoAfterRecivedMessage(object sender, EventArgs args)
         {
-            this.pbDefence.Value = this.defenceMessager.progress;
+            this.pbDefence.Value = this.defenceMessager.Progress;
             this.tbLogBox.AppendText(defenceMessager.PostBuildLog() + "\r\n");
-            if (this.defenceMessager.isBuildOver)
+            if (this.defenceMessager.IsBuildOver)
             {
                 this.pbDefence.Value = 0;
                 this.btnMakeTower.Enabled = true;

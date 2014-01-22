@@ -26,25 +26,25 @@ namespace GalaxyFarmer
 
         internal void ComputeTowerAmount(BallProductivity bp, ref DefenceMessager dm)
         {
-            //int m = bp.Metal;
-            int m = 10000;
+            int m = bp.Metal;
+            //int m = 10000;
             int c = bp.Crystal;
             int h = bp.HH;
             PreCompute(bp, dm, ref m, ref c, ref h);
 
-            //switch (this.defenceType)
-            //{
-            //    case DefenceType.ALL:
-            //        StrategyAll(m, c, h, ref dm);
-            //        break;
-            //    case DefenceType.PAOHUI:
-            //        StrategyPaohui(m, c, ref dm);
-            //        break;
-            //    case DefenceType.METAL:
-            //        StrategyMetal(m, ref dm);
-            //        break;
-            //}
-            StrategyMetal(m, ref dm);
+            switch (this.defenceType)
+            {
+                case DefenceType.ALL:
+                    StrategyAll(m, c, h, ref dm);
+                    break;
+                case DefenceType.PAOHUI:
+                    StrategyPaohui(m, c, ref dm);
+                    break;
+                case DefenceType.METAL:
+                    StrategyMetal(m, ref dm);
+                    break;
+            }
+            //StrategyMetal(m, ref dm);
         }
 
         private void PreCompute(BallProductivity bp, DefenceMessager dm, ref int m, ref int c, ref int h)
@@ -75,29 +75,29 @@ namespace GalaxyFarmer
 
                 if (Math.Min(metal, crystal) / 5 * 3 > h)
                 {
-                    dm.fmenge406 = h / 30000;
+                    dm.Fmenge406 = h / 30000;
                 }
                 else
                 {
-                    dm.fmenge406 = Math.Min(metal, crystal) / 50000;
+                    dm.Fmenge406 = Math.Min(metal, crystal) / 50000;
                 }
-                metal = metal - 50000 * dm.fmenge406;
-                metal = crystal - 50000 * dm.fmenge406;
+                metal = metal - 50000 * dm.Fmenge406;
+                metal = crystal - 50000 * dm.Fmenge406;
             }
             // 金属太多
             if (metal > crystal)
             {
-                dm.fmenge402 = Math.Min(m / 1500, m / 500);
-                int metalLeft = metal - 1500 * dm.fmenge402;
+                dm.Fmenge402 = Math.Min(m / 1500, m / 500);
+                int metalLeft = metal - 1500 * dm.Fmenge402;
                 if (metalLeft >= 2000)
                 {
-                    dm.fmenge401 = metalLeft / 2000;
+                    dm.Fmenge401 = metalLeft / 2000;
                 }
             }
             // 水晶太多
             else
             {
-                dm.fmenge405 = Math.Min(metal / 2000, crystal / 6000);
+                dm.Fmenge405 = Math.Min(metal / 2000, crystal / 6000);
             }
         }
 
@@ -114,11 +114,11 @@ namespace GalaxyFarmer
             int crystal = c;
             if (metal >= 1500 && crystal >= 500)
             {
-                dm.fmenge402 = Math.Min(metal / 1500, crystal / 500);
-                int metalLeft = metal - 1500 * dm.fmenge402;
+                dm.Fmenge402 = Math.Min(metal / 1500, crystal / 500);
+                int metalLeft = metal - 1500 * dm.Fmenge402;
                 if (metalLeft >= 2000)
                 {
-                    dm.fmenge401 = metalLeft / 2000;
+                    dm.Fmenge401 = metalLeft / 2000;
                 }
             }
         }
@@ -134,7 +134,7 @@ namespace GalaxyFarmer
         {
             if (m > 2000)
             {
-                dm.fmenge401 = m / 2000;
+                dm.Fmenge401 = m / 2000;
             }
         }
 

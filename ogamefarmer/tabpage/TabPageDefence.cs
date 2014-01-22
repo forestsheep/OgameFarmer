@@ -66,8 +66,7 @@ namespace GalaxyFarmer
                 defenceMessager.defenceType = DefenceStrategy.DefenceType.METAL;
             }
 
-            defenceCommander = new DefenceCommander(defenceMessager);
-            defenceCommander.DefenceEvent += OnDefenceBuildOver;
+            defenceCommander = new DefenceCommander(defenceMessager, OnDefenceBuildOver);
             pbDefence.Visible = true;
             pbDefence.Maximum = Profile.BallList.Count * 100;
             pbDefence.Value = 0;
@@ -82,9 +81,9 @@ namespace GalaxyFarmer
 
         protected void ResponseDefence(object sender, EventArgs e)
         {
-            this.pbDefence.Value = defenceCommander.Messager.progress;
+            this.pbDefence.Value = defenceCommander.Messager.Progress;
             this.tbDefenceLog.AppendText(defenceCommander.Messager.PostBuildLog() + "\r\n");
-            if (defenceCommander.Messager.isBuildOver)
+            if (defenceCommander.Messager.IsBuildOver)
             {
                 this.pbDefence.Value = 0;
                 this.btnMakeTower.Enabled = true;

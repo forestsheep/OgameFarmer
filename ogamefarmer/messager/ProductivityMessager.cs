@@ -8,5 +8,6 @@ namespace GalaxyFarmer
     class ProductivityMessager
     {
         internal List<BallProductivity> BallProductivityList;
+        internal string CurrentScanBallName;
     }
 }

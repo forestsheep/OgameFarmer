@@ -21,9 +21,7 @@ namespace GalaxyFarmer
         /// <param name="e"></param>
         private void btnInfoCollect_Click(object sender, EventArgs e)
         {
-            productivityCommander = new ProductivityCommander();
-            productivityCommander.ProductivityEvent += OnProductivityScanOver;
-            productivityCommander.ProductivityStepEvent += OnProductivityScanStepOver;
+            productivityCommander = new ProductivityCommander(OnProductivityScanOver, OnProductivityScanStepOver);
             pbScanProductivityProgress.Visible = true;
             pbScanProductivityProgress.Maximum = Profile.BallList.Count * 100;
             pbScanProductivityProgress.Value = 0;

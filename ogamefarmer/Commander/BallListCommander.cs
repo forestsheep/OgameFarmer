@@ -8,13 +8,14 @@ namespace GalaxyFarmer
     internal delegate void BallListMessageSender();
     class BallListCommander : Commander
     {
-        private static BallListMessageSender ballListEventHandler;
+        private BallListMessageSender ballListEventHandler;
 
         internal BallListMessager Messager;
 
-        internal BallListCommander(BallListMessager ballListMessage)
+        internal BallListCommander(BallListMessageSender ballListMessageSender)
         {
-            this.Messager = ballListMessage;
+            this.Messager = new BallListMessager();
+            this.ballListEventHandler += ballListMessageSender;
         }
 
         public void Execute()

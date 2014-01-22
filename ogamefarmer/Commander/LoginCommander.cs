@@ -21,9 +21,10 @@ namespace GalaxyFarmer
         /// 构造一个LoginCommander
         /// </summary>
         /// <param name="loginMessager">login信息</param>
-        internal LoginCommander(LoginMessager loginMessager)
+        internal LoginCommander(LoginMessager loginMessager, LoginMessageSenderX lm)
         {
             this.Messager = loginMessager;
+            LoginEvent += lm;
         }
         #endregion
 
