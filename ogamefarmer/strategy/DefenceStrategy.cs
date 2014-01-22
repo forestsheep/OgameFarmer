@@ -26,8 +26,11 @@ namespace GalaxyFarmer
 
         internal void ComputeTowerAmount(BallProductivity bp, ref DefenceMessager dm)
         {
+            dm.Fmenge401 = 0;
+            dm.Fmenge402 = 0;
+            dm.Fmenge405 = 0;
+            dm.Fmenge406 = 0;
             int m = bp.Metal;
-            //int m = 10000;
             int c = bp.Crystal;
             int h = bp.HH;
             PreCompute(bp, dm, ref m, ref c, ref h);
@@ -110,6 +113,7 @@ namespace GalaxyFarmer
         /// <param name="fmenge406"></param>
         public void StrategyPaohui(int m, int c, ref DefenceMessager dm)
         {
+
             int metal = m;
             int crystal = c;
             if (metal >= 1500 && crystal >= 500)
@@ -137,6 +141,5 @@ namespace GalaxyFarmer
                 dm.Fmenge401 = m / 2000;
             }
         }
-
     }
 }

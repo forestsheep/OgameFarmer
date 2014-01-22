@@ -62,11 +62,20 @@ namespace GalaxyFarmer
                     {
                         ball.Location = ConvertUtil.String2Coordinate("0:0:0");
                     }
+                    rx = new Regex("(?<=\\?)\\w*=\\d*");
                     foreach (HtmlAttribute ha in hn.Attributes)
                     {
                         if ("value".Equals(ha.Name))
                         {
-                            ball.Prama = ha.Value.Replace("&amp;", "&");
+                            m = rx.Match(ha.Value);
+                            if (m.Value != null)
+                            {
+                                ball.Prama = m.Value;
+                            }
+                            else
+                            {
+                                ball.Prama = string.Empty;
+                            }
                         }
                     }
                     ballListCommander.Messager.BallList.Add(ball);

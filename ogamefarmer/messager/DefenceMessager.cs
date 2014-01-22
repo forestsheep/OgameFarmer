@@ -32,7 +32,7 @@ namespace GalaxyFarmer
         internal double RatioDenominator;
 
         internal int Progress = 0;
-        internal bool IsBuildOver = false;
+        internal bool IsBuilding = false;
 
         internal int Fmenge401;
         internal int Fmenge402;
@@ -45,12 +45,13 @@ namespace GalaxyFarmer
         {
             if (IsScaning)
             {
-                return "正在扫描->" + Ballname;
+                return "正在扫描->" + Ballname + "\n";
             }
-            else
+            if (IsBuilding)
             {
-                return "在星球《" + Ballname + "》上一共建造了 火箭发射装置:" + Fmenge401 + "个;轻型激光炮:" + Fmenge402 + "个;中子炮:" + Fmenge405 + "个;等离子炮:" + Fmenge406 + "个";
+                return "在星球《" + Ballname + "》上一共建造了 火箭发射装置:" + Fmenge401 + "个;轻型激光炮:" + Fmenge402 + "个;中子炮:" + Fmenge405 + "个;等离子炮:" + Fmenge406 + "个\n";
             }
+            return string.Empty;
         }
     }
 }

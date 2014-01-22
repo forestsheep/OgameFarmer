@@ -82,8 +82,8 @@ namespace GalaxyFarmer
         protected void ResponseDefence(object sender, EventArgs e)
         {
             this.pbDefence.Value = defenceCommander.Messager.Progress;
-            this.tbDefenceLog.AppendText(defenceCommander.Messager.PostBuildLog() + "\r\n");
-            if (defenceCommander.Messager.IsBuildOver)
+            this.tbDefenceLog.AppendText(defenceCommander.Messager.PostBuildLog());
+            if (defenceCommander.Messager.IsBuilding)
             {
                 this.pbDefence.Value = 0;
                 this.btnMakeTower.Enabled = true;

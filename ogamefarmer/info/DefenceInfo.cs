@@ -7,7 +7,7 @@ namespace GalaxyFarmer
 {
     class DefenceInfo
     {
-        private const string PAGE_NAME = "buildings.php{0}?mode=defense&re=0";
+        private const string PAGE_NAME = "buildings.php?{0}&mode=defense&re=0";
 
         private DefenceCommander defenceCommander;
 

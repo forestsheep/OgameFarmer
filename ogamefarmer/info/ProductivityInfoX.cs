@@ -27,7 +27,7 @@ namespace GalaxyFarmer
         private const string XPATH_SOLAR_SATELLITE_HOUR = "/html/body/center/table/tr/td[1]/table/tbody/tr[8]/th[5]/font/font";
         #endregion
 
-        private const string PAGE_NAME = "resources.php";
+        private const string PAGE_NAME = "resources.php?{0}&mode=&re=0";
 
         #endregion
         private ProductivityCommander producitivityCommander;
@@ -39,7 +39,7 @@ namespace GalaxyFarmer
         public void AccessByBall(string ballPram)
         {
             HttpAccesser ha = HttpAccesser.GetInstance();
-            ha.AccessUrl = UrlUtil.GetUrl(PAGE_NAME + ballPram);
+            ha.AccessUrl = UrlUtil.GetUrl(String.Format(PAGE_NAME, ballPram));
             ha.AccessMethod = HttpAccesser.ACCESS_METHOD.GET;
             ha.Access();
         }

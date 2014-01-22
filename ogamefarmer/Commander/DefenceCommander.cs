@@ -43,11 +43,12 @@ namespace GalaxyFarmer
             foreach (BallProductivity bp in producitivityCommander.Messager.BallProductivityList)
             {
                 Messager.Ballname = bp.Name;
+                Messager.IsBuilding = true;
                 defenceStrategy.ComputeTowerAmount(bp, ref Messager);
                 DefenceInfo.AccessSite(bp.Prama);
                 DefenceEventHandler();
             }
-            Messager.IsBuildOver = true;
+            Messager.IsBuilding = false;
             DefenceEventHandler();
         }
 
