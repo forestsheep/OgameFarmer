@@ -89,7 +89,7 @@
             this.tbNumerator = new System.Windows.Forms.TextBox();
             this.rbCustom = new System.Windows.Forms.RadioButton();
             this.rb13 = new System.Windows.Forms.RadioButton();
-            this.rb21 = new System.Windows.Forms.RadioButton();
+            this.rb1 = new System.Windows.Forms.RadioButton();
             this.rb23 = new System.Windows.Forms.RadioButton();
             this.tbDefenceLog = new System.Windows.Forms.TextBox();
             this.pbDefence = new System.Windows.Forms.ProgressBar();
@@ -679,7 +679,7 @@
             this.gbCapacity.Controls.Add(this.tbNumerator);
             this.gbCapacity.Controls.Add(this.rbCustom);
             this.gbCapacity.Controls.Add(this.rb13);
-            this.gbCapacity.Controls.Add(this.rb21);
+            this.gbCapacity.Controls.Add(this.rb1);
             this.gbCapacity.Controls.Add(this.rb23);
             this.gbCapacity.Location = new System.Drawing.Point(711, 31);
             this.gbCapacity.Name = "gbCapacity";
@@ -699,14 +699,14 @@
             // 
             // tbDenominator
             // 
-            this.tbDenominator.Location = new System.Drawing.Point(97, 183);
+            this.tbDenominator.Location = new System.Drawing.Point(101, 184);
             this.tbDenominator.Name = "tbDenominator";
             this.tbDenominator.Size = new System.Drawing.Size(65, 29);
             this.tbDenominator.TabIndex = 3;
             // 
             // tbNumerator
             // 
-            this.tbNumerator.Location = new System.Drawing.Point(23, 180);
+            this.tbNumerator.Location = new System.Drawing.Point(23, 183);
             this.tbNumerator.Name = "tbNumerator";
             this.tbNumerator.Size = new System.Drawing.Size(47, 29);
             this.tbNumerator.TabIndex = 2;
@@ -714,13 +714,13 @@
             // rbCustom
             // 
             this.rbCustom.AutoSize = true;
-            this.rbCustom.Location = new System.Drawing.Point(23, 142);
+            this.rbCustom.Location = new System.Drawing.Point(23, 141);
             this.rbCustom.Name = "rbCustom";
             this.rbCustom.Size = new System.Drawing.Size(76, 25);
             this.rbCustom.TabIndex = 1;
-            this.rbCustom.TabStop = true;
             this.rbCustom.Text = "自定义";
             this.rbCustom.UseVisualStyleBackColor = true;
+            this.rbCustom.CheckedChanged += new System.EventHandler(this.rbCustom_CheckedChanged);
             // 
             // rb13
             // 
@@ -729,29 +729,28 @@
             this.rb13.Name = "rb13";
             this.rb13.Size = new System.Drawing.Size(53, 25);
             this.rb13.TabIndex = 1;
-            this.rb13.TabStop = true;
             this.rb13.Text = "1/3";
             this.rb13.UseVisualStyleBackColor = true;
             // 
-            // rb21
+            // rb1
             // 
-            this.rb21.AutoSize = true;
-            this.rb21.Location = new System.Drawing.Point(23, 66);
-            this.rb21.Name = "rb21";
-            this.rb21.Size = new System.Drawing.Size(53, 25);
-            this.rb21.TabIndex = 1;
-            this.rb21.TabStop = true;
-            this.rb21.Text = "1/2";
-            this.rb21.UseVisualStyleBackColor = true;
+            this.rb1.AutoSize = true;
+            this.rb1.Checked = true;
+            this.rb1.Location = new System.Drawing.Point(23, 30);
+            this.rb1.Name = "rb1";
+            this.rb1.Size = new System.Drawing.Size(60, 25);
+            this.rb1.TabIndex = 1;
+            this.rb1.TabStop = true;
+            this.rb1.Text = "全部";
+            this.rb1.UseVisualStyleBackColor = true;
             // 
             // rb23
             // 
             this.rb23.AutoSize = true;
-            this.rb23.Location = new System.Drawing.Point(23, 28);
+            this.rb23.Location = new System.Drawing.Point(23, 67);
             this.rb23.Name = "rb23";
             this.rb23.Size = new System.Drawing.Size(53, 25);
             this.rb23.TabIndex = 1;
-            this.rb23.TabStop = true;
             this.rb23.Text = "2/3";
             this.rb23.UseVisualStyleBackColor = true;
             // 
@@ -942,7 +941,7 @@
         private System.Windows.Forms.TextBox tbNumerator;
         private System.Windows.Forms.RadioButton rbCustom;
         private System.Windows.Forms.RadioButton rb13;
-        private System.Windows.Forms.RadioButton rb21;
+        private System.Windows.Forms.RadioButton rb1;
         private System.Windows.Forms.RadioButton rb23;
         private System.Windows.Forms.TextBox tbDefenceLog;
         private System.Windows.Forms.ProgressBar pbDefence;

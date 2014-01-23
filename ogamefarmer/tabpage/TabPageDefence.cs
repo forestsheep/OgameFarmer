@@ -11,11 +11,13 @@ namespace GalaxyFarmer
         private DefenceCommander defenceCommander;
         private void Defenece_Load()
         {
-            rb23.Checked = true;
-            rbAll.Checked = true;
             tbMetalReserve.Text = "0";
             tbCrystalReserve.Text = "0";
             tbHHReserve.Text = "0";
+            rb1.Checked = true;
+            rbAll.Checked = true;
+            tbNumerator.Enabled = false;
+            tbDenominator.Enabled = false;
         }
 
         private void btnMakeTower_Click(object sender, EventArgs e)
@@ -23,19 +25,19 @@ namespace GalaxyFarmer
             DefenceMessager defenceMessager = new DefenceMessager();
             try
             {
-                defenceMessager.MetalCapacity = Int32.Parse(tbMetalReserve.Text);
-                defenceMessager.CrystalCapacity = Int32.Parse(tbCrystalReserve.Text);
-                defenceMessager.HHCapacity = Int32.Parse(tbHHReserve.Text);
-
+                tbMetalReserve.Text = StringUtil.SetToZeroIfEmpty(tbMetalReserve.Text);
+                defenceMessager.MetalCapacity = int.Parse(tbMetalReserve.Text);
+                defenceMessager.CrystalCapacity = int.Parse(tbCrystalReserve.Text);
+                defenceMessager.HHCapacity = int.Parse(tbHHReserve.Text);
                 if (rb13.Checked)
                 {
                     defenceMessager.RatioNumerator = 1;
                     defenceMessager.RatioDenominator = 3;
                 }
-                else if (rb21.Checked)
+                else if (rb1.Checked)
                 {
                     defenceMessager.RatioNumerator = 1;
-                    defenceMessager.RatioDenominator = 2;
+                    defenceMessager.RatioDenominator = 1;
                 }
                 else if (rb23.Checked)
                 {
@@ -67,8 +69,9 @@ namespace GalaxyFarmer
             }
 
             defenceCommander = new DefenceCommander(defenceMessager, OnDefenceBuildOver);
+            defenceCommander.DefenceEvent -= OnDefenceBuildOver;
             pbDefence.Visible = true;
-            pbDefence.Maximum = Profile.BallList.Count * 100;
+            pbDefence.Maximum = Profile.BallList.Count * 200;
             pbDefence.Value = 0;
             btnMakeTower.Enabled = false;
             CommandCenter.RUN(defenceCommander, this);
@@ -83,8 +86,9 @@ namespace GalaxyFarmer
         {
             this.pbDefence.Value = defenceCommander.Messager.Progress;
             this.tbDefenceLog.AppendText(defenceCommander.Messager.PostBuildLog());
-            if (defenceCommander.Messager.IsBuilding)
+            if (!defenceCommander.Messager.IsScaning && !defenceCommander.Messager.IsBuilding)
             {
+                this.pbDefence.Visible = false;
                 this.pbDefence.Value = 0;
                 this.btnMakeTower.Enabled = true;
             }
@@ -104,6 +108,20 @@ namespace GalaxyFarmer
         private void rbMetal_CheckedChanged(object sender, EventArgs e)
         {
             this.tsslStrategyDescription.Text = "只使用金属来建造火箭炮。";
+        }
+
+        private void rbCustom_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbCustom.Checked)
+            {
+                tbNumerator.Enabled = true;
+                tbDenominator.Enabled = true;
+            }
+            else
+            {
+                tbNumerator.Enabled = false;
+                tbDenominator.Enabled = false;
+            }
         }
         #endregion
     }

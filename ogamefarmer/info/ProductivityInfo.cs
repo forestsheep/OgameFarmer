@@ -74,7 +74,6 @@ namespace GalaxyFarmer
                         ball.Location = "0:0:0";
                     }
                     
-                    
                     foreach (HtmlAttribute ha in hn.Attributes)
                     {
                         if ("value".Equals(ha.Name))

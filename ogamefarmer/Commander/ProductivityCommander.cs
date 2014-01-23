@@ -11,12 +11,17 @@ namespace GalaxyFarmer
     {
         private ProductivityMessageSender productivityEventHandler;
         private ProductivityStepMessageSender productivityStepEventHandler;
+
+        //private ProductivityMessageSender e1;
+        //private ProductivityStepMessageSender e2;
         internal ProductivityMessager Messager;
 
         internal ProductivityCommander(ProductivityMessageSender productivityMessageSender, ProductivityStepMessageSender productivityStepMessageSender)
         {
-            productivityEventHandler += productivityMessageSender;
-            productivityStepEventHandler += productivityStepMessageSender;
+            ProductivityEvent += productivityMessageSender;
+            ProductivityStepEvent += productivityStepMessageSender;
+            //e1 = productivityMessageSender;
+            //e2 = productivityStepMessageSender;
             Messager = new ProductivityMessager();
             Messager.BallProductivityList = new List<BallProductivity>();
             foreach (Ball ball in Profile.BallList)
@@ -39,7 +44,9 @@ namespace GalaxyFarmer
                 productivityStepEventHandler();
             }
             this.Messager.BallProductivityList = bps;
+            //productivityStepEventHandler = null;
             productivityEventHandler();
+            //productivityEventHandler = null;
         }
 
         internal event ProductivityMessageSender ProductivityEvent

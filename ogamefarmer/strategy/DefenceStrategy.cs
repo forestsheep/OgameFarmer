@@ -5,12 +5,12 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class DefenceStrategy
+    public class DefenceStrategy
     {
         /// <summary>
         /// 防御类型
         /// </summary>
-        internal enum DefenceType
+        public enum DefenceType
         {
             ALL,
             PAOHUI,
@@ -19,7 +19,7 @@ namespace GalaxyFarmer
         internal DefenceType defenceType;
         
 
-        internal DefenceStrategy(DefenceType defenceType)
+        public DefenceStrategy(DefenceType defenceType)
         {
             this.defenceType = defenceType;
         }
@@ -71,7 +71,7 @@ namespace GalaxyFarmer
         public void StrategyAll(int m, int c, int h, ref DefenceMessager dm)
         {
             int metal = m;
-            int crystal = m;
+            int crystal = c;
             // 符合先建造离子炮的条件
             if (h >= 30000 && Math.Min(metal, crystal) > 50000)
             {
@@ -85,12 +85,12 @@ namespace GalaxyFarmer
                     dm.Fmenge406 = Math.Min(metal, crystal) / 50000;
                 }
                 metal = metal - 50000 * dm.Fmenge406;
-                metal = crystal - 50000 * dm.Fmenge406;
+                crystal = crystal - 50000 * dm.Fmenge406;
             }
             // 金属太多
-            if (metal > crystal)
+            if (metal > crystal * 2)
             {
-                dm.Fmenge402 = Math.Min(m / 1500, m / 500);
+                dm.Fmenge402 = Math.Min(metal / 1500, crystal / 500);
                 int metalLeft = metal - 1500 * dm.Fmenge402;
                 if (metalLeft >= 2000)
                 {

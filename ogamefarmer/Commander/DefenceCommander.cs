@@ -10,7 +10,7 @@ namespace GalaxyFarmer
     {
 
         #region 成员
-        private static DefenceMessageSenderX DefenceEventHandler;
+        private DefenceMessageSenderX DefenceEventHandler;
 
         private ProductivityCommander producitivityCommander;
         #endregion
@@ -34,9 +34,12 @@ namespace GalaxyFarmer
         public void Execute()
         {
             DefenceInfo DefenceInfo = new DefenceInfo(this);
-
+            this.Messager.Progress = 0;
             // 取得每个星球的资源量
+            this.Messager.IsScaning = true;
             producitivityCommander = new ProductivityCommander(OnScanOver, OnScanStepOver);
+            //producitivityCommander.ProductivityEvent -= this.OnScanOver;
+            //producitivityCommander.ProductivityStepEvent -= this.OnScanStepOver;
             producitivityCommander.Execute();
 
             DefenceStrategy defenceStrategy = new DefenceStrategy(Messager.defenceType);
@@ -46,6 +49,7 @@ namespace GalaxyFarmer
                 Messager.IsBuilding = true;
                 defenceStrategy.ComputeTowerAmount(bp, ref Messager);
                 DefenceInfo.AccessSite(bp.Prama);
+                this.Messager.Progress += 100;
                 DefenceEventHandler();
             }
             Messager.IsBuilding = false;
@@ -55,7 +59,7 @@ namespace GalaxyFarmer
         private void OnScanStepOver()
         {
             this.Messager.Ballname = producitivityCommander.Messager.CurrentScanBallName;
-            this.Messager.IsScaning = true;
+            this.Messager.Progress += 100;
             DefenceEventHandler();
         }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class StringUtil
+    public class StringUtil
     {
         public static int CommaNumberToInt(string number)
         {
@@ -15,11 +15,23 @@ namespace GalaxyFarmer
             {
                 i = int.Parse(n);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new CanContinueException(e);
             }
             return i;
+        }
+
+        public static string SetToZeroIfEmpty(string s)
+        {
+            if (string.Empty.Equals(s))
+            {
+                return "0";
+            }
+            else
+            { 
+                return s; 
+            }
         }
     }
 }

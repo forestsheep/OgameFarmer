@@ -112,5 +112,6 @@ namespace GalaxyFarmer
             FleetForm ff = new FleetForm();
             ff.Show();
         }
+
     }
 }

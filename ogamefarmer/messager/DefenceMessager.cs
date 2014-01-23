@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class DefenceMessager
+    public class DefenceMessager
     {
         internal DefenceStrategy.DefenceType defenceType;
 
@@ -34,12 +34,12 @@ namespace GalaxyFarmer
         internal int Progress = 0;
         internal bool IsBuilding = false;
 
-        internal int Fmenge401;
-        internal int Fmenge402;
-        internal int Fmenge405;
-        internal int Fmenge406;
-        internal bool IsScaning;
-        internal string Ballname;
+        public int Fmenge401;
+        public int Fmenge402;
+        public int Fmenge405;
+        public int Fmenge406;
+        public bool IsScaning;
+        public string Ballname;
         
         internal String PostBuildLog()
         {
