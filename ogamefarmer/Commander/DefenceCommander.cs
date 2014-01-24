@@ -19,6 +19,7 @@ namespace GalaxyFarmer
         internal DefenceMessager Messager;
         #endregion
 
+
         #region 构造函数
         /// <summary>
         /// 构造一个DefenceCommander
@@ -38,10 +39,8 @@ namespace GalaxyFarmer
             // 取得每个星球的资源量
             this.Messager.IsScaning = true;
             producitivityCommander = new ProductivityCommander(OnScanOver, OnScanStepOver);
-            //producitivityCommander.ProductivityEvent -= this.OnScanOver;
-            //producitivityCommander.ProductivityStepEvent -= this.OnScanStepOver;
             producitivityCommander.Execute();
-
+            this.Messager.IsScaning = false;
             DefenceStrategy defenceStrategy = new DefenceStrategy(Messager.defenceType);
             foreach (BallProductivity bp in producitivityCommander.Messager.BallProductivityList)
             {
@@ -65,8 +64,6 @@ namespace GalaxyFarmer
 
         private void OnScanOver()
         {
-            this.Messager.IsScaning = false;
-            DefenceEventHandler();
         }
 
         internal event DefenceMessageSenderX DefenceEvent

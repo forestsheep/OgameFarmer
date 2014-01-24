@@ -11,6 +11,7 @@ namespace GalaxyFarmer
         private DefenceCommander defenceCommander;
         private void Defenece_Load()
         {
+            pbDefence.Visible = false;
             tbMetalReserve.Text = "0";
             tbCrystalReserve.Text = "0";
             tbHHReserve.Text = "0";
@@ -69,11 +70,8 @@ namespace GalaxyFarmer
             }
 
             defenceCommander = new DefenceCommander(defenceMessager, OnDefenceBuildOver);
-            defenceCommander.DefenceEvent -= OnDefenceBuildOver;
-            pbDefence.Visible = true;
             pbDefence.Maximum = Profile.BallList.Count * 200;
             pbDefence.Value = 0;
-            btnMakeTower.Enabled = false;
             CommandCenter.RUN(defenceCommander, this);
         }
 

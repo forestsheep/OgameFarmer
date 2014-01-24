@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class LoginMessager
+    class LoginMessager : Messager
     {
         internal LoginInfo loginInfo;
 
@@ -21,9 +21,5 @@ namespace GalaxyFarmer
             this.ReqUniverse = universe;
         }
 
-        internal LoginMessager()
-        {
-
-        }
     }
 }

@@ -227,9 +227,9 @@
             // 
             // pbScanProductivityProgress
             // 
-            this.pbScanProductivityProgress.Location = new System.Drawing.Point(233, 654);
+            this.pbScanProductivityProgress.Location = new System.Drawing.Point(19, 636);
             this.pbScanProductivityProgress.Name = "pbScanProductivityProgress";
-            this.pbScanProductivityProgress.Size = new System.Drawing.Size(905, 23);
+            this.pbScanProductivityProgress.Size = new System.Drawing.Size(1119, 23);
             this.pbScanProductivityProgress.TabIndex = 86;
             // 
             // l_energystore
@@ -255,7 +255,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label14.Location = new System.Drawing.Point(780, 519);
+            this.label14.Location = new System.Drawing.Point(780, 427);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(128, 16);
             this.label14.TabIndex = 81;
@@ -266,7 +266,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label15.Location = new System.Drawing.Point(536, 519);
+            this.label15.Location = new System.Drawing.Point(536, 427);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(128, 16);
             this.label15.TabIndex = 82;
@@ -277,7 +277,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(296, 519);
+            this.label18.Location = new System.Drawing.Point(296, 427);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(128, 16);
             this.label18.TabIndex = 83;
@@ -287,7 +287,7 @@
             // 
             this.l_h_allday.AutoSize = true;
             this.l_h_allday.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_h_allday.Location = new System.Drawing.Point(780, 551);
+            this.l_h_allday.Location = new System.Drawing.Point(780, 459);
             this.l_h_allday.Name = "l_h_allday";
             this.l_h_allday.Size = new System.Drawing.Size(0, 16);
             this.l_h_allday.TabIndex = 79;
@@ -296,7 +296,7 @@
             // 
             this.l_crystal_allday.AutoSize = true;
             this.l_crystal_allday.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_crystal_allday.Location = new System.Drawing.Point(536, 551);
+            this.l_crystal_allday.Location = new System.Drawing.Point(536, 459);
             this.l_crystal_allday.Name = "l_crystal_allday";
             this.l_crystal_allday.Size = new System.Drawing.Size(0, 16);
             this.l_crystal_allday.TabIndex = 78;
@@ -305,7 +305,7 @@
             // 
             this.l_metal_allday.AutoSize = true;
             this.l_metal_allday.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_metal_allday.Location = new System.Drawing.Point(296, 551);
+            this.l_metal_allday.Location = new System.Drawing.Point(296, 459);
             this.l_metal_allday.Name = "l_metal_allday";
             this.l_metal_allday.Size = new System.Drawing.Size(0, 16);
             this.l_metal_allday.TabIndex = 80;
@@ -315,7 +315,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(780, 429);
+            this.label2.Location = new System.Drawing.Point(780, 337);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 16);
             this.label2.TabIndex = 75;
@@ -326,7 +326,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(536, 429);
+            this.label5.Location = new System.Drawing.Point(536, 337);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 16);
             this.label5.TabIndex = 76;
@@ -337,7 +337,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(296, 429);
+            this.label8.Location = new System.Drawing.Point(296, 337);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 16);
             this.label8.TabIndex = 77;
@@ -347,7 +347,7 @@
             // 
             this.l_hh_all.AutoSize = true;
             this.l_hh_all.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_hh_all.Location = new System.Drawing.Point(780, 459);
+            this.l_hh_all.Location = new System.Drawing.Point(780, 367);
             this.l_hh_all.Name = "l_hh_all";
             this.l_hh_all.Size = new System.Drawing.Size(0, 16);
             this.l_hh_all.TabIndex = 73;
@@ -356,7 +356,7 @@
             // 
             this.l_crystalh_all.AutoSize = true;
             this.l_crystalh_all.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_crystalh_all.Location = new System.Drawing.Point(536, 459);
+            this.l_crystalh_all.Location = new System.Drawing.Point(536, 367);
             this.l_crystalh_all.Name = "l_crystalh_all";
             this.l_crystalh_all.Size = new System.Drawing.Size(0, 16);
             this.l_crystalh_all.TabIndex = 72;
@@ -365,7 +365,7 @@
             // 
             this.l_metalh_all.AutoSize = true;
             this.l_metalh_all.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_metalh_all.Location = new System.Drawing.Point(296, 459);
+            this.l_metalh_all.Location = new System.Drawing.Point(296, 367);
             this.l_metalh_all.Name = "l_metalh_all";
             this.l_metalh_all.Size = new System.Drawing.Size(0, 16);
             this.l_metalh_all.TabIndex = 74;
@@ -375,7 +375,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label11.ForeColor = System.Drawing.Color.Fuchsia;
-            this.label11.Location = new System.Drawing.Point(780, 292);
+            this.label11.Location = new System.Drawing.Point(780, 247);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 16);
             this.label11.TabIndex = 71;
@@ -386,7 +386,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label10.ForeColor = System.Drawing.Color.Fuchsia;
-            this.label10.Location = new System.Drawing.Point(536, 292);
+            this.label10.Location = new System.Drawing.Point(536, 247);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 16);
             this.label10.TabIndex = 70;
@@ -397,7 +397,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.ForeColor = System.Drawing.Color.Fuchsia;
-            this.label9.Location = new System.Drawing.Point(295, 292);
+            this.label9.Location = new System.Drawing.Point(295, 247);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 16);
             this.label9.TabIndex = 69;
@@ -407,7 +407,7 @@
             // 
             this.l_H_all.AutoSize = true;
             this.l_H_all.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_H_all.Location = new System.Drawing.Point(780, 331);
+            this.l_H_all.Location = new System.Drawing.Point(780, 286);
             this.l_H_all.Name = "l_H_all";
             this.l_H_all.Size = new System.Drawing.Size(0, 16);
             this.l_H_all.TabIndex = 67;
@@ -416,7 +416,7 @@
             // 
             this.l_crystal_all.AutoSize = true;
             this.l_crystal_all.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_crystal_all.Location = new System.Drawing.Point(536, 331);
+            this.l_crystal_all.Location = new System.Drawing.Point(536, 286);
             this.l_crystal_all.Name = "l_crystal_all";
             this.l_crystal_all.Size = new System.Drawing.Size(0, 16);
             this.l_crystal_all.TabIndex = 68;
@@ -425,7 +425,7 @@
             // 
             this.l_metal_all.AutoSize = true;
             this.l_metal_all.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.l_metal_all.Location = new System.Drawing.Point(295, 331);
+            this.l_metal_all.Location = new System.Drawing.Point(295, 286);
             this.l_metal_all.Name = "l_metal_all";
             this.l_metal_all.Size = new System.Drawing.Size(0, 16);
             this.l_metal_all.TabIndex = 66;
@@ -436,7 +436,7 @@
             this.lb_ball_list.ItemHeight = 21;
             this.lb_ball_list.Location = new System.Drawing.Point(19, 40);
             this.lb_ball_list.Name = "lb_ball_list";
-            this.lb_ball_list.Size = new System.Drawing.Size(189, 634);
+            this.lb_ball_list.Size = new System.Drawing.Size(189, 571);
             this.lb_ball_list.TabIndex = 65;
             this.lb_ball_list.SelectedIndexChanged += new System.EventHandler(this.lb_ball_list_SelectedIndexChanged);
             // 
@@ -584,7 +584,7 @@
             // 
             // btnInfoCollect
             // 
-            this.btnInfoCollect.Location = new System.Drawing.Point(1009, 555);
+            this.btnInfoCollect.Location = new System.Drawing.Point(998, 528);
             this.btnInfoCollect.Name = "btnInfoCollect";
             this.btnInfoCollect.Size = new System.Drawing.Size(129, 83);
             this.btnInfoCollect.TabIndex = 48;

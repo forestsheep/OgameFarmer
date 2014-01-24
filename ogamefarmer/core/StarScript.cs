@@ -124,12 +124,12 @@ namespace GalaxyFarmer
 
         internal void login(object o)
         {
-            LoginMessager lm = new LoginMessager();
-            ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
-            ha.Access();
-            lm.loginInfo = LoginInfo.AnalyzHtml();
-            LoginEventHandler(lm);
-            Thread.Sleep(200);
+            //LoginMessager lm = new LoginMessager();
+            //ha = LoginInfo.PrepareHttpAccesser(universe, loginname, password);
+            //ha.Access();
+            //lm.loginInfo = LoginInfo.AnalyzHtml();
+            //LoginEventHandler(lm);
+            //Thread.Sleep(200);
         }
 
         internal void overview(object o)

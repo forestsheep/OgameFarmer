@@ -37,6 +37,7 @@ namespace GalaxyFarmer
                             else
                             {
                                 f.Dispose();
+                                ProgramStatic.LOGIN_FORM.b_login.Enabled = true;
                                 ProgramStatic.LOGIN_FORM.Show();
                             }
                         });

@@ -22,10 +22,8 @@ namespace GalaxyFarmer
         private void btnInfoCollect_Click(object sender, EventArgs e)
         {
             productivityCommander = new ProductivityCommander(OnProductivityScanOver, OnProductivityScanStepOver);
-            pbScanProductivityProgress.Visible = true;
             pbScanProductivityProgress.Maximum = Profile.BallList.Count * 100;
             pbScanProductivityProgress.Value = 0;
-            btnInfoCollect.Enabled = false;
             CommandCenter.RUN(productivityCommander, this);
         }
 
@@ -45,37 +43,51 @@ namespace GalaxyFarmer
         }
         protected void ResponseProductivityScan(object sender, EventArgs e)
         {
-            int allm = 0;
-            int allc = 0;
-            int allh = 0;
-            int allmh = 0;
-            int allch = 0;
-            int allhh = 0;
-            lb_ball_list.Items.Clear();
-            foreach(BallProductivity ballProductivity in productivityCommander.Messager.BallProductivityList)
+            switch (productivityCommander.Messager.Status)
             {
-                lb_ball_list.Items.Add(ballProductivity);
-                allm += ballProductivity.Metal;
-                allc += ballProductivity.Crystal;
-                allh += ballProductivity.HH;
-                allmh += ballProductivity.MetalHour;
-                allch += ballProductivity.CrystalHour;
-                allhh += ballProductivity.HHHour;
+                case TaskRunStatus.dead:
+                    return;
+                case TaskRunStatus.start:
+                    btnInfoCollect.Enabled = false;
+                    pbScanProductivityProgress.Visible = true;
+                    productivityCommander.Messager.Status = TaskRunStatus.running;
+                    break;
+                case TaskRunStatus.running:
+                    int allm = 0;
+                    int allc = 0;
+                    int allh = 0;
+                    int allmh = 0;
+                    int allch = 0;
+                    int allhh = 0;
+                    lb_ball_list.Items.Clear();
+                    foreach (BallProductivity ballProductivity in productivityCommander.Messager.BallProductivityList)
+                    {
+                        lb_ball_list.Items.Add(ballProductivity);
+                        allm += ballProductivity.Metal;
+                        allc += ballProductivity.Crystal;
+                        allh += ballProductivity.HH;
+                        allmh += ballProductivity.MetalHour;
+                        allch += ballProductivity.CrystalHour;
+                        allhh += ballProductivity.HHHour;
+                    }
+                    l_metal_all.Text = string.Format("{0:N0}", allm);
+                    l_crystal_all.Text = string.Format("{0:N0}", allc);
+                    l_H_all.Text = string.Format("{0:N0}", allh);
+
+                    l_metalh_all.Text = string.Format("{0:N0}", allmh);
+                    l_crystalh_all.Text = string.Format("{0:N0}", allch);
+                    l_hh_all.Text = string.Format("{0:N0}", allhh);
+
+                    l_metal_allday.Text = string.Format("{0:N0}", allmh * 24);
+                    l_crystal_allday.Text = string.Format("{0:N0}", allch * 24);
+                    l_h_allday.Text = string.Format("{0:N0}", allhh * 24);
+
+                    btnInfoCollect.Enabled = true;
+                    pbScanProductivityProgress.Visible = false;
+                    break;
+                case TaskRunStatus.end:
+                    break;
             }
-            l_metal_all.Text = string.Format("{0:N0}", allm);
-            l_crystal_all.Text = string.Format("{0:N0}", allc);
-            l_H_all.Text = string.Format("{0:N0}", allh);
-
-            l_metalh_all.Text = string.Format("{0:N0}", allmh);
-            l_crystalh_all.Text = string.Format("{0:N0}", allch);
-            l_hh_all.Text = string.Format("{0:N0}", allhh);
-
-            l_metal_allday.Text = string.Format("{0:N0}", allmh * 24);
-            l_crystal_allday.Text = string.Format("{0:N0}", allch * 24);
-            l_h_allday.Text = string.Format("{0:N0}", allhh * 24);
-
-            btnInfoCollect.Enabled = true;
-            pbScanProductivityProgress.Visible = false;
         }
 
         /// <summary>

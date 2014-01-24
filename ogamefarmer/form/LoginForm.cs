@@ -66,7 +66,6 @@ namespace GalaxyFarmer
             //this.Hide();
         }
 
-        #region new way
         private void login()
         {
             this.b_login.Text = "login...";
@@ -75,7 +74,6 @@ namespace GalaxyFarmer
             loginCommander = new LoginCommander(loginMessager, this.OnLogin);
             CommandCenter.RUN(loginCommander, this);
         }
-        #endregion
 
         private void OnLogin()
         {
@@ -119,6 +117,7 @@ namespace GalaxyFarmer
             Main m = new Main();
             m.Show();
             this.Hide();
+            b_login.Enabled = true;
         }
 
         private void tb_pw_KeyPress(object sender, KeyPressEventArgs e)

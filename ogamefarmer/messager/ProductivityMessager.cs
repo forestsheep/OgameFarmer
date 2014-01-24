@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    class ProductivityMessager
+    class ProductivityMessager : Messager
     {
         internal List<BallProductivity> BallProductivityList;
         internal string CurrentScanBallName;

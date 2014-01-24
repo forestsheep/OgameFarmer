@@ -119,6 +119,7 @@
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
     <Compile Include="entity\Fleet.cs" />
+    <Compile Include="messager\Messager.cs" />
     <Compile Include="messager\ProductivityMessager.cs" />
     <Compile Include="module\MailSender.cs" />
     <Compile Include="global\Profile.cs" />
