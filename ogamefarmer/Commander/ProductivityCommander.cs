@@ -37,9 +37,9 @@ namespace GalaxyFarmer
             {
                 productivityInfo.AccessByBall(bp.Prama);
                 BallProductivity bpcopy = bp;
+                productivityStepEventHandler();
                 productivityInfo.AnalyzByBall(ref bpcopy);
                 bps.Add(bpcopy);
-                productivityStepEventHandler();
             }
             this.Messager.BallProductivityList = bps;
             productivityEventHandler();

@@ -99,6 +99,7 @@ namespace GalaxyFarmer
                 Profile.PASSWORD = this.loginCommander.Messager.ReqPassword;
                 Profile.UNIVERSE = this.loginCommander.Messager.ReqUniverse;
                 loginCommander.LoginEvent -= this.OnLogin;
+                Thread.Sleep(500);
                 // 获取所有球的列表
                 ballListCommander = new BallListCommander(this.OnBallList);
                 CommandCenter.RUN(ballListCommander, this);

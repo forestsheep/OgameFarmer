@@ -82,14 +82,29 @@ namespace GalaxyFarmer
 
         protected void ResponseDefence(object sender, EventArgs e)
         {
-            this.pbDefence.Value = defenceCommander.Messager.Progress;
-            this.tbDefenceLog.AppendText(defenceCommander.Messager.PostBuildLog());
-            if (!defenceCommander.Messager.IsScaning && !defenceCommander.Messager.IsBuilding)
+            switch (defenceCommander.Messager.Status)
             {
-                this.pbDefence.Visible = false;
-                this.pbDefence.Value = 0;
-                this.btnMakeTower.Enabled = true;
+                case TaskRunStatus.dead:
+                    return;
+                case TaskRunStatus.start:
+                    btnMakeTower.Enabled = false;
+                    pbDefence.Visible = true;
+                    defenceCommander.Messager.Status = TaskRunStatus.running;
+                    break;
+                case TaskRunStatus.running:
+                    this.pbDefence.Value = defenceCommander.Messager.Progress;
+                    this.tbDefenceLog.AppendText(defenceCommander.Messager.PostBuildLog());
+                    if (!defenceCommander.Messager.IsScaning && !defenceCommander.Messager.IsBuilding)
+                    {
+                        this.pbDefence.Visible = false;
+                        this.pbDefence.Value = 0;
+                        this.btnMakeTower.Enabled = true;
+                    }
+                    break;
+                case TaskRunStatus.end:
+                    break;
             }
+
         }
 
         #region 画面触发事件

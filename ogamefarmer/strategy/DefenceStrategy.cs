@@ -68,7 +68,7 @@ namespace GalaxyFarmer
         /// <param name="fmenge402"></param>
         /// <param name="fmenge405"></param>
         /// <param name="fmenge406"></param>
-        public void StrategyAll(int m, int c, int h, ref DefenceMessager dm)
+        internal void StrategyAll(int m, int c, int h, ref DefenceMessager dm)
         {
             int metal = m;
             int crystal = c;
@@ -111,7 +111,7 @@ namespace GalaxyFarmer
         /// <param name="fmenge402"></param>
         /// <param name="fmenge405"></param>
         /// <param name="fmenge406"></param>
-        public void StrategyPaohui(int m, int c, ref DefenceMessager dm)
+        internal void StrategyPaohui(int m, int c, ref DefenceMessager dm)
         {
 
             int metal = m;
@@ -134,7 +134,7 @@ namespace GalaxyFarmer
         /// <param name="fmenge402"></param>
         /// <param name="fmenge405"></param>
         /// <param name="fmenge406"></param>
-        public void StrategyMetal(int m, ref DefenceMessager dm)
+        internal void StrategyMetal(int m, ref DefenceMessager dm)
         {
             if (m > 2000)
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace GalaxyFarmer
 {
@@ -34,22 +35,25 @@ namespace GalaxyFarmer
 
         public void Execute()
         {
+            this.Messager.Status = TaskRunStatus.start;
+            DefenceEventHandler();
             DefenceInfo DefenceInfo = new DefenceInfo(this);
             this.Messager.Progress = 0;
             // 取得每个星球的资源量
             this.Messager.IsScaning = true;
             producitivityCommander = new ProductivityCommander(OnScanOver, OnScanStepOver);
             producitivityCommander.Execute();
+            Thread.Sleep(500);
             this.Messager.IsScaning = false;
+            this.Messager.IsBuilding = true;
             DefenceStrategy defenceStrategy = new DefenceStrategy(Messager.defenceType);
             foreach (BallProductivity bp in producitivityCommander.Messager.BallProductivityList)
             {
                 Messager.Ballname = bp.Name;
-                Messager.IsBuilding = true;
                 defenceStrategy.ComputeTowerAmount(bp, ref Messager);
+                DefenceEventHandler();
                 DefenceInfo.AccessSite(bp.Prama);
                 this.Messager.Progress += 100;
-                DefenceEventHandler();
             }
             Messager.IsBuilding = false;
             DefenceEventHandler();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GalaxyFarmer
 {
-    public class DefenceMessager
+    class DefenceMessager : Messager
     {
         internal DefenceStrategy.DefenceType defenceType;
 
