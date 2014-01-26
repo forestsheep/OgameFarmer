@@ -55,6 +55,14 @@ namespace GalaxyFarmer
             //string body = "我日啊我日哦";
             //MailSender ms = new MailSender(Admin.MAIL_NAME, Admin.MAIL_SMTP_SERVER, Admin.MAIL_ADDRESS, Admin.MAIL_PW);
             //ms.Mailto(to, subject, body);
+
+            //aes test
+            //string plainText = "神马都是浮云";
+            //LoggerUtil.Logger.Debug(String.Format("plainText : {0}", plainText));
+            //string en = AES.Encrypt(plainText);
+            //LoggerUtil.Logger.Debug(String.Format("Encrypted : {0}", en));
+            //string de = AES.Decrypt(en);
+            //LoggerUtil.Logger.Debug(String.Format("Decrypted : {0}", de));
             #endregion
         }
 
