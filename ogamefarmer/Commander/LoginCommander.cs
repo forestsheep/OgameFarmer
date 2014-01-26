@@ -9,7 +9,7 @@ namespace GalaxyFarmer
     class LoginCommander : Commander
     {
         #region 成员
-        private static LoginMessageSenderX loginEventHandler;
+        private LoginMessageSenderX loginEventHandler;
         #endregion
 
         #region 属性
