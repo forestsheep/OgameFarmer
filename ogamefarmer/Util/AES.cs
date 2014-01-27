@@ -34,5 +34,33 @@ namespace GalaxyFarmer
                 ProgramStatic.KEY_SIZE
             );
         }
+
+        internal static string Encrypt(string plainText, string pw, string salt)
+        {
+            return Rijndael.Encrypt
+            (
+                plainText,
+                pw,
+                salt,
+                ProgramStatic.HASH_ALGORITHM,
+                ProgramStatic.PASSWORD_ITERATIONS,
+                ProgramStatic.INITVECTOR,
+                ProgramStatic.KEY_SIZE
+            );
+        }
+
+        internal static string Decrypt(string plainText, string pw, string salt)
+        {
+            return Rijndael.Decrypt
+            (
+                plainText,
+                pw,
+                salt,
+                ProgramStatic.HASH_ALGORITHM,
+                ProgramStatic.PASSWORD_ITERATIONS,
+                ProgramStatic.INITVECTOR,
+                ProgramStatic.KEY_SIZE
+            );
+        }
     }
 }

@@ -76,7 +76,7 @@
             // b_login
             // 
             this.b_login.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.b_login.Location = new System.Drawing.Point(54, 147);
+            this.b_login.Location = new System.Drawing.Point(72, 149);
             this.b_login.Name = "b_login";
             this.b_login.Size = new System.Drawing.Size(200, 57);
             this.b_login.TabIndex = 4;

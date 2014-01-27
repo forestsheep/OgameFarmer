@@ -63,6 +63,15 @@ namespace GalaxyFarmer
             //LoggerUtil.Logger.Debug(String.Format("Encrypted : {0}", en));
             //string de = AES.Decrypt(en);
             //LoggerUtil.Logger.Debug(String.Format("Decrypted : {0}", de));
+
+            //cpu id
+            //string lic = License.GenerateLicense("2014/1/26");
+            //LoggerUtil.Logger.Debug(lic);
+            //string date = License.DecryptLicense(lic);
+            //LoggerUtil.Logger.Debug(date);
+            
+            //date
+            //LoggerUtil.Logger.Debug(License.IsLegitimate(lic));
             #endregion
         }
 

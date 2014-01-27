@@ -121,6 +121,7 @@
     <Compile Include="entity\Fleet.cs" />
     <Compile Include="messager\Messager.cs" />
     <Compile Include="messager\ProductivityMessager.cs" />
+    <Compile Include="module\License.cs" />
     <Compile Include="module\MailSender.cs" />
     <Compile Include="global\Profile.cs" />
     <Compile Include="request\FleetMission.cs" />
@@ -183,6 +184,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\AES.cs" />
+    <Compile Include="Util\DateUtil.cs" />
+    <Compile Include="Util\HardwareUtil.cs" />
     <Compile Include="Util\Rijndael.cs" />
     <Compile Include="Util\ConvertUtil.cs" />
     <Compile Include="Util\LoggerUtil.cs" />

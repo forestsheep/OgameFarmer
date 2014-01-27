@@ -104,7 +104,6 @@ namespace GalaxyFarmer
                 case TaskRunStatus.end:
                     break;
             }
-
         }
 
         #region 画面触发事件

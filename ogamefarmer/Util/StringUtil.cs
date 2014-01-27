@@ -33,5 +33,17 @@ namespace GalaxyFarmer
                 return s; 
             }
         }
+
+        public static bool IsEmpty(string s)
+        {
+            if(s == null || string.Empty.Equals(s))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
