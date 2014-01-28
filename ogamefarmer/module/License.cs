@@ -10,28 +10,28 @@ namespace GalaxyFarmer
         internal static string GenerateLicense(string date)
         {
             string cpuid = HardwareUtil.GetCPUSerialNumber();
-            string mac = HardwareUtil.GetMac();
-            if (StringUtil.IsEmpty(cpuid) || StringUtil.IsEmpty(mac))
+            string mother = HardwareUtil.GetMotherBoardSerialNumber();
+            if (StringUtil.IsEmpty(cpuid) || StringUtil.IsEmpty(mother))
             {
                 return null;
             }
             else
             {
-                return AES.Encrypt(date, cpuid, mac);
+                return AES.Encrypt(date, cpuid, mother);
             }
         }
 
         internal static string DecryptLicense(string license)
         {
             string cpuid = HardwareUtil.GetCPUSerialNumber();
-            string mac = HardwareUtil.GetMac();
-            if (StringUtil.IsEmpty(cpuid) || StringUtil.IsEmpty(mac))
+            string mother = HardwareUtil.GetMotherBoardSerialNumber();
+            if (StringUtil.IsEmpty(cpuid) || StringUtil.IsEmpty(mother))
             {
                 return null;
             }
             else
             {
-                return AES.Decrypt(license, cpuid, mac);
+                return AES.Decrypt(license, cpuid, mother);
             }
         }
 

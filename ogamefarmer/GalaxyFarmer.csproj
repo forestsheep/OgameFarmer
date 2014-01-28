@@ -79,13 +79,17 @@
     <Compile Include="Commander\DefenceCommander.cs" />
     <Compile Include="Commander\FleetCommander.cs" />
     <Compile Include="Commander\LoginCommander.cs" />
+    <Compile Include="Commander\MapCommander.cs" />
     <Compile Include="Commander\ProductivityCommander.cs" />
     <Compile Include="core\CommandCenter.cs" />
+    <Compile Include="dbAccesser\DB.cs" />
+    <Compile Include="dbAccesser\DBMap.cs" />
     <Compile Include="entity\Ball.cs" />
     <Compile Include="concept\Coordinate.cs" />
     <Compile Include="concept\CoordinateType.cs" />
     <Compile Include="concept\Mission.cs" />
     <Compile Include="entity\BallProductivity.cs" />
+    <Compile Include="entity\BallStarMap.cs" />
     <Compile Include="exception\CanContinueException.cs" />
     <Compile Include="exception\CannotContinueException.cs" />
     <Compile Include="exception\GetBallListFailedException.cs" />
@@ -104,6 +108,7 @@
     <Compile Include="info\Floten1Info.cs" />
     <Compile Include="info\Floten2Info.cs" />
     <Compile Include="info\Floten3Info.cs" />
+    <Compile Include="info\MapInfo.cs" />
     <Compile Include="info\LoginInfoX.cs" />
     <Compile Include="info\BallListInfo.cs" />
     <Compile Include="info\ProductivityInfoX.cs" />
@@ -119,6 +124,7 @@
     <Compile Include="messager\LoginMessager.cs" />
     <Compile Include="messager\MainMessager.cs" />
     <Compile Include="entity\Fleet.cs" />
+    <Compile Include="messager\MapMessager.cs" />
     <Compile Include="messager\Messager.cs" />
     <Compile Include="messager\ProductivityMessager.cs" />
     <Compile Include="module\License.cs" />
@@ -178,6 +184,9 @@
     <Compile Include="controller\UnExpectPageController.cs" />
     <Compile Include="strategy\DefenceStrategy.cs" />
     <Compile Include="tabpage\TabPageDefence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tabpage\TabPageMap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="tabpage\TabPageSummary.cs">

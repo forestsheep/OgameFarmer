@@ -70,7 +70,7 @@
             this.l_metal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnInfoCollect = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage_defence = new System.Windows.Forms.TabPage();
             this.gbReserve = new System.Windows.Forms.GroupBox();
             this.tbHHReserve = new System.Windows.Forms.TextBox();
             this.tbCrystalReserve = new System.Windows.Forms.TextBox();
@@ -95,13 +95,20 @@
             this.rbPaohui = new System.Windows.Forms.RadioButton();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.btnMakeTower = new System.Windows.Forms.Button();
+            this.tabPage_map = new System.Windows.Forms.TabPage();
+            this.btn_scan_new_map = new System.Windows.Forms.Button();
+            this.btn_map_csv_out = new System.Windows.Forms.Button();
+            this.l_scan_prograss = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btn_continue_scan_map = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage_summary.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPage_defence.SuspendLayout();
             this.gbReserve.SuspendLayout();
             this.gbCapacity.SuspendLayout();
             this.ss.SuspendLayout();
             this.gbStrategy.SuspendLayout();
+            this.tabPage_map.SuspendLayout();
             this.SuspendLayout();
             // 
             // noti
@@ -113,7 +120,8 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage_summary);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage_defence);
+            this.tabControl1.Controls.Add(this.tabPage_map);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.ItemSize = new System.Drawing.Size(72, 25);
             this.tabControl1.Location = new System.Drawing.Point(12, 24);
@@ -536,22 +544,22 @@
             this.btnInfoCollect.UseVisualStyleBackColor = true;
             this.btnInfoCollect.Click += new System.EventHandler(this.btnInfoCollect_Click);
             // 
-            // tabPage2
+            // tabPage_defence
             // 
-            this.tabPage2.Controls.Add(this.gbReserve);
-            this.tabPage2.Controls.Add(this.gbCapacity);
-            this.tabPage2.Controls.Add(this.tbDefenceLog);
-            this.tabPage2.Controls.Add(this.pbDefence);
-            this.tabPage2.Controls.Add(this.ss);
-            this.tabPage2.Controls.Add(this.gbStrategy);
-            this.tabPage2.Controls.Add(this.btnMakeTower);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1162, 687);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "防御";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage_defence.Controls.Add(this.gbReserve);
+            this.tabPage_defence.Controls.Add(this.gbCapacity);
+            this.tabPage_defence.Controls.Add(this.tbDefenceLog);
+            this.tabPage_defence.Controls.Add(this.pbDefence);
+            this.tabPage_defence.Controls.Add(this.ss);
+            this.tabPage_defence.Controls.Add(this.gbStrategy);
+            this.tabPage_defence.Controls.Add(this.btnMakeTower);
+            this.tabPage_defence.Location = new System.Drawing.Point(4, 29);
+            this.tabPage_defence.Name = "tabPage_defence";
+            this.tabPage_defence.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_defence.Size = new System.Drawing.Size(1162, 687);
+            this.tabPage_defence.TabIndex = 1;
+            this.tabPage_defence.Text = "防御";
+            this.tabPage_defence.UseVisualStyleBackColor = true;
             // 
             // gbReserve
             // 
@@ -606,6 +614,7 @@
             this.tbMetalReserve.Name = "tbMetalReserve";
             this.tbMetalReserve.Size = new System.Drawing.Size(109, 29);
             this.tbMetalReserve.TabIndex = 5;
+            this.tbMetalReserve.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lMetalReserve
             // 
@@ -628,7 +637,7 @@
             this.gbCapacity.Location = new System.Drawing.Point(711, 31);
             this.gbCapacity.Name = "gbCapacity";
             this.gbCapacity.Size = new System.Drawing.Size(191, 229);
-            this.gbCapacity.TabIndex = 21;
+            this.gbCapacity.TabIndex = 8;
             this.gbCapacity.TabStop = false;
             this.gbCapacity.Text = "资源用量";
             // 
@@ -646,14 +655,14 @@
             this.tbDenominator.Location = new System.Drawing.Point(101, 184);
             this.tbDenominator.Name = "tbDenominator";
             this.tbDenominator.Size = new System.Drawing.Size(65, 29);
-            this.tbDenominator.TabIndex = 3;
+            this.tbDenominator.TabIndex = 0;
             // 
             // tbNumerator
             // 
             this.tbNumerator.Location = new System.Drawing.Point(23, 183);
             this.tbNumerator.Name = "tbNumerator";
             this.tbNumerator.Size = new System.Drawing.Size(47, 29);
-            this.tbNumerator.TabIndex = 2;
+            this.tbNumerator.TabIndex = 0;
             // 
             // rbCustom
             // 
@@ -661,7 +670,7 @@
             this.rbCustom.Location = new System.Drawing.Point(23, 141);
             this.rbCustom.Name = "rbCustom";
             this.rbCustom.Size = new System.Drawing.Size(76, 25);
-            this.rbCustom.TabIndex = 1;
+            this.rbCustom.TabIndex = 0;
             this.rbCustom.Text = "自定义";
             this.rbCustom.UseVisualStyleBackColor = true;
             this.rbCustom.CheckedChanged += new System.EventHandler(this.rbCustom_CheckedChanged);
@@ -672,7 +681,7 @@
             this.rb13.Location = new System.Drawing.Point(23, 104);
             this.rb13.Name = "rb13";
             this.rb13.Size = new System.Drawing.Size(53, 25);
-            this.rb13.TabIndex = 1;
+            this.rb13.TabIndex = 0;
             this.rb13.Text = "1/3";
             this.rb13.UseVisualStyleBackColor = true;
             // 
@@ -683,7 +692,7 @@
             this.rb1.Location = new System.Drawing.Point(23, 30);
             this.rb1.Name = "rb1";
             this.rb1.Size = new System.Drawing.Size(60, 25);
-            this.rb1.TabIndex = 1;
+            this.rb1.TabIndex = 0;
             this.rb1.TabStop = true;
             this.rb1.Text = "全部";
             this.rb1.UseVisualStyleBackColor = true;
@@ -694,7 +703,7 @@
             this.rb23.Location = new System.Drawing.Point(23, 67);
             this.rb23.Name = "rb23";
             this.rb23.Size = new System.Drawing.Size(53, 25);
-            this.rb23.TabIndex = 1;
+            this.rb23.TabIndex = 0;
             this.rb23.Text = "2/3";
             this.rb23.UseVisualStyleBackColor = true;
             // 
@@ -737,7 +746,7 @@
             this.gbStrategy.Location = new System.Drawing.Point(971, 31);
             this.gbStrategy.Name = "gbStrategy";
             this.gbStrategy.Size = new System.Drawing.Size(169, 229);
-            this.gbStrategy.TabIndex = 25;
+            this.gbStrategy.TabIndex = 9;
             this.gbStrategy.TabStop = false;
             this.gbStrategy.Text = "建造策略";
             // 
@@ -747,7 +756,7 @@
             this.rbMetal.Location = new System.Drawing.Point(23, 184);
             this.rbMetal.Name = "rbMetal";
             this.rbMetal.Size = new System.Drawing.Size(108, 25);
-            this.rbMetal.TabIndex = 71;
+            this.rbMetal.TabIndex = 0;
             this.rbMetal.TabStop = true;
             this.rbMetal.Text = "只使用金属";
             this.rbMetal.UseVisualStyleBackColor = true;
@@ -759,7 +768,7 @@
             this.rbPaohui.Location = new System.Drawing.Point(23, 106);
             this.rbPaohui.Name = "rbPaohui";
             this.rbPaohui.Size = new System.Drawing.Size(92, 25);
-            this.rbPaohui.TabIndex = 7;
+            this.rbPaohui.TabIndex = 0;
             this.rbPaohui.TabStop = true;
             this.rbPaohui.Text = "炮灰优先";
             this.rbPaohui.UseVisualStyleBackColor = true;
@@ -771,7 +780,7 @@
             this.rbAll.Location = new System.Drawing.Point(23, 28);
             this.rbAll.Name = "rbAll";
             this.rbAll.Size = new System.Drawing.Size(108, 25);
-            this.rbAll.TabIndex = 7;
+            this.rbAll.TabIndex = 0;
             this.rbAll.TabStop = true;
             this.rbAll.Text = "等离子优先";
             this.rbAll.UseVisualStyleBackColor = true;
@@ -782,10 +791,77 @@
             this.btnMakeTower.Location = new System.Drawing.Point(997, 546);
             this.btnMakeTower.Name = "btnMakeTower";
             this.btnMakeTower.Size = new System.Drawing.Size(144, 57);
-            this.btnMakeTower.TabIndex = 26;
+            this.btnMakeTower.TabIndex = 10;
             this.btnMakeTower.Text = "建造炮塔";
             this.btnMakeTower.UseVisualStyleBackColor = true;
             this.btnMakeTower.Click += new System.EventHandler(this.btnMakeTower_Click);
+            // 
+            // tabPage_map
+            // 
+            this.tabPage_map.Controls.Add(this.btn_scan_new_map);
+            this.tabPage_map.Controls.Add(this.btn_map_csv_out);
+            this.tabPage_map.Controls.Add(this.l_scan_prograss);
+            this.tabPage_map.Controls.Add(this.label20);
+            this.tabPage_map.Controls.Add(this.btn_continue_scan_map);
+            this.tabPage_map.Location = new System.Drawing.Point(4, 29);
+            this.tabPage_map.Name = "tabPage_map";
+            this.tabPage_map.Size = new System.Drawing.Size(1162, 687);
+            this.tabPage_map.TabIndex = 2;
+            this.tabPage_map.Text = "星图";
+            this.tabPage_map.UseVisualStyleBackColor = true;
+            // 
+            // btn_scan_new_map
+            // 
+            this.btn_scan_new_map.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_scan_new_map.Location = new System.Drawing.Point(596, 42);
+            this.btn_scan_new_map.Name = "btn_scan_new_map";
+            this.btn_scan_new_map.Size = new System.Drawing.Size(250, 100);
+            this.btn_scan_new_map.TabIndex = 10;
+            this.btn_scan_new_map.Text = "开始新的扫描";
+            this.btn_scan_new_map.UseVisualStyleBackColor = true;
+            this.btn_scan_new_map.Click += new System.EventHandler(this.btn_scan_new_map_Click);
+            // 
+            // btn_map_csv_out
+            // 
+            this.btn_map_csv_out.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_map_csv_out.Location = new System.Drawing.Point(376, 400);
+            this.btn_map_csv_out.Name = "btn_map_csv_out";
+            this.btn_map_csv_out.Size = new System.Drawing.Size(390, 95);
+            this.btn_map_csv_out.TabIndex = 9;
+            this.btn_map_csv_out.Text = "CSV输出";
+            this.btn_map_csv_out.UseVisualStyleBackColor = true;
+            this.btn_map_csv_out.Click += new System.EventHandler(this.btn_map_csv_out_Click);
+            // 
+            // l_scan_prograss
+            // 
+            this.l_scan_prograss.AutoSize = true;
+            this.l_scan_prograss.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.l_scan_prograss.Location = new System.Drawing.Point(632, 238);
+            this.l_scan_prograss.Name = "l_scan_prograss";
+            this.l_scan_prograss.Size = new System.Drawing.Size(19, 20);
+            this.l_scan_prograss.TabIndex = 7;
+            this.l_scan_prograss.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label20.Location = new System.Drawing.Point(514, 238);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(69, 20);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "进度：";
+            // 
+            // btn_continue_scan_map
+            // 
+            this.btn_continue_scan_map.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_continue_scan_map.Location = new System.Drawing.Point(320, 42);
+            this.btn_continue_scan_map.Name = "btn_continue_scan_map";
+            this.btn_continue_scan_map.Size = new System.Drawing.Size(250, 100);
+            this.btn_continue_scan_map.TabIndex = 5;
+            this.btn_continue_scan_map.Text = "继续上次的扫描";
+            this.btn_continue_scan_map.UseVisualStyleBackColor = true;
+            this.btn_continue_scan_map.Click += new System.EventHandler(this.btn_continue_scan_map_Click);
             // 
             // Main
             // 
@@ -805,8 +881,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage_summary.ResumeLayout(false);
             this.tabPage_summary.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPage_defence.ResumeLayout(false);
+            this.tabPage_defence.PerformLayout();
             this.gbReserve.ResumeLayout(false);
             this.gbReserve.PerformLayout();
             this.gbCapacity.ResumeLayout(false);
@@ -815,6 +891,8 @@
             this.ss.PerformLayout();
             this.gbStrategy.ResumeLayout(false);
             this.gbStrategy.PerformLayout();
+            this.tabPage_map.ResumeLayout(false);
+            this.tabPage_map.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -824,7 +902,7 @@
         private System.Windows.Forms.NotifyIcon noti;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_summary;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage_defence;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label18;
@@ -886,6 +964,12 @@
         private System.Windows.Forms.RadioButton rbPaohui;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.Button btnMakeTower;
+        private System.Windows.Forms.TabPage tabPage_map;
+        private System.Windows.Forms.Button btn_scan_new_map;
+        private System.Windows.Forms.Button btn_map_csv_out;
+        private System.Windows.Forms.Label l_scan_prograss;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btn_continue_scan_map;
     }
 }
 

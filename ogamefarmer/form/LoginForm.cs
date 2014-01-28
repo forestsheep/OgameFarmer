@@ -72,6 +72,7 @@ namespace GalaxyFarmer
             
             //date
             //LoggerUtil.Logger.Debug(License.IsLegitimate(lic));
+            LoggerUtil.Logger.Debug(HardwareUtil.GetMotherBoardSerialNumber());
             #endregion
         }
 

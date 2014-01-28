@@ -30,6 +30,7 @@ namespace GalaxyFarmer
         private const string PAGE_NAME = "resources.php?{0}&mode=&re=0";
 
         #endregion
+
         private ProductivityCommander producitivityCommander;
         internal ProductivityInfoX(ProductivityCommander producitivityCommander)
         {

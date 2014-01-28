@@ -15,7 +15,7 @@ namespace GalaxyFarmer
             this.loginCommander = loginCommander;
         }
 
-        public void AccessSite()
+        internal void AccessSite()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("http://");
@@ -38,7 +38,7 @@ namespace GalaxyFarmer
             ha.Access();
         }
 
-        public void AnalyzResponse() 
+        internal void AnalyzResponse()
         {
             UnExpectPageController.Varify();
 

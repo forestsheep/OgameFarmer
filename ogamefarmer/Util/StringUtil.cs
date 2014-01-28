@@ -45,5 +45,11 @@ namespace GalaxyFarmer
                 return false;
             }
         }
+
+        public static int ToInt(string number)
+        {
+            string n = number.Replace(",", string.Empty);
+            return int.Parse(n);
+        }
     }
 }

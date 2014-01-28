@@ -32,14 +32,6 @@ namespace GalaxyFarmer
             set { ballName = value; }
         }
 
-        private string ballStatus;
-
-        internal string BallStatus
-        {
-            get { return ballStatus; }
-            set { ballStatus = value; }
-        }
-
         private bool hasMoon;
 
         internal bool HasMoon
@@ -56,37 +48,6 @@ namespace GalaxyFarmer
             set { player = value; }
         }
 
-        private string playerStatus;
-
-        internal string PlayerStatus
-        {
-            get { return playerStatus; }
-            set { playerStatus = value; }
-        }
-
-        private string location;
-
-        internal string Location
-        {
-            get { return location; }
-            set { location = value; }
-        }
-
-        private string fxMetal;
-
-        internal string FxMetal
-        {
-            get { return fxMetal; }
-            set { fxMetal = value; }
-        }
-
-        private string fxCrystal;
-
-        internal string FxCrystal
-        {
-            get { return fxCrystal; }
-            set { fxCrystal = value; }
-        }
 
         private string union;
 
@@ -175,8 +136,10 @@ namespace GalaxyFarmer
                     }
                 }
             }
+
             HtmlNode hn_code = h.DocumentNode.SelectSingleNode(XPATH_GALAXY_CODE);
             GALAXY_CODE = hn_code.Attributes[2].Value;
+            
             return lis;
         }
     }

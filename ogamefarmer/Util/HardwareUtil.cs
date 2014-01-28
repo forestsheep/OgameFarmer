@@ -35,5 +35,18 @@ namespace GalaxyFarmer
             }
             return mac;
         }
+
+        public static string GetMotherBoardSerialNumber()
+        {
+            ManagementClass mc = new ManagementClass("WIN32_BaseBoard");
+            ManagementObjectCollection moc = mc.GetInstances();
+            string SerialNumber = "";
+            foreach (ManagementObject mo in moc)
+            {
+                SerialNumber = mo["SerialNumber"].ToString();
+                break;
+            }
+            return SerialNumber;
+        }
     }
 }

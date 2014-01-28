@@ -29,6 +29,7 @@ namespace GalaxyFarmer
         {
             Summary_Load();
             Defenece_Load();
+            Map_Load();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
