@@ -72,7 +72,17 @@ namespace GalaxyFarmer
             
             //date
             //LoggerUtil.Logger.Debug(License.IsLegitimate(lic));
-            LoggerUtil.Logger.Debug(HardwareUtil.GetMotherBoardSerialNumber());
+            //LoggerUtil.Logger.Debug(HardwareUtil.GetMotherBoardSerialNumber());
+
+            //map db test
+            //string s = DBMap.SelectMaxScanProcessID();
+            //int a = 0, b = 0;
+            //DBMap.SelectLastScanLocation(s, ref a, ref b);
+            //LoggerUtil.Logger.Debug(a);
+            //LoggerUtil.Logger.Debug(b);
+
+            LoggerUtil.Logger.Debug(false.ToString());
+
             #endregion
         }
 

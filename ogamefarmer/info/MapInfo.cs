@@ -11,7 +11,7 @@ namespace GalaxyFarmer
     {
 
         #region xpath关键字
-        private const string XPATH_GALAXY_CODE = "/html/body/center/table/tbody/tr/td[4]/form/input[2]";
+        private const string XPATH_GALAXY_CODE = "/html/body/center/table/tbody/tr/td[4]/input[2]";
         private const string XPATH_BALL1 = "/html/body/center/table/tbody/tr/td[2]/table/tbody/tr[";
         private const string XPATH_BALL2 = "]/th[3]";
         private const string XPATH_PLAYER1 = "/html/body/center/table/tbody/tr/td[2]/table/tbody/tr[";
@@ -76,7 +76,7 @@ namespace GalaxyFarmer
             ha.Access();
         }
 
-        internal List<BallStarMap> AnalyzResponse()
+        internal List<BallStarMap> AnalyzResponse(int galaxy, int system)
         {
             UnExpectPageController.Varify();
             List<BallStarMap> ballList = new List<BallStarMap>();
@@ -89,7 +89,7 @@ namespace GalaxyFarmer
                 throw new CanContinueException();
             }
             // 循环15个球
-            for (int i = 0; i <= 15; i++)
+            for (int i = 0; i < 15; i++)
             {
                 HtmlNode hn_player = htmlAnalyzer.AnalyzeNode(XPATH_PLAYER1 + (i + 3) + XPATH_PLAYER2, false);
                 // 没有玩家，代表空位
@@ -116,7 +116,7 @@ namespace GalaxyFarmer
                     {
                         ball.HasMoon = false;
                     }
-                    //是否度假中
+                    // 是否度假中
                     Regex rx = new Regex("\\(.*\\)");
                     Match m = rx.Match(hn_player.InnerText);
                     if (m.Value.Contains("u"))
@@ -127,6 +127,8 @@ namespace GalaxyFarmer
                     {
                         ball.IsU = false;
                     }
+                    // 坐标
+                    ball.Location = new Coordinate(galaxy + 1, system, i + 1);
                     ballList.Add(ball);
                 }
             }

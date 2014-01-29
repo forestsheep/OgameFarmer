@@ -25,9 +25,44 @@ namespace GalaxyFarmer
             locationInfo.AccessSiteMyPlanet();
             locationInfo.AnalyzResponseMyPlanet();
 
-            //locationInfo.AccessSite();
-            locationInfo.AnalyzResponse();
-            mapEventHandler();
+            if (this.Messager.IsContinueScan)
+            {
+
+            }
+            else
+            {
+                // new scan
+                DBMap.InsertNewScanProcess();
+                string pid = DBMap.SelectMaxScanProcessID();
+                for (int galaxy = 1; galaxy <= 9; galaxy++)
+                {
+                    for (int system = 1; system <= 500; system++)
+                    {
+
+                    }
+                }
+                locationInfo.AccessSite(3, 336);
+
+            }
+
+            //locationInfo.AccessSite(3,336);
+            //locationInfo.AnalyzResponse(3, 336);
+            //mapEventHandler();
+            //string s = DBMap.SelectMaxScanProcessID();
+            //int a = 0, b = 0;
+            //DBMap.SelectLastScanLocation(s, ref a, ref b);
+            //LoggerUtil.Logger.Debug(a);
+            //LoggerUtil.Logger.Debug(b);
+
+            //BallStarMap ball = new BallStarMap();
+            //ball.Name = "haha";
+            //ball.Location = new Coordinate(99, 101, 11);
+            //ball.IsU = true;
+            //ball.HasMoon = false;
+            //ball.Union = "meng";
+            //ball.Player = "pplay";
+            //DBMap.InsertBall("11", ball);
+            //DBMap.ScanOver("12");
         }
 
         private void findContinueLocation(ref int galaxy, ref int system)

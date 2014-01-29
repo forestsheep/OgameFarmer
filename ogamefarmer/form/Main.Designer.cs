@@ -582,6 +582,7 @@
             this.tbHHReserve.Name = "tbHHReserve";
             this.tbHHReserve.Size = new System.Drawing.Size(109, 29);
             this.tbHHReserve.TabIndex = 7;
+            this.tbHHReserve.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbCrystalReserve
             // 
@@ -589,6 +590,7 @@
             this.tbCrystalReserve.Name = "tbCrystalReserve";
             this.tbCrystalReserve.Size = new System.Drawing.Size(109, 29);
             this.tbCrystalReserve.TabIndex = 6;
+            this.tbCrystalReserve.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lHHReserve
             // 

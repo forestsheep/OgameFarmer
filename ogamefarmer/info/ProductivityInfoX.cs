@@ -75,9 +75,6 @@ namespace GalaxyFarmer
             HtmlNode hn_energystore = htmlAnalyzer.AnalyzeNode(XPATH_ENERGY_STROE);
             bp.EnergyStroe = StringUtil.CommaNumberToInt(hn_energystore.InnerText);
 
-            HtmlNode.ElementsFlags.Remove("tr");
-            HtmlNode.ElementsFlags.Remove("td");
-            
             // 金属产量
             HtmlNode hn_metalp = htmlAnalyzer.AnalyzeNode(XPATH_METAL_HOUR, false);
             if (hn_metalp == null)

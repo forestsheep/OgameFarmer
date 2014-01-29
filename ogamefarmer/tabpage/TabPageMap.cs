@@ -25,6 +25,7 @@ namespace GalaxyFarmer
             MapMessager mapMessager = new MapMessager();
             mapMessager.IsContinueScan = false;
             mapCommander = new MapCommander(mapMessager, OnLogin);
+            CommandCenter.RUN(mapCommander, this);
         }
 
         private void btn_map_csv_out_Click(object sender, EventArgs e)

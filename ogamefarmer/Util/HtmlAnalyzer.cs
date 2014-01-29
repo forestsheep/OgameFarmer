@@ -11,7 +11,7 @@ namespace GalaxyFarmer
         static HtmlAnalyzer()
         {
             HtmlNode.ElementsFlags.Remove("option");
-            HtmlNode.ElementsFlags.Remove("form");
+            //HtmlNode.ElementsFlags.Remove("form");
         }
 
         private HtmlDocument hdoc;

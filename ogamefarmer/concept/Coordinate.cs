@@ -13,17 +13,17 @@ namespace GalaxyFarmer
         /// <summary>
         /// 银河
         /// </summary>
-        private int galaxy;
+        internal int galaxy;
 
         /// <summary>
         /// 星系
         /// </summary>
-        private int system;
+        internal int system;
 
         /// <summary>
         /// 星球
         /// </summary>
-        private int planet;
+        internal int planet;
 
         /// <summary>
         /// 构造一个星系坐标
