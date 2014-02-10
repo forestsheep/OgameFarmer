@@ -572,7 +572,7 @@
             this.gbReserve.Location = new System.Drawing.Point(433, 31);
             this.gbReserve.Name = "gbReserve";
             this.gbReserve.Size = new System.Drawing.Size(209, 229);
-            this.gbReserve.TabIndex = 23;
+            this.gbReserve.TabIndex = 1;
             this.gbReserve.TabStop = false;
             this.gbReserve.Text = "资源保留";
             // 
@@ -639,7 +639,7 @@
             this.gbCapacity.Location = new System.Drawing.Point(711, 31);
             this.gbCapacity.Name = "gbCapacity";
             this.gbCapacity.Size = new System.Drawing.Size(191, 229);
-            this.gbCapacity.TabIndex = 8;
+            this.gbCapacity.TabIndex = 2;
             this.gbCapacity.TabStop = false;
             this.gbCapacity.Text = "资源用量";
             // 
@@ -657,14 +657,14 @@
             this.tbDenominator.Location = new System.Drawing.Point(101, 184);
             this.tbDenominator.Name = "tbDenominator";
             this.tbDenominator.Size = new System.Drawing.Size(65, 29);
-            this.tbDenominator.TabIndex = 0;
+            this.tbDenominator.TabIndex = 6;
             // 
             // tbNumerator
             // 
             this.tbNumerator.Location = new System.Drawing.Point(23, 183);
             this.tbNumerator.Name = "tbNumerator";
             this.tbNumerator.Size = new System.Drawing.Size(47, 29);
-            this.tbNumerator.TabIndex = 0;
+            this.tbNumerator.TabIndex = 5;
             // 
             // rbCustom
             // 
@@ -672,7 +672,7 @@
             this.rbCustom.Location = new System.Drawing.Point(23, 141);
             this.rbCustom.Name = "rbCustom";
             this.rbCustom.Size = new System.Drawing.Size(76, 25);
-            this.rbCustom.TabIndex = 0;
+            this.rbCustom.TabIndex = 4;
             this.rbCustom.Text = "自定义";
             this.rbCustom.UseVisualStyleBackColor = true;
             this.rbCustom.CheckedChanged += new System.EventHandler(this.rbCustom_CheckedChanged);
@@ -683,7 +683,7 @@
             this.rb13.Location = new System.Drawing.Point(23, 104);
             this.rb13.Name = "rb13";
             this.rb13.Size = new System.Drawing.Size(53, 25);
-            this.rb13.TabIndex = 0;
+            this.rb13.TabIndex = 3;
             this.rb13.Text = "1/3";
             this.rb13.UseVisualStyleBackColor = true;
             // 
@@ -694,7 +694,7 @@
             this.rb1.Location = new System.Drawing.Point(23, 30);
             this.rb1.Name = "rb1";
             this.rb1.Size = new System.Drawing.Size(60, 25);
-            this.rb1.TabIndex = 0;
+            this.rb1.TabIndex = 1;
             this.rb1.TabStop = true;
             this.rb1.Text = "全部";
             this.rb1.UseVisualStyleBackColor = true;
@@ -705,7 +705,7 @@
             this.rb23.Location = new System.Drawing.Point(23, 67);
             this.rb23.Name = "rb23";
             this.rb23.Size = new System.Drawing.Size(53, 25);
-            this.rb23.TabIndex = 0;
+            this.rb23.TabIndex = 2;
             this.rb23.Text = "2/3";
             this.rb23.UseVisualStyleBackColor = true;
             // 
@@ -717,7 +717,7 @@
             this.tbDefenceLog.ReadOnly = true;
             this.tbDefenceLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbDefenceLog.Size = new System.Drawing.Size(357, 582);
-            this.tbDefenceLog.TabIndex = 27;
+            this.tbDefenceLog.TabIndex = 5;
             // 
             // pbDefence
             // 
@@ -748,7 +748,7 @@
             this.gbStrategy.Location = new System.Drawing.Point(971, 31);
             this.gbStrategy.Name = "gbStrategy";
             this.gbStrategy.Size = new System.Drawing.Size(169, 229);
-            this.gbStrategy.TabIndex = 9;
+            this.gbStrategy.TabIndex = 3;
             this.gbStrategy.TabStop = false;
             this.gbStrategy.Text = "建造策略";
             // 
@@ -758,7 +758,7 @@
             this.rbMetal.Location = new System.Drawing.Point(23, 184);
             this.rbMetal.Name = "rbMetal";
             this.rbMetal.Size = new System.Drawing.Size(108, 25);
-            this.rbMetal.TabIndex = 0;
+            this.rbMetal.TabIndex = 3;
             this.rbMetal.TabStop = true;
             this.rbMetal.Text = "只使用金属";
             this.rbMetal.UseVisualStyleBackColor = true;
@@ -770,7 +770,7 @@
             this.rbPaohui.Location = new System.Drawing.Point(23, 106);
             this.rbPaohui.Name = "rbPaohui";
             this.rbPaohui.Size = new System.Drawing.Size(92, 25);
-            this.rbPaohui.TabIndex = 0;
+            this.rbPaohui.TabIndex = 2;
             this.rbPaohui.TabStop = true;
             this.rbPaohui.Text = "炮灰优先";
             this.rbPaohui.UseVisualStyleBackColor = true;
@@ -782,7 +782,7 @@
             this.rbAll.Location = new System.Drawing.Point(23, 28);
             this.rbAll.Name = "rbAll";
             this.rbAll.Size = new System.Drawing.Size(108, 25);
-            this.rbAll.TabIndex = 0;
+            this.rbAll.TabIndex = 1;
             this.rbAll.TabStop = true;
             this.rbAll.Text = "等离子优先";
             this.rbAll.UseVisualStyleBackColor = true;
@@ -793,7 +793,7 @@
             this.btnMakeTower.Location = new System.Drawing.Point(997, 546);
             this.btnMakeTower.Name = "btnMakeTower";
             this.btnMakeTower.Size = new System.Drawing.Size(144, 57);
-            this.btnMakeTower.TabIndex = 10;
+            this.btnMakeTower.TabIndex = 4;
             this.btnMakeTower.Text = "建造炮塔";
             this.btnMakeTower.UseVisualStyleBackColor = true;
             this.btnMakeTower.Click += new System.EventHandler(this.btnMakeTower_Click);
